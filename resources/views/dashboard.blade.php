@@ -217,7 +217,7 @@
                 </div>
                 <div class="counter_no">
                     <div>
-                        <h5 class="total_no text-center">₦{{number_format(intval($bill *1),2)}}</h5>
+                        <h5 class="total_no text-center">₦{{number_format(intval($lock *1),2)}}</h5>
                         <h6 class="head_couter">Safelock Balance</h6>
                     </div>
                 </div>

@@ -13,8 +13,14 @@ class Kernel extends ConsoleKernel
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
      */
+    protected $commands = [
+        Commands\Interest::class,
+    ];
+
     protected function schedule(Schedule $schedule)
     {
+        $schedule->command('Interest:cron')
+            ->everyMinute();
         // $schedule->command('inspire')->hourly();
     }
 
@@ -23,6 +29,7 @@ class Kernel extends ConsoleKernel
      *
      * @return void
      */
+
     protected function commands()
     {
         $this->load(__DIR__.'/Commands');

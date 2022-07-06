@@ -3,10 +3,12 @@
 namespace App\Actions\Fortify;
 
 use App\Console\encription;
+use App\Mail\Emailotp;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
@@ -31,6 +33,10 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
 
         return DB::transaction(function () use ($input) {
+            $receiver=$input ['email'];
+            $admin= 'info@renomobilemoney.com';
+            Mail::to($receiver)->send(new Emailotp($input));
+            Mail::to($admin)->send(new Emailotp($input));
             return tap(User::create([
                 'name' => encription::encryptdata($input['name']),
                 'email' => encription::encryptdata($input['email']),

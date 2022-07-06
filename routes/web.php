@@ -19,6 +19,7 @@ use App\Http\Controllers\RefersController;
 use App\Http\Controllers\ResellerController;
 use App\Http\Controllers\SafelockController;
 use App\Http\Controllers\VertualController;
+use App\Http\Controllers\WithdrawController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FundController;
@@ -93,6 +94,7 @@ Route::post('referwith1', [RefersController::class, 'with'])->name('referwith1')
 Route::get('fund', [FundController::class, 'fund'])->name('fund');
 Route::get('tran/{reference}', [FundController::class, 'tran'])->name('tran');
 Route::get('vertual', [VertualController::class, 'vertual'])->name('vertual');
+Route::get('withdraw', [WithdrawController::class, 'bank'])->name('withdraw');
 });
 
 

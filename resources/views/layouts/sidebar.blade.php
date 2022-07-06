@@ -135,9 +135,11 @@
                     <li>
                         <a href="{{route('elect')}}"><i class="fa fa-power-off"></i> <span>Pay Electricity</span></a>
                     </li>
-
+                        <li>
+                            <a href="{{route('withdraw')}}"><i class="fa fa-money red_color"></i> <span>Withdraw Request</span></a>
+                        </li>
                     <li>
-                        <a href="{{route('invoice')}}"><i class="fa fa-sticky-note yellow_color"></i> <span>Bills Invoice</span></a>
+                        <a href="{{route('invoice')}}"><i class="fa fa-sticky-note "></i> <span>Bills Invoice</span></a>
                     </li>
                     <li>
                         <a href="{{route('charges')}}"><i class="fa fa-sticky-note"></i> <span>Charges</span></a>
