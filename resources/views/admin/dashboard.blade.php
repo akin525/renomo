@@ -238,7 +238,7 @@
                             <div>
                                 <h5 class="total_no text-center">₦{{number_format(intval($profit1 *1),2)}}</h5>
 
-                                <h6 class="head_couter">Honorword Profit</h6>
+                                <h6 class="head_couter">MCD Profit</h6>
                             </div>
                         </div>
                     </div>
@@ -286,7 +286,7 @@
                         <div class="counter_no">
                             <div>
                                 <h5 class="total_no text-center">₦{{number_format(intval($totalprofit *1),2)}}</h5>
-                                <h6 class="head_couter">MCD Profit</h6>
+                                <h6 class="head_couter">Honorword Profit</h6>
                             </div>
                         </div>
                     </div>

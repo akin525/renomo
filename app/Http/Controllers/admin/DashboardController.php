@@ -24,7 +24,7 @@ class DashboardController
 public function dashboard(Request $request)
 {
     if (Auth()->user()->role=="admin") {
-        $user = User::where('role', 'admin')->first();
+        $user = User::where('username', Auth::user()->username)->where('role', 'admin')->first();
         $me = Messages::where('status', 1)->first();
         $refer = refer::get();
         $totalrefer = 0;
