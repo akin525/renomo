@@ -117,7 +117,7 @@ Alert::success('success','You av successfully login');
     public function dashboard(Request $request)
     {
 
-            $user = User::find(Auth::user()->id);
+            $user = User::where('username', Auth::user()->username)->first();
         $username=$user->username;
 
         $me = Messages::where('status', 1)->first();
