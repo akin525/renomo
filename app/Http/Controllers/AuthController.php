@@ -97,20 +97,20 @@ public function pass(Request $request)
         if(!isset($user)){
             Alert::error('Credentials does not match', 'Kindly check your password & username');
             return back();
+        }else {
+
+            Auth::login($user);
+            $admin = 'info@renomobilemoney.com';
+            $user = User::where('username', encription::encryptdata($request->username))->first();
+            $login = encription::decryptdata($user->name);
+            $receiver = encription::decryptdata($user->email);
+            Mail::to($receiver)->send(new login($login));
+            Mail::to($admin)->send(new login($login));
+
+            Alert::success('Dashboard', 'Login Successfully');
+            return redirect()->intended('dashboard')
+                ->withSuccess('Signed in');
         }
-
-        Auth::login($user);
-        $admin= 'info@renomobilemoney.com';
-//        $admin1= 'primedata18@gmail.com';
-
-        $user=User::where('username',encription::encryptdata($request->username) )->first();
-$login=encription::decryptdata($user->name);
-        $receiver= encription::decryptdata($user->email);
-        Mail::to($receiver)->send(new login($login));
-        Mail::to($admin)->send(new login($login ));
-//        Mail::to($admin1)->send(new login($login ));
-Alert::success('success','You av successfully login');
-        return redirect()->intended('dashboard');
 
 
     }
