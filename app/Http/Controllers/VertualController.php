@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Console\encription;
 use App\Mail\Emailcharges;
 use App\Mail\Emailfund;
 use App\Models\bo;
@@ -22,6 +23,11 @@ class VertualController
             $user = User::find($request->user()->id);
             $wallet = wallet::where('username', $user->username)->first();
 
+            $username=encription::decryptdata($user->username);
+            $email=encription::decryptdata($user->email);
+            $name=encription::decryptdata($user->name);
+            $phone=encription::decryptdata($user->phone);
+
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
@@ -35,7 +41,7 @@ class VertualController
                 CURLOPT_SSL_VERIFYHOST => 0,
                 CURLOPT_SSL_VERIFYPEER => 0,
                 CURLOPT_CUSTOMREQUEST => 'POST',
-                CURLOPT_POSTFIELDS => array('account_name' => $user->username, 'business_short_name' => 'RENO', 'uniqueid' => $user->name, 'email' => $user->email, 'phone' => '08146328645', 'webhook_url' => 'https://renomobilemoney.com/api/run',),
+                CURLOPT_POSTFIELDS => array('account_name' => $username, 'business_short_name' => 'RENO', 'uniqueid' => $name, 'email' => $email, 'phone' =>$phone, 'webhook_url' => 'https://renomobilemoney.com/api/run',),
                 CURLOPT_HTTPHEADER => array(
                     'Authorization: mcd_key_75rq4][oyfu545eyuriup1q2yue4poxe3jfd'
                 ),

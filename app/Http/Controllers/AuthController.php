@@ -79,11 +79,7 @@ public function pass(Request $request)
     }
     public function customLogin(Request $request)
     {
-        if (Auth()->user()){
-            return redirect(route('dashboard'))
-                ->withSuccess('Signed in');
 
-        }
 
         $request->validate([
             'username' => 'required',
