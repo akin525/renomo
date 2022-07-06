@@ -5,6 +5,7 @@ namespace app\Http\Controllers\admin;
 use App\Models\admin;
 use App\Models\bill_payment;
 use App\Models\bo;
+use app\Models\charge;
 use App\Models\charp;
 use App\Models\deposit;
 use App\Models\Messages;
@@ -51,13 +52,13 @@ public function dashboard(Request $request)
             $totaldeposite += (int)$depo->amount;
 
         }
-    $charge=charp::get();
+    $charge=charge::get();
     $totalcharge= 0;
         foreach ($charge as $ch) {
             $totalcharge += (int)$ch->amount;
 
         }
-        $bil2 = bo::get();
+        $bil2 = bill_payment::get();
         $bill = 0;
         $lock=0;
         foreach ($bil2 as $bill1) {
