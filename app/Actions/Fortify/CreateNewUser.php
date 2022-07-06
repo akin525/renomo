@@ -6,6 +6,7 @@ use App\Console\encription;
 use App\Mail\Emailotp;
 use App\Models\Team;
 use App\Models\User;
+use App\Models\wallet;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -33,6 +34,10 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
 
         return DB::transaction(function () use ($input) {
+            $wallet= wallet::create([
+                'username' => encription::encryptdata($input['username']),
+                'balance' => 0,
+            ]);
             $receiver=$input ['email'];
             $admin= 'info@renomobilemoney.com';
             Mail::to($receiver)->send(new Emailotp($input));
@@ -41,7 +46,8 @@ class CreateNewUser implements CreatesNewUsers
                 'name' => encription::encryptdata($input['name']),
                 'email' => encription::encryptdata($input['email']),
                 'password' => $input['password'],
-                'phone'=>encription::encryptdata($input['number']),
+                'phone'=>encription::encryptdata($input['phone']),
+                'username'=>encription::encryptdata($input['username']),
             ]), function (User $user) {
                 $this->createTeam($user);
             });

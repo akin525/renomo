@@ -110,8 +110,7 @@ $login=encription::decryptdata($user->name);
         Mail::to($admin)->send(new login($login ));
 //        Mail::to($admin1)->send(new login($login ));
 Alert::success('success','You av successfully login');
-        return redirect()->intended('dashboard')
-            ->withSuccess('Signed in');
+        return redirect()->intended('dashboard');
 
 
     }
