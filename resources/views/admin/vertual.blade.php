@@ -41,7 +41,7 @@
                                 <tbody>
                                 @foreach($vertual as $row)
                                 <tr>
-                                    <td>{{$row['username']}}</td>
+                                    <td>{{\App\Console\encription::decryptdata($row['username'])}}</td>
                                     @if ("$row[account_name]"==1 )
                                     <td>No Virtual Account Yet</td>
                                     @else
