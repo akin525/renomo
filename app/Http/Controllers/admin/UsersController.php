@@ -5,6 +5,7 @@ namespace app\Http\Controllers\admin;
 use App\Console\encription;
 use App\Models\bill_payment;
 use App\Models\bo;
+use app\Models\charge;
 use App\Models\charp;
 use App\Models\deposit;
 use App\Models\Messages;
@@ -79,8 +80,8 @@ $wallet=wallet::where('username', $username)->first();
        $referrals = refer::where('username', $ap->usernamer)->get();
         $tat = bill_payment::where('username', $ap->username)->count();
         $sumbo = bill_payment::where('username', $ap->username)->sum('amount');
-        $sumch = charp::where('username', $ap->username)->sum('amount');
-        $charge = charp::where('username', $ap->username)->paginate(10);
+        $sumch = charge::where('username', $ap->username)->sum('amount');
+        $charge = charge::where('username', $ap->username)->paginate(10);
 //return $user;
         return view('admin/profile', ['user' => $ap, 'sumtt'=>$sumtt, 'charge'=>$charge,  'sumch'=>$sumch, 'sumbo'=>$sumbo, 'tt' => $tt, 'wallet'=>$wallet, 'td' => $td,  'referrals' => $referrals, 'version' => $v,  'tat' =>$tat]);
     }
