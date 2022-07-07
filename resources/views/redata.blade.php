@@ -72,7 +72,7 @@
         </style>
         <div class="card-body">
             <div class="center">
-                <img    src="{{asset('images/re.jpg')}}" alt="#" />
+                <img    src="{{asset('images/banner.jpeg')}}" alt="#" />
             </div>
         </div>
 
