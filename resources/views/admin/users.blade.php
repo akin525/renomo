@@ -67,6 +67,7 @@
                         <table  class="table table-striped table-bordered align-middle">
                             <thead>
                             <tr>
+                                <th>Id</th>
                                 <th>Customer</th>
                                 <th>Email</th>
                                 <th>Phone-No</th>
@@ -80,7 +81,7 @@
                                     <td>
                                             <img width="50" src="{{asset("images/bn.jpeg")}}" alt="" class="rounded-circle thumb-sm mr-1"> {{\App\Console\encription::decryptdata($user->username)}}
                                     </td>
-{{--                                    <td>₦{{$user->balance}}</td>--}}
+                                    <td>₦{{$user->id}}</td>
                                     <td>{{\App\Console\encription::decryptdata($user->email)}}</td>
                                     <td>{{\App\Console\encription::decryptdata($user->phone)}}</td>
                                     <td>{{\App\Console\encription::decryptdata($user->name)}}</td>
