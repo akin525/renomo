@@ -36,8 +36,22 @@
 
                                 <div class="field">
                                     <label class="label_field">Password</label>
-                                    <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+                                    <x-jet-input id="myinput" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
                                 </div>
+                                <center>
+                                    <input  type="checkbox" onclick="myFunction()">Show Password
+                                </center>
+
+                                <script>
+                                    function myFunction() {
+                                        var x = document.getElementById("myInput");
+                                        if (x.type === "password") {
+                                            x.type = "text";
+                                        } else {
+                                            x.type = "password";
+                                        }
+                                    }
+                                </script>
                                 <center>
                                     <div class="field">
                                         <label class="label_field hidden">hidden label</label>

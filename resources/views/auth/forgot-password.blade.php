@@ -2,7 +2,7 @@
     <body class="inner_page login">
     <div id="loading-wrapper">
         <div class="spinner-border"></div>
-        PRIMEDATA......
+       Renomobilemoney......
     </div>
     <div class="full_container">
         <div class="container">
@@ -15,7 +15,7 @@
                     </div>
 
                     <div class="login_form">
-                        <center><h5 class="text-wh text-red">Primedata Get New Password</h5></center>
+                        <center><h5 class="text-wh text-red">Renomobile Get New Password</h5></center>
                         <center>
                             <a href="{{route('login')}}" class="btn btn-success">Login</a>
                         </center>
