@@ -169,7 +169,7 @@
             <script type="text/javascript">
                 (function() {
                     var options = {
-                        whatsapp: "+2348103153004", // WhatsApp number
+                        whatsapp: "+2348066215840", // WhatsApp number
                         call_to_action: "Message us", // Call to action
                         position: "left", // Position may be 'right' or 'left'
                     };
