@@ -5,7 +5,7 @@ namespace app\Http\Controllers\admin;
 use App\Console\encription;
 use App\Models\bill_payment;
 use App\Models\bo;
-use app\Models\charge;
+use App\Models\charge;
 use App\Models\charp;
 use App\Models\deposit;
 use App\Models\Messages;
