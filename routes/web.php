@@ -48,6 +48,7 @@ use App\Http\Controllers\BillController;
 //});
 Route::post('log', [AuthController::class, 'customLogin'])->name('log');
 Route::get('/', [AuthController::class, 'landing'])->name('home');
+Route::post('passw', [AuthController::class, 'pass'])->name('passw');
 
 //Route::get('select', function () {
 //    return view('select');
@@ -61,7 +62,6 @@ Route::middleware(['auth'])->group(function () {
 Route::post('pick', [AlltvController::class, 'tv'])->name('pick');
 Route::post('safe', [SafelockController::class, 'safe'])->name('safe');
 Route::get('allock', [SafelockController::class, 'index'])->name('allock');
-Route::post('passw', [AuthController::class, 'pass'])->name('passw');
 Route::get('tv', [AlltvController::class, 'tv'])->name('tv');
 Route::get('select', [AuthController::class, 'select'])->name('select');
 Route::get('select1', [AuthController::class, 'select1'])->name('select1');

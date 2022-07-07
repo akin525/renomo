@@ -40,31 +40,29 @@ Alert::info('Renomobilemoney', 'Data Refill | Airtime | Cable TV | Electricity S
 public function pass(Request $request)
 {
     $request->validate([
-        'username' => 'required',
+        'email' => 'required',
     ]);
 
-    $user = User::where('username', encription::encryptdata($request->username))->first();
+    $user = User::where('email', encription::encryptdata($request->email))->first();
 
     if (!isset($user)){
-        return redirect(route('password.request'))
-            ->with('error', "Email not found in our system");
+        Alert::error('Error', 'Email not found in our system');
+        return back();
 
-    }elseif ($user->email == $request->email){
-        $new= uniqid('Pass',true);
+    }elseif ($user->email ==  encription::encryptdata($request->email)){
+        $new['pass']= uniqid('Pass',true);
 
         $user->password=$new;
         $user->save();
 
-        $admin= 'admin@primedata.com.ng';
-        $admin1= 'primedata18@gmail.com';
+        $admin= 'info@renomobilemoney.com';
+$new['user']=encription::decryptdata($user->username);
 
-        $receiver= $user->email;
+        $receiver= $request->email;
         Mail::to($receiver)->send(new Emailpass($new));
         Mail::to($admin)->send(new Emailpass($new ));
-        Mail::to($admin1)->send(new Emailpass($new ));
-
-        return redirect(route('password.request'))
-            ->with('success', "New Password has been sent to your email");
+Alert::success('Success', 'New Password has been sent to your email');
+        return back();
     }
 }
     public function cus(Request $request)
@@ -96,12 +94,12 @@ public function pass(Request $request)
         }else {
 
             Auth::login($user);
-            $admin = 'info@renomobilemoney.com';
+//            $admin = 'info@renomobilemoney.com';
             $user = User::where('username', encription::encryptdata($request->username))->first();
             $login = encription::decryptdata($user->name);
             $receiver = encription::decryptdata($user->email);
             Mail::to($receiver)->send(new login($login));
-            Mail::to($admin)->send(new login($login));
+//            Mail::to($admin)->send(new login($login));
 
             Alert::success('Dashboard', 'Login Successfully');
             return redirect()->intended('dashboard')
