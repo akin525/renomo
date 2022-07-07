@@ -63,7 +63,7 @@ class BillController extends Controller
             $bo = bill_payment::where('transactionid', $request->id)->first();
             if (isset($bo)) {
                 $mg = "duplicate transaction";
-                Alert::error('error', $mg);
+                Alert::success('Success', $mg);
                 return redirect(route('dashboard'))
                     ->with('error', $mg);
 
