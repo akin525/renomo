@@ -78,7 +78,18 @@ class BillController extends Controller
 
                 $wallet->balance = $gt;
                 $wallet->save();
-
+                $bo = bill_payment::create([
+                    'username' => $user->username,
+                    'product' => $product->network . '|' . $product->plan,
+                    'amount' => $request->amount,
+                    'server_response' => 'ur fault',
+                    'status' => 1,
+                    'number' => $request->number,
+                    'transactionid' => $request->id,
+                    'discountamount'=>0,
+                    'paymentmethod'=> 'wallet',
+                    'balance'=>$gt,
+                ]);
                 $object = json_decode($product);
                 $object->number = $request->number;
                 $json = json_encode($object);
@@ -99,18 +110,7 @@ class BillController extends Controller
 
                         $po = $amount - $product->amount;
 
-                        $bo = bill_payment::create([
-                            'username' => $user->username,
-                            'product' => $product->network . '|' . $product->plan,
-                            'amount' => $request->amount,
-                            'server_response' => $response,
-                            'status' => $success,
-                            'number' => $request->number,
-                            'transactionid' => $request->id,
-                            'paymentmethod'=>'wallet',
-                            'discountamount'=>0,
-                            'balance'=>$gt,
-                        ]);
+
 
                         $profit = profit1::create([
                             'username' => $user->username,
@@ -160,18 +160,7 @@ class BillController extends Controller
                         $success = "1";
                         $po = $amount - $product->amount;
 
-                        $bo = bill_payment::create([
-                            'username' => $user->username,
-                            'product' => $product->network . '|' . $product->plan,
-                            'amount' => $request->amount,
-                            'server_response' => $response,
-                            'status' => $success,
-                            'number' => $request->number,
-                            'transactionid' => $request->id,
-                            'discountamount'=>$dis,
-                            'paymentmethod'=> 'wallet',
-                            'balance'=>$gt,
-                        ]);
+
 
                         $profit = profit::create([
                             'username' => $user->username,
