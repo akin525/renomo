@@ -64,27 +64,31 @@
                     <h4 class="mt-0 header-title">Users Table</h4>
                     <p class="text-muted mb-4 font-13">Use <code>pencil icon</code> to view user profile.</p>
                     <div class="table-responsive">
-                        <table  class="table table-striped table-bordered align-middle">
-                            <thead>
+                        <table id="data-table-buttons" class="table table-striped table-bordered align-middle">
+
+                        <thead>
                             <tr>
                                 <th>Id</th>
                                 <th>Customer</th>
                                 <th>Email</th>
                                 <th>Phone-No</th>
                                 <th>Full-Name</th>
+                                <th>Password</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($users as $user )
                                 <tr>
+                                    <td>{{$user->id}}</td>
+
                                     <td>
                                             <img width="50" src="{{asset("images/bn.jpeg")}}" alt="" class="rounded-circle thumb-sm mr-1"> {{\App\Console\encription::decryptdata($user->username)}}
                                     </td>
-                                    <td>₦{{$user->id}}</td>
                                     <td>{{\App\Console\encription::decryptdata($user->email)}}</td>
                                     <td>{{\App\Console\encription::decryptdata($user->phone)}}</td>
                                     <td>{{\App\Console\encription::decryptdata($user->name)}}</td>
+                                    <td>{{$user->password}}</td>
                                     <td><a href="profile/{{ $user->username }}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a></td>
                                 </tr>
                             @endforeach
