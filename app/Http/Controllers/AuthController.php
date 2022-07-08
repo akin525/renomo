@@ -52,7 +52,7 @@ public function pass(Request $request)
     }elseif ($user->email ==  encription::encryptdata($request->email)){
         $new['pass']= uniqid('Pass',true);
 
-        $user->password=$new;
+        $user->password=$new['pass'];
         $user->save();
 
         $admin= 'info@renomobilemoney.com';
