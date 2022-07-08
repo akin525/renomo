@@ -153,7 +153,7 @@
                         @foreach($fund as $po)
                             <tr>
                                 <td>{{$po->date}}</td>
-                                <td>{{$po->username}}</td>
+                                <td>{{\App\Console\encription::decryptdata($po->username)}}</td>
                                 <td>{{$po->amount}}</td>
                                 <td>{{$po->payment_ref}}</td>
                             </tr>

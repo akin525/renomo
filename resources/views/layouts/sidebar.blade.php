@@ -207,27 +207,6 @@
 {{--            </center>--}}
             @include('sweetalert::alert')
 
-            <script type="text/javascript">
-                (function() {
-                    var options = {
-                        whatsapp: "+2348066215840", // WhatsApp number
-                        call_to_action: "Message us", // Call to action
-                        position: "left", // Position may be 'right' or 'left'
-                    };
-                    var proto = document.location.protocol,
-                        host = "whatshelp.io",
-                        url = proto + "//static." + host;
-                    var s = document.createElement('script');
-                    s.type = 'text/javascript';
-                    s.async = true;
-                    s.src = url + '/widget-send-button/js/init.js';
-                    s.onload = function() {
-                        WhWidgetSendButton.init(host, proto, options);
-                    };
-                    var x = document.getElementsByTagName('script')[0];
-                    x.parentNode.insertBefore(s, x);
-                })();
-            </script>
 
 {{--            <center>--}}
 {{--            <iframe width="250" height="100"--}}
@@ -241,8 +220,30 @@
 
 
 
+            <style>
+                .float{
+                    position:fixed;
+                    width:60px;
+                    height:60px;
+                    bottom:40px;
+                    right:40px;
+                    background-color:#25d366;
+                    color:#FFF;
+                    border-radius:50px;
+                    text-align:center;
+                    font-size:30px;
+                    box-shadow: 2px 2px 3px #999;
+                    z-index:100;
+                }
 
-
+                .my-float{
+                    margin-top:16px;
+                }
+            </style>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+            <a href="https://api.whatsapp.com/send?phone=51955081075&text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202." class="float" target="_blank">
+                <i class="fa fa-whatsapp my-float"></i>
+            </a>
 
             <!-- jQuery -->
             <script src="{{asset('js/jquery.min.js')}}"></script>
@@ -270,6 +271,8 @@
             <script src="{{asset('hp/modernizr.js')}}"></script>
             <script src="{{asset('hp/moment.js')}}"></script>
             <script src="{{asset('hp/main.js')}}"></script>
+
+
 
 
 
