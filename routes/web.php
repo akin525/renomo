@@ -60,6 +60,8 @@ Route::middleware(['auth'])->group(function () {
     Route::view('picktv', 'picktv');
     Route::view('safelock', 'safelock');
 Route::post('pick', [AlltvController::class, 'tv'])->name('pick');
+Route::get('addlock/{id}', [SafelockController::class, 'add'])->name('addlock');
+Route::post('adlock', [SafelockController::class, 'adlock'])->name('adlock');
 Route::post('safe', [SafelockController::class, 'safe'])->name('safe');
 Route::get('allock', [SafelockController::class, 'index'])->name('allock');
 Route::get('tv', [AlltvController::class, 'tv'])->name('tv');

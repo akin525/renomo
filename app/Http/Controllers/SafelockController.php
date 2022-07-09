@@ -65,4 +65,39 @@ public  function index()
     $lock=safe_lock::where('username', Auth::user()->username)->orderBy('id', 'desc')->get();
     return view("allock", compact("lock"));
 }
+public function add($request)
+{
+
+    $safe=safe_lock::where('id', $request)->first();
+//    Alert::info('Safelock', 'You can add to ur selected safelock anytime');
+    return view("addlock", compact("safe"));
+}
+public function adlock(Request $request)
+{
+    $request->validate([
+        'id'=>'required',
+    ]);
+    $wallet=wallet::where('username', Auth::user()->username)->first();
+    $user = User::where('username', Auth::user()->username)->first();
+
+    if ($wallet->balance < $request->amount) {
+        $msg ="Insufficient Balance Kindly Fund Your Wallet And come back for safe-lock";
+        Alert::error('error', $msg);
+        return back();
+    }
+    if ($request->amount < 0) {
+        $msg ="Please Enter a valid amount";
+        Alert::error('error', $msg);
+        return back();
+    }
+
+    $safe=safe_lock::where('id', $request->id)->first();
+    $total=$safe->balance + $request->amount;
+    $safe->balance=$total;
+    $safe->save();
+    $msg ="You have successfully add NGN".$request->amount ." to ".$safe->tittle. " lock";
+    Alert::success('New Safelock', $msg);
+    return back();
+
+}
 }

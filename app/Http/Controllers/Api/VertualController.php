@@ -13,11 +13,14 @@ use App\Models\deposit;
 use App\Models\setting;
 use App\Models\wallet;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Mail;
+use NotificationChannels\WebPush\WebPushChannel;
+use NotificationChannels\WebPush\WebPushMessage;
 use Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-class VertualController
+class VertualController  extends Notification
 {
     public function vertual(Request $request)
     {
@@ -67,6 +70,10 @@ class VertualController
         }
     }
 
+    public function via($notifiable)
+    {
+        return [WebPushChannel::class];
+    }
     public function run(Request $request)
     {
         $web = web::create([
@@ -100,25 +107,25 @@ class VertualController
             $user = user::where('username', $wallet->username)->first();
             if (isset($depo)) {
                 echo "payment refid the same";
-            }else {
+            } else {
 
                 $char = setting::first();
                 $amount1 = $amount - $char->charges;
 
 
                 $gt = $amount1 + $pt;
-                $reference=$refid;
+                $reference = $refid;
 
                 $deposit = deposit::create([
                     'username' => $wallet->username,
-                    'payment_ref' =>"Reno". $reference,
+                    'payment_ref' => "Reno" . $reference,
                     'amount' => $amount,
                     'iwallet' => $pt,
                     'fwallet' => $gt,
                 ]);
                 $charp = charge::create([
                     'username' => $wallet->username,
-                    'payment_ref' =>"Api". $reference,
+                    'payment_ref' => "Api" . $reference,
                     'amount' => $char->charges,
                     'iwallet' => $pt,
                     'fwallet' => $gt,
@@ -128,17 +135,18 @@ class VertualController
                 $user = user::where('username', $wallet->username)->first();
 
 
-                $admin= 'info@renomobilemoney.com';
+                $admin = 'info@renomobilemoney.com';
 
-                $receiver= encription::decryptdata($user->email);
-                Mail::to($receiver)->send(new Emailcharges($charp ));
-                Mail::to($admin)->send(new Emailcharges($charp ));
+                $receiver = encription::decryptdata($user->email);
+                Mail::to($receiver)->send(new Emailcharges($charp));
+                Mail::to($admin)->send(new Emailcharges($charp));
 
 
 //                $receiver = $user->email;
                 Mail::to($receiver)->send(new Emailfund($deposit));
                 Mail::to($admin)->send(new Emailfund($deposit));
 //                Mail::to($admin2)->send(new Emailfund($deposit));
+
 
             }
 
