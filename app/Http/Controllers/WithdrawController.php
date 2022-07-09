@@ -38,7 +38,7 @@ public function bank()
     if ($err) {
         echo "cURL Error #:" . $err;
     } else {
-//    echo $response;
+//return $response;
     }
     $data = json_decode($response, true);
     $success = $data["status"];

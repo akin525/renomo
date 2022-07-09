@@ -1,4 +1,11 @@
 @include('layouts.sidebar')
+<script>
+    function myNewFunction(sel) {
+        // alert(sel.options[sel.selectedIndex].id);
+        document.getElementById("po").value = (sel.options[sel.selectedIndex].id);
+        document.getElementById("pk").value = (sel.options[sel.selectedIndex].text);
+    }
+</script>
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="row justify-content-lg-center">
@@ -61,12 +68,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Select Your Bank Name</label>
-                                                <select class="form-control" name="bank" required>
+                                                <select class="form-control" name="bank" onChange="myNewFunction(this);" required>
                                                     @foreach($data['data'] as $plans)
-                                                        <option value="{{$plans['code']}}">{{$plans['name']}}</option>
+                                                        <option id="{{$plans['name']}}" value="{{$plans['code']}}">{{$plans['name']}}</option>
                                                         @endforeach
                                                 </select>
                                             </div>
+                                            <input name="code" type="hidden" id="po" value="" class="form-control"
                                             <div class="form-group">
                                                 <label>Enter Account Number</label>
                                                 <input name="number" type="number" class="form-control"
@@ -79,8 +87,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="text-end mt-4">
-                                        <button type="submit" class="btn btn-primary">Verify Account</button>
+                                    <div class="text-end mt-4 card-body">
+
+                                            <button type="submit" class="btn btn-primary">Verify Account</button>
+
+
                                     </div>
                                 </form>
                             </div>

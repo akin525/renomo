@@ -83,6 +83,9 @@
                         <a href="{{ route('dashboard') }}"  ><i class="fa fa-amazon white_color"></i> <span>Back To User Account</span></a>
                     </li>
                     <li class="nav-item">
+                        <a  class="nav-link" href="{{ route('admin/request') }}"  ><i class="fa fa-microphone "></i> <span>Withdraw Request</span></a>
+                    </li>
+                    <li class="nav-item">
                         <a  class="nav-link" href="{{ route('admin/dashboard') }}"  ><i class="fa fa-dashboard red_color"></i> <span>Dashboard</span></a>
                     </li>
                     <li class="nav-item">

@@ -62,7 +62,7 @@
                                             <div class="form-group">
                                                 <label>Account Name</label>
                                                 <input type="text" class="form-control" name="name" value="{{$tran}}" readonly/>
-                                                <input type="hidden" class="form-control" name="bank" value="{{$request['bank']}}" readonly/>
+                                                <input type="hidden" class="form-control" name="bank" value="{{$request['code']}}" readonly/>
                                             </div>
                                             <div class="form-group">
                                                 <label>Account Number</label>

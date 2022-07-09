@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\SetController;
 use App\Http\Controllers\admin\VertualAController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\LoginController;
+use App\Http\Controllers\admin\WithadController;
 use App\Http\Controllers\AlltvController;
 use App\Http\Controllers\AirtimeController;
 use App\Http\Controllers\EkectController;
@@ -153,6 +154,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/pd1/{id}', [ProductController::class, 'on1'])->name('admin/pd1');
     Route::get('admin/user', [UsersController::class, 'index'])->name('admin/user');
     Route::get('admin/deposits', [TransactionController::class, 'in'])->name('admin/deposits');
+    Route::get('admin/request', [WithadController::class, 'index'])->name('admin/request');
+    Route::get('admin/approved/{id}', [WithadController::class, 'approve'])->name('admin/approved');
+    Route::get('admin/disapproved/{id}', [WithadController::class, 'disapprove'])->name('admin/disapproved');
     Route::get('admin/bills', [TransactionController::class, 'bill'])->name('admin/bills');
     Route::get('admin/finddeposite', [TransactionController::class, 'index'])->name('admin/finddeposite');
     Route::post('admin/depo', [TransactionController::class, 'finduser'])->name('admin/depo');
