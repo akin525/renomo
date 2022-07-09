@@ -20,6 +20,8 @@ use NotificationChannels\WebPush\WebPushMessage;
 use Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+
+
 class VertualController  extends Notification
 {
     public function vertual(Request $request)
@@ -70,10 +72,7 @@ class VertualController  extends Notification
         }
     }
 
-    public function via($notifiable)
-    {
-        return [WebPushChannel::class];
-    }
+
     public function run(Request $request)
     {
         $web = web::create([

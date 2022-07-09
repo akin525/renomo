@@ -102,12 +102,12 @@ public function sub(Request $request)
     if ($wallet->balance < $request->amount) {
         $msg ="Insufficient Balance ";
         Alert::error('error', $msg);
-        return back();
+        return redirect('withdraw');
     }
     if ($request->amount < 0) {
         $msg ="Please Enter a valid amount";
         Alert::error('error', $msg);
-        return back();
+        return redirect('withdraw');
     }
 
     $total=$wallet->balance - $request->amount;
