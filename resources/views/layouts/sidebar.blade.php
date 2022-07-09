@@ -13,6 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- site icon -->
+    {{-- ChartScript --}}
 
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
     <link rel="icon" href="{{asset("images/bn.jpeg")}}" type="image/png" />
@@ -42,6 +43,9 @@
 
     <link rel="stylesheet" href="{{asset('hp/bootstrap.min.css')}}" />
     <link rel="stylesheet" href="{{asset('hp/main.css')}}" />
+
+    <livewire:scripts />
+    @livewireChartsScripts
 </head>
 
 <body class="dashboard dashboard_1">

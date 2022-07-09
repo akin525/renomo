@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Charts\UserChart;
 use App\Console\encription;
 use App\Mail\login;
 use App\Models\airtimecon;
@@ -14,6 +15,7 @@ use App\Models\Messages;
 use App\Models\refer;
 use App\Models\safe_lock;
 use App\Models\server;
+use Asantibanez\LivewireCharts\Models\ColumnChartModel;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +25,7 @@ use App\Models\data;
 use App\Models\deposit;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -124,6 +127,7 @@ Alert::success('Success', 'New Password has been sent to your email');
             $count = refer::where('username',$user->username)->count();
 
             $wallet = wallet::where('username', $user->username)->get();
+            $wallet1 = wallet::where('username', $user->username)->first();
             $deposite = deposit::where('username', $user->username)->get();
             $totaldeposite = 0;
             foreach ($deposite as $depo){
@@ -138,7 +142,20 @@ Alert::success('Success', 'New Password has been sent to your email');
             }
             $lock=safe_lock::where('username',$user->username)
                 ->where('status', '1')->sum('balance');
-            return  view('dashboard', compact('username', "user", 'wallet', 'totaldeposite', 'me',  'bil2', 'bill', 'totalrefer', 'count', 'lock'));
+        $columnChartModel =
+            (new ColumnChartModel())
+                ->setTitle('Expenses by Type')
+                ->addColumn('Wallet', $wallet1->balance, '#90cdf4')
+                ->addColumn('Deposit', $totaldeposite, '#28a745')
+                ->addColumn('Purchase', $bill, '#90cdf4')
+        ;
+        $pieChartModel=(new ColumnChartModel())
+            ->setTitle('Expenses by Type')
+            ->addColumn('Food', 100, '#f6ad55')
+            ->addColumn('Shopping', 200, '#fc8181')
+            ->addColumn('Travel', 300, '#90cdf4')
+        ;
+            return  view('dashboard', compact('username', "user", 'wallet', 'totaldeposite', 'me',  'bil2', 'bill', 'totalrefer',  'columnChartModel', 'pieChartModel',   'count', 'lock'));
 
     }
     public function refer(Request $request)
