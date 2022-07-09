@@ -1,4 +1,5 @@
 @include('admin.layouts.sidebar')
+
 <div class="midde_cont">
     <div class="container-fluid">
         <div class="row column_title">
@@ -194,6 +195,7 @@
                     </div>
                 </div>
             </div>
+
 
             <div class="row column1">
                 <div class="col-md-6 col-lg-3">
