@@ -97,6 +97,8 @@ Route::get('fund', [FundController::class, 'fund'])->name('fund');
 Route::get('tran/{reference}', [FundController::class, 'tran'])->name('tran');
 Route::get('vertual', [VertualController::class, 'vertual'])->name('vertual');
 Route::get('withdraw', [WithdrawController::class, 'bank'])->name('withdraw');
+Route::post('verify', [WithdrawController::class, 'verify'])->name('verify');
+Route::post('sub', [WithdrawController::class, 'sub'])->name('sub');
 });
 
 

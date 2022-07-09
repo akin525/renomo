@@ -55,7 +55,7 @@
                                     </script>
                                 @endif
 
-                                <form action="#" method="POST">
+                                <form action="{{route('verify')}}" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">
@@ -90,6 +90,62 @@
                 </div>
             </div>
         </div>
+        <div class="content">
+            <div class="module">
+                <div class="module-head">
+                    <h3>
+                        <!--                            My Invoice</h3>-->
+                </div>
+                <link href="{{asset('asset/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
+                <link href="{{asset('asset/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" />
+                <link href="{{asset('asset/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}" rel="stylesheet" />
+
+                <div class="content">
+                    <div class="module">
+                        <div class="module-head">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3>Withdraw Request</h3>
+                                    <div class="table-responsive">
+                                        <table id="data-table-buttons" class="table table-striped table-bordered align-middle">
+                                            <thead>
+                                            <th>Date</th>
+                                            <th>Username</th>
+                                            <th>Amount</th>
+                                            <th>Bank</th>
+                                            <th>Account Name</th>
+                                            <th>Account Number</th>
+                                            <th>Status</th>
+                                            <!--                                                    <th>Action</th>-->
+
+                                            </thead>
+                                            <tbody>
+                                            @foreach($with as $re)
+                                                <tr>
+                                                    <td>{{$re->date}}</td>
+                                                    <td>{{\App\Console\encription::decryptdata($re->username)}}</td>
+                                                    <td>{{$re->amount}}</td>
+                                                    <td>{{$re->bank}}</td>
+                                                    <td>{{$re->name}}</td>
+                                                    <td>{{$re->account_no}}</td>
+                                                    @if($re->status==0)
+                                                    <td><span class="badge badge-warning">Pending</span></td>
+                                                    @else
+                                                        <td><span class="badge badge-success">Successful</span></td>
+                                                    @endif
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </div>

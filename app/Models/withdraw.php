@@ -15,7 +15,7 @@ class withdraw extends Authenticatable
         'username',
         'amount',
         'bank',
-        'bank_no',
+        'account_no',
         'name',
         'plan',
     ];
