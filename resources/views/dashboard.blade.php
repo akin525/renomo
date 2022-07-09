@@ -222,9 +222,9 @@
                             <div class="col-md-12">
                                 <div class="content">
                                     <div class="area_chart">
-                                        <livewire:livewire-column-chart
-                                            :column-chart-model="$columnChartModel"
-                                        />
+{{--                                        <livewire:livewire-column-chart--}}
+{{--                                            :column-chart-model="$columnChartModel"--}}
+{{--                                        />--}}
                                     </div>
                                 </div>
                             </div>
