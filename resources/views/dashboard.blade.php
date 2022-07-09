@@ -205,37 +205,7 @@
         </div>
 
     </div>
-{{--        <livewire:livewire-charts/>--}}
-{{--        <livewire:scripts />--}}
-{{--        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>--}}
-{{--        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>--}}
-{{--        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.3/css/bootstrap-select.min.css">--}}
-{{--        <div class="row column2 graph margin_bottom_30">--}}
-{{--            <div class="col-md-l2 col-lg-12">--}}
-{{--                <div class="white_shd full">--}}
-{{--                    <div class="full graph_head">--}}
-{{--                        <div class="heading1 margin_0">--}}
-{{--                            <h2>Payment Charts</h2>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="full graph_revenue">--}}
-{{--                        <div class="row">--}}
-{{--                            <div class="col-md-12">--}}
-{{--                                <div class="content">--}}
-{{--                                    <div class="area_chart">--}}
-{{--                                        <livewire:livewire-column-chart--}}
-{{--                                            key="{{ $columnChartModel->reactiveKey() }}"--}}
-{{--                                            :column-chart-model="$columnChartModel"--}}
-{{--                                        />--}}
 
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
     <div class="row column1">
         <div class="col-md-7 col-lg-6">
             <div class="full counter_section margin_bottom_30">
