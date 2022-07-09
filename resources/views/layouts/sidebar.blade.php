@@ -44,8 +44,7 @@
     <link rel="stylesheet" href="{{asset('hp/bootstrap.min.css')}}" />
     <link rel="stylesheet" href="{{asset('hp/main.css')}}" />
 
-    <livewire:scripts />
-    @livewireChartsScripts
+
 </head>
 
 <body class="dashboard dashboard_1">
