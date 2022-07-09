@@ -206,8 +206,7 @@
         </div>
 
     </div>
-        <livewire:livewire-charts/>
-        <livewire:scripts />
+
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <div class="row column2 graph margin_bottom_30">
