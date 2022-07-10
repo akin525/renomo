@@ -35,42 +35,42 @@
             </div>
         </div>
         <br>
-        @include('livewire.livewire-charts')
-        <div class="row">
-            <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-            <!-- Bar Chart -->
-            <div class="col-md-6 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="mb-0">Payments Chart</h4>
-                    </div>
-                    <div class="card-body">
-                        <livewire:livewire-column-chart
-                            :column-chart-model="$columnChartModel"
-                        />
-                    </div>
-                </div>
-            </div>
 
-            <!-- Bar Chart Horizental -->
-            <div class="col-md-6 col-sm-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="mb-0">Customer's Chart</h4>
-                    </div>
-                    <div class="card-body">
+{{--        <div class="row">--}}
+{{--            <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>--}}
+{{--            <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>--}}
+{{--            <!-- Bar Chart -->--}}
+{{--            <div class="col-md-6 col-sm-12">--}}
+{{--                <div class="card">--}}
+{{--                    <div class="card-header">--}}
+{{--                        <h4 class="mb-0">Payments Chart</h4>--}}
+{{--                    </div>--}}
+{{--                    <div class="card-body">--}}
+{{--                        <livewire:livewire-column-chart--}}
+{{--                            :column-chart-model="$columnChartModel"--}}
+{{--                        />--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
-                        <livewire:livewire-column-chart
-                            :column-chart-model="$columnChartModel1"
-                        />
-                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+{{--            <!-- Bar Chart Horizental -->--}}
+{{--            <div class="col-md-6 col-sm-12">--}}
+{{--                <div class="card">--}}
+{{--                    <div class="card-header">--}}
+{{--                        <h4 class="mb-0">Customer's Chart</h4>--}}
+{{--                    </div>--}}
+{{--                    <div class="card-body">--}}
 
-                    </div>
-                </div>
-            </div>
+{{--                        <livewire:livewire-column-chart--}}
+{{--                            :column-chart-model="$columnChartModel1"--}}
+{{--                        />--}}
+{{--                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>--}}
 
-        </div>
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
+{{--        </div>--}}
 
         <div class="row">
             <div class="row column1">
