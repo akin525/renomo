@@ -16,6 +16,7 @@ use App\Models\safe_lock;
 use App\Models\User;
 use App\Models\wallet;
 use App\Models\webook;
+use Asantibanez\LivewireCharts\Models\ColumnChartModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -106,7 +107,20 @@ public function dashboard(Request $request)
         $data['sum_deposits'] = deposit::where([['date', 'LIKE', '%' . $today . '%']])->sum('amount');
         $data['sum_bill'] = bill_payment::where([['timestamp', 'LIKE', '%' . $today . '%']])->sum('amount');
 $mo=safe_lock::where('status', '1')->sum('balance');
-        return view('admin/dashboard', compact('user', 'wallet', 'mo', 'profit1', 'data', 'lock', 'totalcharge',  'tran', 'alluser', 'totaldeposite', 'totalwallet', 'deposite', 'me', 'bil2', 'bill', 'totalrefer', 'totalprofit',  'count'));
+        $columnChartModel =
+            (new ColumnChartModel())
+                ->setTitle('Expenses by Type')
+                ->addColumn('All-Wallet', $totalwallet, '#90cdf4')
+                ->addColumn('All-Deposit', $totaldeposite, '#28a745')
+                ->addColumn('All-Purchase', $bill, '#90cdf4')
+        ;
+        $columnChartModel1=
+            (new ColumnChartModel())
+                ->setTitle('Expenses by Type')
+                ->addColumn('All-User', $alluser, '#90cdf4')
+                ->addColumn('Active-User', $alluser, '#28a745')
+        ;
+        return view('admin/dashboard', compact('user', 'wallet', 'columnChartModel', 'columnChartModel1',  'mo', 'profit1', 'data', 'lock', 'totalcharge',  'tran', 'alluser', 'totaldeposite', 'totalwallet', 'deposite', 'me', 'bil2', 'bill', 'totalrefer', 'totalprofit',  'count'));
 
     }
     return redirect("admin/login")->with('status', 'You are not allowed to access');
