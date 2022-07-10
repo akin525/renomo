@@ -5,7 +5,17 @@
 <script src="{{asset('asset/js/theme/default.min.js')}}" type="847c8da2504a1915642ffbeb-text/javascript"></script>
 <livewire:scripts />
 @livewireChartsScripts
+<script>
+    $(document).ready(function() {
+        toastr.options.timeOut = 60000;
+        @if (Session::has('error'))
+        toastr.error('{{ Session::get('error') }}');
+        @elseif(Session::has('success'))
+        toastr.success('{{ Session::get('success') }}');
+        @endif
+    });
 
+</script>
 <div class="midde_cont">
     <div class="container-fluid">
         <div class="row column_title">
