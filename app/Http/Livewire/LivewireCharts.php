@@ -85,7 +85,7 @@ class LivewireCharts extends Component
                 ->setYAxisVisible(true)
             );
         $this->firstRun = false;
-        return view('livewire.livewire-charts')
+        return view('admin.dashboard')
             ->with([
                 'columnChartModel' => $columnChartModel,
                 'pieChartModel' => $pieChartModel,
