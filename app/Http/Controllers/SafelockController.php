@@ -95,6 +95,9 @@ public function adlock(Request $request)
     $total=$safe->balance + $request->amount;
     $safe->balance=$total;
     $safe->save();
+    $gt = $wallet->balance - $request->amount;
+    $wallet->balance=$gt;
+    $wallet->save();
     $msg ="You have successfully add NGN".$request->amount ." to ".$safe->tittle. " lock";
     Alert::success('New Safelock', $msg);
     return back();
