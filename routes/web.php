@@ -115,6 +115,9 @@ Route::post('cuslog', [LoginController::class, 'login'])->name('cuslog');
 
 Route::middleware(['auth'])->group(function () {
 
+    Route::post('admin/sub', [McdController::class, 'mcd'])->name('admin/sub');
+    Route::post('admin/verify', [McdController::class, 'verify'])->name('admin/verify');
+    Route::get('admin/mcd', [McdController::class, 'index'])->name('admin/mcd');
     Route::get('admin/allock', [LockController::class, 'index'])->name('admin/allock');
     Route::get('admin/com', [LockController::class, 'w  i'])->name('admin/com');
     Route::get('admin/interest', [LockController::class, 'lit'])->name('admin/interest');

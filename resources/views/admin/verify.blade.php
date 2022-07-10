@@ -1,11 +1,4 @@
-@include('admin.layouts.sidebar')
-<script>
-    function myNewFunction(sel) {
-        // alert(sel.options[sel.selectedIndex].id);
-        document.getElementById("po").value = (sel.options[sel.selectedIndex].id);
-        document.getElementById("pk").value = (sel.options[sel.selectedIndex].text);
-    }
-</script>
+@include('layouts.sidebar')
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="row justify-content-lg-center">
@@ -14,7 +7,7 @@
                 <div class="page-header">
                     <div class="row">
                         <div class="col">
-                            <h3 class="page-title text-white">Withdraw From MCD</h3>
+                            <h3 class="page-title text-white">MCD Withdraw</h3>
                             <ul class="breadcrumb">
                                 <li class=""><a href="{{route('admin/dashboard')}}">Home</a></li>
                                 {{--                                <li class="breadcrumb-item active">Profile</li>--}}
@@ -62,23 +55,20 @@
                                     </script>
                                 @endif
 
-                                <form action="{{route('admin/verify')}}" method="POST">
+                                <form action="{{route('admin/sub')}}" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Select Your Bank Name</label>
-                                                <select class="form-control" name="bank" onChange="myNewFunction(this);" required>
-                                                    @foreach($data['data'] as $plans)
-                                                        <option id="{{$plans['name']}}" value="{{$plans['code']}}">{{$plans['name']}}</option>
-                                                    @endforeach
-                                                </select>
+                                                <label>Account Name</label>
+                                                <input type="text" class="form-control" name="name" value="{{$tran['account_name']}}" readonly/>
+                                                <input type="hidden" class="form-control" name="bank" value="{{$request['code']}}" readonly/>
+                                                <input type="hidden" class="form-control" name="code" value="{{$request['bank']}}" readonly/>
                                             </div>
-                                            <input name="code" type="hidden" id="po" value="" class="form-control"
                                             <div class="form-group">
-                                                <label>Enter Account Number</label>
-                                                <input name="number" type="number" class="form-control"
-                                                       required>
+                                                <label>Account Number</label>
+                                                <input name="number" type="text" class="form-control" value="{{$request['number']}}"
+                                                       readonly>
                                             </div>
                                             <div class="form-group">
                                                 <label>Username</label>
@@ -86,12 +76,17 @@
                                                        required>
                                             </div>
                                         </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="amount">Amount</label>
+                                                <input type="text" name="amount" id="amount" class="form-control"
+                                                       placeholder="Enter amount" required>
+                                            </div>
+
+                                        </div>
                                     </div>
-                                    <div class="text-end mt-4 card-body">
-
-                                        <button type="submit" class="btn btn-primary">Verify Account</button>
-
-
+                                    <div class="text-end mt-4">
+                                        <button type="submit" class="btn btn-primary">Withdraw</button>
                                     </div>
                                 </form>
                             </div>
@@ -101,8 +96,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
 </div>
-
