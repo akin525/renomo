@@ -37,7 +37,8 @@
         <link rel="stylesheet" href="{{asset('css/custom.css')}}" />
         <link rel="stylesheet" href="{{asset('hp/bootstrap.min.css')}}" />
         <link rel="stylesheet" href="{{asset('hp/main.css')}}" />
-
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4783566552108386"
+                crossorigin="anonymous"></script>
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
         <script>
