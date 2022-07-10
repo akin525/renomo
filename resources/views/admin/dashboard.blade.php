@@ -2,6 +2,17 @@
 <livewire:scripts />
 @livewireChartsScripts
 
+<script>
+    $(document).ready(function() {
+        toastr.options.timeOut = 60000;
+        @if (Session::has('error'))
+        toastr.error('{{ Session::get('error') }}');
+        @elseif(Session::has('success'))
+        toastr.success('{{ Session::get('success') }}');
+        @endif
+    });
+
+</script>
 <div class="midde_cont">
     <div class="container-fluid">
         <div class="row column_title">
@@ -422,6 +433,5 @@
                 }
             });
         </script>
-
         @include('layouts.footer')
 

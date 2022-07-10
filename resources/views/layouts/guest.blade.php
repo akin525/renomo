@@ -37,6 +37,9 @@
         <link rel="stylesheet" href="{{asset('css/custom.css')}}" />
         <link rel="stylesheet" href="{{asset('hp/bootstrap.min.css')}}" />
         <link rel="stylesheet" href="{{asset('hp/main.css')}}" />
+        {{-- toastr --}}
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
+
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4783566552108386"
                 crossorigin="anonymous"></script>
         <!-- Scripts -->
@@ -115,6 +118,11 @@
         <a href="https://api.whatsapp.com/send?phone=+2348066215840" class="float" target="_blank">
             <i class="fa fa-whatsapp my-float"></i>
         </a>
+
+
+        {{-- toastr js --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+
     </body>
 
 </html>

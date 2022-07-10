@@ -38,8 +38,22 @@
             crossorigin="anonymous"></script>
 </head>
 
-<body>
+{{-- toastr js --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
+{{-- toastr --}}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
+
+<body>
+<script>
+    $(document).ready(function() {
+        toastr.options.timeOut = 10000;
+        @if (Auth()->user())
+        toastr.success('Welcome Back {{\App\Console\encription::decryptdata(Auth::user()->name)}}');
+        @endif
+    });
+
+</script>
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container">

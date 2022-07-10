@@ -106,7 +106,7 @@ Alert::success('Success', 'New Password has been sent to your email');
 
             Alert::success('Dashboard', 'Login Successfully');
             return redirect()->intended('dashboard')
-                ->withSuccess('Signed in');
+                ->with('success', 'Welcome back '.encription::decryptdata($user->name));
         }
 
 

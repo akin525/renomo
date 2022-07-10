@@ -46,6 +46,10 @@
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4783566552108386"
             crossorigin="anonymous"></script>
+
+    {{-- toastr --}}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
+
 </head>
 
 <body class="dashboard dashboard_1">
@@ -275,6 +279,10 @@
             <script src="{{asset('hp/modernizr.js')}}"></script>
             <script src="{{asset('hp/moment.js')}}"></script>
             <script src="{{asset('hp/main.js')}}"></script>
+
+            {{-- toastr js --}}
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+
 
 
 
