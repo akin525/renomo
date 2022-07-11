@@ -119,7 +119,7 @@ class AirtimeController
 //                    Mail::to($admin2)->send(new Emailtrans($bo));
 
                     Alert::success('success', $am.' ' .$ph);
-                    return back();
+                    return redirect('dashboard');
                 } elseif ($success == 0) {
                     $zo = $user->balance + $request->amount;
                     $user->balance = $zo;
