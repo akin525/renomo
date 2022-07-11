@@ -30,21 +30,23 @@ class AirtimeController
                 $mg = "You Cant Make Purchase Above" . "NGN" . $request->amount . " from your wallet. Your wallet balance is NGN $wallet->balance. Please Fund Wallet And Retry or Pay Online Using Our Alternative Payment Methods.";
 
                 Alert::error('error', $mg);
-                return back();
+                return redirect('dashboard');
+
 
             }
             if ($request->amount < 0) {
 
                 $mg = "error transaction";
                 Alert::error('error', $mg);
-                return back();
+                return redirect('dashboard');
+
 
             }
             $bo = bill_payment::where('transactionid', $request->refid)->first();
             if (isset($bo)) {
                 $mg = "duplicate transaction";
                 Alert::info('info', $mg);
-                return back();
+                return redirect('dashboard');
 
             } else {
                 $user = User::find($request->user()->id);
@@ -146,7 +148,8 @@ class AirtimeController
             $mg = "You Cant Make Purchase Above" . "NGN" . $request->amount . " from your wallet. Your wallet balance is NGN $wallet->balance. Please Fund Wallet And Retry or Pay Online Using Our Alternative Payment Methods.";
 
             Alert::error('error', $mg);
-            return back();
+            return redirect('dashboard');
+
 
         }
         if ($request->amount < 0) {
