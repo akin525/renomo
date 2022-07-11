@@ -78,7 +78,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="amount">Amount</label>
-                                                <input type="text" name="amount" id="amount" class="form-control"
+                                                <input type="text" name="amount" id="amount" min="100" class="form-control"
                                                        placeholder="Enter amount" required>
                                             </div>
 
