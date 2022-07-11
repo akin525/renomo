@@ -155,7 +155,7 @@ Alert::success('Success', 'New Password has been sent to your email');
             ->addColumn('Shopping', 200, '#fc8181')
             ->addColumn('Travel', 300, '#90cdf4')
         ;
-            return  view('dashboard', compact('username', "user", 'wallet', 'totaldeposite', 'me',  'bil2', 'bill', 'totalrefer',  'columnChartModel', 'pieChartModel',   'count', 'lock'));
+            return  view('dashboard', compact('username', "user", 'wallet', 'totaldeposite', 'me',  'bil2', 'bill', 'totalrefer',  'columnChartModel', 'pieChartModel',   'count', 'lock'))->with('success', 'Welcome back '.encription::decryptdata($user->name));
 
     }
     public function refer(Request $request)

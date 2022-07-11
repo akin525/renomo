@@ -57,7 +57,18 @@ class AirtimeController
 
                 $wallet->balance = $gt;
                 $wallet->save();
-
+                $bo = bill_payment::create([
+                    'username' => $user->username,
+                    'product' => $request->id.'Airtime',
+                    'amount' => $request->amount,
+                    'server_response' => 0,
+                    'status' => 1,
+                    'number' => $request->number,
+                    'paymentmethod'=>'wallet',
+                    'transactionid' => $request->refid,
+                    'discountamount' => 0,
+                    'balance'=>$gt,
+                ]);
 
                 $resellerURL = 'https://app.mcd.5starcompany.com.ng/api/reseller/';
                 $curl = curl_init();
@@ -91,18 +102,7 @@ class AirtimeController
 //                        return $response;
                 if ($success == 1) {
 
-                    $bo = bill_payment::create([
-                        'username' => $user->username,
-                        'product' => $request->id.'Airtime',
-                        'amount' => $request->amount,
-                        'server_response' => $response,
-                        'status' => $success,
-                        'number' => $request->number,
-                        'paymentmethod'=>'wallet',
-                        'transactionid' => $request->refid,
-                        'discountamount' => $tran1,
-                        'balance'=>$gt,
-                    ]);
+
 
 //                    $name = $bt->plan;
                     $am = "NGN $request->amount  Airtime Purchase Was Successful To";
@@ -128,7 +128,7 @@ class AirtimeController
                     $ph = ", Transaction fail";
 
                     Alert::error('error', $am.' ' .$ph);
-                    return back();
+                    return redirect('dashboard');
                 }
         }
     }

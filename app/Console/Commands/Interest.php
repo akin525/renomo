@@ -39,7 +39,7 @@ class Interest extends Command
     }
     public function handle()
     {
-        Log::info("Cron is working fine!");
+//        Log::info("Cron is working fine!");
 
         $interest=10;
         $user=safe_lock::where('status', '1')->get();
@@ -58,10 +58,6 @@ class Interest extends Command
             $row->save();
 
         }
-//        $in=wi::create([
-//            'username'=>'Akinlabi',
-//            'amount'=>200,
-//        ]);
         $to= date("Y-m-d");
         $mo=safe_lock::where('date', $to)->where('status', 1)->get();
         foreach ($mo as $row){
