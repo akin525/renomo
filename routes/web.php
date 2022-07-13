@@ -38,17 +38,17 @@ use App\Http\Controllers\BillController;
 |
 */
 
-Route::get('/', function () {
-    if (Auth()->user()) {
-        return redirect(route('dashboard'))
-            ->withSuccess('Signed in');
-
-    }else {
-        return view('auth.login');
-    }
-});
+//Route::get('/', function () {
+//    if (Auth()->user()) {
+//        return redirect(route('dashboard'))
+//            ->withSuccess('Signed in');
+//
+//    }else {
+//        return view('auth.login');
+//    }
+//});
 Route::post('log', [AuthController::class, 'customLogin'])->name('log');
-//Route::get('/', [AuthController::class, 'landing'])->name('home');
+Route::get('/', [AuthController::class, 'landing'])->name('home');
 Route::post('passw', [AuthController::class, 'pass'])->name('passw');
 
 //Route::get('select', function () {
