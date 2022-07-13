@@ -64,7 +64,7 @@
             <div class="sidebar_blog_1">
                 <div class="sidebar-header">
                     <div class="logo_section">
-                        <a href="{{route('home')}}"><img class="logo_icon img-responsive" src="{{asset("images/bn.jpeg")}}" alt="#" /></a>
+                        <a href="{{route('dashboard')}}"><img class="logo_icon img-responsive" src="{{asset("images/bn.jpeg")}}" alt="#" /></a>
                     </div>
                 </div>
                 <div class="sidebar_user_info">
