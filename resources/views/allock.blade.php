@@ -49,8 +49,8 @@
                                                     </div>
                                                     <div class="right_button">
                                                         @if($re->status=="1")
-                                                        <button type="button" onclick="window.location='{{route('addlock', $re->id)}}'" class="btn btn-success btn-xs"> <i class="fa fa-money">
-                                                            </i> Add to safelock
+                                                        <button type="button" onclick="window.location='{{route('addlock', $re->id)}}'" class="btn-success "> <i class="fa fa-money">
+                                                            </i> Add to lock
                                                         </button>
                                                         @else
                                                             <button type="button" onclick="window.location='{{route('profile.show')}}'" class="btn btn-success btn-xs"> <i class="fa fa-user">

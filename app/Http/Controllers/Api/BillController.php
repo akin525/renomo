@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\DataserverController;
+use App\Models\bill_payment;
 use App\Models\bo;
 use App\Models\data;
 use App\Models\server;
@@ -15,13 +16,13 @@ use Mockery\Exception;
 class BillController
 {
 
-    public function bill(Request $request)
+    public function data(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'productid' => 'required',
+            'code' => 'required',
             'amount' => 'required',
             'number' => 'required',
-            'id' => 'required',
+            'refid' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json([
@@ -53,7 +54,7 @@ class BillController
                 ], 200);
 
             }
-            $bo = bo::where('refid', $request->id)->first();
+            $bo = bill_payment::where('transactionid', $request->refid)->first();;
             if (isset($bo)) {
                 $mg = "duplicate transaction";
                 return response()->json([
@@ -63,7 +64,7 @@ class BillController
                 ], 200);
 
             } else {
-                $bt = data::where("id", $request->productid)->get();
+                $bt = data::where("code", $request->code)->first();
 
                 $gt = $wallet->balance - $request->amount;
 
@@ -71,78 +72,9 @@ class BillController
                 $wallet->balance = $gt;
                 $wallet->save();
 
-                foreach ($bt as $fg) {
                     $daterserver = new DataserverController();
-                    if ($fg->plan == "airtime") {
 
-                        $resellerURL = 'https://app.mcd.5starcompany.com.ng/api/reseller/';
-                        $curl = curl_init();
-
-                        curl_setopt_array($curl, array(
-                            CURLOPT_URL => $resellerURL.'pay',
-                            CURLOPT_RETURNTRANSFER => true,
-                            CURLOPT_ENCODING => '',
-                            CURLOPT_MAXREDIRS => 10,
-                            CURLOPT_TIMEOUT => 0,
-                            CURLOPT_FOLLOWLOCATION => true,
-                            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-                            CURLOPT_SSL_VERIFYHOST => 0,
-                            CURLOPT_SSL_VERIFYPEER => 0,
-                            CURLOPT_CUSTOMREQUEST => 'POST',
-                            CURLOPT_POSTFIELDS => array('service' => 'airtime', 'coded' => $fg->cat_id, 'phone' => $request->number, 'amount' => $request->amount, 'reseller_price' => $request->amount),
-
-                            CURLOPT_HTTPHEADER => array(
-                                'Authorization: mcd_key_tGSkWHl5fJZsJev5FRyB5hT1HutlCa'
-                            )));
-
-                        $response = curl_exec($curl);
-
-                        curl_close($curl);
-//                    echo $response;
-//    return;
-                        $data = json_decode($response, true);
-                        $success = $data["success"];
-                        $tran1 = $data["discountAmount"];
-
-//                        return $response;
-                        if ($success==1) {
-                            $bo = bo::create([
-                                'username' => $user->username,
-                                'plan' => $fg->plan,
-                                'amount' => $request->amount,
-                                'server_res' => $response,
-                                'result' => $success,
-                                'phone' => $request->number,
-                                'refid' => "Api".$request->id,
-                                'discountamoun' => $tran1,
-                            ]);
-                            $name= $fg->plan;
-                            $am= "NGN $request->amount  Airtime Purchase Was Successful To";
-                            $ph= $request->number;
-
-                            return response()->json([
-                                'message' => $am, 'name' => $name, 'ph'=>$ph, 'success'=>$success,
-                                'user' => $user,
-                                // 'success' => 0
-                            ], 200);
-
-                        }elseif ($success==0){
-                            $zo=$user->balance+$request->amount;
-                            $user->balance = $zo;
-                            $user->save();
-
-                            $name= $fg->plan;
-                            $am= "NGN $request->amount Was Refunded To Your Wallet";
-                            $ph=", Transaction fail";
-                            return response()->json([
-                                'message' => $am, 'name' => $name, 'ph'=>$ph, 'success'=>$success,
-                                'user' => $user
-                            ], 200);
-
-                        }
-
-                    } else {
-                        $object = json_decode($fg);
+                        $object = json_decode($bt);
                         $object->number = $request->number;
                         $json = json_encode($object);
 
@@ -162,17 +94,20 @@ class BillController
                             $success=$data["success"];
                         }
                         if ($success==1){
-                            $bo = bo::create([
+                            $bo = bill_payment::create([
                                 'username' => $user->username,
-                                'plan' => $fg->plan,
+                                'product' => $bt->network . '|' . $bt->plan,
                                 'amount' => $request->amount,
-                                'server_res' => $response,
-                                'result' => $success,
-                                'phone' =>$request->number,
-                                'refid' => "Api".$request->id,
+                                'server_response' => 'ur fault',
+                                'status' => 1,
+                                'number' => $request->number,
+                                'transactionid' => $request->id,
+                                'discountamount'=>0,
+                                'paymentmethod'=> 'wallet',
+                                'balance'=>$gt,
                             ]);
-                            $name= $fg->plan;
-                            $am= "$fg->plan  was successful delivered to";
+                            $name= $bt->plan;
+                            $am= "$bt->plan  was successful delivered to";
                             $ph= $request->number;
 
 
@@ -182,11 +117,11 @@ class BillController
                             ], 200);
 
                         }elseif ($success==0){
-                            $zo=$user->balance+$request->amount;
-                            $user->balance = $zo;
-                            $user->save();
+                            $zo=$wallet->balance+$request->amount;
+                            $wallet->balance = $zo;
+                            $wallet->save();
 
-                            $name= $fg->plan;
+                            $name= $bt->plan;
                             $am= "NGN $request->amount Was Refunded To Your Wallet";
                             $ph=", Transaction fail";
                             return response()->json([
@@ -196,10 +131,6 @@ class BillController
 
 
                         }
-
-
-                    }
-                }
             }
         }else {
             return response()->json([
