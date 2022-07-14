@@ -46,8 +46,8 @@ public function updateuser(Request $request)
     ]);
     $users=User::where('username', $request->username)->first();
     $users->name=encription::encryptdata($request->name);
-    $users->phone_no=encription::encryptdata($request->number);
-    $users->email=$request->encription::encryptdata($request->email);
+    $users->phone=encription::encryptdata($request->number);
+    $users->email=encription::encryptdata($request->email);
     $users->role=$request->role;
     $users->save();
 Alert::Success('Admin', 'Profile Updated Successfully');

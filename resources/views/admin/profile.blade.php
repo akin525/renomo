@@ -402,13 +402,13 @@
                                                 <br>
                                                 <div class="field">
                                                     <label class="label_field">Name</label>
-                                                    <input type="text" name="name" class="form-control" value="{{$cname)}}" required />
+                                                    <input type="text" name="name" class="form-control" value="{{$cname}}" required />
                                                     <input type="hidden" name="username" class="form-control" value="{{$user->username}}" required />
                                                 </div>
                                                 <br>
                                                 <div class="field">
                                                     <label class="label_field">Email</label>
-                                                    <input type="email" name="email" class="form-control" value="{{$cmail)}}" required />
+                                                    <input type="email" name="email" class="form-control" value="{{$cmail}}" required />
                                                 </div>
                                                 <br>
                                                 <div class="field">
