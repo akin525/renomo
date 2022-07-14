@@ -82,8 +82,11 @@ $wallet=wallet::where('username', $username)->first();
         $sumbo = bill_payment::where('username', $ap->username)->sum('amount');
         $sumch = charge::where('username', $ap->username)->sum('amount');
         $charge = charge::where('username', $ap->username)->paginate(10);
+        $cname=encription::decryptdata($user->name);
+        $cphone=encription::decryptdata($user->phone);
+        $cmail=encription::decryptdata($user->email);
 //return $user;
-        return view('admin/profile', ['user' => $ap, 'sumtt'=>$sumtt, 'charge'=>$charge,  'sumch'=>$sumch, 'sumbo'=>$sumbo, 'tt' => $tt, 'wallet'=>$wallet, 'td' => $td,  'referrals' => $referrals, 'version' => $v,  'tat' =>$tat]);
+        return view('admin/profile', ['user' => $ap, 'sumtt'=>$sumtt, 'charge'=>$charge,  'sumch'=>$sumch, 'sumbo'=>$sumbo, 'tt' => $tt, 'wallet'=>$wallet, 'td' => $td, 'cphone'=>$cphone, 'cname'=>$cname, 'cmail'=>$cmail,  'referrals' => $referrals, 'version' => $v,  'tat' =>$tat]);
     }
     public function server()
     {
