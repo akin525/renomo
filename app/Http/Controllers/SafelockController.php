@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Console\encription;
+use App\Mail\Addlock;
 use App\Mail\Emaillock;
 use App\Mail\Emailpass;
 use App\Models\safe_lock;
@@ -98,6 +99,15 @@ public function adlock(Request $request)
     $gt = $wallet->balance - $request->amount;
     $wallet->balance=$gt;
     $wallet->save();
+
+    $input['amount']=$request->amount;
+    $input['balance']=$total;
+    $input['before']=$safe->balance;
+    $admin= 'info@renomobilemoney.com';
+
+    $receiver= encription::decryptdata($user->email);
+    Mail::to($receiver)->send(new Addlock($input));
+    Mail::to($admin)->send(new Addlock($input ));
     $msg ="You have successfully add NGN".$request->amount ." to ".$safe->tittle. " lock";
     Alert::success('New Safelock', $msg);
     return back();

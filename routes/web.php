@@ -21,6 +21,7 @@ use App\Http\Controllers\ResellerController;
 use App\Http\Controllers\SafelockController;
 use App\Http\Controllers\VertualController;
 use App\Http\Controllers\WithdrawController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FundController;
@@ -41,7 +42,7 @@ use App\Http\Controllers\BillController;
 Route::get('/', function () {
     if (Auth()->user()) {
         return redirect(route('dashboard'))
-            ->withSuccess('Signed in');
+            ->withSuccess('Welcome back '.\App\Console\encription::decryptdata(Auth::user()->name));
 
     }else {
         return view('auth.login');
