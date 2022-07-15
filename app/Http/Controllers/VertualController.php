@@ -41,7 +41,7 @@ class VertualController
                 CURLOPT_SSL_VERIFYHOST => 0,
                 CURLOPT_SSL_VERIFYPEER => 0,
                 CURLOPT_CUSTOMREQUEST => 'POST',
-                CURLOPT_POSTFIELDS => array('account_name' => $username, 'business_short_name' => 'RENO', 'uniqueid' => $name, 'email' => $email, 'phone' =>$phone, 'webhook_url' => 'https://renomobilemoney.com/api/run',),
+                CURLOPT_POSTFIELDS => array('account_name' => $username, 'business_short_name' => 'RENO', 'uniqueid' => $username, 'email' => $email, 'phone' =>$phone, 'webhook_url' => 'https://renomobilemoney.com/api/run',),
                 CURLOPT_HTTPHEADER => array(
                     'Authorization: mcd_key_75rq4][oyfu545eyuriup1q2yue4poxe3jfd'
                 ),
