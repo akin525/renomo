@@ -94,15 +94,18 @@ public function adlock(Request $request)
 
     $safe=safe_lock::where('id', $request->id)->first();
     $total=$safe->balance + $request->amount;
+
+    $safe1=$safe->balance;
+    $input['amount']=$request->amount;
+    $input['balance']=$total;
+    $input['before']=$safe1;
     $safe->balance=$total;
     $safe->save();
     $gt = $wallet->balance - $request->amount;
     $wallet->balance=$gt;
     $wallet->save();
 
-    $input['amount']=$request->amount;
-    $input['balance']=$total;
-    $input['before']=$safe->balance;
+
     $admin= 'info@renomobilemoney.com';
 
     $receiver= encription::decryptdata($user->email);
