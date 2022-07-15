@@ -34,6 +34,7 @@
                         <div class="table-responsive">
                             <table id="data-table-buttons" class="table table-striped table-bordered align-middle">
                                 <thead>
+                                <th>id</th>
                                 <th>Username</th>
                                 <th>Account Name</th>
                                 <th>Account No</th>
@@ -41,6 +42,7 @@
                                 <tbody>
                                 @foreach($vertual as $row)
                                 <tr>
+                                    <td>{{$row['id']}}</td>
                                     <td>{{\App\Console\encription::decryptdata($row['username'])}}</td>
                                     @if ("$row[account_name]"==1 )
                                     <td>No Virtual Account Yet</td>
