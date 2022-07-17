@@ -110,7 +110,7 @@ $tran=$data['data'];
             CURLOPT_SSL_VERIFYHOST => 0,
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => array('service' => 'withdraw_commission','amount' => $amount,'account_number' => $number,'bank_code' => $bank,'bank' => $name,'wallet' => 'wallet'),
+            CURLOPT_POSTFIELDS => array('service' => 'withdraw_commission','amount' => $amount,'account_number' => $number,'bank_code' => $name,'bank' => $bank,'wallet' => 'wallet'),
             CURLOPT_HTTPHEADER => array(
                 'Authorization: mcd_key_75rq4][oyfu545eyuriup1q2yue4poxe3jfd'
 

@@ -23,9 +23,9 @@ class VertualController
             $user = User::find($request->user()->id);
             $wallet = wallet::where('username', $user->username)->first();
 
-            $username=encription::decryptdata($user->username).rand(1111, 9999);
+            $username=encription::decryptdata($user->username).rand(111, 999);
             $email=encription::decryptdata($user->email);
-            $name=encription::decryptdata($user->name).rand(111, 999);
+            $name=encription::decryptdata($user->name);
             $phone=encription::decryptdata($user->phone);
 
             $curl = curl_init();
