@@ -179,21 +179,29 @@ Alert::success('Success', 'New Password has been sent to your email');
     public function select(Request  $request)
     {
         $serve = server::where('status', '1')->first();
-
+        if (isset($serve)) {
             $user = User::find($request->user()->id);
 
 
             return view('select', compact('user', 'serve'));
-       }
+        } else {
+            Alert::info('Server', 'Out of service, come back later');
+            return redirect('dashboard');
+        }
+    }
     public function select1(Request  $request)
     {
         $serve = server::where('status', '1')->first();
-
+        if (isset($serve)) {
             $user = User::find($request->user()->id);
 
 
             return view('select1', compact('user', 'serve'));
-         }
+        }else {
+            Alert::info('Server', 'Out of service, come back later');
+            return redirect('dashboard');
+        }
+    }
     public function buydata(Request  $request)
     {
         $request->validate([
@@ -257,7 +265,11 @@ Alert::success('Success', 'New Password has been sent to your email');
     public function airtime(Request  $request)
     {
         $con=DB::table('airtimecons')->where('status', '=', '1')->first();
-        $se=$con->server;
+        if (isset($con)) {
+            $se = $con->server;
+        }else{
+            $se=0;
+        }
         if ($se == 'MCD') {
             $user = User::find($request->user()->id);
             $data = data::where('plan_id', "airtime")->get();
@@ -267,6 +279,9 @@ Alert::success('Success', 'New Password has been sent to your email');
         } elseif ($se == 'Honor'){
             return view('airtime1');
 
+        }else {
+            Alert::info('Server', 'Out of service, come back later');
+            return redirect('dashboard');
         }
     }
 
