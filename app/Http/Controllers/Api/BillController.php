@@ -5,6 +5,7 @@ use App\Http\Controllers\DataserverController;
 use App\Models\bill_payment;
 use App\Models\bo;
 use App\Models\data;
+use App\Models\interest;
 use App\Models\server;
 use App\Models\wallet;
 use Illuminate\Http\Request;
@@ -65,7 +66,13 @@ class BillController
 
             } else {
                 $bt = data::where("plan_id", $request->code)->first();
-
+                if (!isset($bt)) {
+                    return response()->json([
+                        'message' => "invalid code, check and try again later",
+                        'user' => $user,
+                        'success' => 0
+                    ], 200);
+                }
                 $gt = $wallet->balance - $request->amount;
 
 
@@ -93,7 +100,7 @@ class BillController
                         }else{
                             $success=$data["success"];
                         }
-                        if ($success==1){
+                        if ($success==1) {
                             $bo = bill_payment::create([
                                 'username' => $user->username,
                                 'product' => $bt->network . '|' . $bt->plan,
@@ -102,17 +109,17 @@ class BillController
                                 'status' => 1,
                                 'number' => $request->number,
                                 'transactionid' => $request->id,
-                                'discountamount'=>0,
-                                'paymentmethod'=> 'wallet',
-                                'balance'=>$gt,
+                                'discountamount' => 0,
+                                'paymentmethod' => 'wallet',
+                                'balance' => $gt,
                             ]);
-                            $name= $bt->plan;
-                            $am= "$bt->plan  was successful delivered to";
-                            $ph= $request->number;
+                            $name = $bt->plan;
+                            $am = "$bt->plan  was successful delivered to";
+                            $ph = $request->number;
 
 
                             return response()->json([
-                                'message' => $am, 'name' => $name, 'ph'=>$ph, 'success'=>$success,
+                                'message' => $am, 'name' => $name, 'ph' => $ph, 'success' => $success,
                                 'user' => $user
                             ], 200);
 
@@ -131,6 +138,7 @@ class BillController
 
 
                         }
+
             }
         }else {
             return response()->json([
