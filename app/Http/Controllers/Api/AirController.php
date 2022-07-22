@@ -30,6 +30,7 @@ class AirController
 
         $user = User::where('apikey', $apikey)->first();
         if ($user) {
+            $bt = data::where("cat_id", $request->name)->first();
             $wallet = wallet::where('username', $user->username)->first();
 
             if ($wallet->balance < $request->amount) {
@@ -62,8 +63,6 @@ class AirController
                 ], 200);
 
             } else {
-                $bt = data::where("cat_id", $request->name)->first();
-                $wallet = wallet::where('username', $user->username)->first();
 
 
                 $gt = $wallet->balance - $request->amount;
@@ -111,7 +110,7 @@ class AirController
 //    return;
                 $data = json_decode($response, true);
                 $success = $data["success"];
-                $tran1 = $data["discountAmount"];
+//                $tran1 = $data["discountAmount"];
 
 //                        return $response;
                 if ($success == 1) {
@@ -126,9 +125,9 @@ class AirController
                         'user' => $user
                     ], 200);
                 } elseif ($success == 0) {
-                    $zo = $user->balance + $request->amount;
-                    $user->balance = $zo;
-                    $user->save();
+                    $zo = $wallet->balance + $request->amount;
+                    $wallet->balance = $zo;
+                    $wallet->save();
 
 //                    $name = $bt->plan;
                     $am = "NGN $request->amount Was Refunded To Your Wallet";

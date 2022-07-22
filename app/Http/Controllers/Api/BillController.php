@@ -64,7 +64,7 @@ class BillController
                 ], 200);
 
             } else {
-                $bt = data::where("code", $request->code)->first();
+                $bt = data::where("plan_id", $request->code)->first();
 
                 $gt = $wallet->balance - $request->amount;
 
