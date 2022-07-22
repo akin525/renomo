@@ -20,7 +20,7 @@ class User extends Authenticatable
     use HasTeams;
     use Notifiable;
     use TwoFactorAuthenticatable;
-    use HasPushSubscriptions;
+//    use HasPushSubscriptions;
     /**
      * The attributes that are mass assignable.
      *

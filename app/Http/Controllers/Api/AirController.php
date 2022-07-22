@@ -122,7 +122,7 @@ class AirController
                     $ph = $request->number;
 
                     return response()->json([
-                        'message' => $am, 'name' => $name, 'ph'=>$ph, 'success'=>$success,
+                        'message' => $am, 'ph'=>$ph, 'success'=>$success,
                         'user' => $user
                     ], 200);
                 } elseif ($success == 0) {

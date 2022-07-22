@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AirController;
 use App\Http\Controllers\Api\AlltvController;
 use App\Http\Controllers\Api\BuyController;
 use App\Http\Controllers\Api\EkectController;
@@ -25,9 +26,9 @@ Route::post('honor', [VertualController::class, 'honor'])->name('honor');
 
 Route::group(['middleware'=> 'apikey'], function () {
     Route::get('dashboard', [ResellerdetailsController::class, 'details']);
-    Route::get('airtime', [BuyController::class, 'airtime']);
-    Route::get('buydata', [BuyController::class, 'buydata']);
-    Route::get('pre', [BuyController::class, 'pre']);
+    Route::post('airtime', [AirController::class, 'airtime']);
+    Route::post('data', [BillController::class, 'data']);
+//    Route::get('pre', [BuyController::class, 'pre']);
     Route::post('bill', [BillController::class, 'bill']);
     Route::get('fund', [FundController::class, 'fund']);
     Route::get('tran/{reference}', [FundController::class, 'tran']);
