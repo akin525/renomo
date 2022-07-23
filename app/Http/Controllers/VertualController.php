@@ -23,7 +23,7 @@ class VertualController
             $user = User::find($request->user()->id);
             $wallet = wallet::where('username', $user->username)->first();
 
-            $username=encription::decryptdata($user->username).rand(111, 999);
+            $username='tech'.encription::decryptdata($user->username).rand(111, 999);
             $email=encription::decryptdata($user->email);
             $name='tech'.encription::decryptdata($user->name);
             $phone=encription::decryptdata($user->phone);
