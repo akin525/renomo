@@ -23,9 +23,10 @@ class VertualController
             $user = User::find($request->user()->id);
             $wallet = wallet::where('username', $user->username)->first();
 
-            $username=encription::decryptdata($user->username).rand(111, 999);
+            $username='yellotech'.rand(111, 999);
             $email=encription::decryptdata($user->email);
-            $name=encription::decryptdata($user->name);
+//            $name=encription::decryptdata($user->name);
+            $name='Yellogtech Gregorytech';
             $phone=encription::decryptdata($user->phone);
 
             $curl = curl_init();
@@ -41,7 +42,7 @@ class VertualController
                 CURLOPT_SSL_VERIFYHOST => 0,
                 CURLOPT_SSL_VERIFYPEER => 0,
                 CURLOPT_CUSTOMREQUEST => 'POST',
-                CURLOPT_POSTFIELDS => array('account_name' => 'Mantech', 'business_short_name' => 'RENO', 'uniqueid' => 'yellowman2022', 'email' => 'info@yellowmantelecoms.com.ng', 'phone' =>'08111111111', 'webhook_url' => 'https://renomobilemoney.com/api/run',),
+                CURLOPT_POSTFIELDS => array('account_name' => $name, 'business_short_name' => 'RENO', 'uniqueid' => $username, 'email' => $email, 'phone' =>$phone, 'webhook_url' => 'https://renomobilemoney.com/api/run',),
                 CURLOPT_HTTPHEADER => array(
                     'Authorization: mcd_key_75rq4][oyfu545eyuriup1q2yue4poxe3jfd'
                 ),
@@ -50,8 +51,8 @@ class VertualController
             $response = curl_exec($curl);
 
             curl_close($curl);
-            return $response;
-echo $response;
+//            return $response;
+//return $response;
 //var_dump(array('account_name' => $name,'business_short_name' => 'RENO','uniqueid' => $username,'email' => $email,'phone' => '08146328645', 'webhook_url'=>'https://renomobilemoney.com/go/run.php'));
             $data = json_decode($response, true);
             $account = $data["data"]["account_name"];
