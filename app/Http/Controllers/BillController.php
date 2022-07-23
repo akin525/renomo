@@ -90,6 +90,8 @@ class BillController extends Controller
                     'paymentmethod'=> 'wallet',
                     'balance'=>$gt,
                 ]);
+                $bo['name']=encription::decryptdata($user->name);
+
                 $object = json_decode($product);
                 $object->number = $request->number;
                 $json = json_encode($object);

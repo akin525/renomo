@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Controllers\Api;
 
+use App\Console\encription;
 use App\Http\Controllers\DataserverController;
+use App\Mail\Emailtrans;
 use App\Models\bill_payment;
 use App\Models\bo;
 use App\Models\data;
@@ -10,6 +12,7 @@ use App\Models\server;
 use App\Models\wallet;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\CentralLogics\Helpers;
 use Mockery\Exception;
@@ -108,14 +111,25 @@ class BillController
                                 'server_response' => 'ur fault',
                                 'status' => 1,
                                 'number' => $request->number,
-                                'transactionid' => $request->refid,
+                                'transactionid' =>'api', $request->refid,
                                 'discountamount' => 0,
                                 'paymentmethod' => 'wallet',
                                 'balance' => $gt,
                             ]);
+
+                            $bo['name']=encription::decryptdata($user->name);
                             $name = $bt->plan;
                             $am = "$bt->plan  was successful delivered to";
                             $ph = $request->number;
+
+                            $receiver = $user->email;
+                            $admin = 'admin@primedata.com.ng';
+                            $admin2 = 'primedata18@gmail.com';
+
+                        Mail::to($receiver)->send(new Emailtrans($bo));
+                        Mail::to($admin)->send(new Emailtrans($bo));
+                        Mail::to($admin2)->send(new Emailtrans($bo));
+
 
 
                             return response()->json([

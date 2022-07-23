@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Console\encription;
 use App\Models\bill_payment;
 use App\Models\bo;
 use App\Models\data;
@@ -78,10 +79,11 @@ class AirController
                     'status' => 1,
                     'number' => $request->number,
                     'paymentmethod'=>'wallet',
-                    'transactionid' => $request->refid,
+                    'transactionid' =>'api'. $request->refid,
                     'discountamount' => 0,
                     'balance'=>$gt,
                 ]);
+                $bo['name']=encription::decryptdata($user->name);
 
                 $resellerURL = 'https://app.mcd.5starcompany.com.ng/api/reseller/';
                 $curl = curl_init();
