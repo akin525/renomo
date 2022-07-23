@@ -23,10 +23,9 @@ class VertualController
             $user = User::find($request->user()->id);
             $wallet = wallet::where('username', $user->username)->first();
 
-            $username='yellotech'.rand(111, 999);
+            $username=encription::decryptdata($user->username).rand(111, 999);
             $email=encription::decryptdata($user->email);
-//            $name=encription::decryptdata($user->name);
-            $name='Yellogtech Gregorytech';
+            $name=encription::decryptdata($user->name);
             $phone=encription::decryptdata($user->phone);
 
             $curl = curl_init();
@@ -55,7 +54,6 @@ class VertualController
 //return $response;
 //var_dump(array('account_name' => $name,'business_short_name' => 'RENO','uniqueid' => $username,'email' => $email,'phone' => '08146328645', 'webhook_url'=>'https://renomobilemoney.com/go/run.php'));
             $data = json_decode($response, true);
-            return $data;
             $account = $data["data"]["account_name"];
             $number = $data["data"]["account_number"];
             $bank = $data["data"]["bank_name"];
