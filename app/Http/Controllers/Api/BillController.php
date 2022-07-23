@@ -108,7 +108,7 @@ class BillController
                                 'server_response' => 'ur fault',
                                 'status' => 1,
                                 'number' => $request->number,
-                                'transactionid' => $request->id,
+                                'transactionid' => $request->refid,
                                 'discountamount' => 0,
                                 'paymentmethod' => 'wallet',
                                 'balance' => $gt,
