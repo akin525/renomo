@@ -123,7 +123,7 @@ class BillController
                             $ph = $request->number;
 
                             $receiver =encription::decryptdata($user->email);
-                            $admin = 'info@renomobilemoney';
+                            $admin = 'info@renomobilemoney.com';
 //                            $admin2 = 'primedata18@gmail.com';
 
                         Mail::to($receiver)->send(new Emailtrans($bo));
