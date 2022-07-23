@@ -25,7 +25,7 @@ class VertualController
 
             $username=encription::decryptdata($user->username).rand(111, 999);
             $email=encription::decryptdata($user->email);
-            $name=encription::decryptdata($user->name);
+            $name='tech'.encription::decryptdata($user->name);
             $phone=encription::decryptdata($user->phone);
 
             $curl = curl_init();
