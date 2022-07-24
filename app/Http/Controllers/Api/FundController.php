@@ -1,6 +1,7 @@
 <?php
 
 namespace app\Http\Controllers\Api;
+use App\Console\encription;
 use App\Mail\Emailcharges;
 use App\Mail\Emailfund;
 use App\Mail\Emailotp;
@@ -72,7 +73,7 @@ class FundController
                 $wallet->save();
 
                 $admin="info@renomobilemoney.com";
-                $receiver= $user->email;
+                $receiver= encription::decryptdata($user->email);
                 Mail::to($receiver)->send(new Emailcharges($charp ));
                 Mail::to($admin)->send(new Emailcharges($charp ));
 //                Mail::to($admin2)->send(new Emailcharges($charp ));
