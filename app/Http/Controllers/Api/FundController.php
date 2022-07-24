@@ -6,7 +6,7 @@ use App\Mail\Emailfund;
 use App\Mail\Emailotp;
 use App\Models\bill_payment;
 use App\Models\bo;
-use app\Models\charge;
+use App\Models\charge;
 use App\Models\setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
