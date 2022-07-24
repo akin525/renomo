@@ -1,6 +1,7 @@
 <?php
 
 namespace app\Http\Controllers\Api;
+use App\Mail\Emailcharges;
 use App\Mail\Emailfund;
 use App\Mail\Emailotp;
 use App\Models\bill_payment;
@@ -43,7 +44,7 @@ class FundController
                 ], 200);
 
             } else {
-                $wallet = wallet::where('username', $user->username)->get();
+                $wallet = wallet::where('username', $user->username)->first();
                 $pt = $wallet['balance'];
                 $char = setting::first();
                 $amount1 = $request->amount - $char->charges;
@@ -54,20 +55,32 @@ class FundController
 
                 $deposit = deposit::create([
                     'username' => $wallet->username,
-                    'payment_ref' => "Reno" . $reference,
+                    'payment_ref' => "YellowTech" . $reference,
                     'amount' => $request->amount,
                     'iwallet' => $pt,
                     'fwallet' => $gt,
                 ]);
+
                 $charp = charge::create([
                     'username' => $wallet->username,
-                    'payment_ref' => "Api" . $reference,
+                    'payment_ref' => "YellowTech" . $reference,
                     'amount' => $char->charges,
                     'iwallet' => $pt,
                     'fwallet' => $gt,
                 ]);
                 $wallet->balance = $gt;
                 $wallet->save();
+
+                $admin="info@renomobilemoney.com";
+                $receiver= $user->email;
+                Mail::to($receiver)->send(new Emailcharges($charp ));
+                Mail::to($admin)->send(new Emailcharges($charp ));
+//                Mail::to($admin2)->send(new Emailcharges($charp ));
+
+
+                Mail::to($receiver)->send(new Emailfund($deposit ));
+                Mail::to($admin)->send(new Emailfund($deposit ));
+//                Mail::to($admin2)->send(new Emailfund($deposit ));
 
                 return response()->json([
                     'wallet' => $wallet,
