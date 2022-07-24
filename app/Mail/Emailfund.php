@@ -30,6 +30,6 @@ class Emailfund extends Mailable
     public function build()
     {
         $deposit= $this->deposit;
-        return $this->markdown('email.fund',['deposit' => $deposit])->subject(   encription::decryptdata($deposit['username']).' |Account Funded |'.'Prime-'. $deposit['payment_ref']);
+        return $this->markdown('email.fund',['deposit' => $deposit])->subject(   encription::decryptdata($deposit['username']).' |Account Funded |'.''. $deposit['payment_ref']);
     }
 }
