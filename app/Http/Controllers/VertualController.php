@@ -41,7 +41,7 @@ class VertualController
                 CURLOPT_SSL_VERIFYHOST => 0,
                 CURLOPT_SSL_VERIFYPEER => 0,
                 CURLOPT_CUSTOMREQUEST => 'POST',
-                CURLOPT_POSTFIELDS => array('account_name' => $name, 'business_short_name' => 'RENO', 'uniqueid' => $username, 'email' => $email, 'phone' =>$phone, 'webhook_url' => 'https://renomobilemoney.com/api/run',),
+                CURLOPT_POSTFIELDS => array('account_name' => 'more tech', 'business_short_name' => 'RENO', 'uniqueid' => 'moreyelltech2022', 'email' => $email, 'phone' =>$phone, 'webhook_url' => 'https://renomobilemoney.com/api/run',),
                 CURLOPT_HTTPHEADER => array(
                     'Authorization: mcd_key_75rq4][oyfu545eyuriup1q2yue4poxe3jfd'
                 ),
@@ -51,7 +51,7 @@ class VertualController
 
             curl_close($curl);
 //            return $response;
-return $response;
+//return $response;
 //var_dump(array('account_name' => $name,'business_short_name' => 'RENO','uniqueid' => $username,'email' => $email,'phone' => '08146328645', 'webhook_url'=>'https://renomobilemoney.com/go/run.php'));
             $data = json_decode($response, true);
             $account = $data["data"]["account_name"];
