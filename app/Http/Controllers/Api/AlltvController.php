@@ -129,7 +129,7 @@ class AlltvController
             $apikey = $request->header('apikey');
             $user = User::where('apikey',$apikey)->first();
             if ($user) {
-                $tv = data::where('cat_id', $request->coded)->first();
+                $tv = data::where('plan_id', $request->coded)->first();
 //                return $tv;
 
                 $wallet = wallet::where('username', $user->username)->first();
@@ -177,9 +177,10 @@ class AlltvController
                         CURLOPT_FOLLOWLOCATION => true,
                         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                         CURLOPT_CUSTOMREQUEST => 'POST',
-                        CURLOPT_POSTFIELDS => array('service' => 'tv', 'coded' => $tv->cat_id, 'phone' => $request->number),
+                        CURLOPT_POSTFIELDS => array('service' => 'tv', 'coded' => $tv->plan_id, 'phone' => $request->phone),
                         CURLOPT_HTTPHEADER => array(
-                            'Authorization: mcd_key_tGSkWHl5fJZsJev5FRyB5hT1HutlCa'
+                            'Authorization: mcd_key_75rq4][oyfu545eyuriup1q2yue4poxe3jfd'
+
                         )
                     ));
 

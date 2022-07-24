@@ -97,6 +97,8 @@ class EkectController
         $validator = Validator::make($request->all(), [
             'cat_id' => 'required',
             'refid' => 'required',
+            'amount' => 'required',
+            'number' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json([
@@ -106,7 +108,7 @@ class EkectController
         $apikey = $request->header('apikey');
         $user = User::where('apikey',$apikey)->first();
         if ($user) {
-            $tv = data::where('cat_id', $request->cat_id)->first();
+            $tv = data::where('plan_id', $request->cat_id)->first();
 
             $wallet = wallet::where('username', $user->username)->first();
 
@@ -154,9 +156,9 @@ class EkectController
                     CURLOPT_FOLLOWLOCATION => true,
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                     CURLOPT_CUSTOMREQUEST => 'POST',
-                    CURLOPT_POSTFIELDS => array('service' => 'electricity', 'coded' => $tv->cat_id, 'phone' => $request->number, 'amount' => $request->amount),
+                    CURLOPT_POSTFIELDS => array('service' => 'electricity', 'coded' => $tv->plan_id, 'phone' => $request->number, 'amount' => $request->amount),
                     CURLOPT_HTTPHEADER => array(
-                        'Authorization: mcd_key_tGSkWHl5fJZsJev5FRyB5hT1HutlCa'
+                        'Authorization: mcd_key_75rq4][oyfu545eyuriup1q2yue4poxe3jfd'
                     ),
                 ));
 

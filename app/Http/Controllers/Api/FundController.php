@@ -33,7 +33,7 @@ class FundController
         $apikey = $request->header('apikey');
         $user = User::where('apikey',$apikey)->first();
         if ($user) {
-            $bo = bill_payment::where('transactionid', $request->refid)->first();;
+            $bo = deposit::where('payment_ref', $request->refid)->first();;
             if (isset($bo)) {
                 $mg = "duplicate transaction";
                 return response()->json([
