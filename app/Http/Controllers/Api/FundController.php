@@ -3,10 +3,13 @@
 namespace app\Http\Controllers\Api;
 use App\Mail\Emailfund;
 use App\Mail\Emailotp;
+use App\Models\bill_payment;
 use App\Models\bo;
+use app\Models\charge;
 use App\Models\setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 use Session;
 use App\Models\User;
 use App\Models\wallet;
@@ -18,25 +21,63 @@ class FundController
 {
     public function fund(Request  $request)
     {
+        $validator = Validator::make($request->all(), [
+            'amount' => 'required',
+            'refid' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'errors' => $this->error_processor($validator)
+            ], 403);
+        }
         $apikey = $request->header('apikey');
         $user = User::where('apikey',$apikey)->first();
         if ($user) {
-            $wallet1 = wallet::where('username', $user->username)->get();
-            foreach ($wallet1 as $wallet){
+            $bo = bill_payment::where('transactionid', $request->refid)->first();;
+            if (isset($bo)) {
+                $mg = "duplicate transaction";
+                return response()->json([
+                    'message' => $mg,
+                    'user' => $user,
+                    'success' => 0
+                ], 200);
 
+            } else {
+                $wallet = wallet::where('username', $user->username)->get();
+                $pt = $wallet['balance'];
+                $char = setting::first();
+                $amount1 = $request->amount - $char->charges;
+
+
+                $gt = $amount1 + $pt;
+                $reference = $request->refid;
+
+                $deposit = deposit::create([
+                    'username' => $wallet->username,
+                    'payment_ref' => "Reno" . $reference,
+                    'amount' => $request->amount,
+                    'iwallet' => $pt,
+                    'fwallet' => $gt,
+                ]);
+                $charp = charge::create([
+                    'username' => $wallet->username,
+                    'payment_ref' => "Api" . $reference,
+                    'amount' => $char->charges,
+                    'iwallet' => $pt,
+                    'fwallet' => $gt,
+                ]);
+                $wallet->balance = $gt;
+                $wallet->save();
+
+                return response()->json([
+                    'wallet' => $wallet,
+                    'user' => $user,
+                ], 200);
             }
-            $data2 = setting::get();
-            $fund = deposit::where('username', $user->username)->get();
-
             return response()->json([
-                'data2' => $data2, 'fund' => $fund, 'wallet' => $wallet,
-                'user' => $user,
+                'message' => 'You are not allowed to access',
             ], 200);
         }
-        return response()->json([
-            'message' => 'You are not allowed to access',
-        ], 200);
-
 
     }
 

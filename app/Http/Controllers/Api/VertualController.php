@@ -131,7 +131,6 @@ class VertualController  extends Notification
                 ]);
                 $wallet->balance = $gt;
                 $wallet->save();
-                $user = user::where('username', $wallet->username)->first();
 
 
                 $admin = 'info@renomobilemoney.com';

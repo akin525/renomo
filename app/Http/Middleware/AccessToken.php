@@ -24,6 +24,20 @@ class AccessToken
                 'errors' => $errors
             ], 403);
         }
+//         if (!$request->hasHeader('test')) {
+//            $errors = [];
+//            array_push($errors, ['code' => 'test', 'message' => 'test is required!']);
+//            return response()->json([
+//                'errors' => $errors
+//            ], 403);
+//        }
+//        if ($request->header('test') != "true" || $request->header('test') != "false") {
+//            $errors = [];
+//            array_push($errors, ['code' => 'test', 'message' => "test only take two value 'true' or 'false' "]);
+//            return response()->json([
+//                'errors' => $errors
+//            ], 403);
+//        }
             $apikey = $request->header('apikey');
 
             $user = User::where('apikey',$apikey)->first();
