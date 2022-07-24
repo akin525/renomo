@@ -71,6 +71,7 @@ class AirtimeController
                     'discountamount' => 0,
                     'balance'=>$gt,
                 ]);
+                $bo['name']=encription::decryptdata($user->name);
 
                 $resellerURL = 'https://app.mcd.5starcompany.com.ng/api/reseller/';
                 $curl = curl_init();
