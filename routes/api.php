@@ -30,7 +30,7 @@ Route::group(['middleware'=> 'apikey'], function () {
     Route::post('data', [BillController::class, 'data']);
 //    Route::get('pre', [BuyController::class, 'pre']);
     Route::post('bill', [BillController::class, 'bill']);
-    Route::get('fund', [FundController::class, 'fund']);
+    Route::post('fund', [FundController::class, 'fund']);
     Route::get('tran/{reference}', [FundController::class, 'tran']);
     Route::get('vertual', [VertualController::class, 'vertual']);
     Route::get('tv', [AlltvController::class, 'tv']);
