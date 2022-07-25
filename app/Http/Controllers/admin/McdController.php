@@ -94,7 +94,7 @@ $tran=$data['data'];
         $number=$request->number;
         $bank=$request->bank;
         $name=$request->code;
-        $resellerURL='https://app.mcd.5starcompany.com.ng/api/reseller/';
+        $resellerURL='https://app2.mcd.5starcompany.com.ng/api/reseller/';
 
 
         $curl = curl_init();
