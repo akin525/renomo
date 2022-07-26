@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\bill_payment;
 use App\Models\Messages;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -28,7 +29,7 @@ class ResellerdetailsController
                 $totaldeposite += $depo->amount;
 
             }
-            $bil2 = bo::where('username', $user->username)->get();
+            $bil2 = bill_payment::where('username', $user->username)->get();
             $bill = 0;
             foreach ($bil2 as $bill1){
                 $bill += $bill1->amount;
