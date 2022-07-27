@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Api;
 
 use App\Console\encription;
+use App\Mail\Emailtrans;
 use App\Models\bill_payment;
 use App\Models\bo;
 use App\Models\data;
 use App\Models\User;
 use App\Models\wallet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class AirController
