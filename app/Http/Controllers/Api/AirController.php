@@ -121,7 +121,13 @@ class AirController
 //                    $name = $bt->plan;
                     $am = "NGN $request->amount  Airtime Purchase Was Successful To";
                     $ph = $request->number;
+                    $receiver =encription::decryptdata($user->email);
+                    $admin = 'info@renomobilemoney.com';
+//                            $admin2 = 'primedata18@gmail.com';
+                    $bo['name']=encription::decryptdata($user->name);
 
+                    Mail::to($receiver)->send(new Emailtrans($bo));
+                    Mail::to($admin)->send(new Emailtrans($bo));
                     return response()->json([
                         'message' => $am, 'ph'=>$ph, 'success'=>$success,
                         'user' => $user
