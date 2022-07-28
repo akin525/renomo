@@ -27,7 +27,7 @@
     <p>Before you access our API, Kindly note the conditions below:</p>
     <ul class="w3-ul w3-card" style="">
         <li>1. You have successfully requested for Api Key ({{ Auth::user()->apikey}})</li>
-        <li>2. You can access our api documentation via <a href="https://mobile.primedata.com.ng/API/docs/index" target="_blank"><b>renomobilemoney.com/API/docs/index</b></a></li>
+        <li>2. You can access our api documentation via <a href="https://documenter.getpostman.com/view/16410443/UzXPwG8p#b00323c6-d738-46fc-8feb-3a484ebe3d00" target="_blank"><b>renomobilemoney.com/API/docs/index</b></a></li>
         <li>3. API service is available for DATA, AIRTIME VTU and BILLS PAYMENT(Dstv, Gotv, Startimes, Smile Bundle, Smile Recharge, Spectranet, Waec Result Checker)</li>
         <li>4. You can generate a new API key free of charge, note that the formal key will no longer be functional once you generate a new key</li>
         <li>5. Do not disclose your API key to anyone, Primedata staffs will never request for it</li>
