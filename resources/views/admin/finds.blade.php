@@ -90,6 +90,7 @@
                             <table class="table table-striped mb-0">
                                 <thead>
                                 <tr>
+                                    <th>id</th>
                                     <th>Username</th>
                                     <th>Email</th>
                                     <th>Phone Number</th>
@@ -101,6 +102,7 @@
                                 <tbody>
                                 @foreach($users as $user)
                                     <tr>
+                                        <td>{{$user->id}}</td>
                                         <td>
                                             @if($user->photo)
                                                 <img src="https://mcd.5starcompany.com.ng/app/avatar/{{$user->photo}}" alt="" class="rounded-circle thumb-sm mr-1"> {{\App\Console\encription::decryptdata($user->username)}}
