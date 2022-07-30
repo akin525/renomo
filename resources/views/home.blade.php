@@ -1,4 +1,3 @@
-@include('sweetalert::alert')
     <!DOCTYPE html>
 <html lang="en">
 
@@ -34,26 +33,25 @@
     * Author: BootstrapMade.com
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4783566552108386"
-            crossorigin="anonymous"></script>
+{{--    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4783566552108386"--}}
+{{--            crossorigin="anonymous"></script>--}}
 </head>
 
-{{-- toastr js --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
 {{-- toastr --}}
-<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
+{{--<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />--}}
 
 <body>
-<script>
-    $(document).ready(function() {
-        toastr.options.timeOut = 10000;
-        @if (Auth()->user())
-        toastr.success('Welcome Back {{\App\Console\encription::decryptdata(Auth::user()->name)}}');
-        @endif
-    });
+@include('sweetalert::alert')
+{{--<script>--}}
+{{--    $(document).ready(function() {--}}
+{{--        toastr.options.timeOut = 10000;--}}
+{{--        @if (Auth()->user())--}}
+{{--        toastr.success('Welcome Back {{\App\Console\encription::decryptdata(Auth::user()->name)}}');--}}
+{{--        @endif--}}
+{{--    });--}}
 
-</script>
+{{--</script>--}}
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container">
@@ -614,31 +612,12 @@
 <script src="{{asset('land/assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
 <script src="{{asset('land/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
 <script src="{{asset('land/assets/vendor/php-email-form/validate.js')}}"></script>
+{{-- toastr js --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
 
 <!-- Template Main JS File -->
 <script src="{{asset('land/assets/js/main.js')}}"></script>
-<script type="text/javascript">
-    (function() {
-        var options = {
-            whatsapp: "+2348066215840", // WhatsApp number
-            call_to_action: "Message us", // Call to action
-            position: "left", // Position may be 'right' or 'left'
-        };
-        var proto = document.location.protocol,
-            host = "whatshelp.io",
-            url = proto + "//static." + host;
-        var s = document.createElement('script');
-        s.type = 'text/javascript';
-        s.async = true;
-        s.src = url + '/widget-send-button/js/init.js';
-        s.onload = function() {
-            WhWidgetSendButton.init(host, proto, options);
-        };
-        var x = document.getElementsByTagName('script')[0];
-        x.parentNode.insertBefore(s, x);
-    })();
-</script>
-@include('layouts.footer')
+{{--@include('layouts.footer')--}}
 
 </body>
 
