@@ -14,6 +14,7 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <script charset="UTF-8" src="//web.webpushs.com/js/push/9e64f0fe6770fbc524fb38a0b8e5ad3b_1.js" async></script>
 
     <!-- Vendor CSS Files -->
     <link href="{{asset('land/assets/vendor/aos/aos.css')}}" rel="stylesheet">
