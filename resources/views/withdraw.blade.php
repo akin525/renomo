@@ -141,7 +141,9 @@
                                                     <td>{{$re->account_no}}</td>
                                                     @if($re->status==0)
                                                     <td><span class="badge badge-warning">Pending</span></td>
-                                                    @else
+                                                    @elseif($re->status=="2")
+                                                        <td><span class="badge badge-danger">Disapproved</span></td>
+                                                    @elseif($re->status=="1")
                                                         <td><span class="badge badge-success">Successful</span></td>
                                                     @endif
                                                 </tr>
