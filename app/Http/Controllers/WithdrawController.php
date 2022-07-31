@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Console\encription;
+use App\Mail\withdraws;
 use App\Models\User;
 use App\Models\wallet;
 use App\Models\withdraw;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class WithdrawController
@@ -120,6 +123,13 @@ public function sub(Request $request)
         'account_no'=>$request['number'],
         'name'=>$request['name'],
     ]);
+    $receiver = encription::decryptdata($user->email);
+    $admin = 'info@renomobilemoney.com';
+
+
+    Mail::to($receiver)->send(new withdraws($insert));
+    Mail::to($admin)->send(new withdraws($insert));
+//                        Mail::to($admin2)->send(new Emailtrans($bo));
 
 
     $mg="Your request has been received u will receive alert soon";
