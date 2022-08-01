@@ -62,6 +62,16 @@ class VertualController
             $wallet->account_name = $account;
             $wallet->save();
 
+
+//            $data = [
+//                'title' => 'Test push title',
+//                'website_id' => 1,
+//                'body' => 'Test push message',
+//                'ttl' => 300, //push notification lifetime
+//                'stretch_time' => 0, //how long to spread message delivery
+//                'link' => 'https://github.com/garethtdavies'
+//            ];
+//            SendPulse::createPushTask($data);
             return redirect("dashboard")->withSuccess('You are not allowed to access');
 
 
