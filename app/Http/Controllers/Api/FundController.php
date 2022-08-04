@@ -35,7 +35,7 @@ class FundController
         $apikey = $request->header('apikey');
         $user = User::where('apikey',$apikey)->first();
         if ($user) {
-            $bo = deposit::where('payment_ref', $request->refid)->first();;
+            $bo = deposit::where('payment_ref', "YellowTech".$request->refid)->first();;
             if (isset($bo)) {
                 $mg = "duplicate transaction";
                 return response()->json([
@@ -48,7 +48,7 @@ class FundController
                 $wallet = wallet::where('username', $user->username)->first();
                 $pt = $wallet['balance'];
                 $char = setting::first();
-                $amount1 = $request->amount - $char->charges;
+                $amount1 = $request->amount - 50;
 
 
                 $gt = $amount1 + $pt;
@@ -65,7 +65,7 @@ class FundController
                 $charp = charge::create([
                     'username' => $wallet->username,
                     'payment_ref' => "YellowTech" . $reference,
-                    'amount' => $char->charges,
+                    'amount' => 50,
                     'iwallet' => $pt,
                     'fwallet' => $gt,
                 ]);
@@ -76,12 +76,10 @@ class FundController
                 $receiver= encription::decryptdata($user->email);
                 Mail::to($receiver)->send(new Emailcharges($charp ));
                 Mail::to($admin)->send(new Emailcharges($charp ));
-//                Mail::to($admin2)->send(new Emailcharges($charp ));
 
 
                 Mail::to($receiver)->send(new Emailfund($deposit ));
                 Mail::to($admin)->send(new Emailfund($deposit ));
-//                Mail::to($admin2)->send(new Emailfund($deposit ));
 
                 return response()->json([
                     'wallet' => $wallet,

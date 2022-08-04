@@ -110,22 +110,15 @@ class AirController
                 $response = curl_exec($curl);
 
                 curl_close($curl);
-//                    echo $response;
-//    return;
                 $data = json_decode($response, true);
                 $success = $data["success"];
-//                $tran1 = $data["discountAmount"];
-
-//                        return $response;
                 if ($success == 1) {
 
 
-//                    $name = $bt->plan;
                     $am = "NGN $request->amount  Airtime Purchase Was Successful To";
                     $ph = $request->number;
                     $receiver =encription::decryptdata($user->email);
                     $admin = 'info@renomobilemoney.com';
-//                            $admin2 = 'primedata18@gmail.com';
                     $bo['name']=encription::decryptdata($user->name);
 
                     Mail::to($receiver)->send(new Emailtrans($bo));

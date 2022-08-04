@@ -24,7 +24,7 @@
                     <select  name="productid" class="text-success form-control" onChange="myNewFunction(this);" required="">
                         <option>-------</option>
                         @foreach($data as $datas)
-                            <option value="{{$datas->id}}" id="{{$datas->tamount}}" >{{$datas->network}}{{$datas->plan}}
+                            <option value="{{$datas->id}}" id="{{$datas->tamount}}" >{{$datas->network}}{{$datas->plan}} | {{$datas->tamount}}
                             </option>
                         @endforeach
 
