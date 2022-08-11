@@ -273,9 +273,9 @@ Alert::success('Success', 'New Password has been sent to your email');
         if ($se == 'MCD') {
             $user = User::find($request->user()->id);
             $data = data::where('plan_id', "airtime")->get();
-            $wallet = wallet::where('username', $user->username)->first();
+//            $wallet = wallet::where('username', $user->username)->first();
 
-            return view('airtime', compact('user', 'data', 'wallet'));
+            return view('airtime', compact('user', 'data'));
         } elseif ($se == 'Honor'){
             return view('airtime1');
 
