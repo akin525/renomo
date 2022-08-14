@@ -56,7 +56,7 @@ class FundController
 
                 $deposit = deposit::create([
                     'username' => $wallet->username,
-                    'payment_ref' => "YellowTech" . $reference,
+                    'payment_ref' => $reference,
                     'amount' => $request->amount,
                     'iwallet' => $pt,
                     'fwallet' => $gt,
