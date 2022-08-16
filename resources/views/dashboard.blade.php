@@ -3,7 +3,7 @@
 <script src="{{asset('asset/js/vendor.min.js')}}" type="847c8da2504a1915642ffbeb-text/javascript"></script>
 <script src="{{asset('asset/js/app.min.js')}}" type="847c8da2504a1915642ffbeb-text/javascript"></script>
 <script src="{{asset('asset/js/theme/default.min.js')}}" type="847c8da2504a1915642ffbeb-text/javascript"></script>
-<livewire:scripts />
+
 {{--@livewireChartsScripts--}}
 <script>
     $(document).ready(function() {
@@ -128,7 +128,7 @@
             <div class="card-body">
                 <div class='alert alert-info'>
                     <button type='button' class='close'></button>
-                    <i class='fa fa-ban-circle'></i><strong>Notification: </br></strong>
+                    <i class='fa fa-ban-circle'></i><strong>Notification: <br></strong>
                     <center>
                         <div class="card-body">
                             <li  class=" btn-info">
@@ -219,30 +219,6 @@
 
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-        <div class="row column2 graph margin_bottom_30">
-            <div class="col-md-l2 col-lg-12">
-                <div class="white_shd full">
-                    <div class="full graph_head">
-                        <div class="heading1 margin_0">
-                            <h2>Payment Charts</h2>
-                        </div>
-                    </div>
-                    <div class="full graph_revenue">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="content">
-                                    <div class="area_chart">
-{{--                                        <livewire:livewire-column-chart--}}
-{{--                                            :column-chart-model="$columnChartModel"--}}
-{{--                                        />--}}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
     <div class="row column1">
         <div class="col-md-7 col-lg-6">
@@ -277,10 +253,39 @@
         </div>
     </div>
 
+        <div class="row column1">
+            <div class="col-md-7 col-lg-6">
+                <div class="full counter_section margin_bottom_30">
+                    <div class="counter_no">
+                        <div>
+                            <a href="{{route('waec')}}">
+                            <img src="{{asset('img/wa.jpg')}}" alt="">
+                            </a>
+{{--                            <h5 class="total_no text-center">₦{{number_format(intval($lock *1),2)}}</h5>--}}
+                            <h6 class="head_couter">Waec Result Checker</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 col-lg-6">
+                <div class="full counter_section margin_bottom_30">
+                    <div class="counter_no">
+                        <div>
+                            <a href="{{route('neco')}}">
+                                <img height="100" src="{{asset('img/neco.jpg')}}"  alt="">
+                            </a>
+{{--                            <h5 class="total_no text-center">₦{{number_format(intval($totalrefer *1),2)}}</h5>--}}
+                            <h6 class="head_couter">Neco Result Checker</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     <div class="content">
         <div class="module">
             <div class="module-head">
-                <h3>
+{{--                <h3>--}}
                     <!--                            My Invoice</h3>-->
             </div>
             <link href="{{asset('asset/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
@@ -330,4 +335,33 @@
     </div>
 </div>
 
+
+</div>
+
+<script src="{{asset('asset/datatables.net/js/jquery.dataTables.min.js')}}" type="847c8da2504a1915642ffbeb-text/javascript"></script>
+<script src="{{asset('asset/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}" type="847c8da2504a1915642ffbeb-text/javascript"></script>
+<script src="{{asset('asset/datatables.net-responsive/js/dataTables.responsive.min.js')}}" type="847c8da2504a1915642ffbeb-text/javascript"></script>
+<script src="{{asset('asset/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}" type="847c8da2504a1915642ffbeb-text/javascript"></script>
+<script src="{{asset('asset/js/demo/table-manage-default.demo.js')}}" type="847c8da2504a1915642ffbeb-text/javascript"></script>
+<script src="{{asset('asset/%40highlightjs/cdn-assets/highlight.min.js')}}" type="847c8da2504a1915642ffbeb-text/javascript"></script>
+<script src="{{asset('asset/js/demo/render.highlight.js')}}" type="847c8da2504a1915642ffbeb-text/javascript"></script>
+
+
+<script src="{{asset('asset/datatables.net/js/jquery.dataTables.min.js')}}" type="f1e2722e35a43ad4c1e3a0c8-text/javascript"></script>
+<script src="{{asset('asset/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}" type="f1e2722e35a43ad4c1e3a0c8-text/javascript"></script>
+<script src={{asset('"asset/datatables.net-responsive/js/dataTables.responsive.min.js')}}" type="f1e2722e35a43ad4c1e3a0c8-text/javascript"></script>
+<script src="{{asset('asset/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js')}}" type="f1e2722e35a43ad4c1e3a0c8-text/javascript"></script>
+<script src="{{asset('asset/datatables.net-buttons/js/dataTables.buttons.min.js')}}" type="f1e2722e35a43ad4c1e3a0c8-text/javascript"></script>
+<script src="{{asset('asset/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js')}}" type="f1e2722e35a43ad4c1e3a0c8-text/javascript"></script>
+<script src="{{asset('asset/datatables.net-buttons/js/buttons.colVis.min.js')}}" type="f1e2722e35a43ad4c1e3a0c8-text/javascript"></script>
+<script src="{{asset('asset/datatables.net-buttons/js/buttons.flash.min.js')}}" type="f1e2722e35a43ad4c1e3a0c8-text/javascript"></script>
+<script src="{{asset('asset/datatables.net-buttons/js/buttons.html5.min.js')}}" type="f1e2722e35a43ad4c1e3a0c8-text/javascript"></script>
+<script src="{{asset('asset/datatables.net-buttons/js/buttons.print.min.js')}}" type="f1e2722e35a43ad4c1e3a0c8-text/javascript"></script>
+<script src="{{asset('asset/pdfmake/build/pdfmake.min.js')}}" type="f1e2722e35a43ad4c1e3a0c8-text/javascript"></script>
+<script src="{{asset('asset/pdfmake/build/vfs_fonts.js')}}" type="f1e2722e35a43ad4c1e3a0c8-text/javascript"></script>
+<script src="{{asset('asset/jszip/dist/jszip.min.js')}}" type="f1e2722e35a43ad4c1e3a0c8-text/javascript"></script>
+<script src="{{asset('asset/js/demo/table-manage-buttons.demo.js')}}" type="f1e2722e35a43ad4c1e3a0c8-text/javascript"></script>
+<script src="{{asset('asset/%40highlightjs/cdn-assets/highlight.min.js')}}" type="f1e2722e35a43ad4c1e3a0c8-text/javascript"></script>
+<script src="{{asset('asset/js/demo/render.highlight.js')}}" type="f1e2722e35a43ad4c1e3a0c8-text/javascript"></script>
+<script src="{{asset('cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js')}}" data-cf-settings="f1e2722e35a43ad4c1e3a0c8-|49" defer=""></script><script defer src="../../../../static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"rayId":"6a910724bd190718","version":"2021.10.0","r":1,"token":"4db8c6ef997743fda032d4f73cfeff63","si":100}'></script>
 

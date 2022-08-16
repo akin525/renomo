@@ -106,6 +106,8 @@
                         </li>
                     @endif
 
+                        <li><a href="{{ route('waec') }}"><i class="fa fa-cab orange_color"></i> <span>Waec Checker</span></a></li>
+                        <li><a href="{{ route('neco') }}"><i class="fa fa-cab"></i> <span>Neco Checker</span></a></li>
 
                     <li><a href="{{ route('fund') }}"><i class="fa fa-credit-card orange_color"></i> <span>Fund Wallet</span></a></li>
                         <li>
