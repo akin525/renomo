@@ -107,7 +107,7 @@ public function waec(Request $request)
                 'balance' => $gt,
             ]);
             $bo['name'] = encription::decryptdata($user->name);
-            $resellerURL = 'https://test.mcd.5starcompany.com.ng/api/reseller/';
+            $resellerURL = 'https://app2.mcd.5starcompany.com.ng/api/reseller/';
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
@@ -122,7 +122,7 @@ public function waec(Request $request)
                 CURLOPT_POSTFIELDS => array('service' => 'result_checker', 'coded' => 'WAEC', 'quantity' => $request->value, 'phone' => encription::decryptdata($user->phone)),
 
                 CURLOPT_HTTPHEADER => array(
-                    'Authorization: MCDKEY_903sfjfi0ad833mk8537dhc03kbs120r0h9a'
+                    'Authorization: mcd_key_75rq4][oyfu545eyuriup1q2yue4poxe3jfd'
                 )));
 
 
@@ -238,7 +238,7 @@ public function neco(Request $request)
                 'balance' => $gt,
             ]);
             $bo['name'] = encription::decryptdata($user->name);
-            $resellerURL = 'https://test.mcd.5starcompany.com.ng/api/reseller/';
+            $resellerURL = 'https://app2.mcd.5starcompany.com.ng/api/reseller/';
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
@@ -253,7 +253,7 @@ public function neco(Request $request)
                 CURLOPT_POSTFIELDS => array('service' => 'result_checker', 'coded' => 'NECO', 'quantity' => $request->value, 'phone' => encription::decryptdata($user->phone)),
 
                 CURLOPT_HTTPHEADER => array(
-                    'Authorization: MCDKEY_903sfjfi0ad833mk8537dhc03kbs120r0h9a'
+                    'Authorization: mcd_key_75rq4][oyfu545eyuriup1q2yue4poxe3jfd'
                 )));
 
 
