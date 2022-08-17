@@ -270,7 +270,7 @@ public function neco(Request $request)
 //return $token1;
                 foreach ($token1 as $to) {
 
-                    $insert = waec::create([
+                    $insert = neco::create([
                         'username' => $user->username,
                         'pin' => $to['pin'],
                         'ref' => $ref,
