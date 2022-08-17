@@ -43,9 +43,9 @@ $request->validate([
     $product=data::where('network', 'WAEC')->first();
 
     if ($user->apikey == '') {
-        $amount = $product->tamount;
+        $amount = $product->tamount *$request->value;
     } elseif ($user != '') {
-        $amount = $product->ramount;
+        $amount = $product->ramount *$request->value;
     }
 
     if ($wallet->balance < $amount) {
@@ -161,9 +161,9 @@ public function neco(Request $request)
     $product=data::where('network', 'NECO')->first();
 
     if ($user->apikey == '') {
-        $amount = $product->tamount;
+        $amount = $product->tamount *$request->value;
     } elseif ($user != '') {
-        $amount = $product->ramount;
+        $amount = $product->ramount *$request->value;
     }
 
     if ($wallet->balance < $amount) {

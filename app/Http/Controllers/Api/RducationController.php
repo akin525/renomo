@@ -12,6 +12,7 @@ use App\Models\waec;
 use App\Models\wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class RducationController
@@ -33,121 +34,131 @@ public function indexn()
 }
 public function waec(Request $request)
 {
-$request->validate([
-    'value'=>'required',
-    'amount'=>'required',
-]);
-    $user = User::find($request->user()->id);
-    $wallet = wallet::where('username', $user->username)->first();
-    $serve = server::where('status', '1')->first();
-    $product=data::where('network', 'WAEC')->first();
+    $validator = Validator::make($request->all(), [
+        'value' => 'required',
+        'amount' => 'required',
+    ]);
 
-    if ($user->apikey == '') {
-        $amount = $product->tamount;
-    } elseif ($user != '') {
-        $amount = $product->ramount;
+    if ($validator->fails()) {
+        return response()->json([
+            'errors' => $this->error_processor($validator)
+        ], 403);
     }
-
-    if ($wallet->balance < $amount) {
-        $mg = "You Cant Make Purchase Above" . "NGN" . $amount . " from your wallet. Your wallet balance is NGN $wallet->balance. Please Fund Wallet And Retry or Pay Online Using Our Alternative Payment Methods.";
-
-        Alert::error('error', $mg);
-        return redirect(route('dashboard'))
-            ->with('error', $mg);
-
-    }
-    if ($request->amount < 0) {
-
-        $mg = "error transaction";
-        Alert::error('error', $mg);
-        return redirect(route('dashboard'))
-            ->with('error', $mg);
-
-    }
-    $bo = bill_payment::where('transactionid', $request->id)->first();
-    if (isset($bo)) {
-        $mg = "duplicate transaction";
-        Alert::success('Success', $mg);
-        return redirect(route('dashboard'))
-            ->with('error', $mg);
-
-    } else {
-
-        $user = User::find($request->user()->id);
-//                $bt = data::where("id", $request->productid)->first();
+    $apikey = $request->header('apikey');
+    $user = User::where('apikey', $apikey)->first();
+    if ($user) {
         $wallet = wallet::where('username', $user->username)->first();
 
+        if ($wallet->balance < $request->amount) {
+            $mg = "You Cant Make Purchase Above " . "NGN" . $request->amount . " from your wallet. Your wallet balance is NGN $wallet->balance. Please Fund Wallet And Retry or Pay Online Using Our Alternative Payment Methods.";
 
-        $gt = $wallet->balance - $request->amount;
+            return response()->json([
+                'message' => $mg,
+                'user' => $user,
+                'success' => 0
+            ], 200);
 
-
-        $wallet->balance = $gt;
-        $wallet->save();
-        $bo = bill_payment::create([
-            'username' => $user->username,
-            'product' => $product->network ,
-            'amount' => $request->amount,
-            'server_response' => 'ur fault',
-            'status' => 1,
-            'number' => $request->number,
-            'transactionid' => $request->id,
-            'discountamount'=>0,
-            'paymentmethod'=> 'wallet',
-            'balance'=>$gt,
-        ]);
-        $bo['name']=encription::decryptdata($user->name);
-        $resellerURL = 'https://app2.mcd.5starcompany.com.ng/api/reseller/';
-        $curl = curl_init();
-
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => $resellerURL.'pay',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => array('service' => 'result_checker','coded' => 'WAEC','quantity' => $request->value,'phone' => encription::decryptdata($user->phone)),
-
-            CURLOPT_HTTPHEADER => array(
-                'Authorization: mcd_key_75rq4][oyfu545eyuriup1q2yue4poxe3jfd'
-            )));
-
-
-        $response = curl_exec($curl);
-
-        curl_close($curl);
-//                echo $response;
-        $data = json_decode($response, true);
-        $success = $data["success"];
-
-        if ($success==1) {
-            $ref=$data['ref'];
-            $token=$data['token'];
-            $token1=json_decode($token, true);
-//return $token1;
-            foreach ($token1 as $to){
-
-                $insert=waec::create([
-                    'username'=>$user->username,
-                    'seria'=>$to['serial_number'],
-                    'pin'=>$to['pin'],
-                    'ref'=>$ref,
-                ]);
-            }
-            $mg='Waec Checker Successful Generated, kindly check your pin';
-            Alert::success('Successful',$mg );
-            return redirect('waec')->with('success', $mg);
-
-        }elseif($success==0){
-
-            Alert::error('Fail', $response);
-            return redirect('waec')->with('error', $response);
         }
-return $response;
-    }
+        if ($request->amount < 0) {
 
+            $mg = "error transaction";
+            return response()->json([
+                'message' => $mg,
+                'user' => $user,
+                'success' => 0
+            ], 200);
+
+        }
+        $bo = bill_payment::where('transactionid', $request->refid)->first();;
+        if (isset($bo)) {
+            $mg = "duplicate transaction";
+            return response()->json([
+                'message' => $mg,
+                'user' => $user,
+                'success' => 0
+            ], 200);
+
+        } else {
+            $bt = data::where("plan_id", 'WAEC')->first();
+            if (!isset($bt)) {
+                return response()->json([
+                    'message' => "invalid code, check and try again later",
+                    'user' => $user,
+                    'success' => 0
+                ], 200);
+            }
+            $gt = $wallet->balance - $request->amount;
+
+
+            $wallet->balance = $gt;
+            $wallet->save();
+
+            $bo = bill_payment::create([
+                'username' => $user->username,
+                'product' => $bt->network,
+                'amount' => $request->amount,
+                'server_response' => 'ur fault',
+                'status' => 1,
+                'number' => $request->number,
+                'transactionid' => $request->id,
+                'discountamount' => 0,
+                'paymentmethod' => 'wallet',
+                'balance' => $gt,
+            ]);
+            $bo['name'] = encription::decryptdata($user->name);
+            $resellerURL = 'https://test.mcd.5starcompany.com.ng/api/reseller/';
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => $resellerURL . 'pay',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_POSTFIELDS => array('service' => 'result_checker', 'coded' => 'WAEC', 'quantity' => $request->value, 'phone' => encription::decryptdata($user->phone)),
+
+                CURLOPT_HTTPHEADER => array(
+                    'Authorization: MCDKEY_903sfjfi0ad833mk8537dhc03kbs120r0h9a'
+                )));
+
+
+            $response = curl_exec($curl);
+
+            curl_close($curl);
+//                echo $response;
+            $data = json_decode($response, true);
+            $success = $data["success"];
+
+            if ($success == 1) {
+                $ref = $data['ref'];
+                $token = $data['token'];
+                $token1 = json_decode($token, true);
+//return $token1;
+                foreach ($token1 as $to) {
+
+                    $insert = waec::create([
+                        'username' => $user->username,
+                        'seria' => $to['serial_number'],
+                        'pin' => $to['pin'],
+                        'ref' => $ref,
+                    ]);
+                }
+                return response()->json([
+
+                    'user' => $user,$response
+                ], 200);
+
+            } elseif ($success == 0) {
+
+                Alert::error('Fail', $response);
+                return redirect('waec')->with('error', $response);
+            }
+        }
+
+    }
 }
 public function neco(Request $request)
 {
