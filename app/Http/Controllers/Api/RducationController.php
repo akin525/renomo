@@ -278,13 +278,15 @@ public function neco(Request $request)
                 }
                 return response()->json([
 
-                    $data
+                    'ok'=>$data
+
                 ], 200);
 
             } elseif ($success == 0) {
 
                 return response()->json([
-                    $data
+                    'ok'=>$data
+
                 ], 200);
             }
         }
