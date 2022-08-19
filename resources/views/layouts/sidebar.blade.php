@@ -45,7 +45,7 @@
     <link rel="stylesheet" href="{{asset('hp/bootstrap.min.css')}}" />
     <link rel="stylesheet" href="{{asset('hp/main.css')}}" />
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4783566552108386"
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1367363826948615"
             crossorigin="anonymous"></script>
 
     {{-- toastr --}}
