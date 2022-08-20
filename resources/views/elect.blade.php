@@ -1,11 +1,9 @@
-@include('layouts.sidebar')
-<div class="page-wrapper">
+@include('layouts.sidebar') <div class="page-wrapper"
     <div class="content container-fluid">
         <div class="row justify-content-lg-center">
             <div class="col-lg-10">
-
                 <div class="page-header">
-                    <div class="row">
+                    <DIV CLASS="ROW">
                         <div class="col">
                             <h4 class="page-title">Electricity Bills</h4>
                             <ul class="breadcrumb">

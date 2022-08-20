@@ -46,15 +46,15 @@
 
 <body>
 @include('sweetalert::alert')
-{{--<script>--}}
-{{--    $(document).ready(function() {--}}
-{{--        toastr.options.timeOut = 10000;--}}
-{{--        @if (Auth()->user())--}}
-{{--        toastr.success('Welcome Back {{\App\Console\encription::decryptdata(Auth::user()->name)}}');--}}
-{{--        @endif--}}
-{{--    });--}}
+<script>
+    $(document).ready(function() {
+        toastr.options.timeOut = 10000;
+        @if (Auth()->user())
+        toastr.success('Welcome Back {{\App\Console\encription::decryptdata(Auth::user()->name)}}');
+        @endif
+    });
 
-{{--</script>--}}
+</script>
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container">

@@ -107,7 +107,7 @@ public function waec(Request $request)
                 'balance' => $gt,
             ]);
             $bo['name'] = encription::decryptdata($user->name);
-            $resellerURL = 'https://app2.mcd.5starcompany.com.ng/api/reseller/';
+            $resellerURL = 'https://integration.mcd.5starcompany.com.ng/api/reseller/';
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
@@ -238,7 +238,7 @@ public function neco(Request $request)
                 'balance' => $gt,
             ]);
             $bo['name'] = encription::decryptdata($user->name);
-            $resellerURL = 'https://app2.mcd.5starcompany.com.ng/api/reseller/';
+            $resellerURL = 'https://integration.mcd.5starcompany.com.ng/api/reseller/';
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
