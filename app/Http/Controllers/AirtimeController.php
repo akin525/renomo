@@ -158,6 +158,7 @@ class AirtimeController
 
         }
         $bo = bill_payment::where('transactionid', $request->refid)->first();
+
         if (isset($bo)) {
             $mg = "duplicate transaction";
             return view('bill', compact('user', 'mg'));
