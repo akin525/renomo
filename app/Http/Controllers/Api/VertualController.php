@@ -138,7 +138,7 @@ class VertualController  extends Notification
             }
 
             $notifcationSpec = ['notification' => [
-                "title" => "Account Funded",
+                "title" => "Account Funded with ".$gt,
                 "url" => "https://renomobilemoney.com/",
                 "icon" => "https://renomobilemoney.com/images/bn.jpeg"
             ],
