@@ -51,12 +51,7 @@
     {{-- toastr --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
     <script type="text/javascript" src="https://cdn.engagespot.co/engagespot-client.min.js"></script>
-    <script>
-        Engagespot.render('#HTML_Element_ID', {
-            apiKey: 'lxdpmrzqutphfa6166gnv',
-            userId: '{{Auth::user()->email}}', //Your user's unique identifier/email
-        })
-    </script>
+
 </head>
 
 <body class="dashboard dashboard_1">
@@ -64,6 +59,12 @@
     <div class="spinner-border"></div>
     RENOMOBILEMONEY......
 </div>
+<script>
+    Engagespot.render('#HTML_Element_ID', {
+        apiKey: 'lxdpmrzqutphfa6166gnv',
+        userId: '{{Auth::user()->email}}', //Your user's unique identifier/email
+    })
+</script>
 <div class="full_container">
     <div class="inner_container">
         <!-- Sidebar  -->
