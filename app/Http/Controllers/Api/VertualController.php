@@ -14,6 +14,7 @@ use App\Models\setting;
 use App\Models\wallet;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use NotificationChannels\WebPush\WebPushChannel;
 use NotificationChannels\WebPush\WebPushMessage;
@@ -81,22 +82,13 @@ class VertualController  extends Notification
 
         if ($json = json_decode(file_get_contents("php://input"), true)) {
             print_r($json['ref']);
-//    print_r($json['accountDetails']['accountName']);
             $data = $json;
 
         }
-// return  $data;
-//   $data = json_decode($request, true);
 
-//$paid=$data["paymentStatus"];
         $refid=$data["ref"];
         $amount=$data["amount"];
         $no=$data["account_number"];
-
-        // return $request->all();
-//  echo $amount;
-// echo $bank;
-//echo $acct;
 
         $wallet = wallet::where('account_number', $no)->first();
         $pt=$wallet['balance'];
@@ -140,13 +132,25 @@ class VertualController  extends Notification
                 Mail::to($admin)->send(new Emailcharges($charp));
 
 
-//                $receiver = $user->email;
                 Mail::to($receiver)->send(new Emailfund($deposit));
                 Mail::to($admin)->send(new Emailfund($deposit));
-//                Mail::to($admin2)->send(new Emailfund($deposit));
-
 
             }
+
+            $notifcationSpec = ['notification' => [
+                "title" => "Account Funded",
+                "url" => "https://renomobilemoney.com/",
+                "icon" => "https://renomobilemoney.com/images/bn.jpeg"
+            ],
+                "recipients" => [
+                    [$receiver]
+                ]
+            ];
+
+            $response = Http::withHeaders([
+                'X-ENGAGESPOT-API-KEY' => 'lxdpmrzqutphfa6166gnv',
+                'X-ENGAGESPOT-API-SECRET' => 'lgh00itdf3iomc8p9d6f3m0c8hd1628a9ic51g6h58e5d8gh'
+            ])->post('https://api.engagespot.co/v3/notifications',$notifcationSpec);
 
 
         }
