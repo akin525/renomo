@@ -68,6 +68,7 @@ Alert::success('Success', 'New Password has been sent to your email');
         return back();
     }
 }
+
     public function cus(Request $request)
     {
         if (Auth()->user()) {

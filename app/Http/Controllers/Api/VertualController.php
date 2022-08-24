@@ -125,31 +125,8 @@ class VertualController  extends Notification
                 ]);
                 $wallet->balance = $gt;
                 $wallet->save();
-                $title= "Account Funded with ".$gt;
-                $body= "Account Funded with ".$gt;
-
-                try{
-                    $fcmTokens = User::whereNotNull('email')->pluck('email')->toArray();
-
-                    //Notification::send(null,new SendPushNotification($request->title,$request->message,$fcmTokens));
-
-                    /* or */
-
-                    //auth()->user()->notify(new SendPushNotification($title,$message,$fcmTokens));
-
-                    /* or */
-
-                    Larafirebase::withTitle($title)
-                        ->withBody($body)
-                        ->sendMessage($fcmTokens);
-
-                    return redirect()->back()->with('success','Notification Sent Successfully!!');
-
-                }catch(\Exception $e){
-                    report($e);
-                    return redirect()->back()->with('error','Something goes wrong while sending notification.');
-                }
-                $title= "Account Funded with ".$gt;
+                $title = "Account Funded with " . $gt;
+                $body = "Your Account Was Funded with ₦" . $amount;
 
 
                 $admin = 'info@renomobilemoney.com';
@@ -161,28 +138,52 @@ class VertualController  extends Notification
 
                 Mail::to($receiver)->send(new Emailfund($deposit));
                 Mail::to($admin)->send(new Emailfund($deposit));
-                Notification::send(null,new SendPushNotification($title,$body,$fcmTokens));
 
-                $notifcationSpec = ['notification' => [
-                    "title" => "Account Funded with ".$gt,
-                    "url" => "https://renomobilemoney.com/",
-                    "icon" => "https://renomobilemoney.com/images/bn.jpeg"
-                ],
-                    "recipients" => [
-                        [$receiver]
-                    ]
-                ];
+                $username=encription::decryptdata($user->username);
+                $image='https://renomobilemoney.com/images/bn.jpeg';
 
-                $response = Http::withHeaders([
-                    'X-ENGAGESPOT-API-KEY' => 'lxdpmrzqutphfa6166gnv',
-                    'X-ENGAGESPOT-API-SECRET' => 'lgh00itdf3iomc8p9d6f3m0c8hd1628a9ic51g6h58e5d8gh'
-                ])->post('https://api.engagespot.co/v3/notifications',$notifcationSpec);
+              $this->firebasenotification($username, "Account Funded", $body);
+
+
+
             }
 
 
 
 
         }
+    }
+    public  function firebasenotification($username, $title, $body)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://fcm.googleapis.com/fcm/send',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS =>'{
+    "to": "/topics/'.$username.'",
+    "notification": {
+        "body": "'.$body.'",
+        "title": "'.$title.'"
+    }
+}',
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Bearer AAAA0VPmumc:APA91bFO0BZ1BL5bGsBIFW2JGE3SZzC60y-Hrqg2UgVlgeYfj7_kIawa7W1Vz0LMTVhhyC1uy4dsSGAU2oe87HzR27PInPhLlDlWKOS5buvaejdQl2O2lWe9Ewts09GiRcmJEi3LnkzB',
+                'Content-Type: application/json'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+//        dd($response);
+//        echo $response;
     }
 
     public function honor(Request $request)
