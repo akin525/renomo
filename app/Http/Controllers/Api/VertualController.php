@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use Kutia\Larafirebase\Facades\Larafirebase;
 use NotificationChannels\WebPush\WebPushChannel;
 use NotificationChannels\WebPush\WebPushMessage;
 use Session;
@@ -124,6 +125,31 @@ class VertualController  extends Notification
                 ]);
                 $wallet->balance = $gt;
                 $wallet->save();
+                $title= "Account Funded with ".$gt;
+                $body= "Account Funded with ".$gt;
+
+                try{
+                    $fcmTokens = User::whereNotNull('email')->pluck('email')->toArray();
+
+                    //Notification::send(null,new SendPushNotification($request->title,$request->message,$fcmTokens));
+
+                    /* or */
+
+                    //auth()->user()->notify(new SendPushNotification($title,$message,$fcmTokens));
+
+                    /* or */
+
+                    Larafirebase::withTitle($title)
+                        ->withBody($body)
+                        ->sendMessage($fcmTokens);
+
+                    return redirect()->back()->with('success','Notification Sent Successfully!!');
+
+                }catch(\Exception $e){
+                    report($e);
+                    return redirect()->back()->with('error','Something goes wrong while sending notification.');
+                }
+                $title= "Account Funded with ".$gt;
 
 
                 $admin = 'info@renomobilemoney.com';
@@ -135,7 +161,7 @@ class VertualController  extends Notification
 
                 Mail::to($receiver)->send(new Emailfund($deposit));
                 Mail::to($admin)->send(new Emailfund($deposit));
-//                Notification::send(null,new SendPushNotification($title,$message,$fcmTokens));
+                Notification::send(null,new SendPushNotification($title,$body,$fcmTokens));
 
                 $notifcationSpec = ['notification' => [
                     "title" => "Account Funded with ".$gt,

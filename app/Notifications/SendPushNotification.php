@@ -11,7 +11,7 @@ class SendPushNotification extends Notification
     use Queueable;
 
     protected $title;
-    protected $message;
+    protected $body;
     protected $fcmTokens;
 
     /**
@@ -19,10 +19,10 @@ class SendPushNotification extends Notification
      *
      * @return void
      */
-    public function __construct($title,$message,$fcmTokens)
+    public function __construct($title,$body,$fcmTokens)
     {
         $this->title = $title;
-        $this->message = $message;
+        $this->message = $body;
         $this->fcmTokens = $fcmTokens;
     }
 
