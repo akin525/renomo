@@ -12,6 +12,7 @@ use App\Models\webook;
 use App\Models\deposit;
 use App\Models\setting;
 use App\Models\wallet;
+use App\Notifications\SendPushNotification;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Http;
@@ -134,23 +135,25 @@ class VertualController  extends Notification
 
                 Mail::to($receiver)->send(new Emailfund($deposit));
                 Mail::to($admin)->send(new Emailfund($deposit));
+//                Notification::send(null,new SendPushNotification($title,$message,$fcmTokens));
 
+                $notifcationSpec = ['notification' => [
+                    "title" => "Account Funded with ".$gt,
+                    "url" => "https://renomobilemoney.com/",
+                    "icon" => "https://renomobilemoney.com/images/bn.jpeg"
+                ],
+                    "recipients" => [
+                        [$receiver]
+                    ]
+                ];
+
+                $response = Http::withHeaders([
+                    'X-ENGAGESPOT-API-KEY' => 'lxdpmrzqutphfa6166gnv',
+                    'X-ENGAGESPOT-API-SECRET' => 'lgh00itdf3iomc8p9d6f3m0c8hd1628a9ic51g6h58e5d8gh'
+                ])->post('https://api.engagespot.co/v3/notifications',$notifcationSpec);
             }
 
-            $notifcationSpec = ['notification' => [
-                "title" => "Account Funded with ".$gt,
-                "url" => "https://renomobilemoney.com/",
-                "icon" => "https://renomobilemoney.com/images/bn.jpeg"
-            ],
-                "recipients" => [
-                    [$receiver]
-                ]
-            ];
 
-            $response = Http::withHeaders([
-                'X-ENGAGESPOT-API-KEY' => 'lxdpmrzqutphfa6166gnv',
-                'X-ENGAGESPOT-API-SECRET' => 'lgh00itdf3iomc8p9d6f3m0c8hd1628a9ic51g6h58e5d8gh'
-            ])->post('https://api.engagespot.co/v3/notifications',$notifcationSpec);
 
 
         }

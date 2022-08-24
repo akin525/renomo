@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -287,3 +288,26 @@
 
 
 
+<script>
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "firebase/app";
+    import { getAnalytics } from "firebase/analytics";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyD_4ZAkjjXCdxG9FRDFnhudGqVmelK7vgw",
+        authDomain: "renomobilemoney.firebaseapp.com",
+        projectId: "renomobilemoney",
+        storageBucket: "renomobilemoney.appspot.com",
+        messagingSenderId: "486349775132",
+        appId: "1:486349775132:web:9c5748c4dbc04df0599ad9",
+        measurementId: "G-N6FMNFFG7J"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+</script>

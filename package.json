@@ -20,6 +20,7 @@
         "tailwindcss": "^3.0.0"
     },
     "dependencies": {
+        "firebase": "^9.9.3",
         "sweetalert": "^2.1.2",
         "sweetalert2": "^11.4.19"
     }
