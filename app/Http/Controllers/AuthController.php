@@ -125,6 +125,8 @@ Alert::success('Success', 'New Password has been sent to your email');
                 $totalrefer += $de->amount;
 
             }
+        // forever
+        cookie()->queue(cookie()->forever("username", $user->username));
             $count = refer::where('username',$user->username)->count();
 
             $wallet = wallet::where('username', $user->username)->get();
