@@ -104,7 +104,7 @@ Alert::success('Success', 'New Password has been sent to your email');
             Mail::to($receiver)->send(new login($login));
 //            Mail::to($admin)->send(new login($login));
             // forever
-            cookie()->queue(cookie()->forever("username", $request->username));
+//            cookie()->queue(cookie()->forever("username", $request->username));
             Alert::success('Dashboard', 'Login Successfully');
             return redirect()->intended('dashboard')
                 ->with('success', 'Welcome back '.encription::decryptdata($user->name));
@@ -126,7 +126,8 @@ Alert::success('Success', 'New Password has been sent to your email');
 
             }
         // forever
-        cookie()->queue(cookie()->forever("username", $user->username));
+
+        cookie()->queue(cookie()->forever("username", encription::decryptdata( $user->username)));
             $count = refer::where('username',$user->username)->count();
 
             $wallet = wallet::where('username', $user->username)->get();
