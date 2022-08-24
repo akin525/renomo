@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -14,10 +15,10 @@
     <meta name="author" content="">
     <!-- site icon -->
     {{-- ChartScript --}}
-    <script charset="UTF-8" src="//web.webpushs.com/js/push/9e64f0fe6770fbc524fb38a0b8e5ad3b_1.js" async></script>
+{{--    <script charset="UTF-8" src="//web.webpushs.com/js/push/9e64f0fe6770fbc524fb38a0b8e5ad3b_1.js" async></script>--}}
 
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
-    <link rel="icon" href="{{asset("images/bn.jpeg")}}" type="image/png" />
+    <link rel="icon" href="https://renomobilemoney.com/images/bn.jpeg" type="image/png" />
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
@@ -45,11 +46,12 @@
     <link rel="stylesheet" href="{{asset('hp/bootstrap.min.css')}}" />
     <link rel="stylesheet" href="{{asset('hp/main.css')}}" />
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4783566552108386"
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1367363826948615"
             crossorigin="anonymous"></script>
 
     {{-- toastr --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdn.engagespot.co/engagespot-client.min.js"></script>
 
 </head>
 
@@ -58,6 +60,12 @@
     <div class="spinner-border"></div>
     RENOMOBILEMONEY......
 </div>
+<script>
+    Engagespot.render('#HTML_Element_ID', {
+        apiKey: 'lxdpmrzqutphfa6166gnv',
+        userId: '{{Auth::user()->email}}', //Your user's unique identifier/email
+    })
+</script>
 <div class="full_container">
     <div class="inner_container">
         <!-- Sidebar  -->
@@ -106,6 +114,8 @@
                         </li>
                     @endif
 
+                        <li><a href="{{ route('waec') }}"><i class="fa fa-cab orange_color"></i> <span>Waec Checker</span></a></li>
+                        <li><a href="{{ route('neco') }}"><i class="fa fa-cab"></i> <span>Neco Checker</span></a></li>
 
                     <li><a href="{{ route('fund') }}"><i class="fa fa-credit-card orange_color"></i> <span>Fund Wallet</span></a></li>
                         <li>
@@ -278,3 +288,26 @@
 
 
 
+<script>
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "firebase/app";
+    import { getAnalytics } from "firebase/analytics";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyD_4ZAkjjXCdxG9FRDFnhudGqVmelK7vgw",
+        authDomain: "renomobilemoney.firebaseapp.com",
+        projectId: "renomobilemoney",
+        storageBucket: "renomobilemoney.appspot.com",
+        messagingSenderId: "486349775132",
+        appId: "1:486349775132:web:9c5748c4dbc04df0599ad9",
+        measurementId: "G-N6FMNFFG7J"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+</script>

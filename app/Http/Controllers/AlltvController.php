@@ -26,7 +26,7 @@ class AlltvController
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://app2.mcd.5starcompany.com.ng/api/reseller/list',
+            CURLOPT_URL => 'https://integration.mcd.5starcompany.com.ng/api/reseller/list',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -73,7 +73,7 @@ class AlltvController
 //        return $request;
 
 //return $ve;
-        $resellerURL='https://app2.mcd.5starcompany.com.ng/api/reseller/';
+        $resellerURL='https://integration.mcd.5starcompany.com.ng/api/reseller/';
 
 
         $curl = curl_init();
@@ -169,7 +169,7 @@ class AlltvController
                     $wallet->balance = $gt;
                     $wallet->save();
 
-                    $resellerURL = 'https://app2.mcd.5starcompany.com.ng/api/reseller/';
+                    $resellerURL = 'https://integration.mcd.5starcompany.com.ng/api/reseller/';
 
                     $curl = curl_init();
 

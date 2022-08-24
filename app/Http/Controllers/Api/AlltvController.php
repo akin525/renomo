@@ -42,7 +42,7 @@ class AlltvController
 //        return $request;
 
 //return $ve;
-        $resellerURL='https://app2.mcd.5starcompany.com.ng/api/reseller/';
+        $resellerURL='https://integration.mcd.5starcompany.com.ng/api/reseller/';
 
 
         $curl = curl_init();
@@ -164,7 +164,7 @@ class AlltvController
                     $wallet->balance = $gt;
                     $wallet->save();
 
-                    $resellerURL = 'https://app2.mcd.5starcompany.com.ng/api/reseller/';
+                    $resellerURL = 'https://integration.mcd.5starcompany.com.ng/api/reseller/';
 
                     $curl = curl_init();
 

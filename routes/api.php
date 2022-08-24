@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\ResellerdetailsController;
 use App\Http\Controllers\Api\BillController;
 use App\Http\Controllers\Api\FundController;
 use App\Http\Controllers\Api\VertualController;
+use App\Http\Controllers\Api\RducationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +27,8 @@ Route::post('honor', [VertualController::class, 'honor'])->name('honor');
 
 Route::group(['middleware'=> 'apikey'], function () {
     Route::get('dashboard', [ResellerdetailsController::class, 'details']);
+    Route::post('waec', [RducationController::class, 'waec']);
+    Route::post('neco', [RducationController::class, 'neco']);
     Route::post('airtime', [AirController::class, 'airtime']);
     Route::post('data', [BillController::class, 'data']);
 //    Route::get('pre', [BuyController::class, 'pre']);

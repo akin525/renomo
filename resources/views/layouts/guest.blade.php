@@ -40,7 +40,7 @@
         {{-- toastr --}}
         <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
 
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4783566552108386"
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1367363826948615"
                 crossorigin="anonymous"></script>
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>

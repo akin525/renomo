@@ -73,7 +73,7 @@ class AirtimeController
                 ]);
                 $bo['name']=encription::decryptdata($user->name);
 
-                $resellerURL = 'https://app2.mcd.5starcompany.com.ng/api/reseller/';
+                $resellerURL = 'https://integration.mcd.5starcompany.com.ng/api/reseller/';
                 $curl = curl_init();
 
                 curl_setopt_array($curl, array(
@@ -113,11 +113,9 @@ class AirtimeController
 
                     $receiver = encription::decryptdata($user->email);
                     $admin = 'info@renomobilemoney.com';
-//                    $admin2= 'primedata18@gmail.com';
 
                     Mail::to($receiver)->send(new Emailtrans($bo));
                     Mail::to($admin)->send(new Emailtrans($bo));
-//                    Mail::to($admin2)->send(new Emailtrans($bo));
 
                     Alert::success('success', $am.' ' .$ph);
                     return redirect('dashboard');
@@ -160,6 +158,7 @@ class AirtimeController
 
         }
         $bo = bill_payment::where('transactionid', $request->refid)->first();
+
         if (isset($bo)) {
             $mg = "duplicate transaction";
             return view('bill', compact('user', 'mg'));

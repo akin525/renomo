@@ -107,11 +107,18 @@ public function sub(Request $request)
         Alert::error('error', $msg);
         return redirect('withdraw');
     }
+    if ($request->amount < 1000) {
+        $msg ="Your amount must not be less down ₦1000";
+        Alert::error('error', $msg);
+        return redirect('withdraw');
+    }
+
     if ($request->amount < 0) {
         $msg ="Please Enter a valid amount";
         Alert::error('error', $msg);
         return redirect('withdraw');
     }
+
 
     $total=$wallet->balance - $request->amount;
     $wallet->balance=$total;

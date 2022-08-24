@@ -10,7 +10,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link rel="icon" href="{{asset("images/bn.jpeg")}}" type="image/png" />
+    <link rel="icon" href="https://renomobilemoney.com/images/bn.jpeg" type="image/png" />
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -36,6 +36,8 @@
     ======================================================== -->
 {{--    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4783566552108386"--}}
 {{--            crossorigin="anonymous"></script>--}}
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1367363826948615"
+            crossorigin="anonymous"></script>
 </head>
 
 
@@ -44,15 +46,15 @@
 
 <body>
 @include('sweetalert::alert')
-{{--<script>--}}
-{{--    $(document).ready(function() {--}}
-{{--        toastr.options.timeOut = 10000;--}}
-{{--        @if (Auth()->user())--}}
-{{--        toastr.success('Welcome Back {{\App\Console\encription::decryptdata(Auth::user()->name)}}');--}}
-{{--        @endif--}}
-{{--    });--}}
+<script>
+    $(document).ready(function() {
+        toastr.options.timeOut = 10000;
+        @if (Auth()->user())
+        toastr.success('Welcome Back {{\App\Console\encription::decryptdata(Auth::user()->name)}}');
+        @endif
+    });
 
-{{--</script>--}}
+</script>
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container">

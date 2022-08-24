@@ -12,9 +12,12 @@ use App\Models\webook;
 use App\Models\deposit;
 use App\Models\setting;
 use App\Models\wallet;
+use App\Notifications\SendPushNotification;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use Kutia\Larafirebase\Facades\Larafirebase;
 use NotificationChannels\WebPush\WebPushChannel;
 use NotificationChannels\WebPush\WebPushMessage;
 use Session;
@@ -33,7 +36,7 @@ class VertualController  extends Notification
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
-                CURLOPT_URL => 'https://app2.mcd.5starcompany.com.ng/api/reseller/virtual-account',
+                CURLOPT_URL => 'https://integration.mcd.5starcompany.com.ng/api/reseller/virtual-account',
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
                 CURLOPT_MAXREDIRS => 10,
@@ -81,22 +84,13 @@ class VertualController  extends Notification
 
         if ($json = json_decode(file_get_contents("php://input"), true)) {
             print_r($json['ref']);
-//    print_r($json['accountDetails']['accountName']);
             $data = $json;
 
         }
-// return  $data;
-//   $data = json_decode($request, true);
 
-//$paid=$data["paymentStatus"];
         $refid=$data["ref"];
         $amount=$data["amount"];
         $no=$data["account_number"];
-
-        // return $request->all();
-//  echo $amount;
-// echo $bank;
-//echo $acct;
 
         $wallet = wallet::where('account_number', $no)->first();
         $pt=$wallet['balance'];
@@ -131,6 +125,31 @@ class VertualController  extends Notification
                 ]);
                 $wallet->balance = $gt;
                 $wallet->save();
+                $title= "Account Funded with ".$gt;
+                $body= "Account Funded with ".$gt;
+
+                try{
+                    $fcmTokens = User::whereNotNull('email')->pluck('email')->toArray();
+
+                    //Notification::send(null,new SendPushNotification($request->title,$request->message,$fcmTokens));
+
+                    /* or */
+
+                    //auth()->user()->notify(new SendPushNotification($title,$message,$fcmTokens));
+
+                    /* or */
+
+                    Larafirebase::withTitle($title)
+                        ->withBody($body)
+                        ->sendMessage($fcmTokens);
+
+                    return redirect()->back()->with('success','Notification Sent Successfully!!');
+
+                }catch(\Exception $e){
+                    report($e);
+                    return redirect()->back()->with('error','Something goes wrong while sending notification.');
+                }
+                $title= "Account Funded with ".$gt;
 
 
                 $admin = 'info@renomobilemoney.com';
@@ -140,13 +159,27 @@ class VertualController  extends Notification
                 Mail::to($admin)->send(new Emailcharges($charp));
 
 
-//                $receiver = $user->email;
                 Mail::to($receiver)->send(new Emailfund($deposit));
                 Mail::to($admin)->send(new Emailfund($deposit));
-//                Mail::to($admin2)->send(new Emailfund($deposit));
+                Notification::send(null,new SendPushNotification($title,$body,$fcmTokens));
 
+                $notifcationSpec = ['notification' => [
+                    "title" => "Account Funded with ".$gt,
+                    "url" => "https://renomobilemoney.com/",
+                    "icon" => "https://renomobilemoney.com/images/bn.jpeg"
+                ],
+                    "recipients" => [
+                        [$receiver]
+                    ]
+                ];
 
+                $response = Http::withHeaders([
+                    'X-ENGAGESPOT-API-KEY' => 'lxdpmrzqutphfa6166gnv',
+                    'X-ENGAGESPOT-API-SECRET' => 'lgh00itdf3iomc8p9d6f3m0c8hd1628a9ic51g6h58e5d8gh'
+                ])->post('https://api.engagespot.co/v3/notifications',$notifcationSpec);
             }
+
+
 
 
         }

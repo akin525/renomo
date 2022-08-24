@@ -15,6 +15,7 @@ use App\Http\Controllers\admin\LoginController;
 use App\Http\Controllers\admin\WithadController;
 use App\Http\Controllers\AlltvController;
 use App\Http\Controllers\AirtimeController;
+use App\Http\Controllers\EducationController;
 use App\Http\Controllers\EkectController;
 use App\Http\Controllers\listdata;
 use App\Http\Controllers\RefersController;
@@ -63,6 +64,10 @@ Route::post('passw', [AuthController::class, 'pass'])->name('passw');
 Route::middleware(['auth'])->group(function () {
     Route::view('picktv', 'picktv');
     Route::view('safelock', 'safelock');
+Route::post('wac', [EducationController::class, 'waec'])->name('wac');
+Route::get('waec', [EducationController::class, 'indexw'])->name('waec');
+Route::post('nec', [EducationController::class, 'neco'])->name('nec');
+Route::get('neco', [EducationController::class, 'indexn'])->name('neco');
 Route::post('pick', [AlltvController::class, 'tv'])->name('pick');
 Route::get('addlock/{id}', [SafelockController::class, 'add'])->name('addlock');
 Route::post('adlock', [SafelockController::class, 'adlock'])->name('adlock');
