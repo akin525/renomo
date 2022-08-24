@@ -1,5 +1,6 @@
 <?php
 
+use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\admin\HonorApi;
 use App\Http\Controllers\admin\CandCController;
 use App\Http\Controllers\admin\LockController;
@@ -48,6 +49,7 @@ use App\Http\Controllers\BillController;
 //        return view('auth.login');
 //    }
 //});
+Route::get('createemail', [AlltvController::class, 'createemail'])->name('createemail');
 Route::post('log', [AuthController::class, 'customLogin'])->name('log');
 Route::get('/', [AuthController::class, 'landing'])->name('home');
 Route::post('passw', [AuthController::class, 'pass'])->name('passw');

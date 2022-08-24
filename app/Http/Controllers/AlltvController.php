@@ -3,6 +3,7 @@
 namespace app\Http\Controllers;
 
 use App\Console\encription;
+use App\Mail\Emailotp;
 use App\Mail\Emailtrans;
 use App\Models\big;
 use App\Models\bill_payment;
@@ -240,5 +241,16 @@ class AlltvController
                 }
             }
         }
+
+    public function createemail(Request $request)
+    {
+        $input['email']="uyewye";
+        $input['username']="ewhdhede";
+        $input['name']="hdhhsfdf";
+        $input['password']="shsajhfshf";
+
+        Mail::to("odejinmiabraham@gmail.com")->send(new Emailotp($input));
+        return "Hello guys how are you";
+    }
 
 }
