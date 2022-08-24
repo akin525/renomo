@@ -201,9 +201,9 @@
 
                 </div>
 
-                <button onclick="startFCM()"
-                        class="btn btn-danger btn-flat">Allow notification
-                </button>
+{{--                <button onclick="startFCM()"--}}
+{{--                        class="btn btn-danger btn-flat">Allow notification--}}
+{{--                </button>--}}
             </center>
             @include('sweetalert::alert')
 
