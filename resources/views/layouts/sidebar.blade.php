@@ -309,6 +309,6 @@
         return null;
     }
 
-    setCookie("user_email","{{\App\Console\encription::decryptdata(Auth::user()->email)}}",30); //set "user_email" cookie, expires in 30 days
+    setCookie("user_email","{{\App\Console\encription::decryptdata(Auth::user()->username)}}",30); //set "user_email" cookie, expires in 30 days
     var userEmail=getCookie("user_email");//"bobthegreat@gmail.co
 </script>
