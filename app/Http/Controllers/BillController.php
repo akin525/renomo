@@ -183,6 +183,10 @@ class BillController extends Controller
                         Mail::to($admin)->send(new Emailtrans($bo));
 //                        Mail::to($admin2)->send(new Emailtrans($bo));
 
+                        $username=encription::decryptdata($user->username);
+                        $body=$username.' purchase '.$name;
+                        $this->reproduct($username, "User DataPurchase", $body);
+
                         Alert::success('success', $am.' ' .$ph);
                         return redirect(route('dashboard'))
                             ->with('success', $am.' ' .$ph);
@@ -207,6 +211,41 @@ class BillController extends Controller
             }
         }
     }
+
+    public  function reproduct($username, $title, $body)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://fcm.googleapis.com/fcm/send',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS =>'{
+    "to": "/topics/Adeolu23",
+    "notification": {
+        "body": "'.$body.'",
+        "title": "'.$title.'"
+    }
+}',
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Bearer AAAA0VPmumc:APA91bFO0BZ1BL5bGsBIFW2JGE3SZzC60y-Hrqg2UgVlgeYfj7_kIawa7W1Vz0LMTVhhyC1uy4dsSGAU2oe87HzR27PInPhLlDlWKOS5buvaejdQl2O2lWe9Ewts09GiRcmJEi3LnkzB',
+                'Content-Type: application/json'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+//        dd($response);
+//        echo $response;
+    }
+
+
 }
 
 
