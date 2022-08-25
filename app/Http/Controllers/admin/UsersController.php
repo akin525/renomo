@@ -55,7 +55,7 @@ $reseller=DB::table('users')->where("apikey", "!=", "")->count();
         $regdate=$input['regdate'];
 
         // Instantiates a Query object
-        $query = User::Where('username', 'LIKE', "%$user_name%")->limit(500)
+        $query = User::Where('username', 'LIKE', "%$user_name%")->with('parentData')->limit(500)
             ->get();
 
         $cquery = User::Where('username', 'LIKE', "%$user_name%")->count();

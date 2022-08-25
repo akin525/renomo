@@ -93,6 +93,7 @@
                                     <th>id</th>
                                     <th>Username</th>
                                     <th>Email</th>
+                                    <th>Balance</th>
                                     <th>Phone Number</th>
                                     <th>Role</th>
                                     <th>Reg Date</th>
@@ -111,6 +112,7 @@
                                             @endif
                                         </td>
                                         <td>{{\App\Console\encription::decryptdata($user->email) }}</td>
+                                        <td>₦{{$user->parentData->balance}}</td>
                                         <td>{{\App\Console\encription::decryptdata($user->phone)}}</td>
                                         <td>{{$user->role}}</td>
                                         <td>{{$user->created_at}}</td>
