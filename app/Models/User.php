@@ -30,6 +30,11 @@ class User extends Authenticatable
         'name', 'email', 'password', 'phone', 'username',
     ];
 
+    function parentData()
+    {
+        return $this->belongsTo(wallet::class, 'username','username');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
