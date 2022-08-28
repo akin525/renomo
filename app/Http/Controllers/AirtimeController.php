@@ -120,7 +120,7 @@ class AirtimeController
                     $wallet->balance=$com;
                     $wallet->save();
 
-                    $parise=$comission."% Commission Is added to your wallet balance";
+                    $parise=$comission."₦ Commission Is added to your wallet balance";
                     Alert::success('success', $am.' ' .$ph.' & '.$parise);
                     return redirect('dashboard');
                 } elseif ($success == 0) {
