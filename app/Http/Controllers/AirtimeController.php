@@ -116,8 +116,8 @@ class AirtimeController
                     $wallet->balance=$com;
                     $wallet->save();
 
-                    $parise=$comission." Commission Is added to your wallet balance";
-                    Alert::success('success', $am.' ' .$ph.' $ '.$parise);
+                    $parise=$comission."% Commission Is added to your wallet balance";
+                    Alert::success('success', $am.' ' .$ph.' & '.$parise);
                     return redirect('dashboard');
                 } elseif ($success == 0) {
                     $zo = $user->balance + $request->amount;
