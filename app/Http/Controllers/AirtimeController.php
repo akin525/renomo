@@ -111,6 +111,10 @@ class AirtimeController
 
                     Mail::to($receiver)->send(new Emailtrans($bo));
                     Mail::to($admin)->send(new Emailtrans($bo));
+                    $username=encription::decryptdata($user->username);
+                    $name="Airtime";
+                    $body=$username.' purchase '.$name;
+                    $this->reproduct($username, "User DataPurchase", $body);
 
                     $com=$wallet->balance+$comission;
                     $wallet->balance=$com;
