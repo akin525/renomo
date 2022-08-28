@@ -52,7 +52,8 @@ class AirtimeController
                 $user = User::find($request->user()->id);
                 $bt = data::where("cat_id", $request->id)->first();
                 $wallet = wallet::where('username', $user->username)->first();
-
+                $per=2/100;
+                $comission=$per*$request->amount;
 
                 $gt = $wallet->balance - $request->amount;
 
@@ -96,28 +97,27 @@ class AirtimeController
                 $response = curl_exec($curl);
 
                 curl_close($curl);
-//                    echo $response;
-//    return;
                 $data = json_decode($response, true);
                 $success = $data["success"];
                 $tran1 = $data["discountAmount"];
-
-//                        return $response;
                 if ($success == 1) {
 
-
-
-//                    $name = $bt->plan;
                     $am = "NGN $request->amount  Airtime Purchase Was Successful To";
                     $ph = $request->number;
 
                     $receiver = encription::decryptdata($user->email);
                     $admin = 'info@renomobilemoney.com';
 
+
                     Mail::to($receiver)->send(new Emailtrans($bo));
                     Mail::to($admin)->send(new Emailtrans($bo));
 
-                    Alert::success('success', $am.' ' .$ph);
+                    $com=$wallet->balance+$comission;
+                    $wallet->balance=$com;
+                    $wallet->save();
+
+                    $parise=$comission." Commission Is added to your wallet balance";
+                    Alert::success('success', $am.' ' .$ph.' $ '.$parise);
                     return redirect('dashboard');
                 } elseif ($success == 0) {
                     $zo = $user->balance + $request->amount;
@@ -232,11 +232,8 @@ class AirtimeController
 
                 $receiver = encription::decryptdata($user->email);
                 $admin = 'info@renomobilemoney.com';
-//                    $admin2= 'primedata18@gmail.com';
-
                 Mail::to($receiver)->send(new Emailtrans($bo));
                 Mail::to($admin)->send(new Emailtrans($bo));
-//                    Mail::to($admin2)->send(new Emailtrans($bo));
                 $username=encription::decryptdata($user->username);
                 $body=$username.' purchase '.$name;
                 $this->reproduct($username, "User DataPurchase", $body);
