@@ -56,7 +56,10 @@ class UserController extends Controller
     function  removephoto()
     {
         $user=User::where('username',Auth::user()->username)->first();
-
+if ($user->profile_photo_path==Null){
+    Alert::error('Ooops', 'File does not exists');
+    return back();
+}
 
         if(Storage::exists($user->profile_photo_path)){
             Storage::delete($user->profile_photo_path);
