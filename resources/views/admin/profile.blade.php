@@ -24,8 +24,8 @@
                         <div class="col-lg-4 align-self-center mb-3 mb-lg-0">
                             <div class="met-profile-main">
                                 <div class="met-profile-main-pic">
-                                    @if($user->photo!=null)
-                                        <img src="https://mcd.5starcompany.com.ng/app/avatar/{{$user->user_name }}.JPG" alt="img" class="img img-thumbnail">
+                                    @if($user->profile_photo_path!=null)
+                                        <img src="{{url('/', $user->profile_photo_path)}}" alt="img" class="img img-thumbnail">
                                     @else
                                         <img alt="image" class="img img-thumbnail" width="100" src="{{asset("images/bn.jpeg")}}">
                                     @endif

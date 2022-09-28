@@ -84,7 +84,11 @@
                                     <td>{{$user->id}}</td>
 
                                     <td>
-                                            <img width="50" src="{{asset("images/bn.jpeg")}}" alt="" class="rounded-circle thumb-sm mr-1"> {{\App\Console\encription::decryptdata($user->username)}}
+                                           @if($user->profile_photo_path==NULL) <img width="50" src="{{asset("images/bn.jpeg")}}" alt="" class="rounded-circle thumb-sm mr-1">
+                                        @else
+                                            <img width="50" src="{{url('/', $user->profile_photo_path)}}" alt="" class="rounded-circle thumb-sm mr-1">
+                                        @endif
+                                        {{\App\Console\encription::decryptdata($user->username)}}
                                     </td>
                                     <td>{{\App\Console\encription::decryptdata($user->email)}}</td>
                                     <td>₦{{$user->parentData->balance}}</td>

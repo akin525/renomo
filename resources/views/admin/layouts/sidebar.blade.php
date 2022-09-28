@@ -62,12 +62,20 @@
                 <div class="sidebar_user_info">
                     <div class="icon_setting"></div>
                     <div class="user_profle_side">
-                        <div class="user_img"><img class="img-responsive" src="{{asset("images/layout_img/user_img.jpg")}}" alt="#" /></div>
+                        @if(Auth::user()->profile_photo_path==NULL)
+                            <div class="user_img"><img class="img-responsive" src="{{asset("images/layout_img/user_img.jpg")}}" alt="#" /></div>
+                        @else
+                            <div class="user_img"><img class="img-responsive" src="{{url('/', Auth::user()->profile_photo_path)}}" alt="#" /></div>
+                        @endif
                         <div class="user_info">
-                            <h6> {{\App\Console\encription::decryptdata( Auth::user()->username) }}</h6>
+                            <h6> {{ \App\Console\encription::decryptdata(Auth::user()->username) }}</h6>
                             <p><span class="online_animation"></span> Online</p>
                         </div>
                     </div>
+                    <form method="post" action="{{route('pic')}}" enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" name="pic" required><button type="submit" class="badge badge-success">Upload</button>
+                    </form>
                     <form method="POST" action="{{ route('logout') }}" x-data>
                         @csrf
                         <br>
