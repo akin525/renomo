@@ -23,6 +23,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="{{asset('asset/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
@@ -46,12 +47,12 @@
     <link rel="stylesheet" href="{{asset('hp/bootstrap.min.css')}}" />
     <link rel="stylesheet" href="{{asset('hp/main.css')}}" />
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1367363826948615"
-            crossorigin="anonymous"></script>
+{{--    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1367363826948615"--}}
+{{--            crossorigin="anonymous"></script>--}}
 
     {{-- toastr --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
-    <script type="text/javascript" src="https://cdn.engagespot.co/engagespot-client.min.js"></script>
+{{--    <script type="text/javascript" src="https://cdn.engagespot.co/engagespot-client.min.js"></script>--}}
 
 </head>
 
@@ -79,12 +80,20 @@
                 <div class="sidebar_user_info">
                     <div class="icon_setting"></div>
                     <div class="user_profle_side">
+                        @if(Auth::user()->profile_photo_path==NULL)
                         <div class="user_img"><img class="img-responsive" src="{{asset("images/layout_img/user_img.jpg")}}" alt="#" /></div>
-                        <div class="user_info">
+                        @else
+                            <div class="user_img"><img class="img-responsive" src="{{url('/', Auth::user()->profile_photo_path)}}" alt="#" /></div>
+                        @endif
+                            <div class="user_info">
                             <h6> {{ \App\Console\encription::decryptdata(Auth::user()->username) }}</h6>
                             <p><span class="online_animation"></span> Online</p>
                         </div>
                     </div>
+                    <form method="post" action="{{route('pic')}}" enctype="multipart/form-data">
+                        @csrf
+                        <input type="file" name="pic" required><button type="submit" class="badge badge-success">Upload</button>
+                    </form>
                     <form method="POST" action="{{ route('logout') }}" x-data>
                         @csrf
                         <br>
@@ -206,6 +215,7 @@
 {{--                </button>--}}
             </center>
             @include('sweetalert::alert')
+            @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 
 
 {{--            <center>--}}

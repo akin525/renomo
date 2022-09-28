@@ -21,6 +21,7 @@ use App\Http\Controllers\listdata;
 use App\Http\Controllers\RefersController;
 use App\Http\Controllers\ResellerController;
 use App\Http\Controllers\SafelockController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VertualController;
 use App\Http\Controllers\WithdrawController;
 use Illuminate\Support\Facades\Auth;
@@ -108,6 +109,10 @@ Route::get('vertual', [VertualController::class, 'vertual'])->name('vertual');
 Route::get('withdraw', [WithdrawController::class, 'bank'])->name('withdraw');
 Route::post('verify', [WithdrawController::class, 'verify'])->name('verify');
 Route::post('sub', [WithdrawController::class, 'sub'])->name('sub');
+Route::post('pic', [UserController::class, 'updateprofilephoto'])->name('pic');
+Route::post('update', [UserController::class, 'updateuserdecry'])->name('update');
+Route::get('myaccount', [UserController::class, 'viewuserencry'])->name('myaccount');
+Route::get('deletepic', [UserController::class, 'removephoto'])->name('deletepic');
 });
 
 
@@ -172,8 +177,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/finddeposite', [TransactionController::class, 'index'])->name('admin/finddeposite');
     Route::post('admin/depo', [TransactionController::class, 'finduser'])->name('admin/depo');
 
-
 });
 Route::get('admin/api', [HonorApi::class, 'api'])->name('admin/api');
 
+Route::get('/profile/{filename}', function ($filename) {
+    $path = storage_path('app/profile/' . $filename);
 
+    if (!File::exists($path)) {
+        abort(404);
+    }
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+    return $response;
+})->name('profile');

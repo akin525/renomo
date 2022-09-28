@@ -52,7 +52,32 @@
                         </div>
                     </div>
                     <input type="hidden" name="refid" value="<?php echo rand(10000000, 999999999); ?>">
-                    <button type="submit" class=" btn" style="color: white;background-color: #28a745" id="btnsubmit"> Purchase Now</button>
+                    <button type="submit" class=" btn" style="color: white;background-color: #28a745" id="warning"> Purchase Now</button>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js"></script>
+                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <script src="sweetalert2.all.min.js"></script>
+                    <script>
+                            //Warning Message
+                            $('#warning').click(function () {
+                            swal({
+                                title: 'Are you sure?',
+                                text: "You won't be able to revert this!",
+                                type: 'warning',
+                                showCancelButton: true,
+                                cancelButtonClass: 'btn btn-danger',
+                                // cancelButtonUrl: window.location = "#";
+                                confirmButtonText: 'Yes, delete it!'
+                            }).then(function (result) {
+                                if (result.value) {
+                                    console.log(window.url);
+                                    window.location.href = "#";
+                                }
+                            });
+                        });
+
+                    </script>
+
+
                 </div>
             </div>
             <div class="col-sm-4 ">
