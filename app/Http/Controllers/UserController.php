@@ -34,7 +34,7 @@ class UserController extends Controller
      $user->email=encription::encryptdata($requset->email);
      $user->save();
      $msg="Profile Update Successfully";
-     Alert::success('Success', $user);
+     Alert::success('Success', $msg);
      return back();
     }
     function updateprofilephoto(Request $request)
