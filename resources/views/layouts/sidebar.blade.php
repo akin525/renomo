@@ -122,7 +122,9 @@
                             <a href="{{route('upgrade')}}"><i class="fa fa-book "></i> <span>Api</span></a>
                         </li>
                     @endif
-
+                        <li>
+                            <a href="{{route('myaccount')}}"><i class="fa fa-user "></i> <span>My Profile</span></a>
+                        </li>
                         <li><a href="{{ route('waec') }}"><i class="fa fa-cab orange_color"></i> <span>Waec Checker</span></a></li>
                         <li><a href="{{ route('neco') }}"><i class="fa fa-cab"></i> <span>Neco Checker</span></a></li>
 
