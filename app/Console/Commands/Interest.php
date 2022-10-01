@@ -20,7 +20,7 @@ class Interest extends Command
      * @var string
      */
     protected $signature = 'Interest:cron';
-
+///usr/local/bin/ea-php80 /home/efemobil/public_html/renomo/artisan schedule:run > /dev/null 2>&1
     /**
      * The console command description.
      *
