@@ -60,7 +60,8 @@
                                         @if (Route::has('password.request'))
                                             <a class="forgot" href="{{ route('password.request') }}">Forgotten Password?</a>
                                         @endif
-                                        <button type="submit" class="btn btn-primary">Sign-in</button>
+                                        <button type="submit" class="btn btn-primary" >Sign-in</button>
+                                        
                                     </div>
                                 </center>
                                 <div class="field margin_0">

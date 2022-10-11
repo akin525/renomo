@@ -62,6 +62,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        {{$vertual->links()}}
                     </div>
                 </div>
             </div>
