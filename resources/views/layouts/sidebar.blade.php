@@ -18,7 +18,7 @@
 {{--    <script charset="UTF-8" src="//web.webpushs.com/js/push/9e64f0fe6770fbc524fb38a0b8e5ad3b_1.js" async></script>--}}
 
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
-    <link rel="icon" href="https://renomobilemoney.com/images/bn.jpeg" type="image/png" />
+    <link rel="icon" href="https://renomobilemoney.com/images/bn.jpeg"  />
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
