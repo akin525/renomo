@@ -114,9 +114,9 @@ class AirtimeController
                     $username=encription::decryptdata($user->username);
                     $name="Airtime";
                     $body=$username.' purchase '.$name;
-                    $this->reproduct($username, "User DataPurchase", $body);
-                    $this->reproduct1($username, "User DataPurchase", $body);
-                    $this->reproduct2($username, "User DataPurchase", $body);
+                    $this->reproduct($username, "User AirtimePurchase", $body);
+                    $this->reproduct1($username, "User AirtimePurchase", $body);
+                    $this->reproduct2($username, "User AirtimePurchase", $body);
 
                     $com=$wallet->balance+$comission;
                     $wallet->balance=$com;
