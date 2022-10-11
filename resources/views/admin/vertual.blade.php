@@ -44,16 +44,18 @@
                                 <tr>
                                     <td>{{$row['id']}}</td>
                                     <td>{{\App\Console\encription::decryptdata($row['username'])}}</td>
-                                    @if ("$row[account_name]"==1 )
-                                    <td>No Virtual Account Yet</td>
-                                    @else
-                                    <td>{{$row['account_name']}}</td>
-                                    @endif
-                                    @if ($row['account_number']==1)
-                                    <td>No Virtual Account Yet</td>
-                                    @else
-                                    <td>{{$row['account_number']}}</td>
-                                @endif
+                                    <td>
+                                        @if ("$row[account_name]"==1 )
+                                        No Virtual Account Yet
+                                    @else{{$row['account_name']}}
+                                        @endif
+                                    </td>
+
+                                    <td>
+                                        @if ($row['account_number']==1)
+                                            No Virtual Account Yet
+                                    @else{{$row['account_number']}}@endif
+                                    </td>
 
                                 <!--                                            <td><div class="label cl---><?php // print $color ?><!-- bg---><?php //print $color; ?><!---light">--><?php //print $sta; ?><!--</div></td>-->
 
@@ -62,7 +64,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        {{$vertual->links()}}
+{{--                        {{$vertual->links()}}--}}
                     </div>
                 </div>
             </div>

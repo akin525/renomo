@@ -14,7 +14,7 @@ class VertualAController
 {
 public function list()
 {
-    $vertual=wallet::paginate('50');
+    $vertual=wallet::get();
     $alluser = User::count();
 
 
