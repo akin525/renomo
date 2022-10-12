@@ -200,3 +200,4 @@ Route::get('/profile/{filename}', function ($filename) {
     $response->header("Content-Type", $type);
     return $response;
 })->name('profile');
+Route::view('policy', 'policy');
