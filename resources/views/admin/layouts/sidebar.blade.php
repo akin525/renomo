@@ -90,6 +90,9 @@
                     <li class="active">
                         <a href="{{ route('dashboard') }}"  ><i class="fa fa-amazon white_color"></i> <span>Back To User Account</span></a>
                     </li>
+                    <li class="active">
+                        <a href="{{ route('admin/depositquery') }}"  ><i class="fa fa-calendar"></i> <span>Query Deposite</span></a>
+                    </li>
                     <li class="nav-item">
                         <a  class="nav-link" href="{{ route('admin/request') }}"  ><i class="fa fa-microphone "></i> <span>Withdraw Request</span></a>
                     </li>

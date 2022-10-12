@@ -1,7 +1,5 @@
 @include('admin.layouts.sidebar')
 <livewire:scripts />
-@livewireChartsScripts
-
 <script>
     $(document).ready(function() {
         toastr.options.timeOut = 60000;
