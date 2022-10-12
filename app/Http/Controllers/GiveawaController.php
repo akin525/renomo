@@ -13,7 +13,7 @@ class GiveawaController extends Controller
 function giveaway()
 {
     Alert::info('Coming Soon', 'Keep checking 👊 ');
-    return back();
+    return redirect('dashboard');
     $give=Giveaway::where('username', Auth::user()->username)->first();
     $product=data::all();
     return view('giveaway', compact('give', 'product'));
