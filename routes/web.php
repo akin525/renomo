@@ -18,6 +18,7 @@ use App\Http\Controllers\AlltvController;
 use App\Http\Controllers\AirtimeController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\EkectController;
+use App\Http\Controllers\GiveawaController;
 use App\Http\Controllers\listdata;
 use App\Http\Controllers\RefersController;
 use App\Http\Controllers\ResellerController;
@@ -114,6 +115,7 @@ Route::post('pic', [UserController::class, 'updateprofilephoto'])->name('pic');
 Route::post('update', [UserController::class, 'updateuserdecry'])->name('update');
 Route::get('myaccount', [UserController::class, 'viewuserencry'])->name('myaccount');
 Route::get('deletepic', [UserController::class, 'removephoto'])->name('deletepic');
+Route::get('giveaway', [GiveawaController::class, 'giveaway'])->name('giveaway');
 });
 
 
