@@ -178,7 +178,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/finddeposite', [TransactionController::class, 'index'])->name('admin/finddeposite');
     Route::post('admin/depo', [TransactionController::class, 'finduser'])->name('admin/depo');
     Route::post('admin/date', [QueryController::class, 'querydeposi'])->name('admin/date');
+    Route::post('admin/datebill', [QueryController::class, 'querybilldate'])->name('admin/datebill');
     Route::get('admin/depositquery', [QueryController::class, 'queryindex'])->name('admin/depositquery');
+    Route::get('admin/billquery', [QueryController::class, 'billdate'])->name('admin/billquery');
 
 });
 Route::get('admin/api', [HonorApi::class, 'api'])->name('admin/api');

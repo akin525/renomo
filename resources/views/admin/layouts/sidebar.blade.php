@@ -93,6 +93,9 @@
                     <li class="active">
                         <a href="{{ route('admin/depositquery') }}"  ><i class="fa fa-calendar"></i> <span>Query Deposite</span></a>
                     </li>
+                    <li class="active">
+                        <a href="{{ route('admin/billquery') }}"  ><i class="fa fa-calendar"></i> <span>Query Bills</span></a>
+                    </li>
                     <li class="nav-item">
                         <a  class="nav-link" href="{{ route('admin/request') }}"  ><i class="fa fa-microphone "></i> <span>Withdraw Request</span></a>
                     </li>
