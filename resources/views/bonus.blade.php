@@ -8,7 +8,12 @@
                 </div>
             </div>
         </div>
-
+        <style>
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        </style>
         <div class="row column1">
             <div class="full counter_section margin_bottom_30">
                 <div class="couter_icon">
