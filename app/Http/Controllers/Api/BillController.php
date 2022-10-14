@@ -194,6 +194,8 @@ class BillController
     "notification": {
         "body": "'.$body.'",
         "title": "'.$title.'"
+                "image": "https://renomobilemoney.com/images/bn.jpeg"
+
     }
 }',
             CURLOPT_HTTPHEADER => array(
@@ -226,6 +228,8 @@ class BillController
     "notification": {
         "body": "'.$body.'",
         "title": "'.$title.'"
+                "image": "https://renomobilemoney.com/images/bn.jpeg"
+
     }
 }',
             CURLOPT_HTTPHEADER => array(

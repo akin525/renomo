@@ -107,26 +107,35 @@
         <p>OR</p>
         <div class="card">
             <div class="card-body">
-                <div class='alert alert-info'>
-                    <button type='button' class='close'></button>
-                    <i class='fa fa-ban-circle'></i><h6 class="text-center text-white">Transfer money to your Virtual Bank Account to get your PrimeData Wallet credited instantly! </br></h6>
-
-                    <center>
-                        <div class="card-body">
-                            <li  class=" btn-info">
-                                @if ($wallet->account_number==1 && $wallet->account_name==1)
-                                    <a href='{{route('vertual')}}' class='text-white'>create Virtual Account To Fund Your Wallet Automatically</a>
-                                @else
-                                    <h6 class='text-white'>{{$wallet->account_name}}</h6>
-                                    <h5 class='text-white'>Account No:{{$wallet->account_number}}</h5>
-                                    <h6 class='text-white'>WEMA-BANK</h6>
-                                @endif
-
-
-
-                            </li>
-                        </div>
-                    </center>
+                <div class="alert alert-success">
+                        @if ($wallet->account_number==1 && $wallet->account_name==1)
+                            <a href='{{route('vertual')}}' class='text-white'>create Virtual Account To Fund Your Wallet Automatically</a>
+                        @else
+                            <div class="row column1">
+                                <div class="col-md-7 col-lg-6">
+                                    <div class="card-body">
+                                        <ul style="list-style-type:square">
+                                            <li class="text-white"><h3 class="text-white"><b>Personal Vertual Account Number</b></h3></li>
+                                            <br>
+                                            <li class='text-white'><h5 class="text-white"><b>{{$wallet->account_name}}</b></h5></li>
+                                            <li class='text-white'><h5 class="text-white"><b>Account No:{{$wallet->account_number}}</b></h5></li>
+                                            <li class='text-white'><h5 class="text-white"><b>WEMA-BANK</b></h5></li>
+                                            <br>
+                                            <li class='text-white'><h5 class="text-white"><b>Note: All vertual funding are being set automatically</b></h5></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-7 col-lg-6">
+                                    <div>
+                                        <center>
+                                            <a href="#">
+                                                <img width="200" src="{{asset("images/bn.jpeg")}}"  alt="">
+                                            </a>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                 </div>
             </div>
         </div>

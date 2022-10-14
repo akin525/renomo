@@ -114,7 +114,10 @@
                         <a href="{{ route('dashboard') }}"  ><i class="fa fa-dashboard white_color"></i> <span>Dashboard</span></a>
                     </li>
                         <li class="active">
-                            <a href="{{ route('giveaway') }}"  ><i class="fa fa-floppy-o orange_color"></i> <span>Create Giveaway</span></a>
+                            <a href="{{ route('bonus') }}"  ><i class="fa fa-floppy-o orange_color"></i> <span>Create Giveaway</span></a>
+                        </li>
+                        <li class="active">
+                            <a href="{{ route('claim') }}"  ><i class="fa fa-folder-open white_color"></i> <span>Claim Giveaway</span></a>
                         </li>
                     @if(Auth::user()->apikey ==NULL)
                         <li>
@@ -220,7 +223,7 @@
 {{--                </button>--}}
             </center>
             @include('sweetalert::alert')
-{{--            @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])--}}
+            @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 
 
 {{--            <center>--}}

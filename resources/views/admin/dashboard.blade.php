@@ -11,6 +11,7 @@
     });
 
 </script>
+
 <div class="midde_cont">
     <div class="container-fluid">
         <div class="row column_title">
@@ -44,44 +45,8 @@
             </div>
         </div>
         <br>
-
-{{--        <div class="row">--}}
-{{--            <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>--}}
-{{--            <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>--}}
-{{--            <!-- Bar Chart -->--}}
-{{--            <div class="col-md-6 col-sm-12">--}}
-{{--                <div class="card">--}}
-{{--                    <div class="card-header">--}}
-{{--                        <h4 class="mb-0">Payments Chart</h4>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-body">--}}
-{{--                        <livewire:livewire-column-chart--}}
-{{--                            :column-chart-model="$columnChartModel"--}}
-{{--                        />--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-
-{{--            <!-- Bar Chart Horizental -->--}}
-{{--            <div class="col-md-6 col-sm-12">--}}
-{{--                <div class="card">--}}
-{{--                    <div class="card-header">--}}
-{{--                        <h4 class="mb-0">Customer's Chart</h4>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-body">--}}
-
-{{--                        <livewire:livewire-column-chart--}}
-{{--                            :column-chart-model="$columnChartModel1"--}}
-{{--                        />--}}
-{{--                        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>--}}
-
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-
-{{--        </div>--}}
-
         <div class="row">
+
             <div class="row column1">
                 <div class="col-md-6 col-lg-3">
                     <div class="full counter_section margin_bottom_30">

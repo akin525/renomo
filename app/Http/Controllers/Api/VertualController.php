@@ -125,8 +125,8 @@ class VertualController  extends Notification
                 ]);
                 $wallet->balance = $gt;
                 $wallet->save();
-                $title = "Account Funded with " . $gt;
-                $body = "Your Account Was Funded with ₦" . $amount;
+                $title = encription::decryptdata($user->username)."Account Funded";
+                $body = encription::decryptdata($user->username)." Account Was Funded with ₦" . $amount;
 
 
                 $admin = 'info@renomobilemoney.com';
@@ -142,9 +142,9 @@ class VertualController  extends Notification
                 $username=encription::decryptdata($user->username);
                 $image='https://renomobilemoney.com/images/bn.jpeg';
 
-              $this->firebasenotification($username, "Account Funded", $body);
-              $this->firebasenotificationadmin($username, "Account Funded", $body);
-              $this->firebasenotificationadmin1($username, "Account Funded", $body);
+              $this->firebasenotification($username, $title, $body);
+              $this->firebasenotificationadmin($username, $title, $body);
+              $this->firebasenotificationadmin1($username, $title, $body);
 
 
 
@@ -173,6 +173,8 @@ class VertualController  extends Notification
     "notification": {
         "body": "'.$body.'",
         "title": "'.$title.'"
+        "image": "https://renomobilemoney.com/images/bn.jpeg"
+
     }
 }',
             CURLOPT_HTTPHEADER => array(
@@ -205,6 +207,8 @@ class VertualController  extends Notification
     "notification": {
         "body": "'.$body.'",
         "title": "'.$title.'"
+                "image": "https://renomobilemoney.com/images/bn.jpeg"
+
     }
 }',
             CURLOPT_HTTPHEADER => array(
@@ -237,6 +241,8 @@ class VertualController  extends Notification
     "notification": {
         "body": "'.$body.'",
         "title": "'.$title.'"
+                "image": "https://renomobilemoney.com/images/bn.jpeg"
+
     }
 }',
             CURLOPT_HTTPHEADER => array(

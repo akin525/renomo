@@ -11,6 +11,7 @@ use App\Models\bill_payment;
 use App\Models\charge;
 use App\Models\charp;
 use App\Mail\Emailpass;
+use App\Models\Giveaway;
 use App\Models\Messages;
 use App\Models\refer;
 use App\Models\safe_lock;
@@ -37,7 +38,9 @@ class AuthController
         $glo=data::where('network', 'glo-data')->limit(7)->get();
         $eti=data::where('network', 'etisalat-data')->limit(7)->get();
         $airtel=data::where('network', 'airtel-data')->limit(7)->get();
-Alert::info('Renomobilemoney', 'Data Refill | Airtime | Cable TV | Electricity Subscription');
+        Alert::image('Now Available', 'Kindly download our app on playstore or Update already downloaded to enjoy better future and better notification','https://renomobilemoney.com/images/bn.jpeg','200','200', 'Image Alt');
+
+//Alert::info('Renomobilemoney', 'Data Refill | Airtime | Cable TV | Electricity Subscription');
         return view("home", compact("mtn", "glo", "eti", "airtel"));
     }
 public function pass(Request $request)
@@ -146,23 +149,17 @@ Alert::success('Success', 'New Password has been sent to your email');
 
             }
 
-        /* This sets the $time variable to the current hour in the 24 hour clock format */
         $time = date("H");
-        /* Set the $timezone variable to become the current timezone */
         $timezone = date("e");
-        /* If the time is less than 1200 hours, show good morning */
         if ($time < "12") {
             $greet="Good morning";
         } else
-            /* If the time is grater than or equal to 1200 hours, but less than 1700 hours, so good afternoon */
             if ($time >= "12" && $time < "17") {
                 $greet="Good afternoon";
             } else
-                /* Should the time be between or equal to 1700 and 1900 hours, show good evening */
                 if ($time >= "17" && $time < "19") {
                     $greet="Good evening";
                 } else
-                    /* Finally, show good night if the time is greater than or equal to 1900 hours */
                     if ($time >= "19") {
                         $greet="Good night";
                     }
@@ -181,7 +178,15 @@ Alert::success('Success', 'New Password has been sent to your email');
             ->addColumn('Shopping', 200, '#fc8181')
             ->addColumn('Travel', 300, '#90cdf4')
         ;
-            return  view('dashboard', compact('username', "user", 'greet', 'wallet', 'totaldeposite', 'me',  'bil2', 'bill', 'totalrefer',  'columnChartModel', 'pieChartModel',   'count', 'lock'))->with('success', 'Welcome back '.encription::decryptdata($user->name));
+        $give=Giveaway::where('status', 1)->get();
+        $giveaway=Giveaway::where('status', 1)->count();
+        if ($giveaway>0){
+            Alert::image('Giveaway Time!!','Check Our Giveaway Page','https://renomobilemoney.com/give.jpg','200','200', 'Image Alt');
+
+        }else{
+            Alert::image('Download Now!!', 'Kindly download our app on playstore or Update already downloaded to enjoy better future and better notification','https://renomobilemoney.com/images/bn.jpeg','200','200', 'Image Alt');
+        }
+            return  view('dashboard', compact('username', 'give', "user", 'greet', 'wallet', 'totaldeposite', 'me',  'bil2', 'bill', 'totalrefer',  'columnChartModel', 'pieChartModel',   'count', 'lock'))->with('success', 'Welcome back '.encription::decryptdata($user->name));
 
     }
     public function refer(Request $request)

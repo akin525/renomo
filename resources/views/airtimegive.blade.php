@@ -18,7 +18,7 @@
                 </div>
                 <div class="counter_no">
                     <div>
-                        <h5 class="total_no text-center">Create Data Give Away</h5>
+                        <h5 class="total_no text-center">Create Airtime Give Away</h5>
 {{--                        <h6 class="head_couter">Total Deposit</h6>--}}
                     </div>
                 </div>
@@ -28,7 +28,7 @@
         <div class="card">
             <div class="card-body">
                 <x-jet-validation-errors class="alert alert-danger" />
-                <form class="form-horizontal" method="POST" action="{{route('away')}}">
+                <form class="form-horizontal" method="POST" action="{{route('airaway')}}">
                     @csrf
                     <div class="form-group row">
                         <div class="col-md-12">
@@ -49,17 +49,20 @@
                                     }
                                 </script>
                                 <select  name="product" onChange="myNewFunction(this);"  class="form-control @error('to') is-invalid @enderror" required>
-                                    <option>Select Your Product</option>
-                                    @foreach($product as $po)
-                                    <option value="{{$po->id}}" id="{{$po->ramount}}">{{$po->plan}}</option>
-                                @endforeach
+                                    <option>Select Your Airtime</option>
+                                    <option value="m" id="MTN">MTN</option>
+                                    <option value="g" id="GLO">Glo</option>
+                                    <option value="a" id="AIRTEL">AIRTEL</option>
+                                    <option value="9" id="9MOBILE">9MOBILE</option>
                                 </select>
                             </div>
+                            <input type="hidden" name="body" value=""  id="po" class="form-control">
+
                             <div class="input-group mt-2">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-money"></i> </span>
                                 </div>
-                                <input style="margin-right: 20px" type="text" name="amount" value=""  id="po" readonly class="form-control @error('status') is-invalid @enderror">
+                                <input style="margin-right: 20px" type="number" name="amount" placeholder="Enter the amount" class="form-control @error('status') is-invalid @enderror">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-couch"></i></span>
                                 </div>

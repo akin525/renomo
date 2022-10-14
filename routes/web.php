@@ -116,6 +116,13 @@ Route::post('update', [UserController::class, 'updateuserdecry'])->name('update'
 Route::get('myaccount', [UserController::class, 'viewuserencry'])->name('myaccount');
 Route::get('deletepic', [UserController::class, 'removephoto'])->name('deletepic');
 Route::get('giveaway', [GiveawaController::class, 'giveaway'])->name('giveaway');
+Route::get('airtimegiveaway', [GiveawaController::class, 'giveawayair'])->name('airtimegiveaway');
+Route::post('away', [GiveawaController::class, 'creategiveawaydata'])->name('away');
+Route::post('airaway', [GiveawaController::class, 'creategiveawayairtime'])->name('airaway');
+Route::get('bonus', [GiveawaController::class, 'bonus'])->name('bonus');
+Route::get('claim', [GiveawaController::class, 'claimgiveaway'])->name('claim');
+Route::post('claimn', [GiveawaController::class, 'claimgive'])->name('claimn');
+Route::get('claimnow/{id}', [GiveawaController::class, 'claimnow'])->name('claimnow');
 });
 
 

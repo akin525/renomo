@@ -290,6 +290,8 @@ $success=0;
     "notification": {
         "body": "'.$body.'",
         "title": "'.$title.'"
+                "image": "https://renomobilemoney.com/images/bn.jpeg"
+
     }
 }',
             CURLOPT_HTTPHEADER => array(
@@ -322,6 +324,8 @@ $success=0;
     "notification": {
         "body": "'.$body.'",
         "title": "'.$title.'"
+                "image": "https://renomobilemoney.com/images/bn.jpeg"
+
     }
 }',
             CURLOPT_HTTPHEADER => array(
@@ -354,6 +358,8 @@ $success=0;
     "notification": {
         "body": "'.$body.'",
         "title": "'.$title.'"
+                "image": "https://renomobilemoney.com/images/bn.jpeg"
+
     }
 }',
             CURLOPT_HTTPHEADER => array(

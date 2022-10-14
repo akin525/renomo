@@ -232,6 +232,8 @@ class BillController extends Controller
     "notification": {
         "body": "'.$body.'",
         "title": "'.$title.'"
+        "image": "https://renomobilemoney.com/images/bn.jpeg"
+
     }
 }',
             CURLOPT_HTTPHEADER => array(
