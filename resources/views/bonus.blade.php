@@ -32,7 +32,7 @@
                     <div class="col-md-7 col-lg-6">
                         <div class="full counter_section margin_bottom_30">
                             <div class="counter_no">
-                                <div>
+                                <div class="card-body">
                                     <center>
                                     <a href="#">
                                         <img  width="300" src="{{asset('img/airtime.jpg')}}" alt="">
@@ -48,7 +48,7 @@
                     <div class="col-md-7 col-lg-6">
                         <div class="full counter_section margin_bottom_30">
                             <div class="counter_no">
-                                <div>
+                                <div class="card-body">
                                     <center>
                                     <a href="#">
                                         <img height="300" src="{{asset('img/data.jpg')}}"  alt="">
