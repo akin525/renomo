@@ -52,7 +52,7 @@
                                             </div>
                                         </div>
                                         <button type="submit" class="btn process"
-                                                style="color: white;background-color: #13b10d;margin-bottom:15px;"> Continue
+                                                style="color: white;background-color: #13b10d;margin-bottom:15px;"> Continue<span class="load loading"></span>
                                         </button>
                                         <!--                        <button type="button" id="verify" class=" btn" style="margin-bottom:15px;">  <span id="process"><i class="fa fa-circle-o-notch fa-spin " style="font-size: 30px;animation-duration: 1s;"></i> Validating Please wait </span>  <span id="displaytext">Validate Meter Number </span></button>-->
                                     </form>
@@ -60,6 +60,14 @@
                             </div>
                             <div class="col-sm-4 ">
                             </div>
+                            <script>
+                                const btns = document.querySelectorAll('button');
+                                btns.forEach((items)=>{
+                                    items.addEventListener('click',(evt)=>{
+                                        evt.target.classList.add('activeLoading');
+                                    })
+                                })
+                            </script>
 
                         </div>
                     </div>

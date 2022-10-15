@@ -89,8 +89,15 @@
                                     </div>
                                     <div class="text-end mt-4 card-body">
 
-                                            <button type="submit" class="btn btn-primary">Verify Account</button>
-
+                                            <button type="submit" class="btn btn-primary">Verify Account<span class="load loading"></span></button>
+                                        <script>
+                                            const btns = document.querySelectorAll('button');
+                                            btns.forEach((items)=>{
+                                                items.addEventListener('click',(evt)=>{
+                                                    evt.target.classList.add('activeLoading');
+                                                })
+                                            })
+                                        </script>
 
                                     </div>
                                 </form>

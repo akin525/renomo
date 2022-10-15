@@ -52,7 +52,15 @@
                         </div>
                     </div>
                     <input type="hidden" name="refid" value="<?php echo rand(10000000, 999999999); ?>">
-                    <button type="submit" class=" btn" style="color: white;background-color: #28a745" id="warning"> Purchase Now</button>
+                    <button type="submit" class=" btn" style="color: white;background-color: #28a745" id="warning"> Purchase Now<span class="load loading"></span></button>
+                    <script>
+                        const btns = document.querySelectorAll('button');
+                        btns.forEach((items)=>{
+                            items.addEventListener('click',(evt)=>{
+                                evt.target.classList.add('activeLoading');
+                            })
+                        })
+                    </script>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js"></script>
                     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                     <script src="sweetalert2.all.min.js"></script>

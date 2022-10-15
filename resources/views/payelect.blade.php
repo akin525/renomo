@@ -53,8 +53,16 @@
                                         <input type="hidden" name="refid" value="<?php echo rand(10000000, 999999999); ?>">
 
                                         <button type="submit" class="btn process"
-                                                style="color: white;background-color: #13b10d;margin-bottom:15px;"> Purchase
+                                                style="color: white;background-color: #13b10d;margin-bottom:15px;"> Purchase<span class="load loading"></span>
                                         </button>
+                                        <script>
+                                            const btns = document.querySelectorAll('button');
+                                            btns.forEach((items)=>{
+                                                items.addEventListener('click',(evt)=>{
+                                                    evt.target.classList.add('activeLoading');
+                                                })
+                                            })
+                                        </script>
                                         <!--                        <button type="button" id="verify" class=" btn" style="margin-bottom:15px;">  <span id="process"><i class="fa fa-circle-o-notch fa-spin " style="font-size: 30px;animation-duration: 1s;"></i> Validating Please wait </span>  <span id="displaytext">Validate Meter Number </span></button>-->
                                     </form>
                                 </div>

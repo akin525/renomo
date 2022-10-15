@@ -85,9 +85,17 @@
                                         </div>
                                     </div>
                                     <div class="text-end mt-4">
-                                        <button type="submit" class="btn btn-primary">Withdraw</button>
+                                        <button type="submit" class="btn btn-primary">Withdraw<span class="load loading"></span></button>
                                     </div>
                                 </form>
+                                <script>
+                                    const btns = document.querySelectorAll('button');
+                                    btns.forEach((items)=>{
+                                        items.addEventListener('click',(evt)=>{
+                                            evt.target.classList.add('activeLoading');
+                                        })
+                                    })
+                                </script>
                             </div>
 
                         </div>

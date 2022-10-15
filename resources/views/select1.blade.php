@@ -33,10 +33,18 @@
                     </select>
 
                     <br>
-                    <button type="submit" class=" btn" style="color: white;background-color: #28a745">Click Next</button>
+                    <button type="submit" class=" btn" style="color: white;background-color: #28a745">Click Next<span class="load loading"></span></button>
                 </form>
         </center>
         <br>
+        <script>
+            const btns = document.querySelectorAll('button');
+            btns.forEach((items)=>{
+                items.addEventListener('click',(evt)=>{
+                    evt.target.classList.add('activeLoading');
+                })
+            })
+        </script>
 
 
 

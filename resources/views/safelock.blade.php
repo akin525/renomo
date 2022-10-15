@@ -89,11 +89,18 @@
                                         </div>
                                     </div>
                                     <div class="text-end mt-4">
-                                        <button type="submit" class="btn btn-primary">Create</button>
+                                        <button type="submit" class="btn btn-primary">Create<span class="load loading"></span></button>
                                     </div>
                                 </form>
                             </div>
-
+                            <script>
+                                const btns = document.querySelectorAll('button');
+                                btns.forEach((items)=>{
+                                    items.addEventListener('click',(evt)=>{
+                                        evt.target.classList.add('activeLoading');
+                                    })
+                                })
+                            </script>
                         </div>
                     </div>
                 </div>

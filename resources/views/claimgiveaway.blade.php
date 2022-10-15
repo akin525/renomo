@@ -64,9 +64,17 @@
                                                                 </button>
                                                             @else
                                                                 <button type="button" class="btn btn-outline-primary btn-xs" onclick="window.location='{{route('claimnow', $re->id)}}'">
-                                                                    Claim Now
+                                                                    Claim Now<span class="load loading"></span>
                                                                 </button>
                                                             @endif
+                                                            <script>
+                                                                const btns = document.querySelectorAll('button');
+                                                                btns.forEach((items)=>{
+                                                                    items.addEventListener('click',(evt)=>{
+                                                                        evt.target.classList.add('activeLoading');
+                                                                    })
+                                                                })
+                                                            </script>
                                                         </div>
                                                     </div>
                                                 </div>

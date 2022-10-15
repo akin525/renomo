@@ -84,8 +84,16 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <br>
-                                    <button type="submit" class="btn btn-rounded btn-outline-success btn-block">claim now</button>
+                                    <button type="submit" class="btn btn-rounded btn-outline-success btn-block">claim now<span class="load loading"></span></button>
                                     </form>
+                                    <script>
+                                        const btns = document.querySelectorAll('button');
+                                        btns.forEach((items)=>{
+                                            items.addEventListener('click',(evt)=>{
+                                                evt.target.classList.add('activeLoading');
+                                            })
+                                        })
+                                    </script>
                                 </div>
                             </div>
 

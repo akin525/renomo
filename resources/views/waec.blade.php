@@ -57,12 +57,20 @@
                             </div>
                             <input type="hidden" name="id" value="{{rand(111111111, 999999999)}}">
                         </div>
-                        <button class="btn-danger rounded btn-block font-weight-bold py-2 my-4" type="submit">Generate</button>
+                        <button class="btn-danger rounded btn-block font-weight-bold py-2 my-4" type="submit">Generate<span class="load loading"></span></button>
                     </form>
                     <a class="btn-success btn-block rounded text-center font-weight-bold py-2 my-4" href="{{route('dashboard')}}" style="text-decoration: none;">
                         Back to Dashboard
                     </a>
                 </div>
+                <script>
+                    const btns = document.querySelectorAll('button');
+                    btns.forEach((items)=>{
+                        items.addEventListener('click',(evt)=>{
+                            evt.target.classList.add('activeLoading');
+                        })
+                    })
+                </script>
             </div>
 
         </div>

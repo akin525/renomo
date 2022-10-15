@@ -52,12 +52,19 @@
                         </div>
                     </div>
                     <input type="hidden" name="refid" value="<?php echo rand(10000000, 999999999); ?>">
-                    <button type="submit" class=" btn" style="color: white;background-color: #28a745" id="btnsubmit"> Purchase Now</button>
+                    <button type="submit" class=" btn" style="color: white;background-color: #28a745" id="btnsubmit"> Purchase Now <span class="load loading"></span></button>
                 </div>
             </div>
             <div class="col-sm-4 ">
                 <br>
-
+                <script>
+                    const btns = document.querySelectorAll('button');
+                    btns.forEach((items)=>{
+                        items.addEventListener('click',(evt)=>{
+                            evt.target.classList.add('activeLoading');
+                        })
+                    })
+                </script>
                 <p>You can use the codes below to check your Airtime Balance!  </p>
 
                 <h6>
