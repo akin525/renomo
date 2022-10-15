@@ -37,7 +37,7 @@
             <div class="card-body">
                 <div class="alert alert-success">
                     <ul style="list-style-type:square">
-                        <li><h4 class="text-white"><b>{{$me->message}}.</b></h4></li>
+                        <li><h5 class="text-white"><b>{{$me->message}}.</b></h5></li>
                     </ul>
                 </div>
             </div>
