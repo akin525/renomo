@@ -38,7 +38,7 @@ class AuthController
         $glo=data::where('network', 'glo-data')->limit(7)->get();
         $eti=data::where('network', 'etisalat-data')->limit(7)->get();
         $airtel=data::where('network', 'airtel-data')->limit(7)->get();
-        Alert::image('Now Available', 'Kindly download our app on playstore or Update already downloaded to enjoy better future and better notification','https://renomobilemoney.com/images/bn.jpeg','200','200', 'Image Alt');
+        Alert::image('Now Available', 'Kindly download our app on playstore or Update already downloaded to enjoy better feature and better notification','https://renomobilemoney.com/images/bn.jpeg','200','200', 'Image Alt');
 
 //Alert::info('Renomobilemoney', 'Data Refill | Airtime | Cable TV | Electricity Subscription');
         return view("home", compact("mtn", "glo", "eti", "airtel"));
@@ -184,7 +184,7 @@ Alert::success('Success', 'New Password has been sent to your email');
             Alert::image('Giveaway Time!!','Check Our Giveaway Page','https://renomobilemoney.com/give.jpg','200','200', 'Image Alt');
 
         }else{
-            Alert::image('Download Now!!', 'Kindly download our app on playstore or Update already downloaded to enjoy better future and better notification','https://renomobilemoney.com/images/bn.jpeg','200','200', 'Image Alt');
+            Alert::image('Download Now!!', 'Kindly download our app on playstore or Update already downloaded to enjoy better feature and better notification','https://renomobilemoney.com/images/bn.jpeg','200','200', 'Image Alt');
         }
             return  view('dashboard', compact('username', 'give', "user", 'greet', 'wallet', 'totaldeposite', 'me',  'bil2', 'bill', 'totalrefer',  'columnChartModel', 'pieChartModel',   'count', 'lock'))->with('success', 'Welcome back '.encription::decryptdata($user->name));
 

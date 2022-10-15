@@ -30,7 +30,7 @@ class AirtimeController
                 $mg = "You Cant Make Purchase Above" . "NGN" . $request->amount . " from your wallet. Your wallet balance is NGN $wallet->balance. Please Fund Wallet And Retry or Pay Online Using Our Alternative Payment Methods.";
 
                 Alert::error('error', $mg);
-                return redirect('dashboard');
+                return redirect('invoice');
 
 
             }
@@ -38,7 +38,7 @@ class AirtimeController
 
                 $mg = "error transaction";
                 Alert::error('error', $mg);
-                return redirect('dashboard');
+                return redirect('invoice');
 
 
             }
@@ -46,7 +46,7 @@ class AirtimeController
             if (isset($bo)) {
                 $mg = "duplicate transaction";
                 Alert::info('info', $mg);
-                return redirect('dashboard');
+                return redirect('invoice');
 
             } else {
                 $user = User::find($request->user()->id);
@@ -124,7 +124,7 @@ class AirtimeController
 
                     $parise=$comission."₦ Commission Is added to your wallet balance";
                     Alert::success('success', $am.' ' .$ph.' & '.$parise);
-                    return redirect('dashboard');
+                    return redirect('invoice');
                 } elseif ($success == 0) {
                     $zo = $user->balance + $request->amount;
                     $user->balance = $zo;
@@ -135,7 +135,7 @@ class AirtimeController
                     $ph = ", Transaction fail";
 
                     Alert::error('error', $am.' ' .$ph);
-                    return redirect('dashboard');
+                    return redirect('invoice');
                 }
         }
     }
