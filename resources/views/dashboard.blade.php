@@ -33,9 +33,17 @@
                 </div>
             </div>
         </div>
-        <marquee width="100%" direction="left" height="100px" class="text-success"><h4 class="text-success">
-                {{$me->message}}.</h4>
-        </marquee>
+        <div class="card">
+            <div class="card-body">
+                <div class="alert alert-success">
+                    <ul style="list-style-type:square">
+                        <li><h4 class="text-white"><b>{{$me->message}}.</b></h4></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+{{--        <marquee width="100%" direction="left" height="100px" class="text-success"><h4 class="text-success">--}}
+{{--                {{$me->message}}.</h4></marquee>--}}
         <div class="card">
             <div class="card-body">
                 <div class="alert alert-success">
