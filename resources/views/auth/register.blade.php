@@ -41,6 +41,99 @@
 
 
 </head>
+<style>
+
+    * {
+        padding: 0;
+        margin: 0
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #eee
+    }
+
+    button {
+        padding: 20px 30px;
+        font-size: 1.5em;
+        width:200px;
+        cursor: pointer;
+        border: 0px;
+        position: relative;
+        margin: 20px;
+        transition: all .25s ease;
+        background: rgba(116, 23, 231, 1);
+        color: #fff;
+        overflow: hidden;
+        border-radius: 10px
+    }
+
+    .load {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        background: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: inherit
+    }
+
+    .load::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        border: 3px solid #fff;
+        width: 30px;
+        height: 30px;
+        border-left: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+        animation: loading1 1s ease infinite;
+        z-index: 10
+    }
+
+    .load::before {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        border: 3px dashed #fff;
+        width: 30px;
+        height: 30px;
+        border-left: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+        animation: loading1 2s linear infinite;
+        z-index: 5
+    }
+
+    @keyframes loading1 {
+        0% {
+            transform: rotate(0deg)
+        }
+
+        100% {
+            transform: rotate(360deg)
+        }
+    }
+
+    button.active {
+        transform: scale(.85)
+    }
+
+    button.activeLoading .loading {
+        visibility: visible;
+        opacity: 1
+    }
+
+    button .loading {
+        opacity: 0;
+        visibility: hidden
+    }
+</style>
 
 <body>
 @include('sweetalert::alert')
@@ -121,10 +214,20 @@
                                         <!--                                <label class="form-check-label"><input type="checkbox" id="rememberMe" class="form-check-input"> Remember Me</label>-->
                                         <a class="forgot" href="{{route('login')}}">Already Signed-Up, then Login</a>
                                     </div>
+                                    <br>
                                     <div class="field margin_0">
                                         <label class="label_field hidden">hidden label</label>
-                                        <button type="submit" class="main_bt">Sign Up</button>
+                                        <button type="submit" class="main_bt">Sign Up<span class="load loading"></span></button>
                                     </div>
+                                    <script>
+                                        const btns = document.querySelectorAll('button');
+                                        btns.forEach((items)=>{
+                                            items.addEventListener('click',(evt)=>{
+                                                evt.target.classList.add('activeLoading');
+                                            })
+                                        })
+                                    </script>
+
                             </form>
                         </div>
                     </div>

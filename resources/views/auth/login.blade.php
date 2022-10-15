@@ -41,7 +41,6 @@
                                 <center>
                                     <input  type="checkbox" onclick="myFunction()">Show Password
                                 </center>
-
                                 <script>
                                     function myFunction() {
                                         var x = document.getElementById("myInput");
@@ -60,13 +59,21 @@
                                         @if (Route::has('password.request'))
                                             <a class="forgot" href="{{ route('password.request') }}">Forgotten Password?</a>
                                         @endif
-                                        <button type="submit" class="btn btn-primary" >Sign-in</button>
-                                        
+                                        <button type="submit" class="btn btn-primary" >Sign-in <span class="load loading"></span></button>
+                                        <script>
+                                            const btns = document.querySelectorAll('button');
+                                            btns.forEach((items)=>{
+                                                items.addEventListener('click',(evt)=>{
+                                                    evt.target.classList.add('activeLoading');
+                                                })
+                                            })
+                                        </script>
+
                                     </div>
                                 </center>
                                 <div class="field margin_0">
                                     <label class="label_field hidden">hidden label</label>
-                                    <a href="{{ route('register') }}" ><button type="button" class="main_bt">Sign Up</button></a>
+                                    <a href="{{ route('register') }}" ><button type="button" class="main_bt">Sign Up </button></a>
                                 </div>
                             </fieldset>
 

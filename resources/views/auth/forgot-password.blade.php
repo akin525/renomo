@@ -41,8 +41,17 @@
                 <input id="email" class="form-control" type="email" name="email"  required autofocus />
             </div>
 <center>
-                <button type="submit" class="btn btn-success" >Get password</button>
+                <button type="submit" class="btn btn-success" >Get password<span class="load loading"></span></button>
 </center>
+                    <script>
+                        const btns = document.querySelectorAll('button');
+                        btns.forEach((items)=>{
+                            items.addEventListener('click',(evt)=>{
+                                evt.target.classList.add('activeLoading');
+                            })
+                        })
+                    </script>
+
         </form>
                         </fieldset>
 
