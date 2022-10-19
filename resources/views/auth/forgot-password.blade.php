@@ -41,7 +41,8 @@
                 <input id="email" class="form-control" type="email" name="email"  required autofocus />
             </div>
 <center>
-                <button type="submit" class="btn btn-success" >Get password<span class="load loading"></span></button>
+
+    <button type="submit" class="btn btn-success" >Get password<span class="load loading"></span></button>
 </center>
                     <script>
                         const btns = document.querySelectorAll('button');

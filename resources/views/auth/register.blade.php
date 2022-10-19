@@ -135,14 +135,9 @@
     }
 </style>
 
-<body>
-@include('sweetalert::alert')
+<body class="logo_login" style="background-image: url(images/banner.jpeg)">
 
-    <body class="inner_page login">
-    <br>
-    <br>
-    <br>
-    <br>
+@include('sweetalert::alert')
     <div id="loading-wrapper">
         <div class="spinner-border"></div>
         PRIMEDATA......

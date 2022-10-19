@@ -107,10 +107,11 @@
 
 
     <body>
-        <div class="font-sans text-gray-900 antialiased">
+        <div class="logo_login" style="background-image: url(images/banner.jpeg)">
+            @include('sweetalert::alert')
             {{ $slot }}
+
         </div>
-        @include('sweetalert::alert')
         <style>
             .float{
                 position:fixed;
@@ -142,13 +143,6 @@
                 margin: 0
             }
 
-            body {
-                height: 100vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background: #eee
-            }
 
             button {
                 padding: 20px 30px;
