@@ -31,4 +31,11 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'google' => [
+        'client_id' => env('google_id'), //USE FROM Google DEVELOPER ACCOUNT
+        'client_secret' => env('google_sec'), //USE FROM Google DEVELOPER ACCOUNT
+        'redirect' => env('google_re')
+    ],
+
+
 ];

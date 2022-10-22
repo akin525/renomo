@@ -27,7 +27,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'username',
+        'name', 'email', 'password', 'phone', 'username', 'google_id',
     ];
 
     function parentData()

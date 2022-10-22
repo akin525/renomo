@@ -152,11 +152,16 @@
                                 <img width="110" src="{{asset("images/bn.jpeg")}}" alt="#" />
                             </div>
                         </div>
-                        <x-slot name="logo">
-                        </x-slot>
 
                         <div class="login_form">
                             <h3 class="text-center text-purple">SIGN-UP</h3>
+                            <hr>
+                            <center>
+                                <a href="{{ route('google.login') }}" class="btn btn-outline-success btn-user" >
+                                    <i class="fa fa-google "></i>Signup With Google
+                                </a>
+                            </center>
+                            <br>
                             <form method="POST" action="{{ route('register') }}">
                                 @csrf
 

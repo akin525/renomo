@@ -19,6 +19,7 @@ use App\Http\Controllers\AirtimeController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\EkectController;
 use App\Http\Controllers\GiveawaController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\listdata;
 use App\Http\Controllers\RefersController;
 use App\Http\Controllers\ResellerController;
@@ -125,7 +126,10 @@ Route::post('claimn', [GiveawaController::class, 'claimgive'])->name('claimn');
 Route::get('claimnow/{id}', [GiveawaController::class, 'claimnow'])->name('claimnow');
 });
 
-
+Route::prefix('google')->name('google.')->group( function(){
+    Route::get('login', [GoogleController::class, 'loginWithGoogle'])->name('login');
+    Route::any('callback', [GoogleController::class, 'callbackFromGoogle'])->name('callback');
+});
 
 Route::get('admin', function () {
 

@@ -25,7 +25,13 @@
                         <center><h3 class="text-wh text-red">LOG-IN</h3></center>
                         <br>
                         <br>
-
+                        <hr>
+                        <center>
+                        <a href="{{ route('google.login') }}" class="btn btn-outline-success btn-user" >
+                            <i class="fa fa-google "></i>login With Google
+                        </a>
+                        </center>
+                        <br>
                         <form method="POST" action="{{ route('log') }}">
                             @csrf
                             <fieldset>
