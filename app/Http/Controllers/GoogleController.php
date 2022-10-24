@@ -40,9 +40,10 @@ class GoogleController extends Controller
                     'username'=>$saveUser['username'],
                     'balance' => 0,
                 ]);
+                $myuser=encription::decryptdata($saveUser['username']);
                 $input=[
                     'name'=>$user->getName(),
-                    'username'=>$saveUser['username'],
+                    'username'=>$myuser,
                     'email'=>$user->getEmail(),
                     'password'=>'Always sign in with Google',
                 ];
