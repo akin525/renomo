@@ -82,6 +82,8 @@
                     <div class="user_profle_side">
                         @if(Auth::user()->profile_photo_path==NULL)
                         <div class="user_img"><img class="img-responsive" src="{{asset("images/layout_img/user_img.jpg")}}" alt="#" /></div>
+                        @elseif(\Illuminate\Support\Facades\Auth::user()->google_id!=NULL)
+                        <div class="user_img"><img class="img-responsive" src="{{Auth::user()->profile_photo_path}}" alt="#" /></div>
                         @else
                             <div class="user_img"><img class="img-responsive" src="{{url('/', Auth::user()->profile_photo_path)}}" alt="#" /></div>
                         @endif
