@@ -40,6 +40,8 @@
                                                     <div class="img-container">
                                                         @if(Auth::user()->profile_photo_path==NULL)
                                                             <img id="image" width="200" src="{{asset('images/layout_img/user_img.jpg')}}" alt="Picture">
+                                                        @elseif(\Illuminate\Support\Facades\Auth::user()->google_id!=NULL)
+                                                        <img id="image" width="200" src="{{Auth::user()->profile_photo_path}}" alt="Picture">
                                                         @else
                                                             <img id="image" width="200" src="{{url('/', Auth::user()->profile_photo_path)}}" alt="Picture">
                                                         @endif
