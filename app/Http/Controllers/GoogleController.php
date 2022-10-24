@@ -23,6 +23,7 @@ class GoogleController extends Controller
     {
         try {
             $user = Socialite::driver('google')->user();
+            $picture=$user->getAvatar();
 
             // Check Users Email If Already There
             $is_user = User::where('email', encription::encryptdata($user->getEmail()))->first();
@@ -34,7 +35,8 @@ class GoogleController extends Controller
                     'username' => encription::encryptdata($user->getName().rand(111, 999)),
                     'name' => encription::encryptdata($user->getName()),
                     'email' =>encription::encryptdata($user->getEmail()),
-                    'password' =>$user->getName().'@'.$user->getId()
+                    'password' =>$user->getName().'@'.$user->getId(),
+                    'profile_photo_path'=>$picture,
                 ]);
                 $wallet= wallet::create([
                     'username'=>$saveUser['username'],
@@ -54,6 +56,7 @@ class GoogleController extends Controller
             }else{
                 $saveUser = User::where('email',  encription::encryptdata($user->getEmail()))->update([
                     'google_id' => $user->getId(),
+                    'profile_photo_path'=>$picture,
                 ]);
                 $saveUser = User::where('email',encription::encryptdata($user->getEmail()))->first();
             }
