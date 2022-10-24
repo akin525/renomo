@@ -28,6 +28,8 @@
                                     <a href="modal" data-toggle="modal" data-target="#modal" class="edit-avatar"><i class="fa fa-pencil"></i></a>
                                     @if(Auth::user()->profile_photo_path==NULL)
                                     <div class="profile_img"><img width="180" class="rounded-circle" src="{{asset('images/layout_img/user_img.jpg')}}" alt="#" /></div>
+                                    @elseif(\Illuminate\Support\Facades\Auth::user()->google_id!=NULL)
+                                    <div class="profile_img"><img width="180" class="rounded-circle" src="{{Auth::user()->profile_photo_path}}" alt="#" /></div>
                                     @else
                                         <div class="profile_img"><img width="180" class="rounded-circle" src="{{url('/', Auth::user()->profile_photo_path)}}" alt="#" /></div>
                                     @endif
