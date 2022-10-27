@@ -28,6 +28,12 @@ class GiveawaController extends Controller
     function claimnow($request)
     {
         $give=Giveaway::where('id', $request)->first();
+        if ($give->claim==$give->limits)
+        {
+            $mg="Giveaway already claim finished comeback later";
+            Alert::warning('😋',$mg );
+            return back();
+        }
        $nw= $give->click+1;
        $re=$give->limits-1;
        $give->click=$nw;;
@@ -53,6 +59,12 @@ class GiveawaController extends Controller
             ->where('giveaway_id', $give->id)->first();
         if ($claim){
             $mg="You have already claim this giveaway";
+            Alert::warning('😋',$mg );
+            return back();
+        }
+        if ($give->claim==$give->limits)
+        {
+            $mg="Giveaway already claim finished comeback later";
             Alert::warning('😋',$mg );
             return back();
         }
