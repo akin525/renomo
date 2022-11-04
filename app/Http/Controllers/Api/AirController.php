@@ -10,6 +10,7 @@ use App\Models\data;
 use App\Models\User;
 use App\Models\wallet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
@@ -86,6 +87,7 @@ class AirController
                     'balance'=>$gt,
                 ]);
                 $bo['name']=encription::decryptdata($user->name);
+                $bo['email']=encription::decryptdata($user->email);
 
                 $resellerURL = 'https://integration.mcd.5starcompany.com.ng/api/reseller/';
                 $curl = curl_init();
