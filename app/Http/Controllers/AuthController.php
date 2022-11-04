@@ -38,7 +38,8 @@ class AuthController
         $glo=data::where('network', 'glo-data')->limit(7)->get();
         $eti=data::where('network', 'etisalat-data')->limit(7)->get();
         $airtel=data::where('network', 'airtel-data')->limit(7)->get();
-        Alert::image('Now Available', 'Kindly download our app on playstore or Update already downloaded to enjoy better feature and better notification','https://renomobilemoney.com/images/bn.jpeg','200','200', 'Image Alt');
+        $me = Messages::where('status', 1)->first();
+        Alert::image('Now Available', $me->message,'https://renomobilemoney.com/images/bn.jpeg','200','200', 'Image Alt');
 
 //Alert::info('Renomobilemoney', 'Data Refill | Airtime | Cable TV | Electricity Subscription');
         return view("home", compact("mtn", "glo", "eti", "airtel"));
