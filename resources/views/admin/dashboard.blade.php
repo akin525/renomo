@@ -21,10 +21,10 @@
                 </div>
             </div>
         </div>
-        <div class='alert alert-info'>
-            <button type='button' class='close' data-dismiss='alert'>&times;</button>
-            <i class='fa fa-ban-circle'></i><strong>Notification: </br></strong>Welcome Back {{\App\Console\encription::decryptdata($user->username)}}
-        </div>
+{{--        <div class='alert alert-info'>--}}
+{{--            <button type='button' class='close' data-dismiss='alert'>&times;</button>--}}
+{{--            <i class='fa fa-ban-circle'></i><strong>Notification: </br></strong>Welcome Back {{\App\Console\encription::decryptdata($user->username)}}--}}
+{{--        </div>--}}
         <div class="card">
             <div class="card-body">
                 <div class="w3-panel w3-yellow w3-round-xlarge">
