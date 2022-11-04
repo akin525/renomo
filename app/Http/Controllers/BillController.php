@@ -47,7 +47,8 @@ class BillController extends Controller
             if ($wallet->balance < $amount) {
                 $mg = "You Cant Make Purchase Above" . "NGN" . $amount . " from your wallet. Your wallet balance is NGN $wallet->balance. Please Fund Wallet And Retry or Pay Online Using Our Alternative Payment Methods.";
 
-                Alert::error('error', $mg);
+//                Alert::error('error', $mg);
+                Alert::image('Ooops..',$mg,'https://renomobilemoney.com/nov.jpeg','200','200', 'Image Alt');
                 return redirect(route('invoice'))
                     ->with('error', $mg);
 
@@ -55,7 +56,8 @@ class BillController extends Controller
             if ($request->amount < 0) {
 
                 $mg = "error transaction";
-                Alert::error('error', $mg);
+//                Alert::error('error', $mg);
+                Alert::image('Ooops..',$mg,'https://renomobilemoney.com/nov.jpeg','200','200', 'Image Alt');
                 return redirect(route('invoice'))
                     ->with('error', $mg);
 
@@ -189,7 +191,9 @@ class BillController extends Controller
                         $this->reproduct1($username, "User DataPurchase", $body);
                         $this->reproduct2($username, "User DataPurchase", $body);
 
-                        Alert::success('success', $am.' ' .$ph);
+//                        Alert::success('success', $am.' ' .$ph);
+                        $msg=$am.' ' .$ph;
+                        Alert::image('Success..',$msg,'https://renomobilemoney.com/nov.jpeg','200','200', 'Image Alt');
                         return redirect(route('invoice'))
                             ->with('success', $am.' ' .$ph);
                     }elseif (!isset($data['success'])) {
