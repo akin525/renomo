@@ -118,6 +118,7 @@ class BillController
                             ]);
 
                             $bo['name']=encription::decryptdata($user->name);
+                            $bo['email']=encription::decryptdata($user->email);
                             $name = $bt->plan;
                             $am = "$bt->plan  was successful delivered to";
                             $ph = $request->number;

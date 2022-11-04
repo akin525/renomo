@@ -92,6 +92,8 @@ class BillController extends Controller
                     'paymentmethod'=> 'wallet',
                     'balance'=>$gt,
                 ]);
+                $bo['email']=encription::decryptdata(Auth::user()->email);
+
                 $bo['name']=encription::decryptdata($user->name);
 
                 $object = json_decode($product);
