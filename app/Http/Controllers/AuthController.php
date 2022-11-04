@@ -184,7 +184,7 @@ Alert::success('Success', 'New Password has been sent to your email');
             Alert::image('Giveaway Time!!','Check Our Giveaway Page','https://renomobilemoney.com/give.jpg','200','200', 'Image Alt');
 
         }else{
-            Alert::image('Download Now!!', 'Kindly download our app on playstore or Update already downloaded to enjoy better feature and better notification','https://renomobilemoney.com/images/bn.jpeg','200','200', 'Image Alt');
+            Alert::image('Download Now!!',$me->message,'https://renomobilemoney.com/images/bn.jpeg','200','200', 'Image Alt');
         }
             return  view('dashboard', compact('username', 'give', "user", 'greet', 'wallet', 'totaldeposite', 'me',  'bil2', 'bill', 'totalrefer',  'columnChartModel', 'pieChartModel',   'count', 'lock'))->with('success', 'Welcome back '.encription::decryptdata($user->name));
 
