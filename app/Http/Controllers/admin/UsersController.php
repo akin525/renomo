@@ -153,7 +153,6 @@ $wallet=wallet::where('username', $username)->first();
     "notification": {
         "body": "'.$body.'",
         "title": "'.$title.'"
-        "image": "https://renomobilemoney.com/images/bn.jpeg"
     }
 
 }',
