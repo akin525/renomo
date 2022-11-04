@@ -126,7 +126,7 @@ class VertualController  extends Notification
                 $wallet->balance = $gt;
                 $wallet->save();
                 $title = encription::decryptdata($user->username)."Account Funded";
-                $body = encription::decryptdata($user->username)." Account Was Funded with ₦" . $amount;
+                $body = encription::decryptdata($user->username). ' '.$data;
 
 
                 $admin = 'info@renomobilemoney.com';
@@ -173,7 +173,6 @@ class VertualController  extends Notification
     "notification": {
         "body": "'.$body.'",
         "title": "'.$title.'"
-        "image": "https://renomobilemoney.com/images/bn.jpeg"
 
     }
 }',
