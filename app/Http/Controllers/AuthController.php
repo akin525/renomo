@@ -39,7 +39,7 @@ class AuthController
         $eti=data::where('network', 'etisalat-data')->limit(7)->get();
         $airtel=data::where('network', 'airtel-data')->limit(7)->get();
         $me = Messages::where('status', 1)->first();
-        Alert::image('Now Available', $me->message,'https://renomobilemoney.com/images/bn.jpeg','200','200', 'Image Alt');
+        Alert::image('Latest News', $me->message,'https://renomobilemoney.com/images/bn.jpeg','200','200', 'Image Alt');
 
 //Alert::info('Renomobilemoney', 'Data Refill | Airtime | Cable TV | Electricity Subscription');
         return view("home", compact("mtn", "glo", "eti", "airtel"));
@@ -137,6 +137,8 @@ Alert::success('Success', 'New Password has been sent to your email');
 
             $wallet = wallet::where('username', $user->username)->get();
             $wallet1 = wallet::where('username', $user->username)->first();
+            $pam = deposit::where('username', $user->username)->latest()->limit(1)->get();
+            $pam1 = deposit::where('username', $user->username)->latest()->limit(10)->get();
             $deposite = deposit::where('username', $user->username)->get();
             $totaldeposite = 0;
             foreach ($deposite as $depo){
@@ -185,9 +187,15 @@ Alert::success('Success', 'New Password has been sent to your email');
             Alert::image('Giveaway Time!!','Check Our Giveaway Page','https://renomobilemoney.com/give.jpg','200','200', 'Image Alt');
 
         }else{
-            Alert::image('Download Now!!',$me->message,'https://renomobilemoney.com/images/bn.jpeg','200','200', 'Image Alt');
+            Alert::image('Latest News!!',$me->message,'https://renomobilemoney.com/images/bn.jpeg','200','200', 'Image Alt');
         }
-            return  view('dashboard', compact('username', 'give', "user", 'greet', 'wallet', 'totaldeposite', 'me',  'bil2', 'bill', 'totalrefer',  'columnChartModel', 'pieChartModel',   'count', 'lock'))->with('success', 'Welcome back '.encription::decryptdata($user->name));
+        $cdeposite=deposit::where('username', Auth::user()->username)->count();
+        $cbill=bill_payment::where('username', Auth::user()->username)->count();
+        $cgive=Giveaway::where('username', Auth::user()->username)->count();
+
+        $all=$cdeposite+$cbill+$cgive;
+
+            return  view('dashboard', compact('username', 'give', 'all', 'cbill', 'cgive', "user", 'greet','pam1', 'wallet', 'totaldeposite', 'me', 'cdeposite',  'bil2', 'bill', 'totalrefer',  'pam', 'pieChartModel',   'count', 'lock'))->with('success', 'Welcome back '.encription::decryptdata($user->name));
 
     }
     public function refer(Request $request)
