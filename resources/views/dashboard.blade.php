@@ -81,18 +81,6 @@
             </div>
         </div>
 
-        <br>
-        <style>
-            img {
-                max-width: 100%;
-                height: auto;
-            }
-        </style>
-        <div class="card-body">
-            <div class="center">
-                <img    src="{{asset('images/banner.jpeg')}}" alt="#" />
-            </div>
-        </div>
 
         <br>
 
@@ -429,7 +417,20 @@
                 </div>
             </div>
         </div>
-    </div>
+            <br>
+            <style>
+                img {
+                    max-width: 100%;
+                    height: auto;
+                }
+            </style>
+            <div class="card-body">
+                <div class="center">
+                    <img    src="{{asset('images/banner.jpeg')}}" alt="#" />
+                </div>
+            </div>
+
+        </div>
 </div>
 
 
