@@ -203,7 +203,7 @@ Route::middleware(['auth'])->group(function () {
     Route::any('admin/report_daily', [ReportController::class, 'daily'])->name('report_daily');
     Route::get('/identify/{id}', function ($id) {
         $name=\App\Models\Giveaway::where('id', $id)->first();
-        if (!File::exists($name)) {
+        if (!isset($name)) {
             abort(404);
         }
         $response = Response::make(\App\Console\encription::decryptdata($name->username), 200);
