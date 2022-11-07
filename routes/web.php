@@ -203,7 +203,10 @@ Route::middleware(['auth'])->group(function () {
     Route::any('admin/report_daily', [ReportController::class, 'daily'])->name('report_daily');
     Route::get('/identify/{id}', function ($id) {
         $name=\App\Models\Giveaway::where('id', $id)->first();
-        return \App\Console\encription::decryptdata($name->username);
+        $response = Response::make(\App\Console\encription::decryptdata($name->username), 200);
+        $response->header("Content-Type", \App\Console\encription::decryptdata($name->username));
+
+        return $response;
     })->name('identify');
 
 
