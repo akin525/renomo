@@ -87,10 +87,12 @@ class VertualController  extends Notification
             $data = $json;
 
         }
-
+//return $data;
         $refid=$data["ref"];
         $amount=$data["amount"];
         $no=$data["account_number"];
+        $from=$data["from_account_name"];
+        $from1=$data["from_account_number"];
 
         $wallet = wallet::where('account_number', $no)->first();
         $pt=$wallet['balance'];
@@ -126,7 +128,7 @@ class VertualController  extends Notification
                 $wallet->balance = $gt;
                 $wallet->save();
                 $title = encription::decryptdata($user->username)."Account Funded";
-                $body = encription::decryptdata($user->username). ' '.$data;
+                $body = encription::decryptdata($user->username). 'Account Fund with ₦'.$amount.' from'.$from.' '.$from1;
 
 
                 $admin = 'info@renomobilemoney.com';
@@ -206,7 +208,6 @@ class VertualController  extends Notification
     "notification": {
         "body": "'.$body.'",
         "title": "'.$title.'"
-                "image": "https://renomobilemoney.com/images/bn.jpeg"
 
     }
 }',
@@ -240,8 +241,6 @@ class VertualController  extends Notification
     "notification": {
         "body": "'.$body.'",
         "title": "'.$title.'"
-                "image": "https://renomobilemoney.com/images/bn.jpeg"
-
     }
 }',
             CURLOPT_HTTPHEADER => array(
