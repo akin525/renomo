@@ -127,8 +127,8 @@ class VertualController  extends Notification
                 ]);
                 $wallet->balance = $gt;
                 $wallet->save();
-                $title = encription::decryptdata($user->username)."Account Funded";
-                $body = encription::decryptdata($user->username). 'Account Fund with ₦'.$amount.' from'.$from.' '.$from1;
+                $title = encription::decryptdata($user->username)." Account Funded";
+                $body = encription::decryptdata($user->username). ' Account Fund with ₦'.$amount.' from'.$from.' '.$from1;
 
 
                 $admin = 'info@renomobilemoney.com';
