@@ -29,7 +29,7 @@
                                     @foreach($claim as $re)
                                         <tr>
                                             <td>{{$re->created_at}}</td>
-                                            <td><a href="{{url('identify', $re->giveaway_id)}}">{{url('identify', $re->giveaway_id)}}</a></td>
+                                            <td>{{\App\Console\encription::decryptdata($re->parentData->username)}}</td>
                                             <td>{{\App\Console\encription::decryptdata($re->username)}}</td>
                                             <td>{{$re->product}}</td>
                                             <td>{{$re->amount}}</td>

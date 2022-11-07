@@ -11,4 +11,5 @@ class Giveaway extends Model
 
     protected $table = 'giveaway';
     protected $guarded=[];
+
 }

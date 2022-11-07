@@ -11,4 +11,9 @@ class Claim extends Model
 
     protected $table = 'claim';
     protected $guarded=[];
+
+    function parentData()
+    {
+        return $this->belongsTo(Giveaway::class, 'giveaway_id','id');
+    }
 }

@@ -15,7 +15,7 @@ function giveawayall()
 }
 function claimby()
 {
-    $claim=Claim::all();
+    $claim=Claim::with('parentData')->get();
     return view('admin/claim', compact('claim'));
 }
 
