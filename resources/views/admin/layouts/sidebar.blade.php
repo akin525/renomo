@@ -111,6 +111,17 @@
                         <a  class="nav-link" href="{{ route('admin/dashboard') }}"  ><i class="fa fa-dashboard red_color"></i> <span>Dashboard</span></a>
                     </li>
                     <li>
+                        <a href="#app4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-gift"></i> <span>Giveaway</span></a>
+                        <ul class="collapse list-unstyled" id="app4">
+                            <li class="nav-item">
+                                <a  class="nav-link" href="{{ route('admin/giveaway') }}"  ><i class="fa fa-gift red_color"></i> <span>All Giveaway</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a  class="nav-link" href="{{ route('admin/claim') }}"  ><i class="fa fa-money red_color"></i> <span>All Claim</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="#app4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-lock"></i> <span>Locks</span></a>
                         <ul class="collapse list-unstyled" id="app4">
                             <li class="nav-item">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Actions\Fortify\CreateNewUser;
+use App\Http\Controllers\admin\bonusController;
 use App\Http\Controllers\admin\HonorApi;
 use App\Http\Controllers\admin\CandCController;
 use App\Http\Controllers\admin\LockController;
@@ -189,6 +190,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/approved/{id}', [WithadController::class, 'approve'])->name('admin/approved');
     Route::get('admin/disapproved/{id}', [WithadController::class, 'disapprove'])->name('admin/disapproved');
     Route::get('admin/bills', [TransactionController::class, 'bill'])->name('admin/bills');
+    Route::get('admin/giveaway', [BonusController::class, 'giveawayall'])->name('admin/giveaway');
+    Route::get('admin/claim', [BonusController::class, 'claimby'])->name('admin/claim');
     Route::get('admin/finddeposite', [TransactionController::class, 'index'])->name('admin/finddeposite');
     Route::post('admin/depo', [TransactionController::class, 'finduser'])->name('admin/depo');
     Route::post('admin/date', [QueryController::class, 'querydeposi'])->name('admin/date');
@@ -198,6 +201,11 @@ Route::middleware(['auth'])->group(function () {
     Route::any('admin/report_yearly', [ReportController::class, 'yearly'])->name('report_yearly');
     Route::any('admin/report_monthly', [ReportController::class, 'monthly'])->name('report_monthly');
     Route::any('admin/report_daily', [ReportController::class, 'daily'])->name('report_daily');
+    Route::get('/identify/{id}', function ($id) {
+        $name=\App\Models\Giveaway::where('id', $id)->first();
+        return \App\Console\encription::decryptdata($name->username);
+    })->name('identify');
+
 
 });
 Route::get('admin/api', [HonorApi::class, 'api'])->name('admin/api');
