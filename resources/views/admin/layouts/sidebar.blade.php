@@ -111,8 +111,8 @@
                         <a  class="nav-link" href="{{ route('admin/dashboard') }}"  ><i class="fa fa-dashboard red_color"></i> <span>Dashboard</span></a>
                     </li>
                     <li>
-                        <a href="#app4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-gift"></i> <span>Giveaway</span></a>
-                        <ul class="collapse list-unstyled" id="app4">
+                        <a href="#app7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-gift"></i> <span>Giveaway</span></a>
+                        <ul class="collapse list-unstyled" id="app7">
                             <li class="nav-item">
                                 <a  class="nav-link" href="{{ route('admin/giveaway') }}"  ><i class="fa fa-gift red_color"></i> <span>All Giveaway</span></a>
                             </li>
