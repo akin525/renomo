@@ -28,6 +28,8 @@ Route::post('honor', [VertualController::class, 'honor'])->name('honor');
 
 Route::group(['middleware'=> 'apikey'], function () {
     Route::get('dashboard', [ResellerdetailsController::class, 'details']);
+    Route::get('fundhistory', [ResellerdetailsController::class, 'fundhistory']);
+    Route::get('purchasehistory', [ResellerdetailsController::class, 'purchasehistory']);
     Route::post('waec', [RducationController::class, 'waec']);
     Route::post('neco', [RducationController::class, 'neco']);
     Route::post('airtime', [AirController::class, 'airtime']);

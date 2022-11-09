@@ -16,6 +16,7 @@ use App\Models\deposit;
 
 class ResellerdetailsController
 {
+//    wallet balance of reseller
     public function details(Request $request)
     {
         $apikey = $request->header('apikey');
@@ -45,6 +46,8 @@ class ResellerdetailsController
                 ], 200);
         }
     }
+
+//    fundhistory of reseller
     function fundhistory($request)
     {
         $apikey = $request->header('apikey');
@@ -56,6 +59,8 @@ class ResellerdetailsController
             'message' => "Deposit fetch successfully", 'data' => $data
         ], 200);
     }
+
+//    puchasehistory of reseller
     function purchasehistory($request)
     {
         $apikey = $request->header('apikey');
