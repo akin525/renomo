@@ -8,7 +8,7 @@ class ResponseController extends Controller
 {
 function responsefunding()
 {
-    $vertual=web::all();
+    $vertual=web::latest()->get();
 
         return view('admin/response', compact('vertual'));
 }
