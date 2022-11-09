@@ -36,17 +36,17 @@ class VerifyController
         $user = User::where('apikey', $apikey)->first();
 
         $bill=bill_payment::where('transactionid','api'.$request['refid'])->first();
-        if (!isset($bill)){
+
+        if ($bill){
+            return response()->json([
+                'success'=>1,
+                'message' => "Record fetch successfully", 'data' => $bill
+            ], 200);
+        }else{
             $msg="Transaction not found";
             return response()->json([
                 'success'=>0,
                 'message' => "error", 'data' => $msg
-            ], 200);
-        }
-        if (isset($bill)){
-            return response()->json([
-                'success'=>1,
-                'message' => "Record fetch successfully", 'data' => $bill
             ], 200);
         }
     }
