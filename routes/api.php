@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AirController;
 use App\Http\Controllers\Api\AlltvController;
 use App\Http\Controllers\Api\BuyController;
 use App\Http\Controllers\Api\EkectController;
+use App\Http\Controllers\Api\FetchdataController;
 use App\Http\Controllers\Api\ResellerdetailsController;
 use App\Http\Controllers\Api\BillController;
 use App\Http\Controllers\Api\FundController;
@@ -42,6 +43,7 @@ Route::group(['middleware'=> 'apikey'], function () {
     Route::post('verifytv', [AlltvController::class, 'verifytv']);
     Route::get('listtv', [AlltvController::class, 'listtv']);
     Route::get('listelect', [EkectController::class, 'listelect']);
+    Route::get('listdata', [FetchdataController::class, 'listdata']);
     Route::get('elect', [EkectController::class, 'electric']);
     Route::post('velect', [EkectController::class, 'verifyelect']);
     Route::post('payelect', [EkectController::class, 'payelect']);
