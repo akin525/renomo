@@ -85,7 +85,7 @@ class BillController extends Controller
                     'product' => $product->network . '|' . $product->plan,
                     'amount' => $request->amount,
                     'server_response' => 'ur fault',
-                    'status' => 1,
+                    'status' => 0,
                     'number' => $request->number,
                     'transactionid' => $request->id,
                     'discountamount'=>0,
@@ -123,6 +123,9 @@ class BillController extends Controller
                             'plan' => $product->network . '|' . $product->plan,
                             'amount' => $po,
                         ]);
+
+                        $bo->status=1;
+                        $bo->save();
 
 //                        $name = $product->plan;
                         $am = "$product->plan  was successful delivered to";
@@ -173,7 +176,8 @@ class BillController extends Controller
                             'plan' => $product->network . '|' . $product->plan,
                             'amount' => $po,
                         ]);
-
+                        $bo->status=1;
+                        $bo->save();
                         $name = $product->plan;
                         $am = "$product->plan  was successful delivered to";
                         $ph = $request->number;

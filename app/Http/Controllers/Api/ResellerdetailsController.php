@@ -45,4 +45,26 @@ class ResellerdetailsController
                 ], 200);
         }
     }
+    function fundhistory($request)
+    {
+        $apikey = $request->header('apikey');
+        $user = User::where('apikey',$apikey)->first();
+        $data = deposit::where('username', $user->username)->get();
+
+        return response()->json([
+            'success'=>1,
+            'message' => "Deposit fetch successfully", 'data' => $data
+        ], 200);
+    }
+    function purchasehistory($request)
+    {
+        $apikey = $request->header('apikey');
+        $user = User::where('apikey',$apikey)->first();
+        $data = bill_payment::where('username', $user->username)->get();
+
+        return response()->json([
+            'success'=>1,
+            'message' => "Purchase fetch successfully", 'data' => $data
+        ], 200);
+    }
 }
