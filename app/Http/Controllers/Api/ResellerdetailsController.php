@@ -48,7 +48,7 @@ class ResellerdetailsController
     }
 
 //    fundhistory of reseller
-    function fundhistory($request)
+    function fundhistory(Request $request)
     {
         $apikey = $request->header('apikey');
         $user = User::where('apikey',$apikey)->first();
