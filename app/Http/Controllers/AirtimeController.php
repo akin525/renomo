@@ -69,7 +69,7 @@ class AirtimeController
                     'product' => $request->id.'Airtime',
                     'amount' => $request->amount,
                     'server_response' => 0,
-                    'status' => 1,
+                    'status' => 0,
                     'number' => $request->number,
                     'paymentmethod'=>'wallet',
                     'transactionid' => $request->refid,
@@ -110,7 +110,9 @@ class AirtimeController
                 $success = $data["success"];
                 $tran1 = $data["discountAmount"];
                 if ($success == 1) {
-
+                    $bo->server_response=$response;
+                    $bo->status=1;
+                    $bo->save();
                     $am = "NGN $request->amount  Airtime Purchase Was Successful To";
                     $ph = $request->number;
 
