@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\FetchdataController;
 use App\Http\Controllers\Api\ResellerdetailsController;
 use App\Http\Controllers\Api\BillController;
 use App\Http\Controllers\Api\FundController;
+use App\Http\Controllers\Api\VerifyController;
 use App\Http\Controllers\Api\VertualController;
 use App\Http\Controllers\Api\RducationController;
 use Illuminate\Http\Request;
@@ -49,6 +50,8 @@ Route::group(['middleware'=> 'apikey'], function () {
     Route::get('elect', [EkectController::class, 'electric']);
     Route::post('velect', [EkectController::class, 'verifyelect']);
     Route::post('payelect', [EkectController::class, 'payelect']);
+    Route::post('verifybill', [VerifyController::class, 'verifybill']);
+    Route::post('verifydeposit', [VerifyController::class, 'verifyfunding']);
 
 
 //        Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
