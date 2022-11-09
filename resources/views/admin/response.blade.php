@@ -41,6 +41,11 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                                <script>
+                                    $(document).ready(function() {
+                                        $('#summernote').summernote();
+                                    });
+                                </script>
                             </div>
                         </div>
                     </div>
