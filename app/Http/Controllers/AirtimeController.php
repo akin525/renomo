@@ -110,9 +110,13 @@ class AirtimeController
                 $success = $data["success"];
                 $tran1 = $data["discountAmount"];
                 if ($success == 1) {
-                    $bo->server_response=$response;
-                    $bo->status=1;
-                    $bo->save();
+//                    $bo->server_response=$response;
+//                    $bo->status=1;
+//                    $bo->save();
+                    $bo->update([
+                        'server_response'=>$response,
+                        'status'=>1,
+                    ]);
                     $am = "NGN $request->amount  Airtime Purchase Was Successful To";
                     $ph = $request->number;
 
