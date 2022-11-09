@@ -113,7 +113,7 @@ class AirtimeController
 //                    $bo->server_response=$response;
 //                    $bo->status=1;
 //                    $bo->save();
-                    $bo->update([
+                    $update=bill_payment::where('id', $bo->id)->update([
                         'server_response'=>$response,
                         'status'=>1,
                     ]);
