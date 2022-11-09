@@ -81,6 +81,18 @@ class BillController
 
                 $wallet->balance = $gt;
                 $wallet->save();
+                $bo = bill_payment::create([
+                    'username' => $user->username,
+                    'product' => $bt->network . '|' . $bt->plan,
+                    'amount' => $request->amount,
+                    'server_response' => 'ur fault',
+                    'status' => 0,
+                    'number' => $request->number,
+                    'transactionid' =>'api'. $request->refid,
+                    'discountamount' => 0,
+                    'paymentmethod' => 'wallet',
+                    'balance' => $gt,
+                ]);
 
                     $daterserver = new DataserverController();
 
@@ -104,19 +116,9 @@ class BillController
                             $success=$data["success"];
                         }
                         if ($success==1) {
-                            $bo = bill_payment::create([
-                                'username' => $user->username,
-                                'product' => $bt->network . '|' . $bt->plan,
-                                'amount' => $request->amount,
-                                'server_response' => 'ur fault',
-                                'status' => 1,
-                                'number' => $request->number,
-                                'transactionid' =>'api'. $request->refid,
-                                'discountamount' => 0,
-                                'paymentmethod' => 'wallet',
-                                'balance' => $gt,
-                            ]);
-
+                            $bo->server_response=$response;
+                            $bo->status=1;
+                            $bo->save();
                             $bo['name']=encription::decryptdata($user->name);
                             $bo['email']=encription::decryptdata($user->email);
                             $name = $bt->plan;
@@ -148,6 +150,8 @@ class BillController
                             $wallet->balance = $zo;
                             $wallet->save();
 
+                            $bo->server_response=$response;
+                            $bo->save();
                             $name= $bt->plan;
                             $am= "NGN $request->amount Was Refunded To Your Wallet";
                             $ph=", Transaction fail";

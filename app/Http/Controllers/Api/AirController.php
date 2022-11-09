@@ -79,7 +79,7 @@ class AirController
                     'product' => $request->id.'Airtime',
                     'amount' => $request->amount,
                     'server_response' => 0,
-                    'status' => 1,
+                    'status' => 0,
                     'number' => $request->number,
                     'paymentmethod'=>'wallet',
                     'transactionid' =>'api'. $request->refid,
@@ -116,6 +116,9 @@ class AirController
                 $success = $data["success"];
                 if ($success == 1) {
 
+                    $bo->server_response=$response;
+                    $bo->status=1;
+                    $bo->save();
 
                     $am = "NGN $request->amount  Airtime Purchase Was Successful To";
                     $ph = $request->number;
@@ -133,6 +136,8 @@ class AirController
                     $zo = $wallet->balance + $request->amount;
                     $wallet->balance = $zo;
                     $wallet->save();
+                    $bo->server_response=$response;
+                    $bo->save();
 
 //                    $name = $bt->plan;
                     $am = "NGN $request->amount Was Refunded To Your Wallet";
