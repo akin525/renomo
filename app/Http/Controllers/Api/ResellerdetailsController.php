@@ -61,7 +61,7 @@ class ResellerdetailsController
     }
 
 //    puchasehistory of reseller
-    function purchasehistory($request)
+    function purchasehistory(Request $request)
     {
         $apikey = $request->header('apikey');
         $user = User::where('apikey',$apikey)->first();
