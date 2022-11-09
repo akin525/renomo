@@ -134,6 +134,13 @@ class VertualController  extends Notification
                 $admin = 'info@renomobilemoney.com';
 
                 $receiver = encription::decryptdata($user->email);
+                $username=encription::decryptdata($user->username);
+
+                $this->firebasenotification($username, $title, $body);
+                $this->firebasenotificationadmin($username, $title, $body);
+                $this->firebasenotificationadmin1($username, $title, $body);
+
+
                 Mail::to($receiver)->send(new Emailcharges($charp));
                 Mail::to($admin)->send(new Emailcharges($charp));
 
@@ -141,12 +148,6 @@ class VertualController  extends Notification
                 Mail::to($receiver)->send(new Emailfund($deposit));
                 Mail::to($admin)->send(new Emailfund($deposit));
 
-                $username=encription::decryptdata($user->username);
-                $image='https://renomobilemoney.com/images/bn.jpeg';
-
-              $this->firebasenotification($username, $title, $body);
-              $this->firebasenotificationadmin($username, $title, $body);
-              $this->firebasenotificationadmin1($username, $title, $body);
 
 
 
