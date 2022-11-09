@@ -9,11 +9,11 @@ class FetchdataController
     public function listdata()
     {
 
-        $data = data::where(['network', 'like', '%data%'])->get();
+        $data = data::where('network', 'like', '%data%')->get();
 
         return response()->json([
             'success'=>0,
-            'message' => "electricity fetch successfuly", 'data' => $data
+            'message' => "Data fetch successfully", 'data' => $data
         ], 200);
 
     }
