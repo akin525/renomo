@@ -116,9 +116,10 @@ class AirController
                 $success = $data["success"];
                 if ($success == 1) {
 
-                    $bo->server_response=$response;
-                    $bo->status=1;
-                    $bo->save();
+                    $update=bill_payment::where('id', $bo->id)->update([
+                        'server_response'=>$response,
+                        'status'=>1,
+                    ]);
 
                     $am = "NGN $request->amount  Airtime Purchase Was Successful To";
                     $ph = $request->number;
@@ -136,8 +137,10 @@ class AirController
                     $zo = $wallet->balance + $request->amount;
                     $wallet->balance = $zo;
                     $wallet->save();
-                    $bo->server_response=$response;
-                    $bo->save();
+                    $update=bill_payment::where('id', $bo->id)->update([
+                        'server_response'=>$response,
+                        'status'=>0,
+                    ]);
 
 //                    $name = $bt->plan;
                     $am = "NGN $request->amount Was Refunded To Your Wallet";

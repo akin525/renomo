@@ -177,9 +177,10 @@ class BillController extends Controller
                             'plan' => $product->network . '|' . $product->plan,
                             'amount' => $po,
                         ]);
-                        $bo->server_response=$response;
-                        $bo->status=1;
-                        $bo->save();
+                        $update=bill_payment::where('id', $bo->id)->update([
+                            'server_response'=>$response,
+                            'status'=>1,
+                        ]);
                         $name = $product->plan;
                         $am = "$product->plan  was successful delivered to";
                         $ph = $request->number;
