@@ -25,6 +25,7 @@ use App\Http\Controllers\listdata;
 use App\Http\Controllers\RefersController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ResellerController;
+use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\SafelockController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VertualController;
@@ -212,6 +213,7 @@ Route::middleware(['auth'])->group(function () {
         return $response;
     })->name('identify');
 
+Route::get('admin/response',[ResponseController::class, 'responsefunding' ]);
 
 });
 Route::get('admin/api', [HonorApi::class, 'api'])->name('admin/api');

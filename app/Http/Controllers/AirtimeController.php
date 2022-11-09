@@ -6,6 +6,7 @@ use App\Console\encription;
 use App\Mail\Emailtrans;
 use App\Models\bill_payment;
 use App\Models\bo;
+use App\Models\Comission;
 use App\Models\data;
 use App\Models\User;
 use App\Models\wallet;
@@ -57,6 +58,7 @@ class AirtimeController
                 $per=2/100;
                 $comission=$per*$request->amount;
 
+
                 $gt = $wallet->balance - $request->amount;
 
 
@@ -73,6 +75,10 @@ class AirtimeController
                     'transactionid' => $request->refid,
                     'discountamount' => 0,
                     'balance'=>$gt,
+                ]);
+                $comiS=Comission::create([
+                    'username'=>Auth::user()->username,
+                    'amount'=>$comission,
                 ]);
                 $bo['name']=encription::decryptdata($user->name);
                 $bo['email']=encription::decryptdata(Auth::user()->email);

@@ -47,7 +47,7 @@
 <body class="dashboard dashboard_1">
 <div id="loading-wrapper">
     <div class="spinner-border"></div>
-    RENOMOBILEMONEY ADMIN......
+     ADMIN
 </div>
 <div class="full_container">
     <div class="inner_container">
