@@ -99,7 +99,7 @@ class VertualController  extends Notification
 
         if ($no == $wallet->account_number) {
             $user = user::where('username', $wallet->username)->first();
-            $depo = deposit::where('payment_ref', $refid)->first();
+            $depo = deposit::where('payment_ref', 'Reno'.$refid)->first();
             if (isset($depo)) {
                 echo "payment refid the same";
                 return $depo;
