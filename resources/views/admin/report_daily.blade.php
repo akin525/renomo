@@ -73,24 +73,29 @@
                         <tr>
                             <th>Name</th>
                             <th>Amount</th>
+                            <th>Count</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
                             <td>Data</td>
                             <td>₦{{number_format(intval($data_amount *1),2)}}</td>
+                            <td>{{number_format(intval($data *1))}}</td>
                         </tr>
                         <tr>
                             <td>Airtime</td>
                             <td>₦{{number_format(intval($airtime_amount *1),2)}}</td>
+                            <td>{{number_format(intval($airtime *1))}}</td>
                         </tr>
                         <tr>
                             <td>TV</td>
                             <td>₦{{number_format(intval($tv_amount *1),2)}}</td>
+                            <td>{{number_format(intval($tv *1))}}</td>
                         </tr>
                         <tr>
                             <td>Electricity</td>
                             <td> ₦{{number_format(intval($electricity_amount *1),2)}}</td>
+                            <td> {{number_format(intval($electricity *1))}}</td>
                         </tr>
                         </tbody>
                     </table>
