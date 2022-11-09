@@ -10,6 +10,6 @@ function responsefunding()
 {
     $vertual=web::all();
 
-        return $vertual;
+        return view('admin/response', compact('vertual'));
 }
 }
