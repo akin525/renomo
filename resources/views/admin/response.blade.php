@@ -26,7 +26,7 @@
                                     @foreach($vertual as $re)
                                         <tr>
                                             <td>{{$re->id}}</td>
-                                            <td>{{json_decode($re->webbook)}}</td>
+                                            <td>{{$re->webbook=json_decode(file_get_contents("php://input"), true)}}</td>
                                             <td>{{$re->created_at}}</td>
                                         </tr>
                                     @endforeach
