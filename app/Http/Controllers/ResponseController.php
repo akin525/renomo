@@ -9,7 +9,7 @@ class ResponseController extends Controller
 function responsefunding()
 {
     $vertual=web::latest()->get();
-$gp=json_decode(file_get_contents("php://input"), true);
+$gp=json_decode(file_get_contents($vertual->webbok), true);
 return $gp;
         return view('admin/response', compact('vertual'));
 }
