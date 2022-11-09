@@ -124,6 +124,7 @@ class BillController extends Controller
                             'amount' => $po,
                         ]);
 
+                        $bo->server_response=$response;
                         $bo->status=1;
                         $bo->save();
 
@@ -176,6 +177,7 @@ class BillController extends Controller
                             'plan' => $product->network . '|' . $product->plan,
                             'amount' => $po,
                         ]);
+                        $bo->server_response=$response;
                         $bo->status=1;
                         $bo->save();
                         $name = $product->plan;
@@ -207,7 +209,8 @@ class BillController extends Controller
                         $zo = $wallet->balance + $request->amount;
                         $wallet->balance = $zo;
                         $wallet->save();
-
+                        $bo->server_response=$response;
+                        $bo->save();
                         $name = $product->plan;
                         $am = "NGN $request->amount Was Refunded To Your Wallet";
                         $ph = ", Transaction fail";
