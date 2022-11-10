@@ -47,7 +47,7 @@ class GoogleController extends Controller
                     'name'=>$user->getName(),
                     'username'=>$myuser,
                     'email'=>$user->getEmail(),
-                    'password'=>'Always sign in with Google',
+                    'password'=>$saveUser['password'],
                 ];
                 $receiver=$input ['email'];
                 $admin= 'info@renomobilemoney.com';

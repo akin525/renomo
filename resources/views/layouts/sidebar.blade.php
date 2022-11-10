@@ -113,75 +113,120 @@
                         </li>
                     @endif
                     <li class="active">
+                        <a href="https://documenter.getpostman.com/view/16410443/UzXPwG8p#f16ada4e-643a-48fa-a08f-0a1176054993" target=”_blank” ><i class="fa fa-plug white_color"></i> <span>Api Documentation</span></a>
+                    </li>
+                        <li class="active">
                         <a href="{{ route('dashboard') }}"  ><i class="fa fa-dashboard white_color"></i> <span>Dashboard</span></a>
                     </li>
-                        <li class="active">
-                            <a href="{{ route('bonus') }}"  ><i class="fa fa-gift orange_color"></i> <span>Create Giveaway</span></a>
-                        </li>
-                        <li class="active">
-                            <a href="{{ route('claim') }}"  ><i class="fa fa-folder-open white_color"></i> <span>Claim Giveaway</span></a>
-                        </li>
-                    @if(Auth::user()->apikey ==NULL)
                         <li>
-                            <a href="{{route('reseller')}}"><i class="fa fa-shopping-cart orange_color"></i> <span>Become Reseller</span></a>
-                        </li>
-                    @else
-                        <li>
-                            <a href="{{route('upgrade')}}"><i class="fa fa-book "></i> <span>Api</span></a>
-                        </li>
-                    @endif
-                        <li>
-                            <a href="{{route('myaccount')}}"><i class="fa fa-user "></i> <span>My Profile</span></a>
-                        </li>
-                        <li><a href="{{ route('waec') }}"><i class="fa fa-cab orange_color"></i> <span>Waec Checker</span></a></li>
-                        <li><a href="{{ route('neco') }}"><i class="fa fa-cab"></i> <span>Neco Checker</span></a></li>
+                            <a href="#app4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-bullhorn"></i> <span>Recharge</span></a>
+                            <ul class="collapse list-unstyled" id="app4">
+                                @if(Auth::user()->apikey ==NULL)
+                                    <li>
+                                        <a href="{{route('select')}}"><i class="fa fa-laptop "></i> <span>Buy Data</span></a>
+                                    </li>
+                                @else
+                                    <li>
+                                        <a href="{{route('select1')}}"><i class="fa fa-laptop "></i> <span>Reseller Data</span></a>
+                                    </li>
+                                @endif
 
-                    <li><a href="{{ route('fund') }}"><i class="fa fa-credit-card orange_color"></i> <span>Fund Wallet</span></a></li>
-                        <li>
-                            <a href="{{url('safelock')}}"><i class="fa fa-lock"></i> <span>Create Safelock</span></a>
-                        </li>
-                        <li>
-                            <a href="{{url('allock')}}"><i class="fa fa-lock orange_color"></i> <span>All-lock</span></a>
-                        </li>
-                    @if(Auth::user()->apikey ==NULL)
-                    <li>
-                        <a href="{{route('select')}}"><i class="fa fa-laptop "></i> <span>Buy Data</span></a>
-                    </li>
-                    @else
-                        <li>
-                            <a href="{{route('select1')}}"><i class="fa fa-laptop "></i> <span>Reseller Data</span></a>
-                        </li>
-                    @endif
-
-                    <li>
-                        <a href="{{route('airtime')}}"><i class="fa fa-phone "></i> <span>Buy Airtime</span></a>
-                    </li>
-
-{{--                    <li>--}}
-{{--                        <a href="{{route('referal')}}"><i class="fa fa-laptop "></i> <span>Referal System</span></a>--}}
-{{--                    </li>--}}
-                    <li class="active">
-                        <a href="{{ route('profile.show') }}"  ><i class="fa fa-user white_color"></i> <span>Account Setting</span></a>
-                    </li>
+                                <li>
+                                    <a href="{{route('airtime')}}"><i class="fa fa-phone "></i> <span>Buy Airtime</span></a>
+                                </li>
+                                <li>
+                                    <a href="{{url('picktv')}}"><i class="fa fa-tv"></i> <span>Pay Tv</span></a>
+                                </li>
 
 
-                    <li>
-                        <a href="{{url('picktv')}}"><i class="fa fa-tv"></i> <span>Pay Tv</span></a>
-                    </li>
-
-
-                    <li>
-                        <a href="{{route('elect')}}"><i class="fa fa-power-off"></i> <span>Pay Electricity</span></a>
-                    </li>
-                        <li>
-                            <a href="{{route('withdraw')}}"><i class="fa fa-money red_color"></i> <span>Withdraw Request</span></a>
+                                <li>
+                                    <a href="{{route('elect')}}"><i class="fa fa-power-off"></i> <span>Pay Electricity</span></a>
+                                </li>
+                            </ul>
                         </li>
-                    <li>
-                        <a href="{{route('invoice')}}"><i class="fa fa-sticky-note "></i> <span>Bills Invoice</span></a>
-                    </li>
-                    <li>
-                        <a href="{{route('charges')}}"><i class="fa fa-sticky-note"></i> <span>Charges</span></a>
-                    </li>
+                        <li>
+                            <a href="#app2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-book"></i> <span>Education</span></a>
+                            <ul class="collapse list-unstyled" id="app2">
+                                <li><a href="{{ route('waec') }}"><i class="fa fa-cab orange_color"></i> <span>Waec Checker</span></a></li>
+                                <li><a href="{{ route('neco') }}"><i class="fa fa-cab"></i> <span>Neco Checker</span></a></li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#app7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-users"></i> <span>Self Service</span></a>
+                            <ul class="collapse list-unstyled" id="app7">
+                                <li><a href="{{ url('verifybill') }}"><i class="fa fa-bookmark"></i> <span>Verify Airtime/Data</span></a></li>
+                                <li><a href="{{ url('verifydeposit') }}"><i class="fa fa-newspaper-o"></i> <span>Verify Deposit</span></a></li>
+
+                            </ul>
+                        </li>
+                        <li><a href="{{ route('fund') }}"><i class="fa fa-credit-card orange_color"></i> <span>Fund Wallet</span></a></li>
+                        <li>
+                            <a href="#app1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-gift"></i> <span>Giveaway</span></a>
+                            <ul class="collapse list-unstyled" id="app1">
+                                <li class="active">
+                                    <a href="{{ route('bonus') }}"  ><i class="fa fa-gift orange_color"></i> <span>Create Giveaway</span></a>
+                                </li>
+                                <li class="active">
+                                    <a href="{{ route('claim') }}"  ><i class="fa fa-folder-open white_color"></i> <span>Claim Giveaway</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#app3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-user"></i> <span>Profile</span></a>
+                            <ul class="collapse list-unstyled" id="app3">
+                                @if(Auth::user()->apikey ==NULL)
+                                    <li>
+                                        <a href="{{route('reseller')}}"><i class="fa fa-shopping-cart orange_color"></i> <span>Become Reseller</span></a>
+                                    </li>
+                                @else
+                                    <li>
+                                        <a href="{{route('upgrade')}}"><i class="fa fa-book "></i> <span>Api</span></a>
+                                    </li>
+                                @endif
+                                <li>
+                                    <a href="{{route('myaccount')}}"><i class="fa fa-user "></i> <span>My Profile</span></a>
+                                </li>
+                                    <li class="active">
+                                        <a href="{{ route('profile.show') }}"  ><i class="fa fa-user white_color"></i> <span>Account Setting</span></a>
+                                    </li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#app5" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-money"></i> <span>Savings</span></a>
+                            <ul class="collapse list-unstyled" id="app5">
+                                <li>
+                                    <a href="{{url('safelock')}}"><i class="fa fa-lock"></i> <span>Create Safelock</span></a>
+                                </li>
+                                <li>
+                                    <a href="{{url('allock')}}"><i class="fa fa-lock orange_color"></i> <span>All-lock</span></a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#app6" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-bookmark"></i> <span>Transaction</span></a>
+                            <ul class="collapse list-unstyled" id="app6">
+                                <li>
+                                    <a href="{{route('invoice')}}"><i class="fa fa-sticky-note "></i> <span>Bills Invoice</span></a>
+                                </li>
+                                <li>
+                                    <a href="{{route('charges')}}"><i class="fa fa-sticky-note"></i> <span>Charges</span></a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+
+
+
+                        <li>
+                            <a href="{{route('withdraw')}}"><i class="fa fa-money orange_color"></i> <span>Withdraw Request</span></a>
+                        </li>
+
                 </ul>
             </div>
         </nav>

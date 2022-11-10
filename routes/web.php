@@ -28,6 +28,7 @@ use App\Http\Controllers\ResellerController;
 use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\SafelockController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\verify;
 use App\Http\Controllers\VertualController;
 use App\Http\Controllers\WithdrawController;
 use Illuminate\Support\Facades\Auth;
@@ -112,13 +113,18 @@ Route::post('referwith1', [RefersController::class, 'with'])->name('referwith1')
 Route::get('fund', [FundController::class, 'fund'])->name('fund');
 Route::get('tran/{reference}', [FundController::class, 'tran'])->name('tran');
 Route::get('vertual', [VertualController::class, 'vertual'])->name('vertual');
+
+//withdraw request
 Route::get('withdraw', [WithdrawController::class, 'bank'])->name('withdraw');
 Route::post('verify', [WithdrawController::class, 'verify'])->name('verify');
 Route::post('sub', [WithdrawController::class, 'sub'])->name('sub');
+//profile route
 Route::post('pic', [UserController::class, 'updateprofilephoto'])->name('pic');
 Route::post('update', [UserController::class, 'updateuserdecry'])->name('update');
 Route::get('myaccount', [UserController::class, 'viewuserencry'])->name('myaccount');
 Route::get('deletepic', [UserController::class, 'removephoto'])->name('deletepic');
+
+//giveaway route
 Route::get('giveaway', [GiveawaController::class, 'giveaway'])->name('giveaway');
 Route::get('airtimegiveaway', [GiveawaController::class, 'giveawayair'])->name('airtimegiveaway');
 Route::post('away', [GiveawaController::class, 'creategiveawaydata'])->name('away');
@@ -127,6 +133,11 @@ Route::get('bonus', [GiveawaController::class, 'bonus'])->name('bonus');
 Route::get('claim', [GiveawaController::class, 'claimgiveaway'])->name('claim');
 Route::post('claimn', [GiveawaController::class, 'claimgive'])->name('claimn');
 Route::get('claimnow/{id}', [GiveawaController::class, 'claimnow'])->name('claimnow');
+//validate transaction
+Route::view('verifybill', 'check');
+Route::view('verifydeposit', 'check1');
+Route::post('check', [verify::class, 'verifypurchase'])->name('check');
+Route::post('check1', [verify::class, 'verifydeposit'])->name('check1');
 });
 
 Route::prefix('google')->name('google.')->group( function(){
