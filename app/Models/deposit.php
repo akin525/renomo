@@ -25,6 +25,13 @@ class deposit extends Authenticatable
         'iwallet',
         'fwallet',
     ];
-
+//    function parentData()
+//    {
+//        return $this->belongsTo(bill_payment::class, 'username','username');
+//    }
+//    function parentData1()
+//    {
+//        return $this->belongsTo(safe_lock::class, 'username','username');
+//    }
 
 }

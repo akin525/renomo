@@ -167,6 +167,14 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="#app9" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-star blue2_color"></i> <span>Rating</span></a>
+                        <ul class="collapse list-unstyled" id="app9">
+                            <li><a href="{{url('admin/rate')}}"><i class="fa fa-star"></i><span>Deposit Rating</span></a></li>
+                            <li><a href="{{url('admin/rate1')}}"><i class="fa fa-star"></i><span>Purchase Rating</span></a></li>
+                            <li><a href="{{url('admin/ratelock')}}"><i class="fa fa-star"></i><span>Safelock Rating</span></a></li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="#app3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-database"></i> <span>Settings</span></a>
                         <ul class="collapse list-unstyled" id="app3">
 

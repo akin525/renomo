@@ -227,6 +227,8 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('admin/response',[ResponseController::class, 'responsefunding' ]);
 Route::get('admin/rate',[RateController::class, 'highestdeposit' ]);
+Route::get('admin/rate1',[RateController::class, 'highestpurchase' ]);
+Route::get('admin/ratelock',[RateController::class, 'highestsafelock' ]);
 
 });
 Route::get('admin/api', [HonorApi::class, 'api'])->name('admin/api');
