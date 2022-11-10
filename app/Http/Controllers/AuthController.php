@@ -164,7 +164,7 @@ Alert::success('Success', 'New Password has been sent to your email');
                     $greet="Good evening 🌙";
                 } else
                     if ($time >= "19") {
-                        $greet="Good night";
+                        $greet="Good night 🌚";
                     }
             $lock=safe_lock::where('username',$user->username)
                 ->where('status', '1')->sum('balance');
