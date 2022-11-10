@@ -155,13 +155,13 @@ Alert::success('Success', 'New Password has been sent to your email');
         $time = date("H");
         $timezone = date("e");
         if ($time < "12") {
-            $greet="Good morning";
+            $greet="Good morning ☀️";
         } else
             if ($time >= "12" && $time < "17") {
-                $greet="Good afternoon";
+                $greet="Good afternoon 🌞";
             } else
                 if ($time >= "17" && $time < "19") {
-                    $greet="Good evening";
+                    $greet="Good evening 🌙";
                 } else
                     if ($time >= "19") {
                         $greet="Good night";
