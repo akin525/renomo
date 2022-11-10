@@ -14,7 +14,7 @@ class RateController extends Controller
             ->selectRaw('count(username) as count, username')
             ->selectRaw('sum(amount) as amount')
             ->get();
-
+return $docs;
         return view('admin/ratedeposit', compact('docs'));
     }
 
