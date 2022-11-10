@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\LockController;
 use App\Http\Controllers\admin\McdController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\QueryController;
+use App\Http\Controllers\admin\RateController;
 use App\Http\Controllers\admin\TransactionController;
 use App\Http\Controllers\admin\UsersController;
 use App\Http\Controllers\admin\SetController;
@@ -225,6 +226,7 @@ Route::middleware(['auth'])->group(function () {
     })->name('identify');
 
 Route::get('admin/response',[ResponseController::class, 'responsefunding' ]);
+Route::get('admin/rate',[RateController::class, 'highestdeposit' ]);
 
 });
 Route::get('admin/api', [HonorApi::class, 'api'])->name('admin/api');
