@@ -105,7 +105,12 @@
 
             </div>
             <div class="sidebar_blog_2">
-                <h4>General</h4>
+                <h4>
+                    <a href="https://play.google.com/store/apps/details?id=com.renomobilemoney" target=”_blank” class="font-weight-bold text-center">
+                        <img width="150" src="{{asset('images/dd.png')}}" alt="">
+
+                    </a>
+                </h4>
                 <ul class="list-unstyled components">
                     @if(Auth::user()->role=="admin")
                         <li class="active">
@@ -219,13 +224,17 @@
                             </ul>
                         </li>
 
-
-
-
-
                         <li>
                             <a href="{{route('withdraw')}}"><i class="fa fa-money orange_color"></i> <span>Withdraw Request</span></a>
                         </li>
+{{--                        <li>--}}
+{{--                            <a href="https://play.google.com/store/apps/details?id=com.renomobilemoney" class="font-weight-bold text-center">--}}
+{{--                                <img width="300" src="{{asset('images/dd.png')}}" alt="">--}}
+{{--                                <span>Download  our Mobile App</span>--}}
+
+
+{{--                            </a>--}}
+{{--                        </li>--}}
 
                 </ul>
             </div>
@@ -239,7 +248,6 @@
                         <div class="logo_section">
                             <a href="{{ route('dashboard') }}"><img class="img-responsive" src="{{asset("images/bn.jpeg")}}" alt="#" /></a>
                         </div>
-
                 </nav>
             </div>
             <!-- end topbar -->
@@ -250,25 +258,21 @@
 {{--            </div>--}}
 
 
-            <center>
-                <div class="container-fluid">
-                    <div class="row column_title">
-                        <div class="card card-body align-content-center">
-                            <a href="https://play.google.com/store/apps/details?id=com.renomobilemoney" class="font-weight-bold text-center">
-                                <b>Download  our Mobile App</b>
-                                <img width="300" src="{{asset('images/dd.png')}}" alt="">
+{{--            <center>--}}
+{{--                <div class="container-fluid">--}}
+{{--                    <div class="row column_title">--}}
+{{--                        <div class="card card-body align-content-center">--}}
+{{--                            <a href="https://play.google.com/store/apps/details?id=com.renomobilemoney" class="font-weight-bold text-center">--}}
+{{--                                <b>Download  our Mobile App</b>--}}
+{{--                                <img width="300" src="{{asset('images/dd.png')}}" alt="">--}}
 
-                            </a>
+{{--                            </a>--}}
 
-                        </div>
-                    </div>
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                </div>
-
-{{--                <button onclick="startFCM()"--}}
-{{--                        class="btn btn-danger btn-flat">Allow notification--}}
-{{--                </button>--}}
-            </center>
+{{--                </div>--}}
+{{--            </center>--}}
             @include('sweetalert::alert')
             @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 

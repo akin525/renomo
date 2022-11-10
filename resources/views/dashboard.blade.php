@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <h5 clas="text-success">{{$greet}} {{\App\Console\encription::decryptdata(Auth::user()->name)}}</h5>
+        <h5 class="text-success"><b>{{$greet}} {{\App\Console\encription::decryptdata(Auth::user()->name)}}</b></h5>
         <div class="card">
             <div class="card-body">
                 <div class="alert alert-success">
