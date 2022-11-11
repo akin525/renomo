@@ -54,13 +54,14 @@ class VertualController
 //return $response;
 //var_dump(array('account_name' => $name,'business_short_name' => 'RENO','uniqueid' => $username,'email' => $email,'phone' => '08146328645', 'webhook_url'=>'https://renomobilemoney.com/go/run.php'));
             $data = json_decode($response, true);
-            $account = $data["data"]["account_name"];
-            $number = $data["data"]["account_number"];
-            $bank = $data["data"]["bank_name"];
+            if ($data['success']==1) {
+                $account = $data["data"]["account_name"];
+                $number = $data["data"]["account_number"];
+                $bank = $data["data"]["bank_name"];
 
-            $wallet->account_number = $number;
-            $wallet->account_name = $account;
-            $wallet->save();
+                $wallet->account_number = $number;
+                $wallet->account_name = $account;
+                $wallet->save();
 
 
 //            $data = [
@@ -72,7 +73,12 @@ class VertualController
 //                'link' => 'https://github.com/garethtdavies'
 //            ];
 //            SendPulse::createPushTask($data);
-            return redirect("dashboard")->withSuccess('You are not allowed to access');
+                return redirect("dashboard")->withSuccess('You are not allowed to access');
+            }elseif ($data['success']==0){
+
+                Alert::error('Error', $response);
+                return redirect('dashboard');
+            }
 
 
         }
