@@ -78,7 +78,7 @@ class VertualController
             }elseif ($data['success']==0){
 
                 Alert::error('Error', $response);
-                return redirect('dashboard');
+                return redirect('myaccount');
             }
 
 
