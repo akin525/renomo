@@ -16,7 +16,7 @@ class PdfController
     function dopdf($request)
     {
         $tran=bill_payment::where('id', $request)->first();
-        $pdf = PDF::loadView('recepit', compact('tran'));
+        $pdf = PDF::loadView('recepit1', compact('tran'));
         return $pdf->download('receipt.pdf');
     }
 
