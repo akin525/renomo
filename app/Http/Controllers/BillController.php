@@ -143,8 +143,8 @@ class BillController extends Controller
 //                        Mail::to($admin2)->send(new Emailtrans($bo));
 
                         Alert::success('success', $am.' ' .$ph);
-                        return redirect()->route('viewpdf', $bo->id);
-
+                        return redirect(route('dashboard'))
+                            ->with('success', $am.' ' .$ph);
                     } elseif ($data['code'] == '300') {
                         $success = 0;
                         $zo = $wallet->balance + $request->amount;
@@ -156,8 +156,8 @@ class BillController extends Controller
                         $ph = ", Transaction fail";
 
                         Alert::error('error', $am.' ' .$ph);
-                        return redirect()->route('viewpdf', $bo->id);
-
+                        return redirect(route('dashboard'))
+                            ->with('error', $am.' ' .$ph);
                     }
                 } else if ($mcd->name == "mcd") {
                     $response = $daterserver->mcdbill($object);
@@ -203,8 +203,8 @@ class BillController extends Controller
 //                        Alert::success('success', $am.' ' .$ph);
                         $msg=$am.' ' .$ph;
                         Alert::image('Success..',$msg,'https://renomobilemoney.com/nov.jpeg','200','200', 'Image Alt');
-                        return redirect()->route('viewpdf', $bo->id);
-
+                        return redirect(route('invoice'))
+                            ->with('success', $am.' ' .$ph);
                     }elseif (!isset($data['success'])) {
                         $success = 0;
                         $zo = $wallet->balance + $request->amount;
@@ -216,8 +216,8 @@ class BillController extends Controller
                         $am = "NGN $request->amount Was Refunded To Your Wallet";
                         $ph = ", Transaction fail";
                         Alert::error('error', $am.' ' .$ph);
-                        return redirect()->route('viewpdf', $bo->id);
-
+                        return redirect(route('invoice'))
+                            ->with('error', $am.' ' .$ph);
                     }
 
                 }

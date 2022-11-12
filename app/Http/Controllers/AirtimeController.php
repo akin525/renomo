@@ -142,7 +142,7 @@ class AirtimeController
                     $msg=$am.' ' .$ph.' & '.$parise;
                     Alert::image('Success..',$msg,'https://renomobilemoney.com/nov.jpeg','200','200', 'Image Alt');
 
-                    return redirect()->route('viewpdf', $bo->id);
+                    return redirect('invoice');
                 } elseif ($success == 0) {
                     $zo = $user->balance + $request->amount;
                     $user->balance = $zo;
@@ -153,7 +153,7 @@ class AirtimeController
                     $ph = ", Transaction fail";
 
                     Alert::error('error', $am.' ' .$ph);
-                    return redirect()->route('viewpdf', $bo->id);
+                    return redirect('invoice');
                 }
         }
     }
