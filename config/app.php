@@ -182,7 +182,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-
+        Barryvdh\DomPDF\ServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -215,6 +215,7 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
     ])->toArray(),
 
 ];

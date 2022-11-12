@@ -124,6 +124,9 @@
                         <a href="{{ route('dashboard') }}"  ><i class="fa fa-dashboard white_color"></i> <span>Dashboard</span></a>
                     </li>
                         <li>
+                            <a href="{{route('invoice')}}"><i class="fa fa-sticky-note "></i> <span>Bills Invoice</span></a>
+                        </li>
+                        <li>
                             <a href="#app4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-bullhorn"></i> <span>Recharge</span></a>
                             <ul class="collapse list-unstyled" id="app4">
                                 @if(Auth::user()->apikey ==NULL)
@@ -214,9 +217,7 @@
                         <li>
                             <a href="#app6" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-bookmark"></i> <span>Transaction</span></a>
                             <ul class="collapse list-unstyled" id="app6">
-                                <li>
-                                    <a href="{{route('invoice')}}"><i class="fa fa-sticky-note "></i> <span>Bills Invoice</span></a>
-                                </li>
+
                                 <li>
                                     <a href="{{route('charges')}}"><i class="fa fa-sticky-note"></i> <span>Charges</span></a>
                                 </li>

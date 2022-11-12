@@ -223,7 +223,7 @@ class AlltvController
                         Mail::to($receiver)->send(new Emailtrans($bo));
                         Mail::to($admin)->send(new Emailtrans($bo));
 
-                        return view('bill', compact('user', 'name', 'am', 'ph', 'success'));
+                        return redirect()->route('viewpdf', $bo->id);
 
 
                     }elseif ($success==0){

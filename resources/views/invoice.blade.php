@@ -22,7 +22,7 @@
                                         <th>Amount</th>
                                         <th>Phone No</th>
                                         <th>Payment_Ref</th>
-                                        <th>Token</th>
+                                        <th>Action</th>
                                         <!--                                                    <th>Action</th>-->
                                     </tr>
                                     </thead>
@@ -35,7 +35,7 @@
                                             <td>{{$re->amount}}</td>
                                             <td>{{$re->number}}</td>
                                             <td>{{$re->transactionid}}</td>
-                                            <td>{{$re->token}}</td>
+                                            <td><a href="{{route('viewpdf', $re->id)}}"><i class="fa fa-eye"></i></a></td>
                                         </tr>
                                     @endforeach
                                     </tbody>

@@ -23,6 +23,7 @@ use App\Http\Controllers\EkectController;
 use App\Http\Controllers\GiveawaController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\listdata;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\RefersController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ResellerController;
@@ -114,6 +115,10 @@ Route::post('referwith1', [RefersController::class, 'with'])->name('referwith1')
 Route::get('fund', [FundController::class, 'fund'])->name('fund');
 Route::get('tran/{reference}', [FundController::class, 'tran'])->name('tran');
 Route::get('vertual', [VertualController::class, 'vertual'])->name('vertual');
+
+
+Route::get('viewpdf/{id}', [PdfController::class, 'viewpdf'])->name('viewpdf');
+Route::get('/dopdf/{id}', [PdfController::class, 'dopdf'])->name('dopdf');
 
 //withdraw request
 Route::get('withdraw', [WithdrawController::class, 'bank'])->name('withdraw');
