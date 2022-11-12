@@ -1,4 +1,6 @@
 {{--@include('layouts.sidebar')--}}
+@include('sweetalert::alert')
+
 <head>
     <style type="text/css">
         a {text-decoration: none;}
