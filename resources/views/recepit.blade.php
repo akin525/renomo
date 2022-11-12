@@ -1,4 +1,4 @@
-@include('layouts.sidebar')
+{{--@include('layouts.sidebar')--}}
 <head>
     <style type="text/css">
         a {text-decoration: none;}
