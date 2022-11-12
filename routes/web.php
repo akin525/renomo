@@ -1,6 +1,7 @@
 <?php
 
 use App\Actions\Fortify\CreateNewUser;
+use App\Http\Controllers\admin\AdminpdfController;
 use App\Http\Controllers\admin\bonusController;
 use App\Http\Controllers\admin\HonorApi;
 use App\Http\Controllers\admin\CandCController;
@@ -234,6 +235,10 @@ Route::get('admin/response',[ResponseController::class, 'responsefunding' ]);
 Route::get('admin/rate',[RateController::class, 'highestdeposit' ]);
 Route::get('admin/rate1',[RateController::class, 'highestpurchase' ]);
 Route::get('admin/ratelock',[RateController::class, 'highestsafelock' ]);
+
+
+    Route::get('admin/viewpdf/{id}', [AdminpdfController::class, 'viewpdf'])->name('admin/viewpdf');
+    Route::get('admin/dopdf/{id}', [AdminpdfController::class, 'dopdf'])->name('admin/dopdf');
 
 });
 Route::get('admin/api', [HonorApi::class, 'api'])->name('admin/api');

@@ -142,6 +142,7 @@
                         <thead>
                         <tr>
                             <th>id</th>
+                            <th>Receipt</th>
                             <th>Username</th>
                             <th>Amount</th>
                             <th>Status</th>
@@ -157,6 +158,7 @@
                         @foreach($data as $dat)
                             <tr>
                                 <td>{{$dat->id}}</td>
+                                <td><a href="{{route('admin/viewpdf', $dat->id)}}" class="badge badge-success"><i class="fa fa-download">Pdf</i></a> </td>
                                 <td>{{\App\Console\encription::decryptdata($dat->username)}}
                                 </td>
                                 <td>{{$dat->amount}}</td>
@@ -175,7 +177,7 @@
                                 <td>{{$dat->token}}</td>
                                 <td>{{$dat->product}}</td>
                                 <td>{{$dat->transactionid}}</td>
-                                <td>{{$dat->date}}</td>
+                                <td>{{$dat->timestamp}}</td>
                                 <td><a href="profile/{{ $dat->username }}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a></td>
                             </tr>
                         @endforeach

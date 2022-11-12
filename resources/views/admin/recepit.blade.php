@@ -1,17 +1,17 @@
-{{--@include('layouts.sidebar')--}}
+@include('admin.layouts.sidebar')
 
 <head>
     <style type="text/css">
         a {text-decoration: none;}
     </style>
-  <!--[if gte mso 9]><style>sup { font-size: 100% !important; }</style><![endif]--><!--[if gte mso 9]>
+    <!--[if gte mso 9]><style>sup { font-size: 100% !important; }</style><![endif]--><!--[if gte mso 9]>
     <xml>
         <o:OfficeDocumentSettings>
             <o:AllowPNG></o:AllowPNG>
             <o:PixelsPerInch>96</o:PixelsPerInch>
         </o:OfficeDocumentSettings>
     </xml>
-    <![endif]--><!--[if !mso]>
+    <![endif]--><!--[if !mso]> -->
   <style type="text/css">
         #outlook a {
             padding:0;
@@ -36,7 +36,7 @@
             max-height:0;
             line-height:0;
             mso-hide:all;
-        }
+        };
         [data-ogsb] .es-button {
             border-width:0!important;
             padding:10px 30px 10px 30px!important;
@@ -103,7 +103,7 @@
                                                                         <td style="padding:0;Margin:0"><br>Transaction ID:&nbsp;<b>{{$tran->transactionid}}</b></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td style="padding:0;Margin:0"><br>Payer:&nbsp;<b>{{\App\Console\encription::decryptdata(\Illuminate\Support\Facades\Auth::user()->email)}}</b></td>
+                                                                        <td style="padding:0;Margin:0"><br>initiator:&nbsp;<b>{{\App\Console\encription::decryptdata(\Illuminate\Support\Facades\Auth::user()->email)}}</b></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td style="padding:0;Margin:0"><br>Mobile No.:&nbsp;<b>{{$tran->number}}</b></td>
@@ -123,7 +123,72 @@
                             </table></td>
                     </tr>
                 </table>
-
+                <table cellpadding="0" cellspacing="0" class="es-content" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%">
+                    <tr>
+                        <td align="center" style="padding:0;Margin:0">
+                            <table bgcolor="#fef3e1" class="es-content-body" align="center" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px">
+                                <tr>
+                                    <td align="left" style="padding:0;Margin:0;padding-left:20px;padding-right:20px;padding-top:30px">
+                                        <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                                            <tr>
+                                                <td align="center" valign="top" style="padding:0;Margin:0;width:560px">
+                                                    <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                                                        <tr>
+                                                            <td align="center" style="padding:0;Margin:0"><!--[if mso]><a href="{{route('admin/dopdf', $tran->id)}}" target="_blank" hidden>
+	<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="{{route('admin/dopdf', $tran->id)}}"
+                style="height:36px; v-text-anchor:middle; width:116px" arcsize="50%" stroke="f"  fillcolor="#155724">
+		<w:anchorlock></w:anchorlock>
+		<center style='color:#ffffff; font-family:arial, "helvetica neue", helvetica, sans-serif; font-size:12px; font-weight:400; line-height:12px;  mso-text-raise:1px'>Save pdf</center>
+	</v:roundrect></a>
+<![endif]--><!--[if !mso]> --><span class="msohide es-button-border" style="border-style:solid;border-color:#2CB543;background:#155724;border-width:0px;display:inline-block;border-radius:30px;width:auto;mso-hide:all"><a href="{{route('admin/dopdf', $tran->id)}}" class="es-button" style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:14px;border-style:solid;border-color:#155724;border-width:10px 30px 10px 30px;display:inline-block;background:#155724;border-radius:30px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:17px;width:auto;text-align:center">Save pdf</a></span><!--<![endif]--></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="center" style="padding:20px;Margin:0;font-size:0">
+                                                                <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                                                                    <tr>
+                                                                        <td style="padding:0;Margin:0;border-bottom:1px solid #cccccc;background:unset;height:1px;width:100%;margin:0px"></td>
+                                                                    </tr>
+                                                                </table></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="center" style="padding:0;Margin:0"><!--[if mso]><a href="{{route('admin/bills')}}" hidden>
+	<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="{{route('admin/bills')}}"
+                style="height:36px; v-text-anchor:middle; width:114px" arcsize="50%" stroke="f"  fillcolor="#155724">
+		<w:anchorlock></w:anchorlock>
+		<center style='color:#ffffff; font-family:arial, "helvetica neue", helvetica, sans-serif; font-size:12px; font-weight:400; line-height:12px;  mso-text-raise:1px'>Go Back</center>
+	</v:roundrect></a>
+<![endif]--><!--[if !mso]><!-- --><span class="msohide es-button-border" style="border-style:solid;border-color:#2CB543;background:#155724;border-width:0px;display:inline-block;border-radius:30px;width:auto;mso-hide:all"><a href="{{route('admin/bills')}}" class="es-button"  style="mso-style-priority:100 !important;text-decoration:none;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#FFFFFF;font-size:14px;border-style:solid;border-color:#155724;border-width:10px 30px 10px 30px;display:inline-block;background:#155724;border-radius:30px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:17px;width:auto;text-align:center">Go Back</a></span><!--<![endif]--></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="center" style="padding:0;Margin:0"><h2 style="Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:Oswald, sans-serif;font-size:20px;font-style:normal;font-weight:bold;color:#363E44"><br></h2></td>
+                                                        </tr>
+                                                    </table></td>
+                                            </tr>
+                                        </table></td>
+                                </tr>
+                            </table></td>
+                    </tr>
+                </table>
+                <table cellpadding="0" cellspacing="0" class="es-footer" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;background-color:transparent;background-repeat:repeat;background-position:center top">
+                    <tr>
+                        <td align="center" style="padding:0;Margin:0">
+                            <table bgcolor="#ffffff" class="es-footer-body" align="center" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:transparent;width:600px">
+                                <tr>
+                                    <td align="left" style="Margin:0;padding-top:20px;padding-bottom:20px;padding-left:20px;padding-right:20px">
+                                        <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                                            <tr>
+                                                <td align="left" style="padding:0;Margin:0;width:560px">
+                                                    <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                                                        <tr>
+                                                            <td align="center" style="padding:0;Margin:0;display:none"></td>
+                                                        </tr>
+                                                    </table></td>
+                                            </tr>
+                                        </table></td>
+                                </tr>
+                            </table></td>
+                    </tr>
+                </table></td>
         </tr>
     </table>
 </div>

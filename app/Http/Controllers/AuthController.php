@@ -27,6 +27,7 @@ use App\Models\deposit;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use LaravelDaily\LaravelCharts\Classes\LaravelChart;
+use mysql_xdevapi\Exception;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -92,10 +93,16 @@ Alert::success('Success', 'New Password has been sent to your email');
             'password' => 'required',
         ]);
 
+
+
         $user = User::where('username', encription::encryptdata($request->username))
             ->where('password', $request->password)
             ->first();
-
+        if (Auth::user()){
+            Alert::success('Dashboard', 'Login Successfully');
+            return redirect()->intended('dashboard')
+                ->with('success', 'Welcome back '.encription::decryptdata($user->name));
+        }
         if(!isset($user)){
             Alert::error('Credentials does not match', 'Kindly check your password & username');
             return back();
@@ -106,7 +113,11 @@ Alert::success('Success', 'New Password has been sent to your email');
             $user = User::where('username', encription::encryptdata($request->username))->first();
             $login = encription::decryptdata($user->name);
             $receiver = encription::decryptdata($user->email);
-            Mail::to($receiver)->send(new login($login));
+            try {
+                Mail::to($receiver)->send(new login($login));
+            }catch (Exception $ex){
+
+            }
 //            Mail::to($admin)->send(new login($login));
             // forever
 //            cookie()->queue(cookie()->forever("username", $request->username));

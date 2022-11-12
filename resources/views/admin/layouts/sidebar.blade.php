@@ -110,6 +110,10 @@
                     <li class="nav-item">
                         <a  class="nav-link" href="{{ route('admin/dashboard') }}"  ><i class="fa fa-dashboard red_color"></i> <span>Dashboard</span></a>
                     </li>
+                    <li class="nav-item">
+                        <a  class="nav-link" href="{{ route('admin/bills') }}"  ><i class="fa fa-shopping-basket white_color"></i> <span>All Bills</span></a>
+                    </li>
+
                     <li>
                         <a href="#app7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-gift"></i> <span>Giveaway</span></a>
                         <ul class="collapse list-unstyled" id="app7">
@@ -192,10 +196,6 @@
                     <li>
                         <a href="#app5" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-bar-chart"></i> <span>Transactions</span></a>
                         <ul class="collapse list-unstyled" id="app5">
-                            <li class="nav-item">
-                                <a  class="nav-link" href="{{ route('admin/bills') }}"  ><i class="fa fa-shopping-basket white_color"></i> <span>All Bills</span></a>
-                            </li>
-
                             <li class="nav-item">
                                 <a  class="nav-link" href="{{ route('admin/mcdtransaction') }}"  ><i class="fa fa-home white_color"></i> <span>Mcdtransaction</span></a>
                             </li>

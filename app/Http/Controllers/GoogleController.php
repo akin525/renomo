@@ -25,7 +25,7 @@ class GoogleController extends Controller
             $user = Socialite::driver('google')->user();
             $picture=$user->getAvatar();
 
-            // Check Users Email If Already There
+            // Check Userks Email If Already There
             $is_user = User::where('email', encription::encryptdata($user->getEmail()))->first();
             if(!$is_user){
 

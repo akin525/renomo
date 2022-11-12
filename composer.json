@@ -24,7 +24,8 @@
         "realrashid/sweet-alert": "^5.1",
         "sendpulse/rest-api": "^1.0",
         "symfony/http-client": "^6.0",
-        "symfony/postmark-mailer": "^6.0"
+        "symfony/postmark-mailer": "^6.0",
+      "ext-mysql_xdevapi": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

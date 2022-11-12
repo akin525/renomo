@@ -4,14 +4,14 @@
     <style type="text/css">
         a {text-decoration: none;}
     </style>
-  <!--[if gte mso 9]><style>sup { font-size: 100% !important; }</style><![endif]--><!--[if gte mso 9]>
+    <!--[if gte mso 9]><style>sup { font-size: 100% !important; }</style><![endif]--><!--[if gte mso 9]>
     <xml>
         <o:OfficeDocumentSettings>
             <o:AllowPNG></o:AllowPNG>
             <o:PixelsPerInch>96</o:PixelsPerInch>
         </o:OfficeDocumentSettings>
     </xml>
-    <![endif]--><!--[if !mso]>
+
   <style type="text/css">
         #outlook a {
             padding:0;
@@ -103,12 +103,11 @@
                                                                         <td style="padding:0;Margin:0"><br>Transaction ID:&nbsp;<b>{{$tran->transactionid}}</b></td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td style="padding:0;Margin:0"><br>Payer:&nbsp;<b>{{\App\Console\encription::decryptdata(\Illuminate\Support\Facades\Auth::user()->email)}}</b></td>
+                                                                        <td style="padding:0;Margin:0"><br>initiator:&nbsp;<b>{{\App\Console\encription::decryptdata(\Illuminate\Support\Facades\Auth::user()->email)}}</b></td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td style="padding:0;Margin:0"><br>Mobile No.:&nbsp;<b>{{$tran->number}}</b></td>
-                                                                    </tr>
-                                                                    <tr>
+                                                                    </tr>                                                                    <tr>
                                                                         <td style="padding:0;Margin:0"><br>Product::&nbsp;<b>{{$tran->product}}</b></td>
                                                                     </tr>
                                                                     <tr>
