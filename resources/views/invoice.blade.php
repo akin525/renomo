@@ -18,11 +18,11 @@
                                     <tr>
                                         <th>Date</th>
                                         <th>Username</th>
+                                        <th>Receipt</th>
                                         <th>Plan</th>
                                         <th>Amount</th>
                                         <th>Phone No</th>
                                         <th>Payment_Ref</th>
-                                        <th>Action</th>
                                         <!--                                                    <th>Action</th>-->
                                     </tr>
                                     </thead>
@@ -31,11 +31,11 @@
                                         <tr>
                                             <td>{{$re->timestamp}}</td>
                                             <td>{{\App\Console\encription::decryptdata($re->username)}}</td>
+                                            <td><a href="{{route('viewpdf', $re->id)}}" class="badge badge-success"><i class="fa fa-download">Pdf</i></a> </td>
                                             <td>{{$re->product}}</td>
                                             <td>{{$re->amount}}</td>
                                             <td>{{$re->number}}</td>
                                             <td>{{$re->transactionid}}</td>
-                                            <td><a href="{{route('viewpdf', $re->id)}}"><i class="fa fa-eye"></i></a></td>
                                         </tr>
                                     @endforeach
                                     </tbody>

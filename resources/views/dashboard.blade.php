@@ -43,7 +43,26 @@
                 </div>
             </div>
         </div>
-{{--        <marquee width="100%" direction="left" height="100px" class="text-success"><h4 class="text-success">--}}
+        <div class="card">
+            <div class="card-body">
+                <div class="alert alert-secondary">
+                <center>
+                            <!--                    <h4 class="w3-text-green"><b>&nbsp;&nbsp; &nbsp;&nbsp; <a class="w3-btn w3-green w3-border w3-round-large" href="with.php">Withdraw From MCD Wallet</a>-->
+                            <a class="badge badge-info" href="{{route('invoice')}}">Get Invoice</a>
+                            <a class="badge badge-info" href="{{route('withdraw')}}">Withdraw</a>
+
+                            <a class="badge badge-info" href="{{route('giveaway')}}">Create Giveaway</a>
+                            <a class="badge badge-info" href="{{url('verifybill')}}">Validate Biils</a>
+                            <a class="badge badge-info" href="{{url('verifydeposit')}}">Validate Deposit</a>
+
+                            <!--                            <a class="w3-btn w3-green w3-border w3-round-large" href="method.php">All Payment Method</a>-->
+                        </center>
+                </div>
+                    </div>
+        </div>
+
+
+        {{--        <marquee width="100%" direction="left" height="100px" class="text-success"><h4 class="text-success">--}}
 {{--                {{$me->message}}.</h4></marquee>--}}
         <div class="card">
             <div class="card-body">
@@ -183,19 +202,6 @@
                         <h5 class="total_no text-center">₦{{number_format(intval($totaldeposite *1), 2)}}</h5>
                         <h6 class="head_couter">Total Deposit</h6>
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                 </div>
@@ -389,6 +395,7 @@
                                         <thead>
                                             <th>Date</th>
                                             <th>Username</th>
+                                            <th>Action</th>
                                             <th>Plan</th>
                                             <th>Amount</th>
                                             <th>Phone No</th>
@@ -402,6 +409,7 @@
                                             <tr>
                                                 <td>{{$re->timestamp}}</td>
                                                 <td>{{\App\Console\encription::decryptdata($re->username)}}</td>
+                                                <td><a href="{{route('viewpdf', $re->id)}}" class="badge badge-success"><i class="fa fa-download">Pdf</i></a> </td>
                                                 <td>{{$re->product}}</td>
                                                 <td>{{$re->amount}}</td>
                                                 <td>{{$re->number}}</td>
