@@ -69,7 +69,7 @@
                                         <button type="submit" class="btn btn-primary" >Sign-in <span class="load loading"></span></button>
                                         <br>
                                         <center>
-                                            <a  onclick="web2app.biometric.check(myCallback);"><h3 class="text-success"><i  class="mdi mdi-fingerprint"></i>Fingerprint</h3>Login With </a>
+                                            <a  onclick="web2app.biometric.check(myCallback);"><h3 class="text-success"><i  class="fa fa-fingerprint"></i>Fingerprint</h3>Login With </a>
                                         </center>
                                         <script>
                                             const btns = document.querySelectorAll('button');
