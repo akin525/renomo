@@ -67,6 +67,10 @@
                                             <a class="forgot" href="{{ route('password.request') }}">Forgotten Password?</a>
                                         @endif
                                         <button type="submit" class="btn btn-primary" >Sign-in <span class="load loading"></span></button>
+                                        <br>
+                                        <center>
+                                            <a  onclick="web2app.biometric.check(myCallback);"><h3 class="text-success"><i  class="mdi mdi-fingerprint"></i>Fingerprint</h3>Login With </a>
+                                        </center>
                                         <script>
                                             const btns = document.querySelectorAll('button');
                                             btns.forEach((items)=>{
@@ -75,7 +79,18 @@
                                                 })
                                             })
                                         </script>
+                                        <script>
+                                            function myCallback(data) {
+                                                console.log("I am in callback")
+                                                console.log(JSON.stringify(data));
+                                            }
 
+                                            function contactCallback(data) {
+                                                console.log("I am in callback")
+                                                console.log(JSON.stringify(data));
+                                                document.getElementById('anyme').value=data.data;
+                                            }
+                                        </script>
                                     </div>
                                 </center>
                                 <div class="field margin_0">
