@@ -67,6 +67,7 @@
                                             <a class="forgot" href="{{ route('password.request') }}">Forgotten Password?</a>
                                         @endif
                                         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+                                        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
                                         <button type="submit" class="btn btn-primary" >Sign-in <span class="load loading"></span></button>
                                         <br>
