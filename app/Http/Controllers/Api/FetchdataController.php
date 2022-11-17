@@ -9,7 +9,7 @@ class FetchdataController
     public function listdata()
     {
 
-        $data = data::where('network', 'like', '%data%')->get();
+        $data = data::all();
 
         return response()->json([
             'success'=>1,
