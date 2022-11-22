@@ -12,8 +12,7 @@ class FetchdataController
         $data = data::all();
 
         return response()->json([
-            'success'=>1,
-            'message' => "Data fetch successfully", 'data' => $data
+            $data
         ], 200);
 
     }
