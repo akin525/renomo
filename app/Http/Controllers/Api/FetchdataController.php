@@ -13,7 +13,7 @@ class FetchdataController
 
         return response()->json([
             'success'=>1,
-             $data
+            'message' => "Data fetch successfully", 'data' => $data
         ], 200);
 
     }
