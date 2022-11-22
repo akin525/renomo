@@ -11,9 +11,9 @@ class FetchdataController
 
         $data = data::all();
 
-        return response()->json([
+        return response()->json(
             $data
-        ], 200);
+        , 200);
 
     }
 }
