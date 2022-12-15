@@ -51,6 +51,7 @@
                             <a class="badge badge-info" href="{{route('invoice')}}">Get Invoice</a>
                             <a class="badge badge-info" href="{{route('withdraw')}}">Withdraw</a>
 
+                    
                             <a class="badge badge-info" href="{{route('giveaway')}}">Create Giveaway</a>
                             <a class="badge badge-info" href="{{url('verifybill')}}">Validate Biils</a>
                             <a class="badge badge-info" href="{{url('verifydeposit')}}">Validate Deposit</a>

@@ -87,7 +87,7 @@
 
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex align-items-center">
-    <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
+    <div class="container text-center position-relative" data-aos="fade-in" >
         <h1>RENO MOBILE MONEY</h1>
         <h2>We Provide
             The Best Tools To Save</h2>
