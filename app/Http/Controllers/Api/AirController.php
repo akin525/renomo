@@ -6,6 +6,7 @@ use App\Console\encription;
 use App\Mail\Emailtrans;
 use App\Models\bill_payment;
 use App\Models\bo;
+use App\Models\Comission;
 use App\Models\data;
 use App\Models\User;
 use App\Models\wallet;
@@ -68,6 +69,10 @@ class AirController
 
             } else {
 
+                $per=2/100;
+                $comission=$per*$request->amount;
+
+
 
                 $gt = $wallet->balance - $request->amount;
 
@@ -86,6 +91,12 @@ class AirController
                     'discountamount' => 0,
                     'balance'=>$gt,
                 ]);
+
+                $comiS=Comission::create([
+                    'username'=>$user->username,
+                    'amount'=>$comission,
+                ]);
+
                 $bo['name']=encription::decryptdata($user->name);
                 $bo['email']=encription::decryptdata($user->email);
 
@@ -120,6 +131,9 @@ class AirController
                         'server_response'=>$response,
                         'status'=>1,
                     ]);
+                    $com=$wallet->balance+$comission;
+                    $wallet->balance=$com;
+                    $wallet->save();
 
                     $am = "NGN $request->amount  Airtime Purchase Was Successful To";
                     $ph = $request->number;
