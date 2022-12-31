@@ -138,9 +138,9 @@ class AirtimeController
                     $wallet->save();
 
                     $parise=$comission."₦ Commission Is added to your wallet balance";
-//                    Alert::success('success', $am.' ' .$ph.' & '.$parise);
-                    $msg=$am.' ' .$ph.' & '.$parise;
-                    Alert::image('Success..',$msg,'https://renomobilemoney.com/nov.jpeg','200','200', 'Image Alt');
+                    Alert::success('success', $am.' ' .$ph.' & '.$parise);
+//                    $msg=$am.' ' .$ph.' & '.$parise;
+//                    Alert::image('Success..',$msg,'https://renomobilemoney.com/nov.jpeg','200','200', 'Image Alt');
 
                     return redirect()->route('viewpdf', $bo->id);
                 } elseif ($success == 0) {
