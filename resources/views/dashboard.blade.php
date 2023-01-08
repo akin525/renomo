@@ -51,7 +51,7 @@
                             <a class="badge badge-info" href="{{route('invoice')}}">Get Invoice</a>
                             <a class="badge badge-info" href="{{route('withdraw')}}">Withdraw</a>
 
-                    
+
                             <a class="badge badge-info" href="{{route('giveaway')}}">Create Giveaway</a>
                             <a class="badge badge-info" href="{{url('verifybill')}}">Validate Biils</a>
                             <a class="badge badge-info" href="{{url('verifydeposit')}}">Validate Deposit</a>
@@ -145,16 +145,16 @@
             }
 
         </style>
-{{--        <div class="card">--}}
-{{--            <div class="card-body">--}}
-{{--                <h6>Your Referal Link</h6>--}}
-{{--                <!-- The text field -->--}}
-{{--                <input id="myInput" type="text" class="form-control" value="https://renomobilemoney.com/register?refer={{$user->username}}" >--}}
+        <div class="card">
+            <div class="card-body">
+                <h6>Your Referal Link</h6>
+                <!-- The text field -->
+                <input id="myInput" type="text" class="form-control" value="https://renomobilemoney.com/register?refer={{$user->username}}" >
 
-{{--                <!-- The button used to copy the text -->--}}
-{{--                <button class="btn-info" onclick="myFunction()">Copy Referal Link</button>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+                <!-- The button used to copy the text -->
+                <button class="btn-info" onclick="myFunction()">Copy Referal Link</button>
+            </div>
+        </div>
 
 
         <script>
