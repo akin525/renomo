@@ -138,7 +138,7 @@ class AlltvController
                 if ($wallet->balance < $tv->tamount) {
                     $mg = "You Cant Make Purchase Above" . "NGN" . $tv->tamount . " from your wallet. Your wallet balance is NGN $wallet->balance. Please Fund Wallet And Retry or Pay Online Using Our Alternative Payment Methods.";
                     return response()->json([
-                        'message' => $mg, 'user'=>$user
+                        'success'=>0, 'message' => $mg, 'user'=>$user
                     ], 200);
 
                 }
@@ -146,7 +146,7 @@ class AlltvController
 
                     $mg = "error transaction";
                     return response()->json([
-                        'message' => $mg, 'user'=>$user
+                        'success'=>0,  'message' => $mg, 'user'=>$user
                     ], 200);
 
                 }
@@ -154,7 +154,7 @@ class AlltvController
                 if (isset($bo)) {
                     $mg = "duplicate transaction";
                     return response()->json([
-                        'message' => $mg, 'user'=>$user
+                        'success'=>0, 'message' => $mg, 'user'=>$user
                     ], 200);
 
                 } else {
@@ -169,7 +169,7 @@ class AlltvController
                     $curl = curl_init();
 
                     curl_setopt_array($curl, array(
-                        CURLOPT_URL => $test.'pay',
+                        CURLOPT_URL => $resellerURL.'pay',
                         CURLOPT_RETURNTRANSFER => true,
                         CURLOPT_ENCODING => '',
                         CURLOPT_MAXREDIRS => 10,
