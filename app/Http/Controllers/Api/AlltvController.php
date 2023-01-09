@@ -165,11 +165,11 @@ class AlltvController
                     $wallet->save();
 
                     $resellerURL = 'https://integration.mcd.5starcompany.com.ng/api/reseller/';
-
+                    $test= "https://test.mcd.5starcompany.com.ng/api/reseller";
                     $curl = curl_init();
 
                     curl_setopt_array($curl, array(
-                        CURLOPT_URL => $resellerURL.'pay',
+                        CURLOPT_URL => $test.'pay',
                         CURLOPT_RETURNTRANSFER => true,
                         CURLOPT_ENCODING => '',
                         CURLOPT_MAXREDIRS => 10,
