@@ -17,6 +17,13 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class AirtimeController
 {
+    public function listairtimecommission()
+    {
+        $allcommission=Comission::where('username', Auth::user()->username)->latest()->get();
+
+        return view("commission", compact("allcommission"));
+    }
+
     public function airtime(Request $request)
     {
         $request->validate([

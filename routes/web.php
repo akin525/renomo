@@ -78,6 +78,7 @@ Route::middleware(['auth'])->group(function () {
 Route::post('wac', [EducationController::class, 'waec'])->name('wac');
 Route::get('waec', [EducationController::class, 'indexw'])->name('waec');
 Route::post('nec', [EducationController::class, 'neco'])->name('nec');
+Route::get('commission', [AirtimeController::class, 'listairtimecommission'])->name('commission');
 Route::get('neco', [EducationController::class, 'indexn'])->name('neco');
 Route::post('pick', [AlltvController::class, 'tv'])->name('pick');
 Route::get('addlock/{id}', [SafelockController::class, 'add'])->name('addlock');

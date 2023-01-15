@@ -123,6 +123,9 @@
                         <li class="active">
                         <a href="{{ route('dashboard') }}"  ><i class="fa fa-dashboard white_color"></i> <span>Dashboard</span></a>
                     </li>
+                        <li class="active">
+                        <a href="{{ route('commission') }}"  ><i class="fa fa-money white_color"></i> <span>My Commission</span></a>
+                    </li>
                         <li>
                             <a href="{{route('invoice')}}"><i class="fa fa-sticky-note "></i> <span>Bills Invoice</span></a>
                         </li>
