@@ -137,7 +137,7 @@ public function sub(Request $request)
     Mail::to($receiver)->send(new withdraws($insert));
     Mail::to($admin)->send(new withdraws($insert));
 //                        Mail::to($admin2)->send(new Emailtrans($bo));
-    $username=Auth::user()->username;
+    $username=encription::decryptdata(Auth::user()->username);
     $body=$username.' place a withdraw request of NGN'.$request->amount;
     $this->reproduct($username, "Withdraw Request", $body);
     $this->reproduct1($username, "Withdraw Request", $body);
@@ -166,7 +166,7 @@ public function sub(Request $request)
     "notification": {
         "body": "'.$body.'",
         "title": "'.$title.'"
-                "image": "https://renomobilemoney.com/images/bn.jpeg"
+
 
     }
 }',
@@ -200,7 +200,6 @@ public function sub(Request $request)
     "notification": {
         "body": "'.$body.'",
         "title": "'.$title.'"
-                "image": "https://renomobilemoney.com/images/bn.jpeg"
 
     }
 }',
@@ -234,7 +233,6 @@ public function sub(Request $request)
     "notification": {
         "body": "'.$body.'",
         "title": "'.$title.'"
-                "image": "https://renomobilemoney.com/images/bn.jpeg"
 
     }
 }',
