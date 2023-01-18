@@ -151,9 +151,9 @@ class AirtimeController
 
                     return redirect()->route('viewpdf', $bo->id);
                 } elseif ($success == 0) {
-                    $zo = $user->balance + $request->amount;
-                    $user->balance = $zo;
-                    $user->save();
+                    $zo = $wallet->balance + $request->amount;
+                    $wallet->balance = $zo;
+                    $wallet->save();
 
 //                    $name = $bt->plan;
                     $am = "NGN $request->amount Was Refunded To Your Wallet";

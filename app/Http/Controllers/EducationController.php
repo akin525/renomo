@@ -100,52 +100,47 @@ $request->validate([
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => $resellerURL.'pay',
+            CURLOPT_URL => "https://easyaccess.com.ng/api/waec_v2.php",
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
+            CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 0,
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => array('service' => 'result_checker','coded' => 'WAEC','quantity' => $request->value,'phone' => encription::decryptdata($user->phone)),
-
+            CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-                'Authorization: mcd_key_75rq4][oyfu545eyuriup1q2yue4poxe3jfd'
-            )));
-
-
+                "AuthorizationToken: 1e8396312a0a0ddaffad3d35740adca4", //replace this with your authorization_token
+                "cache-control: no-cache"
+            ),
+        ));
         $response = curl_exec($curl);
-
         curl_close($curl);
-//                echo $response;
+//                return $response;
         $data = json_decode($response, true);
-        $success = $data["success"];
 
-        if ($success==1) {
-            $ref=$data['ref'];
-            $token=$data['token'];
-            $token1=json_decode($token, true);
-//return $token1;
-            foreach ($token1 as $to){
-
+        if ($data["success"]=="true") {
+            $ref=$data['reference_no'];
+            $token=$data['pin'];
                 $insert=waec::create([
                     'username'=>$user->username,
-                    'seria'=>$to['serial_number'],
-                    'pin'=>$to['pin'],
+                    'seria'=>"serial no from pin",
+                    'pin'=>$token,
                     'ref'=>$ref,
                 ]);
-            }
+
             $mg='Waec Checker Successful Generated, kindly check your pin';
             Alert::success('Successful',$mg );
             return redirect('waec')->with('success', $mg);
 
-        }elseif($success==0){
+        }elseif($data["success"]=="false"){
+            $zo = $wallet->balance + $amount;
+            $wallet->balance = $zo;
+            $wallet->save();
 
             Alert::error('Fail', $response);
             return redirect('waec')->with('error', $response);
         }
-return $response;
+//return $response;
     }
 
 }
@@ -216,48 +211,49 @@ public function neco(Request $request)
         $bo['name']=encription::decryptdata($user->name);
         $resellerURL = 'https://integration.mcd.5starcompany.com.ng/api/reseller/';
         $curl = curl_init();
-
         curl_setopt_array($curl, array(
-            CURLOPT_URL => $resellerURL.'pay',
+            CURLOPT_URL => "https://easyaccess.com.ng/api/neco_v2.php",
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
+            CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 0,
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => array('service' => 'result_checker','coded' => 'NECO','quantity' => $request->value,'phone' => encription::decryptdata($user->phone)),
-
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => array(
+                'no_of_pins' =>5,
+            ),
             CURLOPT_HTTPHEADER => array(
-                'Authorization: mcd_key_75rq4][oyfu545eyuriup1q2yue4poxe3jfd'
-            )));
-
-
+                "AuthorizationToken: 1e8396312a0a0ddaffad3d35740adca4", //replace this with your authorization_token
+                "cache-control: no-cache"
+            ),
+        ));
         $response = curl_exec($curl);
-
         curl_close($curl);
-//                echo $response;
+//        echo $response;
+//                return $response;
         $data = json_decode($response, true);
-        $success = $data["success"];
 
-        if ($success==1) {
-            $ref=$data['ref'];
-            $token=$data['token'];
+        if ($data["success"]=="true") {
+            $ref=$data['reference_no'];
+            $token=$data['pin'];
             $token1=json_decode($token, true);
 //return $token1;
-            foreach ($token1 as $to){
 
                 $insert=neco::create([
                     'username'=>$user->username,
-                    'pin'=>$to['pin'],
+                    'pin'=>$token,
                     'ref'=>$ref,
                 ]);
-            }
+
             $mg='Waec Checker Successful Generated, kindly check your pin';
             Alert::success('Successful',$mg );
             return redirect('neco')->with('success', $mg);
 
-        }elseif($success==0){
+        }elseif($data["success"]=="false"){
+            $zo = $wallet->balance + $amount;
+            $wallet->balance = $zo;
+            $wallet->save();
 
             Alert::error('Fail', $response);
             return redirect('neco')->with('error', $response);
