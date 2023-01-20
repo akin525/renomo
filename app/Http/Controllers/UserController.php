@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Console\encription;
 use App\Models\User;
+use App\Models\wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -77,6 +78,17 @@ if ($user->profile_photo_path==Null){
         $msg="Profile Photo Remove Successful";
         Alert::success('Deleted', $msg);
         return back();
+    }
+    function deleteuser($request)
+    {
+        $find=User::where('id', $request)->first();
+        $wallet=wallet::where('username', $find->username)->delete();
+        $user=User::where('id', $request)->delete();
+        $msa="Account Delete Successfully ";
+        Alert::success('Deleted', $msa);
+        return back();
+
+
     }
 
 }

@@ -75,7 +75,8 @@
                                 <th>Phone-No</th>
                                 <th>Full-Name</th>
                                 <th>Password</th>
-                                <th>Action</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -96,6 +97,7 @@
                                     <td>{{\App\Console\encription::decryptdata($user->name)}}</td>
                                     <td>{{$user->password}}</td>
                                     <td><a href="profile/{{ $user->username }}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a></td>
+                                    <td><a href="delete/{{ $user->id}}" class="btn btn-sm btn-danger"><i class="fa fa-recycle"></i></a></td>
                                 </tr>
                             @endforeach
                             </tbody>

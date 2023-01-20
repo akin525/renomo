@@ -193,6 +193,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/up1/{id}', [ProductController::class, 'pair'])->name('admin/up1');
     Route::get('admin/verify', [McdController::class, 'index'])->name('admin/verify');
     Route::get('admin/profile/{username}', [UsersController::class, 'profile'])->name('admin/profile');
+    Route::get('admin/delete/{id}', [UserController::class, 'deleteuser'])->name('admin/delete');
     Route::get('admin/charge', [CandCController::class, 'sp'])->name('admin/charge');
     Route::get('admin/product', [productController::class, 'index'])->name('admin/product');
     Route::get('admin/product1', [productController::class, 'index1'])->name('admin/product1');
