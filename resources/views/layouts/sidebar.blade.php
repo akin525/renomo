@@ -53,7 +53,8 @@
     {{-- toastr --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
 {{--    <script type="text/javascript" src="https://cdn.engagespot.co/engagespot-client.min.js"></script>--}}
-
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1367363826948615"
+            crossorigin="anonymous"></script>
 </head>
 
 <body class="dashboard dashboard_1">

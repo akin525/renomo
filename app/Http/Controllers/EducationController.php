@@ -261,5 +261,10 @@ public function neco(Request $request)
         return $response;
     }
 }
+public function allneco()
+{
+    $neco=neco::all();
+    return view('admin/neco', compact('neco'));
+}
 }
 
