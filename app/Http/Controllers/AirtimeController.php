@@ -38,7 +38,7 @@ class AirtimeController
         if ($wallet->balance < $request->amount) {
             $mg = "You Cant Make Purchase Above" . "NGN" . $request->amount . " from your wallet. Your wallet balance is NGN $wallet->balance. Please Fund Wallet And Retry or Pay Online Using Our Alternative Payment Methods.";
 
-            Alert::errror('Fail', $mg);
+            Alert::error('Fail', $mg);
             return back();
 
 
