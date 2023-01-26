@@ -27,7 +27,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'username', 'google_id',
+        'name', 'email', 'password', 'phone', 'username', 'google_id','pin',
     ];
 
     function parentData()
@@ -45,6 +45,8 @@ class User extends Authenticatable
         'remember_token',
         'two_factor_recovery_codes',
         'two_factor_secret',
+        'apikey',
+        'pin',
     ];
 
     /**

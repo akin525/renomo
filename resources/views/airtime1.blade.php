@@ -11,7 +11,11 @@
 
     <!--            <div class="box w3-card-4">-->
 
-    <form action="{{ route('buyairtime1') }}" method="post">
+    @if(Auth::user()->pin !="0")
+        <form action="{{ route('pin') }}" method="post">
+            @else
+                <form action="{{ route('buyairtime') }}" method="post">
+                    @endif
         @csrf
         <div class="row">
             <div class="col-sm-8">
