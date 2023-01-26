@@ -34,6 +34,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\verify;
 use App\Http\Controllers\VertualController;
 use App\Http\Controllers\WithdrawController;
+use App\Http\PinController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -119,6 +120,8 @@ Route::post('referwith1', [RefersController::class, 'with'])->name('referwith1')
 Route::get('fund', [FundController::class, 'fund'])->name('fund');
 Route::get('tran/{reference}', [FundController::class, 'tran'])->name('tran');
 Route::get('vertual', [VertualController::class, 'vertual'])->name('vertual');
+Route::get('createpin', [PinController::class, 'createpin'])->name('createpin');
+Route::post('cepin', [PinController::class, 'pinsave'])->name('cepin');
 
 
 Route::get('viewpdf/{id}', [PdfController::class, 'viewpdf'])->name('viewpdf');

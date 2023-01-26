@@ -242,9 +242,15 @@
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <div class="full">
                         <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
-                        <div class="logo_section">
+                        <div class="logo_section m-1">
                             <a href="{{ route('dashboard') }}"><img class="img-responsive" src="{{asset("images/bn.jpeg")}}" alt="#" /></a>
                         </div>
+                        <br>
+                        @if(Auth::user()->pin =="0")
+                            <button type="button" onclick="window.location.href='{{route('createpin')}}'" class="btn btn-success mb-3">Enable Transaction Pin for secure purpose</button>
+                        @endif
+                    </div>
+
                 </nav>
             </div>
             <!-- end topbar -->
@@ -282,8 +288,6 @@
 
 {{--            </iframe>--}}
 {{--            </center>--}}
-
-
 
 
             <style>
