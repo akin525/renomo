@@ -13,9 +13,6 @@
     <meta name="keywords" content="Buy data in a few clicks to keep surfing the internet. You can buy whatever size of data plan for whichever network you desire. All plans are topped-up to your specified number in seconds.">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- site icon -->
-    {{-- ChartScript --}}
-{{--    <script charset="UTF-8" src="//web.webpushs.com/js/push/9e64f0fe6770fbc524fb38a0b8e5ad3b_1.js" async></script>--}}
 
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
     <link rel="icon" href="https://renomobilemoney.com/images/bn.jpeg"  />
@@ -62,12 +59,7 @@
     <div class="spinner-border"></div>
     RENOMOBILEMONEY......
 </div>
-<script>
-    Engagespot.render('#HTML_Element_ID', {
-        apiKey: 'lxdpmrzqutphfa6166gnv',
-        userId: '{{Auth::user()->email}}', //Your user's unique identifier/email
-    })
-</script>
+
 <div class="full_container">
     <div class="inner_container">
         <!-- Sidebar  -->
@@ -478,27 +470,3 @@
     setCookie("user_email","{{\App\Console\encription::decryptdata(Auth::user()->username)}}",30); //set "user_email" cookie, expires in 30 days
     var userEmail=getCookie("user_email");//"bobthegreat@gmail.co
 </script>
-            <script type="module">
-                // Import the functions you need from the SDKs you need
-                import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-app.js";
-                import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.3/firebase-analytics.js";
-                // TODO: Add SDKs for Firebase products that you want to use
-                // https://firebase.google.com/docs/web/setup#available-libraries
-
-                // Your web app's Firebase configuration
-                // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-                const firebaseConfig = {
-                    apiKey: "AIzaSyDI3dOIUunt-tFfh2s-jDBIS3sGPevMroI",
-                    authDomain: "renomobilemoney-ecbce.firebaseapp.com",
-                    projectId: "renomobilemoney-ecbce",
-                    storageBucket: "renomobilemoney-ecbce.appspot.com",
-                    messagingSenderId: "899055794791",
-                    appId: "1:899055794791:web:e0f0139b858b0a381632c2",
-                    measurementId: "G-4FJPZ2WYB5"
-                };
-
-                // Initialize Firebase
-                const app = initializeApp(firebaseConfig);
-                const analytics = getAnalytics(app);
-            </script>
-            <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase.js"></script>

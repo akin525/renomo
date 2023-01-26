@@ -1,104 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-    <title>Confirmed Payment</title>
-    <link href="https://fonts.googleapis.com/css?family=Raleway|Rock+Salt|Source+Code+Pro:300,400,600" rel="stylesheet">
+@include('layouts.sidebar')
+
+
+<link href="https://fonts.googleapis.com/css?family=Raleway|Rock+Salt|Source+Code+Pro:300,400,600" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('style2.css')}}">
 
-</head>
-<body class="bob">
-@include('sweetalert::alert')
-@include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
-<style>
 
-    * {
-        padding: 0;
-        margin: 0
-    }
-
-
-    button {
-        padding: 20px 30px;
-        font-size: 1.5em;
-        /*width:200px;*/
-        cursor: pointer;
-        border: 0px;
-        position: relative;
-        /*margin: 20px;*/
-        transition: all .25s ease;
-        /*background: rgba(116, 23, 231, 1);*/
-        color: #fff;
-        overflow: hidden;
-        border-radius: 10px
-    }
-
-    .load {
-        position: absolute;
-        left: 0px;
-        top: 0px;
-        width: 100%;
-        height: 100%;
-        background: inherit;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: inherit
-    }
-
-    .load::after {
-        content: '';
-        position: absolute;
-        border-radius: 50%;
-        border: 3px solid #fff;
-        width: 30px;
-        height: 30px;
-        border-left: 3px solid transparent;
-        border-bottom: 3px solid transparent;
-        animation: loading1 1s ease infinite;
-        z-index: 10
-    }
-
-    .load::before {
-        content: '';
-        position: absolute;
-        border-radius: 50%;
-        border: 3px dashed #fff;
-        width: 30px;
-        height: 30px;
-        border-left: 3px solid transparent;
-        border-bottom: 3px solid transparent;
-        animation: loading1 2s linear infinite;
-        z-index: 5
-    }
-
-    @keyframes loading1 {
-        0% {
-            transform: rotate(0deg)
-        }
-
-        100% {
-            transform: rotate(360deg)
-        }
-    }
-
-    button.active {
-        transform: scale(.85)
-    }
-
-    button.activeLoading .loading {
-        visibility: visible;
-        opacity: 1
-    }
-
-    button .loading {
-        opacity: 0;
-        visibility: hidden
-    }
-</style>
-
+<div class="card " style="padding:90px 15px 20px 15px">
 <!-- partial:index.partial.html -->
 <div class="payment-title">
-    <h1 style="color: white">Enter Your Transaction pin</h1>
+    <h3 class="text-success"><b>Enter Your Transaction pin</b></h3>
 </div>
 <div class="container preload">
     <div class="creditcard">
@@ -200,9 +110,10 @@
         </div>
     </div>
 </div>
+    <center>
 <form action="{{route('airtimep')}}" method="POST">
     @csrf
-<div class="form-container">
+<div class="form-container card">
     <div class="field-container">
         <label style="color: white" for="name">Recharge Card Amount</label>
         <input name="amount" maxlength="20" value="{{$request['amount']}}" type="text">
@@ -231,6 +142,7 @@
     </div>
 </div>
 </form>
+    </center>
 <!-- partial -->
 {{--<script src='https://cdnjs.cloudflare.com/ajax/libs/imask/3.4.0/imask.min.js'>--}}
 
@@ -243,5 +155,4 @@
         })
     })
 </script>
-</body>
-</html>
+</div>
