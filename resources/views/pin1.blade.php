@@ -10,17 +10,18 @@
 <div class="payment-title">
     <h5 class="text-success"><b>Enter Your Transaction pin</b></h5>
 </div>
+
 <div class="container preload">
     <div class="creditcard">
         <div class="front">
             <div id="ccsingle"></div>
-            @if($request->id=="m")
+            @if($product->network=="mtn-data")
             <img class="ccicon"  src="{{asset('img/mtn.jpg')}}"/>
-            @elseif($request->id=="g")
+            @elseif($product->network=="glo-data")
             <img class="ccicon"  src="{{asset('img/g.jpg')}}"/>
-            @elseif($request->id=="a")
+            @elseif($product->network=="airtel-data")
             <img class="ccicon"  src="{{asset('img/airtel.jpg')}}"/>
-            @elseif($request->id=="9")
+            @elseif($product->network=="etisalat-data")
             <img class="ccicon"  src="{{asset('img/9.jpg')}}"/>
             @endif
             <svg version="1.1" id="cardfront" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -29,12 +30,12 @@
                 <g id="Front">
 
                         <text transform="matrix(1 0 0 1 60.106 295.0121)" id="svgnumber" class="st2 st3 st4">{{$request['number']}}</text>
-                        <text transform="matrix(1 0 0 1 54.1064 428.1723)" id="svgname" class="st2 st5 st6">{{\App\Console\encription::decryptdata(Auth::user()->name)}}</text>
-                        <text transform="matrix(1 0 0 1 54.1074 389.8793)" class="st7 st5 st8">Full-Name</text>
+                        <text transform="matrix(1 0 0 1 54.1064 428.1723)" id="svgname" class="st2 st5 st6">{{$product['plan']}}</text>
+                        <text transform="matrix(1 0 0 1 54.1074 389.8793)" class="st7 st5 st8">Product</text>
                         <text transform="matrix(1 0 0 1 479.7754 388.8793)" class="st7 st5 st8">Validity</text>
                         <text transform="matrix(1 0 0 1 65.1054 241.5)" class="st7 st5 st8">Number</text>
                         <g>
-                            <text transform="matrix(1 0 0 1 574.4219 433.8095)" id="svgexpire" class="st2 st5 st9">01/23</text>
+                            <text transform="matrix(1 0 0 1 574.4219 433.8095)" id="svgexpire" class="st2 st5 st9">20/23</text>
                             <text transform="matrix(1 0 0 1 479.3848 417.0097)" class="st2 st10 st11">VALID</text>
                             <text transform="matrix(1 0 0 1 479.3848 435.6762)" class="st2 st10 st11">THRU</text>
                             <polygon class="st2" points="554.5,421 540.4,414.2 540.4,427.9 		" />
@@ -111,26 +112,27 @@
     </div>
 </div>
     <center>
-<form action="{{route('airtimep')}}" method="POST">
+<form action="{{route('datap')}}" method="POST">
     @csrf
 <div class="form-container card">
     <div class="field-container">
-        <label style="color: white" for="name">Recharge Card Amount</label>
-        <input name="amount" maxlength="20" value="{{$request['amount']}}" type="text">
-        <input name="id"  value="{{$request['id']}}" type="hidden">
+        <label for="name">Amount</label>
+        <input name="amount" value="{{$amount}}" type="text" readonly>
+        <input name="refid"  value="{{$request['id']}}" type="hidden">
+        <input name="productid"  value="{{$product['id']}}" type="hidden">
         <input name="number"  value="{{$request['number']}}" type="hidden">
-        <input name="refid"  value="{{$request['refid']}}" type="hidden">
     </div>
+
     <div class="field-container">
         <label style="color: white" for="cardnumber">Your Pin</label>
-        <input  type="number" name="pin" maxlength="4"  required>
-        @if($request->id=="m")
+        <input  type="number" name="pin" maxlength="4"  required/>
+        @if($product->network=="mtn-data")
         <img class="ccicon" id="ccicon" width="750" height="471" src="{{asset('img/mtn.jpg')}}"/>
-            @elseif($request->id=="g")
+            @elseif($product->network=="glo-data")
             <img class="ccicon" id="ccicon" width="750" height="471" src="{{asset('img/g.jpg')}}"/>
-        @elseif($request->id=="a")
+        @elseif($product->network=="airtel-data")
             <img class="ccicon" id="ccicon" width="750" height="471" src="{{asset('img/airtel.jpg')}}"/>
-        @elseif($request->id=="9")
+        @elseif($product->network=="etisalat-data")
         <img class="ccicon" id="ccicon" width="750" height="471" src="{{asset('img/9.jpg')}}"/>
         @endif
 

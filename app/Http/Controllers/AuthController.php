@@ -45,7 +45,7 @@ class AuthController
 //Alert::info('Renomobilemoney', 'Data Refill | Airtime | Cable TV | Electricity Subscription');
         return view("home", compact("mtn", "glo", "eti", "airtel"));
     }
-public function pass(Request $request)
+  public function pass(Request $request)
 {
     $request->validate([
         'email' => 'required',
@@ -287,8 +287,8 @@ Alert::success('Success', 'New Password has been sent to your email');
             $user = User::find($request->user()->id);
             $data = data::where(['status' => 1])->where('network', $request->id)->get();
 
-//return $data;
-            return view('redata', compact('user', 'data'));
+                return view('redata', compact('user', 'data'));
+
         } elseif ($serve->name == 'honorworld') {
             $user = User::find($request->user()->id);
             $data= big::where('status', '1')->where('network', $request->id)->get();

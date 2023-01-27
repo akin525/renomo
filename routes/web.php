@@ -81,6 +81,8 @@ Route::get('waec', [EducationController::class, 'indexw'])->name('waec');
 Route::post('nec', [EducationController::class, 'neco'])->name('nec');
 Route::get('commission', [AirtimeController::class, 'listairtimecommission'])->name('commission');
 Route::post('pin', [AirtimeController::class, 'pintransaction'])->name('pin');
+Route::post('pin1', [BillController::class, 'pintransaction1'])->name('pin1');
+Route::post('datap', [BillController::class, 'billpin'])->name('datap');
 Route::get('neco', [EducationController::class, 'indexn'])->name('neco');
 Route::post('pick', [AlltvController::class, 'tv'])->name('pick');
 Route::get('addlock/{id}', [SafelockController::class, 'add'])->name('addlock');

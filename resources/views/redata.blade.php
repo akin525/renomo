@@ -16,8 +16,13 @@
                 }
             </script>
             <div class="btn-controls">
+                @if(\Illuminate\Support\Facades\Auth::user()->pin=="0")
                 <form action="{{ route('bill') }}" method="post">
-                    @csrf
+                    @else
+                        <form action="{{ route('pin1') }}" method="post">
+                            @endif
+
+                        @csrf
                     <label for="network" class=" requiredField">
                         Select Network from the Rectangular Box<span class="asteriskField">*</span>
                     </label>
