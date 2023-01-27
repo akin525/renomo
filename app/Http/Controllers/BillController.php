@@ -120,7 +120,7 @@ class BillController extends Controller
                 $wallet = wallet::where('username', $user->username)->first();
 
 
-                $gt = $wallet->balance - $request->amount;
+                $gt = $wallet->balance - $amount;
 
                 if (Auth::user()->pin !="0") {
                     $pi = $request->pin;
@@ -336,7 +336,7 @@ class BillController extends Controller
                 $wallet = wallet::where('username', $user->username)->first();
 
 
-                $gt = $wallet->balance - $request->amount;
+                $gt = $wallet->balance - $amount;
 
 
                 $wallet->balance = $gt;
