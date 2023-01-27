@@ -198,7 +198,7 @@ Alert::success('Success', 'New Password has been sent to your email');
             Alert::image('Giveaway Time!!','Check Our Giveaway Page','https://renomobilemoney.com/give.jpg','200','200', 'Image Alt');
 
         }else{
-            Alert::image('Latest News!!',$me->message,'https://renomobilemoney.com/images/bn.jpeg','200','200', 'Image Alt');
+//            Alert::image('Latest News!!',$me->message,'https://renomobilemoney.com/images/bn.jpeg','200','200', 'Image Alt');
         }
         $cdeposite=deposit::where('username', Auth::user()->username)->count();
         $cbill=bill_payment::where('username', Auth::user()->username)->count();
