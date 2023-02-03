@@ -311,7 +311,7 @@
                 }
             </style>
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-            <a href="http://wa.me/2348066215840" class="float" target="_blank">
+            <a href="https://wa.me/2348066215840" class="float" target="_blank">
                 <i class="fa fa-whatsapp my-float"></i>
             </a>
             <style>
