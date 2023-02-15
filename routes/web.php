@@ -73,9 +73,13 @@ Route::post('passw', [AuthController::class, 'pass'])->name('passw');
 //Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //    return view('dashboard');
 //})->name('dashboard');
+
+
 Route::middleware(['auth'])->group(function () {
     Route::view('picktv', 'picktv');
+    Route::view('fund1', 'fund1');
     Route::view('safelock', 'safelock');
+    Route::view('vtu', 'vtu');
 Route::post('wac', [EducationController::class, 'waec'])->name('wac');
 Route::get('waec', [EducationController::class, 'indexw'])->name('waec');
 Route::post('nec', [EducationController::class, 'neco'])->name('nec');

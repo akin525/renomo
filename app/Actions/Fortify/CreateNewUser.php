@@ -40,6 +40,8 @@ class CreateNewUser implements CreatesNewUsers
                 'username' => encription::encryptdata($input['username']),
                 'balance' => 0,
             ]);
+
+
             $receiver=$input ['email'];
             $admin= 'info@renomobilemoney.com';
             Mail::to($receiver)->send(new Emailotp($input));

@@ -14,7 +14,6 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-    <script charset="UTF-8" src="//web.webpushs.com/js/push/9e64f0fe6770fbc524fb38a0b8e5ad3b_1.js" async></script>
 
     <!-- Vendor CSS Files -->
     <link href="{{asset('land/assets/vendor/aos/aos.css')}}" rel="stylesheet">
@@ -28,21 +27,9 @@
     <!-- Template Main CSS File -->
     <link href="{{asset('land/assets/css/style.css')}}" rel="stylesheet">
 
-    <!-- =======================================================
-    * Template Name: Bethany - v4.7.0
-    * Template URL: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
-{{--    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4783566552108386"--}}
-{{--            crossorigin="anonymous"></script>--}}
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1367363826948615"
-            crossorigin="anonymous"></script>
+
 </head>
 
-
-{{-- toastr --}}
-{{--<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />--}}
 
 <body>
 @include('sweetalert::alert')

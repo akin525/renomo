@@ -114,6 +114,9 @@
                         <a href="https://documenter.getpostman.com/view/16410443/UzXPwG8p#f16ada4e-643a-48fa-a08f-0a1176054993" target=”_blank” ><i class="fa fa-plug white_color"></i> <span>Api Documentation</span></a>
                     </li>
                         <li class="active">
+                        <a href="{{url('vtu')}}" ><i class="fa fa-wordpress white_color"></i> <span>Own A Webite</span></a>
+                    </li>
+                        <li class="active">
                         <a href="{{ route('dashboard') }}"  ><i class="fa fa-dashboard white_color"></i> <span>Dashboard</span></a>
                     </li>
                         <li class="active">
