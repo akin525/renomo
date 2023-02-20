@@ -1,15 +1,72 @@
 @include('layouts.sidebar')
 <link rel="stylesheet" href="{{asset('Buy Data _ MobileNig_files/w3(1).css')}}">
+<link rel="stylesheet" href="{{asset('prism.css')}}">
+<script src="{{asset('prism.js')}}"></script>
 
 <link rel="stylesheet" href="{{asset('Buy Data _ MobileNig_files/w3(2).css')}}">
 <link rel="stylesheet" href="{{asset('Buy Data _ MobileNig_files/font-awesome.min.css')}}">
 <link href="{{asset('Buy Data _ MobileNig_files/icon" rel="stylesheet')}}">
 
+
 <div class="" id="buy_data" style="margin-top:50px">
     <h1 class="w3-xxxlarge " style="color: #28a745"><b>API Access</b></h1>
     <hr style="width:50px;border:5px #28a745" class="w3-round">
+<style>
+    .code-frame {
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        overflow: auto;
+        margin-bottom: 1em;
+    }
 
+    pre {
+        margin: 0;
+        padding: 1em;
+        font-size: 14px;
+        font-family: Consolas, monospace;
+        line-height: 1.5;
+    }
+</style>
     <br>
+    <div class="code-frame">
+    <pre class="language-javascript">
+    <code >
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://renomobilemoney.com/api/run',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS =>'{
+        "account_number": "7694929336",
+        "account_reference": "myplatformu1425675289",
+        "amount": 500,
+        "fees": "45",
+        "narration": "NIP:TEST INT\'L FIN.SERVICES LTD-0005000603/7694 2",
+        "ref": "00000022012314155906660501995933156200000",
+        "from_account_name": "TEST INT\'L BANK LTD",
+        "from_account_number": "XXXXXX0603",
+        "paid_at": "2022-01-23T21:13:11.078198Z"
+        }',
+        CURLOPT_HTTPHEADER => array(
+        'Content-Type: application/json'
+        ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        echo $response;
+
+    </code>
+    </pre>
+    </div>
     <style>
         img {
             max-width: 100%;
@@ -52,10 +109,10 @@
 {{--                            <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>--}}
 {{--                            Copy Api Key--}}
 {{--                        </button>--}}
+        <a href="#" data-confirm="You want to generate new api key?" class="access w3-green w3-btn w3-round">Generate New Api Key</a>
 
                     </div>
 
-{{--                    <a href="api_access3" data-confirm="You want to generate new api key?" class="access w3-green w3-btn w3-round">Generate New Api Key</a>--}}
 
 
 
@@ -64,6 +121,7 @@
             </div>
         </div>
         <br><br>
+
     </div>
 
 

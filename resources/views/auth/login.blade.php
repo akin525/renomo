@@ -71,10 +71,10 @@
 
                                         <button type="submit" class="btn btn-primary" >Sign-in <span class="load loading"></span></button>
                                         <br>
-                                        <center>
-                                            <a  onclick="web2app.biometric.check(myCallback);"><h4 class="text-success"><i class='fas fa-fingerprint' style='font-size:36px'></i>
-                                                    Fingerprint</h4>Login With </a>
-                                        </center>
+{{--                                        <center>--}}
+{{--                                            <a  onclick="web2app.biometric.check(myCallback);"><h4 class="text-success"><i class='fas fa-fingerprint' style='font-size:36px'></i>--}}
+{{--                                                    Fingerprint</h4>Login With </a>--}}
+{{--                                        </center>--}}
                                         <script>
                                             const btns = document.querySelectorAll('button');
                                             btns.forEach((items)=>{

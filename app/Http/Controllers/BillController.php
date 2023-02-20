@@ -262,9 +262,9 @@ class BillController extends Controller
 
                             } elseif (!isset($data['success'])) {
                                 $success = 0;
-                                $zo = $wallet->balance + $request->amount;
-                                $wallet->balance = $zo;
-                                $wallet->save();
+//                                $zo = $wallet->balance + $request->amount;
+//                                $wallet->balance = $zo;
+//                                $wallet->save();
                                 $bo->server_response = $response;
                                 $bo->save();
                                 $name = $product->plan;
@@ -468,9 +468,9 @@ class BillController extends Controller
 
                     }elseif (!isset($data['success'])) {
                         $success = 0;
-                        $zo = $wallet->balance + $request->amount;
-                        $wallet->balance = $zo;
-                        $wallet->save();
+//                        $zo = $wallet->balance + $request->amount;
+//                        $wallet->balance = $zo;
+//                        $wallet->save();
                         $bo->server_response=$response;
                         $bo->save();
                         $name = $product->plan;
