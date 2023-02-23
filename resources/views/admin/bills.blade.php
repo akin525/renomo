@@ -145,6 +145,7 @@
                             <th>Receipt</th>
                             <th>Username</th>
                             <th>Amount</th>
+                            <th>Balance</th>
                             <th>Status</th>
                             <th>Number</th>
                             <th>Token</th>
@@ -162,6 +163,7 @@
                                 <td>{{\App\Console\encription::decryptdata($dat->username)}}
                                 </td>
                                 <td>{{$dat->amount}}</td>
+                                <td>{{$dat->balance}}</td>
                                 <td class="center">
 
                                     @if($dat->status=="1")

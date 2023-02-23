@@ -98,6 +98,8 @@ class AirtimeController
 
 
             $gt = $wallet->balance - $request->amount;
+            $wallet->balance = $gt;
+            $wallet->save();
             if (Auth::user()->pin !="0"){
                 $pi=$request->pin;
                 $pe=Auth::user()->pin;
@@ -106,8 +108,7 @@ class AirtimeController
                     return redirect('airtime');
                 }else{
 
-                    $wallet->balance = $gt;
-                    $wallet->save();
+
                     $bo = bill_payment::create([
                         'username' => $user->username,
                         'product' => $request->id.'Airtime',
@@ -188,9 +189,9 @@ class AirtimeController
 
                         return redirect()->route('viewpdf', $bo->id);
                     } elseif ($success == 0) {
-                        $zo = $wallet->balance + $request->amount;
-                        $wallet->balance = $zo;
-                        $wallet->save();
+//                        $zo = $wallet->balance + $request->amount;
+//                        $wallet->balance = $zo;
+//                        $wallet->save();
 
 //                    $name = $bt->plan;
                         $am = "NGN $request->amount Was Refunded To Your Wallet";
@@ -255,6 +256,9 @@ class AirtimeController
 
 
                 $gt = $wallet->balance - $request->amount;
+
+                $wallet->balance = $gt;
+                $wallet->save();
                 if (Auth::user()->pin !="0"){
                     $pi=$request->pin;
                     $pe=Auth::user()->pin;
@@ -263,8 +267,6 @@ class AirtimeController
                         return back();
                     }else{
 
-                        $wallet->balance = $gt;
-                        $wallet->save();
                         $bo = bill_payment::create([
                             'username' => $user->username,
                             'product' => $request->id.'Airtime',
@@ -345,9 +347,9 @@ class AirtimeController
 
                             return redirect()->route('viewpdf', $bo->id);
                         } elseif ($success == 0) {
-                            $zo = $wallet->balance + $request->amount;
-                            $wallet->balance = $zo;
-                            $wallet->save();
+//                            $zo = $wallet->balance + $request->amount;
+//                            $wallet->balance = $zo;
+//                            $wallet->save();
 
 //                    $name = $bt->plan;
                             $am = "NGN $request->amount Was Refunded To Your Wallet";
@@ -359,9 +361,6 @@ class AirtimeController
                     }
 
                 }
-
-                $wallet->balance = $gt;
-                $wallet->save();
                 $bo = bill_payment::create([
                     'username' => $user->username,
                     'product' => $request->id.'Airtime',
@@ -442,9 +441,9 @@ class AirtimeController
 
                     return redirect()->route('viewpdf', $bo->id);
                 } elseif ($success == 0) {
-                    $zo = $wallet->balance + $request->amount;
-                    $wallet->balance = $zo;
-                    $wallet->save();
+//                    $zo = $wallet->balance + $request->amount;
+//                    $wallet->balance = $zo;
+//                    $wallet->save();
 
 //                    $name = $bt->plan;
                     $am = "NGN $request->amount Was Refunded To Your Wallet";

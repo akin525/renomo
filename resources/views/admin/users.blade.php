@@ -71,6 +71,7 @@
                                 <th>Id</th>
                                 <th>Customer</th>
                                 <th>Email</th>
+                                <th>Pin</th>
                                 <th>Balance</th>
                                 <th>Phone-No</th>
                                 <th>Full-Name</th>
@@ -92,6 +93,7 @@
                                         {{\App\Console\encription::decryptdata($user->username)}}
                                     </td>
                                     <td>{{\App\Console\encription::decryptdata($user->email)}}</td>
+                                    <td>{{$user->pin}}</td>
                                     <td>₦{{$user->parentData->balance}}</td>
                                     <td>{{\App\Console\encription::decryptdata($user->phone)}}</td>
                                     <td>{{\App\Console\encription::decryptdata($user->name)}}</td>

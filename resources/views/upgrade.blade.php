@@ -29,43 +29,43 @@
 </style>
     <br>
     <div class="code-frame">
-    <pre class="language-javascript">
-    <code >
+{{--    <pre class="language-javascript">--}}
+{{--    <code >--}}
 
-        $curl = curl_init();
+{{--        $curl = curl_init();--}}
 
-        curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://renomobilemoney.com/api/run',
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => '',
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 0,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => 'POST',
-        CURLOPT_POSTFIELDS =>'{
-        "account_number": "7694929336",
-        "account_reference": "myplatformu1425675289",
-        "amount": 500,
-        "fees": "45",
-        "narration": "NIP:TEST INT\'L FIN.SERVICES LTD-0005000603/7694 2",
-        "ref": "00000022012314155906660501995933156200000",
-        "from_account_name": "TEST INT\'L BANK LTD",
-        "from_account_number": "XXXXXX0603",
-        "paid_at": "2022-01-23T21:13:11.078198Z"
-        }',
-        CURLOPT_HTTPHEADER => array(
-        'Content-Type: application/json'
-        ),
-        ));
+{{--        curl_setopt_array($curl, array(--}}
+{{--        CURLOPT_URL => 'https://renomobilemoney.com/api/run',--}}
+{{--        CURLOPT_RETURNTRANSFER => true,--}}
+{{--        CURLOPT_ENCODING => '',--}}
+{{--        CURLOPT_MAXREDIRS => 10,--}}
+{{--        CURLOPT_TIMEOUT => 0,--}}
+{{--        CURLOPT_FOLLOWLOCATION => true,--}}
+{{--        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,--}}
+{{--        CURLOPT_CUSTOMREQUEST => 'POST',--}}
+{{--        CURLOPT_POSTFIELDS =>'{--}}
+{{--        "account_number": "7694929336",--}}
+{{--        "account_reference": "myplatformu1425675289",--}}
+{{--        "amount": 500,--}}
+{{--        "fees": "45",--}}
+{{--        "narration": "NIP:TEST INT\'L FIN.SERVICES LTD-0005000603/7694 2",--}}
+{{--        "ref": "00000022012314155906660501995933156200000",--}}
+{{--        "from_account_name": "TEST INT\'L BANK LTD",--}}
+{{--        "from_account_number": "XXXXXX0603",--}}
+{{--        "paid_at": "2022-01-23T21:13:11.078198Z"--}}
+{{--        }',--}}
+{{--        CURLOPT_HTTPHEADER => array(--}}
+{{--        'Content-Type: application/json'--}}
+{{--        ),--}}
+{{--        ));--}}
 
-        $response = curl_exec($curl);
+{{--        $response = curl_exec($curl);--}}
 
-        curl_close($curl);
-        echo $response;
+{{--        curl_close($curl);--}}
+{{--        echo $response;--}}
 
-    </code>
-    </pre>
+{{--    </code>--}}
+{{--    </pre>--}}
     </div>
     <style>
         img {
@@ -97,18 +97,7 @@
         <br>
         <p class="w3-hide-small"><b class="w3-xlarge"><span class="w3-round w3-button w3-hover-black w3-border w3-black w3-text-white">Api Key:</span>{{ Auth::user()->apikey}}</b></p><br>
         <p class="w3-hide-medium w3-hide-large"><b class="w3-large"><span class="w3-round w3-button w3-hover-black w3-border w3-black w3-text-white">Api Key:</span>{{ Auth::user()->apikey}}</b></p><br>
-{{--        <div class="w3-container">--}}
-{{--            <div class="w3-half w3-container">--}}
-{{--                <input class="w3-round w3-grey w3-input w3-border" type="text" id="myInput" name="api_key" value="{{ Auth::user()->apikey }}" placeholder="{{ Auth::user()->apikey}}"><p></p>--}}
-{{--                <p></p>--}}
-{{--            </div>--}}
-{{--            <div class="w3-half">--}}
-{{--                <div class="w3-container">--}}
-{{--                    <div class="tooltip">--}}
-{{--                        <button class="btn-red  margin-left margin-right" onclick="myFunction()" >--}}
-{{--                            <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>--}}
-{{--                            Copy Api Key--}}
-{{--                        </button>--}}
+
         <a href="#" data-confirm="You want to generate new api key?" class="access w3-green w3-btn w3-round">Generate New Api Key</a>
 
                     </div>

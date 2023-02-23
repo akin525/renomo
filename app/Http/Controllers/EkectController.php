@@ -184,7 +184,7 @@ class EkectController
                         'amount' => $request->amount,
                         'server_response' => $response,
                         'status' => $success,
-                        'phone' => $request->number,
+                        'number' => $request->number,
                         'transactionid' => $request->refid,
                         'discountamount' => $tran1,
                         'token'=>$tran2,

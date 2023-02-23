@@ -121,7 +121,8 @@ class BillController extends Controller
 
 
                 $gt = $wallet->balance - $amount;
-
+                $wallet->balance = $gt;
+                $wallet->save();
                 if (Auth::user()->pin !="0") {
                     $pi = $request->pin;
                     $pe = Auth::user()->pin;
@@ -135,8 +136,7 @@ class BillController extends Controller
 
                         }
                     } else {
-                        $wallet->balance = $gt;
-                        $wallet->save();
+
                         $bo = bill_payment::create([
                             'username' => $user->username,
                             'product' => $product->network . '|' . $product->plan,
@@ -265,8 +265,9 @@ class BillController extends Controller
 //                                $zo = $wallet->balance + $request->amount;
 //                                $wallet->balance = $zo;
 //                                $wallet->save();
-                                $bo->server_response = $response;
-                                $bo->save();
+                                $update=bill_payment::where('id', $bo->id)->update([
+                                    'server_response'=>$response,
+                                ]);
                                 $name = $product->plan;
                                 $am = "NGN $request->amount Was Refunded To Your Wallet";
                                 $ph = ", Transaction fail";
@@ -471,8 +472,9 @@ class BillController extends Controller
 //                        $zo = $wallet->balance + $request->amount;
 //                        $wallet->balance = $zo;
 //                        $wallet->save();
-                        $bo->server_response=$response;
-                        $bo->save();
+                        $update=bill_payment::where('id', $bo->id)->update([
+                            'server_response'=>$response,
+                        ]);
                         $name = $product->plan;
                         $am = "NGN $request->amount Was Refunded To Your Wallet";
                         $ph = ", Transaction fail";
