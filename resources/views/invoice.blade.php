@@ -33,7 +33,7 @@
                                         <tr>
                                             <td>{{$re->timestamp}}</td>
                                             <td>{{\App\Console\encription::decryptdata($re->username)}}</td>
-                                            <td><a href="{{route('viewpdf', $re->id)}}" class="badge badge-success text-success"><i class="fa fa-download">Pdf</i></a> </td>
+                                            <td><a href="{{route('viewpdf', $re->id)}}" class="badge badge-success text-white"><i class="fa fa-download">Pdf</i></a> </td>
                                             <td>{{$re->product}}</td>
                                             <td>{{$re->amount}}</td>
                                             <td>{{$re->fbalance}}</td>
