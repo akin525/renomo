@@ -36,8 +36,8 @@
                                             <td><a href="{{route('viewpdf', $re->id)}}" class="badge badge-success text-success"><i class="fa fa-download">Pdf</i></a> </td>
                                             <td>{{$re->product}}</td>
                                             <td>{{$re->amount}}</td>
-                                            <td>{{$re->fbalane}}</td>
-                                            <td>{{$re->balane}}</td>
+                                            <td>{{$re->fbalance}}</td>
+                                            <td>{{$re->balance}}</td>
                                             <td>{{$re->number}}</td>
                                             <td>{{$re->transactionid}}</td>
                                         </tr>
