@@ -145,7 +145,8 @@
                             <th>Receipt</th>
                             <th>Username</th>
                             <th>Amount</th>
-                            <th>Balance</th>
+                            <th>Balance Before</th>
+                            <th>Balance After</th>
                             <th>Status</th>
                             <th>Number</th>
                             <th>Token</th>
@@ -163,6 +164,7 @@
                                 <td>{{\App\Console\encription::decryptdata($dat->username)}}
                                 </td>
                                 <td>{{$dat->amount}}</td>
+                                <td>{{$dat->fbalance}}</td>
                                 <td>{{$dat->balance}}</td>
                                 <td class="center">
 

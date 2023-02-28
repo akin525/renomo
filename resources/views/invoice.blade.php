@@ -21,6 +21,8 @@
                                         <th>Receipt</th>
                                         <th>Plan</th>
                                         <th>Amount</th>
+                                        <th>Balance Before</th>
+                                        <th>Balance After</th>
                                         <th>Phone No</th>
                                         <th>Payment_Ref</th>
                                         <!--                                                    <th>Action</th>-->
@@ -34,6 +36,8 @@
                                             <td><a href="{{route('viewpdf', $re->id)}}" class="badge badge-success text-success"><i class="fa fa-download">Pdf</i></a> </td>
                                             <td>{{$re->product}}</td>
                                             <td>{{$re->amount}}</td>
+                                            <td>{{$re->fbalane}}</td>
+                                            <td>{{$re->balane}}</td>
                                             <td>{{$re->number}}</td>
                                             <td>{{$re->transactionid}}</td>
                                         </tr>
