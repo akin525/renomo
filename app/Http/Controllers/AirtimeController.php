@@ -96,6 +96,7 @@ class AirtimeController
             $per=2/100;
             $comission=$per*$request->amount;
 
+            $fbalance=$wallet->balance;
 
             $gt = $wallet->balance - $request->amount;
             $wallet->balance = $gt;
@@ -119,6 +120,7 @@ class AirtimeController
                         'paymentmethod'=>'wallet',
                         'transactionid' => $request->refid,
                         'discountamount' => 0,
+                        'fbalance'=>$fbalance,
                         'balance'=>$gt,
                     ]);
                     $comiS=Comission::create([
@@ -253,6 +255,7 @@ class AirtimeController
                 $wallet = wallet::where('username', $user->username)->first();
                 $per=2/100;
                 $comission=$per*$request->amount;
+                $fbalance=$wallet->balance;
 
 
                 $gt = $wallet->balance - $request->amount;
@@ -277,6 +280,7 @@ class AirtimeController
                             'paymentmethod'=>'wallet',
                             'transactionid' => $request->refid,
                             'discountamount' => 0,
+                            'fbalance'=>$fbalance,
                             'balance'=>$gt,
                         ]);
                         $comiS=Comission::create([
@@ -371,6 +375,7 @@ class AirtimeController
                     'paymentmethod'=>'wallet',
                     'transactionid' => $request->refid,
                     'discountamount' => 0,
+                    'fbalance'=>$fbalance,
                     'balance'=>$gt,
                 ]);
                 $comiS=Comission::create([

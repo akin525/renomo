@@ -28,6 +28,7 @@ class bill_payment extends Authenticatable
         'paymentmethod',
         'discountamount',
         'token',
+        'fbalance',
         'balance',
     ];
 

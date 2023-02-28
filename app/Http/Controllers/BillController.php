@@ -119,6 +119,7 @@ class BillController extends Controller
 //                $bt = data::where("id", $request->productid)->first();
                 $wallet = wallet::where('username', $user->username)->first();
 
+                $fbalance=$wallet->balance;
 
                 $gt = $wallet->balance - $amount;
                 $wallet->balance = $gt;
@@ -147,6 +148,7 @@ class BillController extends Controller
                             'transactionid' => $request->refid,
                             'discountamount' => 0,
                             'paymentmethod' => 'wallet',
+                            'fbalance' => $fbalance,
                             'balance' => $gt,
                         ]);
                         $bo['email'] = encription::decryptdata(Auth::user()->email);
@@ -336,6 +338,7 @@ class BillController extends Controller
 //                $bt = data::where("id", $request->productid)->first();
                 $wallet = wallet::where('username', $user->username)->first();
 
+                $fbalance=$wallet->balance;
 
                 $gt = $wallet->balance - $amount;
 
@@ -352,6 +355,7 @@ class BillController extends Controller
                     'transactionid' => $request->id,
                     'discountamount'=>0,
                     'paymentmethod'=> 'wallet',
+                    'fbalance'=>$fbalance,
                     'balance'=>$gt,
                 ]);
                 $bo['email']=encription::decryptdata(Auth::user()->email);
