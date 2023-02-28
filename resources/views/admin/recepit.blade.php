@@ -112,6 +112,12 @@
                                                                         <td style="padding:0;Margin:0"><br>Product::&nbsp;<b>{{$tran->product}}</b></td>
                                                                     </tr>
                                                                     <tr>
+                                                                        <td style="padding:0;Margin:0"><br>Balance Before::&nbsp;<b>{{$tran->fbalance}}</b></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="padding:0;Margin:0"><br>Balance After::&nbsp;<b>{{$tran->balance}}</b></td>
+                                                                    </tr>
+                                                                    <tr>
                                                                         <td style="padding:0;Margin:0"><br>Amount Paid:&nbsp;<b>₦{{number_format(intval($tran->amount *1),2)}}</b><br><br>Date:&nbsp;<b>{{$tran->timestamp}}</b><br><br>Status:&nbsp;<b>@if($tran->status==1)Successful Deliverd @else Pending @endif</b><br><br></td>
                                                                     </tr>
                                                                 </table></td>
