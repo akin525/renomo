@@ -119,6 +119,9 @@
                     <li class="nav-item">
                         <a  class="nav-link" href="{{ route('admin/dashboard') }}"  ><i class="fa fa-dashboard red_color"></i> <span>Dashboard</span></a>
                     </li>
+                    <li class="active">
+                        <a href="{{ route('admin/webbook') }}"  ><i class="fa fa-bookmark white_color"></i> <span>Easy Webbook</span></a>
+                    </li>
                     <li class="nav-item">
                         <a  class="nav-link" href="{{ route('admin/statement') }}"  ><i class="fa fa-book white_color"></i> <span>Fund Statement</span></a>
                     </li>

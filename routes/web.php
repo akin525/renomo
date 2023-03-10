@@ -3,6 +3,7 @@
 use App\Actions\Fortify\CreateNewUser;
 use App\Http\Controllers\admin\AdminpdfController;
 use App\Http\Controllers\admin\bonusController;
+use App\Http\Controllers\admin\Easy;
 use App\Http\Controllers\admin\HonorApi;
 use App\Http\Controllers\admin\CandCController;
 use App\Http\Controllers\admin\LockController;
@@ -224,6 +225,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/editproduct/{id}', [ProductController::class, 'in'])->name('admin/editproduct');
     Route::get('admin/pd/{id}', [ProductController::class, 'on'])->name('admin/pd');
     Route::get('admin/pd1/{id}', [ProductController::class, 'on1'])->name('admin/pd1');
+    Route::get('admin/webbook', [Easy::class, 'webook'])->name('admin/webbook');
+
     Route::get('admin/pd2/{id}', [ProductController::class, 'on2'])->name('admin/pd2');
     Route::get('admin/user', [UsersController::class, 'index'])->name('admin/user');
     Route::get('admin/deposits', [TransactionController::class, 'in'])->name('admin/deposits');
