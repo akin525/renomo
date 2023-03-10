@@ -84,6 +84,40 @@ class DataserverController extends Controller
         return $response;
 
     }
+
+    public function easyaccess($request)
+    {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "https://easyaccess.com.ng/api/data.php",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_SSL_VERIFYHOST => 0,
+            CURLOPT_SSL_VERIFYPEER => 0,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => array(
+                'network' =>$request->plan_id,
+                'mobileno' => $request->number,
+                'dataplan' => $request->code,
+                'client_reference' => $request->id, //update this on your script to receive webhook notifications
+            ),
+            CURLOPT_HTTPHEADER => array(
+                "AuthorizationToken: 5ac0a75517a095c4cdb52fd82b8ee037", //replace this with your authorization_token
+                "cache-control: no-cache"
+            ),
+        ));
+        $response = curl_exec($curl);
+        curl_close($curl);
+//        echo $response;
+
+        return $response;
+
+    }
+
 }
 
 

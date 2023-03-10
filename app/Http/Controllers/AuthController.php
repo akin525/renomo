@@ -11,6 +11,7 @@ use App\Models\bill_payment;
 use App\Models\charge;
 use App\Models\charp;
 use App\Mail\Emailpass;
+use App\Models\easy;
 use App\Models\Giveaway;
 use App\Models\Messages;
 use App\Models\refer;
@@ -272,6 +273,12 @@ Alert::success('Success', 'New Password has been sent to your email');
 //return $data;
             return view('buydata', compact('user', 'data'));
 
+        }elseif ($serve->name == 'easyaccess') {
+            $user = User::find($request->user()->id);
+            $data= easy::where('status', '1')->where('network', $request->id)->get();
+//return $data;
+            return view('buydata', compact('user', 'data'));
+
         }
        }
     public function redata(Request  $request)
@@ -292,6 +299,12 @@ Alert::success('Success', 'New Password has been sent to your email');
         } elseif ($serve->name == 'honorworld') {
             $user = User::find($request->user()->id);
             $data= big::where('status', '1')->where('network', $request->id)->get();
+//return $data;
+            return view('redata', compact('user', 'data'));
+
+        }elseif ($serve->name == 'easyaccess') {
+            $user = User::find($request->user()->id);
+            $data= easy::where('status', '1')->where('network', $request->id)->get();
 //return $data;
             return view('redata', compact('user', 'data'));
 

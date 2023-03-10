@@ -13,6 +13,7 @@ use App\Http\Controllers\admin\RateController;
 use App\Http\Controllers\admin\TransactionController;
 use App\Http\Controllers\admin\UsersController;
 use App\Http\Controllers\admin\SetController;
+use App\Http\Controllers\admin\UserStatementController;
 use App\Http\Controllers\admin\VertualAController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\LoginController;
@@ -175,6 +176,10 @@ Route::post('cuslog', [LoginController::class, 'login'])->name('cuslog');
 
 Route::middleware(['auth'])->group(function () {
 
+    Route::get('admin/statement1', [UserStatementController::class, 'loadindex1'])->name('admin/statement1');
+    Route::get('admin/statement', [UserStatementController::class, 'loadindex'])->name('admin/statement');
+    Route::post('admin/state1', [UserStatementController::class, 'customerstatementpurchase'])->name('admin/state1');
+    Route::post('admin/state', [UserStatementController::class, 'customerstatementfunding'])->name('admin/state');
     Route::post('admin/sub', [McdController::class, 'mcd'])->name('admin/sub');
     Route::post('admin/verify', [McdController::class, 'verify'])->name('admin/verify');
     Route::get('admin/mcd', [McdController::class, 'index'])->name('admin/mcd');

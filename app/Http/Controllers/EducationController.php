@@ -109,7 +109,7 @@ $request->validate([
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-                "AuthorizationToken: 1e8396312a0a0ddaffad3d35740adca4", //replace this with your authorization_token
+                "AuthorizationToken: 5ac0a75517a095c4cdb52fd82b8ee037", //replace this with your authorization_token
                 "cache-control: no-cache"
             ),
         ));
@@ -224,7 +224,7 @@ public function neco(Request $request)
                 'no_of_pins' =>5,
             ),
             CURLOPT_HTTPHEADER => array(
-                "AuthorizationToken: 1e8396312a0a0ddaffad3d35740adca4", //replace this with your authorization_token
+                "AuthorizationToken: 5ac0a75517a095c4cdb52fd82b8ee037", //replace this with your authorization_token
                 "cache-control: no-cache"
             ),
         ));

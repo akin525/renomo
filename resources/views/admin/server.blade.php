@@ -37,8 +37,8 @@
                                 {{--                                <td><a href="{{route('editpayment', $pay->id)}}"--}}
                                 {{--                                       {{$pay->value}}class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>--}}
                                 {{--                                </td>--}}
-                                <td>@if($seller->status=="1")<h6 class="btn-success">Active</h6>@else<h6
-                                        class="btn-warning">
+                                <td>@if($seller->status=="1")<h6 class="badge badge-success">Active</h6>@else<h6
+                                        class="badge badge-warning">
                                         Not-Active</h6> @endif</td>
                                 <td>
                                     <label class="toggleSwitch nolabel">

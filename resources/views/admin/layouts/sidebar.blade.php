@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>{{\App\Console\encription::decryptdata(Auth::user()->name) }} Dashboard</title>
+    <title>Admin Dashboard</title>
     <meta name="keywords" content="Buy data in a few clicks to keep surfing the internet. You can buy whatever size of data plan for whichever network you desire. All plans are topped-up to your specified number in seconds.">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -95,11 +95,15 @@
                     <li class="active">
                         <a href="{{ route('dashboard') }}"  ><i class="fa fa-amazon white_color"></i> <span>Back To User Account</span></a>
                     </li>
+
                     <li>
                         <a href="#app1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-product-hunt"></i> <span>Control Product</span></a>
                         <ul class="collapse list-unstyled" id="app1">
                             <li class="nav-item">
                                 <a  class="nav-link" href="{{ route('admin/air') }}"  ><i class="fa fa-laptop white_color"></i> <span>Airtime Control</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a  class="nav-link" href="{{ route('admin/server') }}"  ><i class="fa fa-bomb white_color"></i> <span>Data Control</span></a>
                             </li>
                             <li class="nav-item">
                                 <a  class="nav-link" href="{{ route('admin/product1') }}"  ><i class="fa fa-shopping-cart white_color"></i> <span>Honorworld Product</span></a>
@@ -111,6 +115,12 @@
                     </li>
                     <li class="nav-item">
                         <a  class="nav-link" href="{{ route('admin/dashboard') }}"  ><i class="fa fa-dashboard red_color"></i> <span>Dashboard</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a  class="nav-link" href="{{ route('admin/statement') }}"  ><i class="fa fa-book white_color"></i> <span>Fund Statement</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a  class="nav-link" href="{{ route('admin/statement1') }}"  ><i class="fa fa-book white_color"></i> <span>Bills Statement</span></a>
                     </li>
                     <li class="nav-item">
                         <a  class="nav-link" href="{{ route('admin/bills') }}"  ><i class="fa fa-shopping-basket white_color"></i> <span>All Bills</span></a>

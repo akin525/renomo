@@ -1,10 +1,6 @@
 @include('layouts.sidebar')
 <div class="content">
     <div class="module">
-        <div class="module-head">
-            <h3>
-                <!--                            My Invoice</h3>-->
-        </div>
         <div class="content">
             <div class="module">
                 <div class="module-head">

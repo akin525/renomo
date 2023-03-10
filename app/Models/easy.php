@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class bill_payment extends Authenticatable
+class easy extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -17,21 +17,9 @@ class bill_payment extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'username',
-        'product',
-        'amount',
-        'server_response',
-        'timestamp',
-        'number',
-        'status',
-        'transactionid',
-        'paymentmethod',
-        'discountamount',
-        'token',
-        'fbalance',
-        'balance',
-    ];
+    use HasFactory;
 
+    protected $table = 'easies';
+    protected $guarded=[];
 
 }

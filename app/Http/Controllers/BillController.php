@@ -8,6 +8,7 @@ use App\Models\bill_payment;
 use App\Models\bo;
 use App\Models\data;
 use App\Models\deposit;
+use App\Models\easy;
 use App\Models\profit;
 use App\Models\profit1;
 use App\Models\server;
@@ -37,6 +38,8 @@ class BillController extends Controller
             $product = big::where('id', $request->productid)->first();
         } elseif ($serve->name == 'mcd') {
             $product = data::where('id', $request->productid)->first();
+        }elseif ($serve->name == 'easyaccess') {
+            $product = easy::where('id', $request->productid)->first();
         }
 
         if ($user->apikey == '') {
@@ -81,6 +84,8 @@ class BillController extends Controller
                 $product = big::where('id', $request->productid)->first();
             } elseif ($serve->name == 'mcd') {
                 $product = data::where('id', $request->productid)->first();
+            }elseif ($serve->name == 'easyaccess') {
+                $product = easy::where('id', $request->productid)->first();
             }
 
             if ($user->apikey == '') {
@@ -278,6 +283,66 @@ class BillController extends Controller
 
                             }
 
+                        }elseif ($mcd->name == "easyaccess") {
+                            $response = $daterserver->easyaccess($object);
+
+                            $data = json_decode($response, true);
+//                    return $response;
+                            $success = "";
+                            if ($data['success'] == 'true') {
+                                $success = 1;
+                                $ms = $data['message'];
+
+//                    echo $success;
+
+                                $po = $amount - $product->amount;
+
+
+                                $profit = profit::create([
+                                    'username' => $user->username,
+                                    'plan' => $product->network . '|' . $product->plan,
+                                    'amount' => $po,
+                                ]);
+
+                                $update=bill_payment::where('id', $bo->id)->update([
+                                    'server_response'=>$response,
+                                    'status'=>1,
+                                ]);
+                                $name = $product->plan;
+                                $am = "$product->plan  was successful delivered to";
+                                $ph = $request->number;
+
+
+                                $receiver = encription::decryptdata($user->email);
+                                $admin = 'info@renomobilemoney.com';
+
+
+                                Mail::to($receiver)->send(new Emailtrans($bo));
+                                Mail::to($admin)->send(new Emailtrans($bo));
+//                        Mail::to($admin2)->send(new Emailtrans($bo));
+
+                                $username=encription::decryptdata($user->username);
+                                $body=$username.' purchase '.$name;
+                                $this->reproduct($username, "User DataPurchase", $body);
+                                $this->reproduct1($username, "User DataPurchase", $body);
+                                $this->reproduct2($username, "User DataPurchase", $body);
+
+                                Alert::success('success', $am.' ' .$ph);
+//                        $msg=$am.' ' .$ph;
+//                        Alert::image('Success..',$msg,'https://renomobilemoney.com/nov.jpeg','200','200', 'Image Alt');
+                                return redirect()->route('viewpdf', $bo->id);
+
+                            } elseif ($data['success'] == 'false') {
+
+
+                                $name = $product->plan;
+                                $am = "NGN $request->amount Was Refunded To Your Wallet";
+                                $ph = ", Transaction fail";
+                                Alert::error('Error', $am.' '.$ph);
+
+
+                                return redirect(route('dashboard'));
+                            }
                         }
                     }
 
@@ -300,6 +365,8 @@ class BillController extends Controller
                 $product = big::where('id', $request->productid)->first();
             } elseif ($serve->name == 'mcd') {
                 $product = data::where('id', $request->productid)->first();
+            }elseif ($serve->name == 'easyaccess') {
+                $product = easy::where('id', $request->productid)->first();
             }
 
             if ($user->apikey == '') {
@@ -425,7 +492,8 @@ class BillController extends Controller
                         return redirect()->route('viewpdf', $bo->id);
 
                     }
-                } else if ($mcd->name == "mcd") {
+                }
+                else if ($mcd->name == "mcd") {
                     $response = $daterserver->mcdbill($object);
 
                     $data = json_decode($response, true);
@@ -487,6 +555,66 @@ class BillController extends Controller
 
                     }
 
+                }elseif ($mcd->name == "easyaccess") {
+                    $response = $daterserver->easyaccess($object);
+
+                    $data = json_decode($response, true);
+//                    return $response;
+                    $success = "";
+                    if ($data['success'] == 'true') {
+                        $success = 1;
+                        $ms = $data['message'];
+
+//                    echo $success;
+
+                        $po = $amount - $product->amount;
+
+
+                        $profit = profit::create([
+                            'username' => $user->username,
+                            'plan' => $product->network . '|' . $product->plan,
+                            'amount' => $po,
+                        ]);
+
+                        $update=bill_payment::where('id', $bo->id)->update([
+                            'server_response'=>$response,
+                            'status'=>1,
+                        ]);
+                        $name = $product->plan;
+                        $am = "$product->plan  was successful delivered to";
+                        $ph = $request->number;
+
+
+                        $receiver = encription::decryptdata($user->email);
+                        $admin = 'info@renomobilemoney.com';
+
+
+                        Mail::to($receiver)->send(new Emailtrans($bo));
+                        Mail::to($admin)->send(new Emailtrans($bo));
+//                        Mail::to($admin2)->send(new Emailtrans($bo));
+
+                        $username=encription::decryptdata($user->username);
+                        $body=$username.' purchase '.$name;
+                        $this->reproduct($username, "User DataPurchase", $body);
+                        $this->reproduct1($username, "User DataPurchase", $body);
+                        $this->reproduct2($username, "User DataPurchase", $body);
+
+                        Alert::success('success', $am.' ' .$ph);
+//                        $msg=$am.' ' .$ph;
+//                        Alert::image('Success..',$msg,'https://renomobilemoney.com/nov.jpeg','200','200', 'Image Alt');
+                        return redirect()->route('viewpdf', $bo->id);
+
+                    } elseif ($data['success'] == 'false') {
+
+
+                        $name = $product->plan;
+                        $am = "NGN $request->amount Was Refunded To Your Wallet";
+                        $ph = ", Transaction fail";
+                        Alert::error('Error', $am.' '.$ph);
+
+
+                        return redirect(route('dashboard'));
+                    }
                 }
 
 
