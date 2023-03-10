@@ -213,14 +213,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/charge', [CandCController::class, 'sp'])->name('admin/charge');
     Route::get('admin/product', [productController::class, 'index'])->name('admin/product');
     Route::get('admin/product1', [productController::class, 'index1'])->name('admin/product1');
+    Route::get('admin/product2', [productController::class, 'index2'])->name('admin/product2');
 //    Route::post('admin/do', [McdController::class, 'edit'])->name('admin/do');
     Route::post('admin/do', [ProductController::class, 'edit'])->name('admin/do');
     Route::post('admin/do1', [ProductController::class, 'edit1'])->name('admin/do1');
+    Route::post('admin/do2', [ProductController::class, 'edit2'])->name('admin/do2');
     Route::post('admin/not', [UsersController::class, 'me'])->name('admin/not');
     Route::get('admin/editproduct1/{id}', [ProductController::class, 'in1'])->name('admin/editproduct1');
+    Route::get('admin/editproduct2/{id}', [ProductController::class, 'in2'])->name('admin/editproduct2');
     Route::get('admin/editproduct/{id}', [ProductController::class, 'in'])->name('admin/editproduct');
     Route::get('admin/pd/{id}', [ProductController::class, 'on'])->name('admin/pd');
     Route::get('admin/pd1/{id}', [ProductController::class, 'on1'])->name('admin/pd1');
+    Route::get('admin/pd2/{id}', [ProductController::class, 'on2'])->name('admin/pd2');
     Route::get('admin/user', [UsersController::class, 'index'])->name('admin/user');
     Route::get('admin/deposits', [TransactionController::class, 'in'])->name('admin/deposits');
     Route::get('admin/request', [WithadController::class, 'index'])->name('admin/request');
