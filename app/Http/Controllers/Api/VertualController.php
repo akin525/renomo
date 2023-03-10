@@ -285,4 +285,16 @@ class VertualController  extends Notification
             'message'=>$message,
         ]);
     }
+    function eassy(Request $request)
+    {
+        $json = json_decode(file_get_contents("php://input"), true) ;
+
+        $data = $json;
+        $message=$data["message"];
+        $refid=$data["reference"];
+        $web = web::create([
+            'webbook' => $message. " ID:".$refid
+        ]);
+
+    }
 }
