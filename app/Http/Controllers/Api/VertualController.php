@@ -78,9 +78,9 @@ class VertualController  extends Notification
 
     public function run(Request $request)
     {
-        $web = web::create([
-            'webbook' => $request
-        ]);
+//        $web = web::create([
+//            'webbook' => $request
+//        ]);
 
         if ($json = json_decode(file_get_contents("php://input"), true)) {
             print_r($json['ref']);
