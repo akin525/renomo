@@ -107,8 +107,8 @@ public function sub(Request $request)
         Alert::error('error', $msg);
         return redirect('withdraw');
     }
-    if ($request->amount < 1000) {
-        $msg ="Your amount must not be less down ₦1000";
+    if ($request->amount < 2000) {
+        $msg ="Your amount must not be less down ₦2000";
         Alert::error('error', $msg);
         return redirect('withdraw');
     }
