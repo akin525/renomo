@@ -262,34 +262,6 @@
         </div>
     </div>
 
-{{--        <div class="row column1">--}}
-{{--            <div class="col-md-7 col-lg-6">--}}
-{{--                <div class="full counter_section margin_bottom_30">--}}
-{{--                    <div class="counter_no">--}}
-{{--                        <div>--}}
-{{--                            <a href="{{route('waec')}}">--}}
-{{--                            <img src="{{asset('img/wa.jpg')}}" alt="">--}}
-{{--                            </a>--}}
-{{--                            <h5 class="total_no text-center">₦{{number_format(intval($lock *1),2)}}</h5>--}}
-{{--                            <h6 class="head_couter">Waec Result Checker</h6>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="col-md-7 col-lg-6">--}}
-{{--                <div class="full counter_section margin_bottom_30">--}}
-{{--                    <div class="counter_no">--}}
-{{--                        <div>--}}
-{{--                            <a href="{{route('neco')}}">--}}
-{{--                                <img height="100" src="{{asset('img/neco.jpg')}}"  alt="">--}}
-{{--                            </a>--}}
-{{--                            <h5 class="total_no text-center">₦{{number_format(intval($totalrefer *1),2)}}</h5>--}}
-{{--                            <h6 class="head_couter">Neco Result Checker</h6>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
         <div class="row column3">
             <div class="col-md-6">
             <div class="dark_bg full margin_bottom_30">
@@ -374,72 +346,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="content">
-        <div class="module">
-            <div class="module-head">
-{{--                <h3>--}}
-                    <!--                            My Invoice</h3>-->
-            </div>
-            <link href="{{asset('asset/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
-            <link href="{{asset('asset/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" />
-            <link href="{{asset('asset/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}" rel="stylesheet" />
-
-            <div class="content">
-                <div class="module">
-                    <div class="module-head">
-                        <div class="card">
-                            <div class="card-body">
-                                <h3>Transactions</h3>
-                                <div class="table-responsive">
-                                    <table id="data-table-buttons" class="table table-striped table-bordered align-middle">
-                                        <thead>
-                                            <th>Date</th>
-                                            <th>Username</th>
-                                            <th>Action</th>
-                                            <th>Plan</th>
-                                            <th>Amount</th>
-                                            <th>Phone No</th>
-                                            <th>Payment_Ref</th>
-                                            <th>Token </th>
-                                            <!--                                                    <th>Action</th>-->
-
-                                        </thead>
-                                        <tbody>
-                                        @foreach($bil2 as $re)
-                                            <tr>
-                                                <td>{{$re->timestamp}}</td>
-                                                <td>{{\App\Console\encription::decryptdata($re->username)}}</td>
-                                                <td><a href="{{route('viewpdf', $re->id)}}" class="badge badge-success"><i class="fa fa-download">Pdf</i></a> </td>
-                                                <td>{{$re->product}}</td>
-                                                <td>{{$re->amount}}</td>
-                                                <td>{{$re->number}}</td>
-                                                <td>{{$re->transactionid}}</td>
-                                                <td>{{$re->token}}</td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <br>
-            <style>
-                img {
-                    max-width: 100%;
-                    height: auto;
-                }
-            </style>
-            <div class="card-body">
-                <div class="center">
-                    <img    src="{{asset('images/banner.jpeg')}}" alt="#" />
-                </div>
-            </div>
-
         </div>
 </div>
 

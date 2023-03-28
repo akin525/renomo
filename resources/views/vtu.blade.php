@@ -12,7 +12,7 @@
 
 
             <!--HTML Form-->
-            <span style="font-size: 20px"><b>Do you know?</b></span> You can own a professional VTU website like <a href="https://easyaccess.com.ng">https://easyaccess.com.ng</a> to resell all our products ranging from <b>DATA, AIRTIME, EDUCATIONAL PINS (WAEC, NECO, NABTEB), CABLE TV SUBSCRIPTION AND ELECTRICITY BILL PAYMENTS at your own prices?</b> Yes, you can set your own prices on your website and your customers will buy at your set prices!
+            <span style="font-size: 20px"><b>Do you know?</b></span> You can own a professional VTU website like <a href="https://renomobilemoney.com">https://renomobilemoney.com</a> to resell all our products ranging from <b>DATA, AIRTIME, EDUCATIONAL PINS (WAEC, NECO, NABTEB), CABLE TV SUBSCRIPTION AND ELECTRICITY BILL PAYMENTS at your own prices?</b> Yes, you can set your own prices on your website and your customers will buy at your set prices!
 
             <br>
             Lets see more details below:
