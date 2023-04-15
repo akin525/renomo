@@ -201,8 +201,8 @@ class BillController extends Controller
 
 //                        $admin2 = 'primedata18@gmail.com';
 
-                                Mail::to($receiver)->send(new Emailtrans($bo));
-                                Mail::to($admin)->send(new Emailtrans($bo));
+//                                Mail::to($receiver)->send(new Emailtrans($bo));
+//                                Mail::to($admin)->send(new Emailtrans($bo));
 //                        Mail::to($admin2)->send(new Emailtrans($bo));
 
                                 Alert::success('success', $am . ' ' . $ph);
@@ -252,8 +252,8 @@ class BillController extends Controller
                                 $admin = 'info@renomobilemoney.com';
 
 
-                                Mail::to($receiver)->send(new Emailtrans($bo));
-                                Mail::to($admin)->send(new Emailtrans($bo));
+//                                Mail::to($receiver)->send(new Emailtrans($bo));
+//                                Mail::to($admin)->send(new Emailtrans($bo));
 //                        Mail::to($admin2)->send(new Emailtrans($bo));
 
                                 $username = encription::decryptdata($user->username);
@@ -317,8 +317,8 @@ class BillController extends Controller
                                 $admin = 'info@renomobilemoney.com';
 
 
-                                Mail::to($receiver)->send(new Emailtrans($bo));
-                                Mail::to($admin)->send(new Emailtrans($bo));
+//                                Mail::to($receiver)->send(new Emailtrans($bo));
+//                                Mail::to($admin)->send(new Emailtrans($bo));
 //                        Mail::to($admin2)->send(new Emailtrans($bo));
 
                                 $username=encription::decryptdata($user->username);

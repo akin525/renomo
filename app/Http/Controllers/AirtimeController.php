@@ -153,6 +153,7 @@ class AirtimeController
                     $response = curl_exec($curl);
 
                     curl_close($curl);
+                    return $response;
                     $data = json_decode($response, true);
                     $success = $data["success"];
                     $tran1 = $data["discountAmount"];
