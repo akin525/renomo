@@ -401,7 +401,6 @@ class AirtimeController
                     CURLOPT_SSL_VERIFYPEER => 0,
                     CURLOPT_CUSTOMREQUEST => 'POST',
                     CURLOPT_POSTFIELDS => array('service' => 'airtime', 'coded' => $request->id, 'phone' => $request->number, 'amount' => $request->amount, 'reseller_price' => $request->amount),
-
                     CURLOPT_HTTPHEADER => array(
                         'Authorization: mcd_key_75rq4][oyfu545eyuriup1q2yue4poxe3jfd'
                     )));

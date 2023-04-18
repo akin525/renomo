@@ -201,9 +201,16 @@ class BillController extends Controller
 
 //                        $admin2 = 'primedata18@gmail.com';
 
-//                                Mail::to($receiver)->send(new Emailtrans($bo));
-//                                Mail::to($admin)->send(new Emailtrans($bo));
+                                Mail::to($receiver)->send(new Emailtrans($bo));
+                                Mail::to($admin)->send(new Emailtrans($bo));
 //                        Mail::to($admin2)->send(new Emailtrans($bo));
+
+                                $name = $product->plan;
+                                $username=encription::decryptdata($user->username);
+                                $body=$username.' purchase '.$name;
+                                $this->reproduct($username, "User DataPurchase", $body);
+                                $this->reproduct1($username, "User DataPurchase", $body);
+                                $this->reproduct2($username, "User DataPurchase", $body);
 
                                 Alert::success('success', $am . ' ' . $ph);
                                 return redirect()->route('viewpdf', $bo->id);
@@ -252,15 +259,15 @@ class BillController extends Controller
                                 $admin = 'info@renomobilemoney.com';
 
 
-//                                Mail::to($receiver)->send(new Emailtrans($bo));
-//                                Mail::to($admin)->send(new Emailtrans($bo));
+                                Mail::to($receiver)->send(new Emailtrans($bo));
+                                Mail::to($admin)->send(new Emailtrans($bo));
 //                        Mail::to($admin2)->send(new Emailtrans($bo));
 
                                 $username = encription::decryptdata($user->username);
                                 $body = $username . ' purchase ' . $name;
-//                                $this->reproduct($username, "User DataPurchase", $body);
-//                                $this->reproduct1($username, "User DataPurchase", $body);
-//                                $this->reproduct2($username, "User DataPurchase", $body);
+                                $this->reproduct($username, "User DataPurchase", $body);
+                                $this->reproduct1($username, "User DataPurchase", $body);
+                                $this->reproduct2($username, "User DataPurchase", $body);
 
                                 Alert::success('success', $am . ' ' . $ph);
 //                        $msg=$am.' ' .$ph;
@@ -317,15 +324,15 @@ class BillController extends Controller
                                 $admin = 'info@renomobilemoney.com';
 
 
-//                                Mail::to($receiver)->send(new Emailtrans($bo));
-//                                Mail::to($admin)->send(new Emailtrans($bo));
+                                Mail::to($receiver)->send(new Emailtrans($bo));
+                                Mail::to($admin)->send(new Emailtrans($bo));
 //                        Mail::to($admin2)->send(new Emailtrans($bo));
 
                                 $username=encription::decryptdata($user->username);
                                 $body=$username.' purchase '.$name;
-//                                $this->reproduct($username, "User DataPurchase", $body);
-//                                $this->reproduct1($username, "User DataPurchase", $body);
-//                                $this->reproduct2($username, "User DataPurchase", $body);
+                                $this->reproduct($username, "User DataPurchase", $body);
+                                $this->reproduct1($username, "User DataPurchase", $body);
+                                $this->reproduct2($username, "User DataPurchase", $body);
 
                                 Alert::success('success', $am.' ' .$ph);
 //                        $msg=$am.' ' .$ph;
@@ -471,8 +478,8 @@ class BillController extends Controller
 
 //                        $admin2 = 'primedata18@gmail.com';
 
-//                        Mail::to($receiver)->send(new Emailtrans($bo));
-//                        Mail::to($admin)->send(new Emailtrans($bo));
+                        Mail::to($receiver)->send(new Emailtrans($bo));
+                        Mail::to($admin)->send(new Emailtrans($bo));
 //                        Mail::to($admin2)->send(new Emailtrans($bo));
 
                         Alert::success('success', $am.' ' .$ph);
@@ -530,9 +537,9 @@ class BillController extends Controller
 
                         $username=encription::decryptdata($user->username);
                         $body=$username.' purchase '.$name;
-//                        $this->reproduct($username, "User DataPurchase", $body);
-//                        $this->reproduct1($username, "User DataPurchase", $body);
-//                        $this->reproduct2($username, "User DataPurchase", $body);
+                        $this->reproduct($username, "User DataPurchase", $body);
+                        $this->reproduct1($username, "User DataPurchase", $body);
+                        $this->reproduct2($username, "User DataPurchase", $body);
 
                         Alert::success('success', $am.' ' .$ph);
 //                        $msg=$am.' ' .$ph;
@@ -589,15 +596,15 @@ class BillController extends Controller
                         $admin = 'info@renomobilemoney.com';
 
 
-//                        Mail::to($receiver)->send(new Emailtrans($bo));
-//                        Mail::to($admin)->send(new Emailtrans($bo));
-//                        Mail::to($admin2)->send(new Emailtrans($bo));
+                        Mail::to($receiver)->send(new Emailtrans($bo));
+                        Mail::to($admin)->send(new Emailtrans($bo));
+                        Mail::to($admin2)->send(new Emailtrans($bo));
 
                         $username=encription::decryptdata($user->username);
                         $body=$username.' purchase '.$name;
-//                        $this->reproduct($username, "User DataPurchase", $body);
-//                        $this->reproduct1($username, "User DataPurchase", $body);
-//                        $this->reproduct2($username, "User DataPurchase", $body);
+                        $this->reproduct($username, "User DataPurchase", $body);
+                        $this->reproduct1($username, "User DataPurchase", $body);
+                        $this->reproduct2($username, "User DataPurchase", $body);
 
                         Alert::success('success', $am.' ' .$ph);
 //                        $msg=$am.' ' .$ph;
