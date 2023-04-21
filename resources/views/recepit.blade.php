@@ -117,9 +117,18 @@
                                                                     <tr>
                                                                         <td style="padding:0;Margin:0"><br>Balance After::&nbsp;<b>{{$tran->balance}}</b></td>
                                                                     </tr>
+                                                                    @if($tran->token)
+                                                                    <tr>
+                                                                        <td style="padding:0;Margin:0"><br>Datapin::&nbsp;<b>{{$tran->token}} Dial *460*6*1#
+                                                                            to load the pin
+                                                                            </b></td>
+                                                                    </tr>
+                                                                    @endif
+
                                                                     <tr>
                                                                         <td style="padding:0;Margin:0"><br>Amount Paid:&nbsp;<b>₦{{number_format(intval($tran->amount *1),2)}}</b><br><br>Date:&nbsp;<b>{{$tran->timestamp}}</b><br><br>Status:&nbsp;<b>@if($tran->status==1)Successful Deliverd @else Pending @endif</b><br><br></td>
                                                                     </tr>
+
                                                                 </table></td>
                                                         </tr>
                                                     </table></td>

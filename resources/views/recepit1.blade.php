@@ -114,6 +114,13 @@
                                                                     <tr>
                                                                         <td style="padding:0;Margin:0"><br>Balance Before::&nbsp;<b>{{$tran->fbalance}}</b></td>
                                                                     </tr>
+                                                                    @if($tran->token)
+                                                                        <tr>
+                                                                            <td style="padding:0;Margin:0"><br>Datapin::&nbsp;<b>{{$tran->token}} Dial *460*6*1#
+                                                                                    to load the pin
+                                                                                </b></td>
+                                                                        </tr>
+                                                                    @endif
                                                                     <tr>
                                                                         <td style="padding:0;Margin:0"><br>Balance After::&nbsp;<b>{{$tran->balance}}</b></td>
                                                                     </tr>

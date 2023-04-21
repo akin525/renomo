@@ -160,6 +160,10 @@ Route::view('verifydeposit', 'check1');
 Route::post('check', [verify::class, 'verifypurchase'])->name('check');
 Route::post('check1', [verify::class, 'verifydeposit'])->name('check1');
 
+
+Route::get('datapin', [\App\Http\Controllers\DataPinController::class, 'dataindex'])->name('datapin');
+Route::post('datapan', [\App\Http\Controllers\DataPinController::class, 'processdatapin'])->name('datapan');
+
 });
 
 Route::prefix('google')->name('google.')->group( function(){

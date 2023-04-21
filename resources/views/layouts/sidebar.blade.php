@@ -122,6 +122,10 @@
                         <li class="active">
                         <a href="{{ route('commission') }}"  ><i class="fa fa-money white_color"></i> <span>My Commission</span></a>
                     </li>
+                        </li>
+                        <li class="active">
+                        <a href="{{ route('datapin') }}"  ><i class="fa fa-mobile white_color"></i> <span>Buy Data-Pin</span></a>
+                    </li>
                         <li>
                             <a href="{{route('invoice')}}"><i class="fa fa-sticky-note "></i> <span>Bills Invoice</span></a>
                         </li>
