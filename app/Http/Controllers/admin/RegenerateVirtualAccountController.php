@@ -53,7 +53,7 @@ function regenrateaccount($request)
     }elseif ($data['success']==0){
 
 
-        Alert::error('Oops', $data);
+        Alert::error('Oops', $response);
         return back();
 
     }
