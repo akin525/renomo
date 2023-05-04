@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Console\encription;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\wallet;
@@ -14,7 +15,10 @@ function regenrateaccount($request)
     $user=User::where('id', $request)->first();
     $wallet=wallet::where('username', $user->username)->first();
 
-    $username=$user['username'].rand(111, 999);
+    $username=encription::decryptdata($user['username']).rand(111, 999);
+    $email=encription::decryptdata($user['email']);
+    $name=encription::decryptdata($user['name']);
+    $phone=encription::decryptdata($user['phone']);
 
     $curl = curl_init();
 
@@ -29,7 +33,7 @@ function regenrateaccount($request)
         CURLOPT_SSL_VERIFYHOST => 0,
         CURLOPT_SSL_VERIFYPEER => 0,
         CURLOPT_CUSTOMREQUEST => 'POST',
-        CURLOPT_POSTFIELDS => array('account_name' =>  $user['name'], 'business_short_name' => 'RENO', 'uniqueid' => $username, 'email' => $user['email'], 'phone' => $user['phone'], 'webhook_url' => 'https://renomobilemoney.com/api/run',),
+        CURLOPT_POSTFIELDS => array('account_name' =>  $name, 'business_short_name' => 'RENO', 'uniqueid' => $username, 'email' => $email, 'phone' => $phone, 'webhook_url' => 'https://renomobilemoney.com/api/run',),
         CURLOPT_HTTPHEADER => array(
             'Authorization: mcd_key_75rq4][oyfu545eyuriup1q2yue4poxe3jfd'
         ),
