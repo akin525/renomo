@@ -211,6 +211,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/server', [UsersController::class, 'server'])->name('admin/server');
     Route::get('admin/noti', [UsersController::class, 'mes'])->name('admin/noti');
     Route::get('admin/air', [ProductController::class, 'air'])->name('admin/air');
+    Route::get('admin/regen/{id}', [\App\Http\Controllers\admin\RegenerateVirtualAccountController::class, 'regenrateaccount'])->name('admin/regen');
     Route::get('admin/up/{id}', [UsersController::class, 'up'])->name('admin/up');
     Route::get('admin/up1/{id}', [ProductController::class, 'pair'])->name('admin/up1');
     Route::get('admin/verify', [McdController::class, 'index'])->name('admin/verify');
