@@ -123,6 +123,8 @@
                                     </div>
                                 </div>
                             </div>
+                        @else
+                                                        <a href='{{route('vertual')}}' class='text-white'>Click this section to get your permament Virtual Bank Account (Transfer money to the account no to get your PrimeData Wallet funded instantly!)</a>
 
                         @endif
                     @endforeach

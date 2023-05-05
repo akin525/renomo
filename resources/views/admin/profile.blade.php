@@ -408,6 +408,25 @@
                                                 </div>
                                                 <br>
                                                 <div class="field">
+                                                    <label class="label_field">Address</label>
+                                                    <input type="text" name="address" class="form-control" value="{{$user->address}}" required />
+                                                </div>
+                                                <br>
+                                                <div class="field">
+                                                    <label class="label_field">Dob</label>
+                                                    <input type="date" name="dob" class="form-control" value="{{$user->dob}}" required />
+                                                </div>
+                                                <br>
+                                                <div class="field">
+                                                    <label class="label_field">Gender</label>
+                                                    <select  name="gender" class="form-control"  required >
+                                                        <option value="{{$user->gender}}">{{$user->gender}}</option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                    </select>
+                                                </div>
+                                                <br>
+                                                <div class="field">
                                                     <label class="label_field">Email</label>
                                                     <input type="email" name="email" class="form-control" value="{{$cmail}}" required />
                                                 </div>

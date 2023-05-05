@@ -46,6 +46,9 @@ public function updateuser(Request $request)
     ]);
     $users=User::where('username', $request->username)->first();
     $users->name=encription::encryptdata($request->name);
+    $users->address=$request->address;
+    $users->dob=$request->dob;
+    $users->gender=$request->gender;
     $users->phone=encription::encryptdata($request->number);
     $users->email=encription::encryptdata($request->email);
     $users->role=$request->role;
