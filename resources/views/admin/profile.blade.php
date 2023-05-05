@@ -55,6 +55,12 @@
                                 <br>
                                 <li class="mt-2"><i class="fa fa-user text-info "></i> <b>Account-Name</b> : {{$wallet->account_name}}</li>
                                 @endif
+                                @if($wallet->account_number1 != "1")
+                                    <br>
+                                    <li class="mt-2"><i class="fa fa-phone text-info "></i> <b>Account-No1</b> : {{$wallet->account_number1}}</li>
+                                    <br>
+                                    <li class="mt-2"><i class="fa fa-user text-info "></i> <b>Account-Name1</b> : {{$wallet->account_name1}}</li>
+                                @endif
                             </ul>
                         </div>
                         <!--end col-->
