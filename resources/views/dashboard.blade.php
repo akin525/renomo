@@ -78,7 +78,7 @@
                                 <div class="col-md-7 col-lg-6">
                                     <div class="card-body">
                                         <ul style="list-style-type:square">
-                                            <li class="text-white"><h3 class="text-white"><b>Personal Vertual Account Number</b></h3></li>
+                                            <li class="text-white"><h3 class="text-white"><b>Personal Virtual Account Number 2</b></h3></li>
                                             <br>
                                             <li class='text-white'><h5 class="text-white"><b>{{$wallet1->account_name1}}</b></h5></li>
                                             <li class='text-white'><h5 class="text-white"><b>Account No:{{$wallet1->account_number1}}</b></h5></li>
@@ -105,7 +105,7 @@
                                 <div class="col-md-7 col-lg-6">
                                     <div class="card-body">
                                         <ul style="list-style-type:square">
-                                            <li class="text-white"><h3 class="text-white"><b>Personal Vertual Account Number</b></h3></li>
+                                            <li class="text-white"><h3 class="text-white"><b>Personal Virtual Account Number 1</b></h3></li>
                                             <br>
                                             <li class='text-white'><h5 class="text-white"><b>{{$wallet1->account_name}}</b></h5></li>
                                             <li class='text-white'><h5 class="text-white"><b>Account No:{{$wallet1->account_number}}</b></h5></li>
