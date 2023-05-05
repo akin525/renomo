@@ -71,7 +71,8 @@
 
                     @foreach($wallet as $wallet1)
 
-                        @if ($wallet1->account_number==1 && $wallet1->account_name==1)
+
+                        @if ($wallet1->account_number1!=1 && $wallet1->account_name1!=1)
 
                             <div class="row column1">
                                 <div class="col-md-7 col-lg-6">
@@ -98,7 +99,7 @@
                                 </div>
                             </div>
 {{--                            <a href='{{route('vertual')}}' class='text-white'>Click this section to get your permament Virtual Bank Account (Transfer money to the account no to get your PrimeData Wallet funded instantly!)</a>--}}
-                        @else
+                        @elseif ($wallet1->account_number!=1 && $wallet1->account_name!=1)
                             <div class="row column1">
                                 <div class="col-md-7 col-lg-6">
                                     <div class="card-body">
@@ -123,8 +124,8 @@
                                     </div>
                                 </div>
                             </div>
-{{--                        @else--}}
-{{--                                                        <a href='{{route('vertual')}}' class='text-white'>Click this section to get your permament Virtual Bank Account (Transfer money to the account no to get your PrimeData Wallet funded instantly!)</a>--}}
+                        @else
+                                                        <a href='{{route('vertual')}}' class='text-white'>Click this section to get your permament Virtual Bank Account (Transfer money to the account no to get your PrimeData Wallet funded instantly!)</a>
 
                         @endif
                     @endforeach
