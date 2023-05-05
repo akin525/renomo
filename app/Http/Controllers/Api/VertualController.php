@@ -159,6 +159,89 @@ class VertualController  extends Notification
 
         }
     }
+    public function run1(Request $request)
+    {
+//        $web = web::create([
+//            'webbook' => $request
+//        ]);
+
+        if ($json = json_decode(file_get_contents("php://input"), true)) {
+            print_r($json['ref']);
+            $data = $json;
+
+        }
+//return $data;
+        $refid=$data["ref"];
+        $amount=$data["amount"];
+        $no=$data["account_number"];
+        $from=$data["from_account_name"];
+        $from1=$data["from_account_number"];
+
+        $wallet = wallet::where('account_number1', $no)->first();
+        $pt=$wallet['balance'];
+
+        if ($no == $wallet->account_number1) {
+            $user = user::where('username', $wallet->username)->first();
+            $depo = deposit::where('payment_ref', 'Reno'.$refid)->first();
+            if (isset($depo)) {
+                echo "payment refid the same";
+                return $depo;
+            } else {
+
+                $char = setting::first();
+                $amount1 = $amount - $char->charges;
+
+
+                $gt = $amount1 + $pt;
+                $reference = $refid;
+
+                $deposit = deposit::create([
+                    'username' => $wallet->username,
+                    'payment_ref' => "Reno" . $reference,
+                    'amount' => $amount,
+                    'iwallet' => $pt,
+                    'fwallet' => $gt,
+                ]);
+                $charp = charge::create([
+                    'username' => $wallet->username,
+                    'payment_ref' => "Api" . $reference,
+                    'amount' => $char->charges,
+                    'iwallet' => $pt,
+                    'fwallet' => $gt,
+                ]);
+                $wallet->balance = $gt;
+                $wallet->save();
+                $title = encription::decryptdata($user->username)." Account Funded";
+                $body = encription::decryptdata($user->username). ' Account Fund with ₦'.$amount.' from'.$from.' '.$from1;
+
+
+                $admin = 'info@renomobilemoney.com';
+
+                $receiver = encription::decryptdata($user->email);
+                $username=encription::decryptdata($user->username);
+
+                $this->firebasenotification($username, $title, $body);
+                $this->firebasenotificationadmin($username, $title, $body);
+                $this->firebasenotificationadmin1($username, $title, $body);
+
+
+                Mail::to($receiver)->send(new Emailcharges($charp));
+                Mail::to($admin)->send(new Emailcharges($charp));
+
+
+                Mail::to($receiver)->send(new Emailfund($deposit));
+                Mail::to($admin)->send(new Emailfund($deposit));
+
+
+
+
+            }
+
+
+
+
+        }
+    }
     public  function firebasenotification($username, $title, $body)
     {
         $curl = curl_init();

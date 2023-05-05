@@ -68,10 +68,37 @@
         <div class="card">
             <div class="card-body">
                 <div class="alert alert-success">
+
                     @foreach($wallet as $wallet1)
+
                         @if ($wallet1->account_number==1 && $wallet1->account_name==1)
-                            <a href='{{route('vertual')}}' class='text-white'>Click this section to get your permament Virtual Bank Account (Transfer money to the account no to get your PrimeData Wallet funded instantly!)</a>
-                        @else
+
+                            <div class="row column1">
+                                <div class="col-md-7 col-lg-6">
+                                    <div class="card-body">
+                                        <ul style="list-style-type:square">
+                                            <li class="text-white"><h3 class="text-white"><b>Personal Vertual Account Number</b></h3></li>
+                                            <br>
+                                            <li class='text-white'><h5 class="text-white"><b>{{$wallet1->account_name1}}</b></h5></li>
+                                            <li class='text-white'><h5 class="text-white"><b>Account No:{{$wallet1->account_number1}}</b></h5></li>
+                                            <li class='text-white'><h5 class="text-white"><b>{{$wallet1->bank}}</b></h5></li>
+                                            <br>
+                                            <li class='text-white'><h5 class="text-white"><b>Note: All vertual funding are being set automatically</b></h5></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-7 col-lg-6">
+                                    <div>
+                                        <center>
+                                            <a href="#">
+                                                <img width="200" src="{{asset("images/bn.jpeg")}}"  alt="">
+                                            </a>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+{{--                            <a href='{{route('vertual')}}' class='text-white'>Click this section to get your permament Virtual Bank Account (Transfer money to the account no to get your PrimeData Wallet funded instantly!)</a>--}}
+                        @elseif ($wallet1->account_number!=1 && $wallet1->account_name!=1)
                             <div class="row column1">
                                 <div class="col-md-7 col-lg-6">
                                     <div class="card-body">
@@ -96,6 +123,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         @endif
                     @endforeach
                 </div>

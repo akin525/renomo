@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('run', [VertualController::class, 'run'])->name('run');
+Route::post('run1', [VertualController::class, 'run1'])->name('run1');
 Route::post('honor', [VertualController::class, 'honor'])->name('honor');
 Route::post('easy', [VertualController::class, 'eassy'])->name('easy');
 

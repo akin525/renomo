@@ -183,6 +183,21 @@
                                         <label class="label_field">Username</label>
                                         <x-jet-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autofocus autocomplete="username" />
                                     </div>
+                                    <div class="field">
+                                        <label class="label_field">Address</label>
+                                        <x-jet-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autofocus autocomplete="Address" />
+                                    </div>
+                                    <div class="field">
+                                        <label class="label_field">Gender</label>
+                                        <select id="address" class="block mt-1 w-full"  name="gender"  required autofocus autocomplete="Address" >
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </div>
+                                    <div class="field">
+                                        <label class="label_field">Date Of Birth</label>
+                                        <x-jet-input id="dob" class="block mt-1 w-full" type="date" name="dob" :value="old('dob')" required autofocus autocomplete="dob" />
+                                    </div>
                                     @if(isset($request->refer))
                                         <div class="field">
                                             <label class="label_field">Refer</label>
