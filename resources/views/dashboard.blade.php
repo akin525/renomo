@@ -98,7 +98,7 @@
                                 </div>
                             </div>
 {{--                            <a href='{{route('vertual')}}' class='text-white'>Click this section to get your permament Virtual Bank Account (Transfer money to the account no to get your PrimeData Wallet funded instantly!)</a>--}}
-                        @elseif ($wallet1->account_number!=1 && $wallet1->account_name!=1)
+                        @else
                             <div class="row column1">
                                 <div class="col-md-7 col-lg-6">
                                     <div class="card-body">
@@ -123,8 +123,8 @@
                                     </div>
                                 </div>
                             </div>
-                        @else
-                                                        <a href='{{route('vertual')}}' class='text-white'>Click this section to get your permament Virtual Bank Account (Transfer money to the account no to get your PrimeData Wallet funded instantly!)</a>
+{{--                        @else--}}
+{{--                                                        <a href='{{route('vertual')}}' class='text-white'>Click this section to get your permament Virtual Bank Account (Transfer money to the account no to get your PrimeData Wallet funded instantly!)</a>--}}
 
                         @endif
                     @endforeach
