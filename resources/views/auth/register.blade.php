@@ -140,8 +140,12 @@
 @include('sweetalert::alert')
     <div id="loading-wrapper">
         <div class="spinner-border"></div>
-        PRIMEDATA......
+       Renomobile....
     </div>
+<br/>
+<br/>
+<br/>
+<br/>
     <div class="full_container">
         <div class="container">
             <div class="center verticle_center full_height">
