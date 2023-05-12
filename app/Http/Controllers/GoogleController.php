@@ -35,6 +35,10 @@ class GoogleController extends Controller
                     'username' => encription::encryptdata($user->getName().rand(111, 999)),
                     'name' => encription::encryptdata($user->getName()),
                     'email' =>encription::encryptdata($user->getEmail()),
+                    'phone' =>encription::encryptdata('08140000000'),
+                    'gender' =>'Male',
+                    'dob' =>'06/14/1986',
+                    'address' =>'Ikeja Lagos State',
                     'password' =>$user->getName().'@'.$user->getId(),
                     'profile_photo_path'=>$picture,
                 ]);
