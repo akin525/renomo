@@ -153,6 +153,7 @@
                                                 Sign Up With Google
                                             </a>
                                         </center>
+                                        <br/>
                                         <div>
                                         <label class="label-text">Name</label>
                                         <input class="form_input" type="text" name="name" placeholder="Full Name" required>

@@ -155,6 +155,8 @@
                                             Login With Google
                                         </a>
                                     </center>
+                                    <br/>
+
                                     <div>
                                         <label class="label-text">Username</label>
                                         <input class="form_input" type="text" name="username" placeholder="Username" required>
