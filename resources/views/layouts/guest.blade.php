@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+{{--        <link rel="stylesheet" href="{{ mix('css/app.css') }}">--}}
         <link href="{{asset('asset/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
         <link href="{{asset('asset/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css')}}" rel="stylesheet" />
         <link href="{{asset('asset/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}" rel="stylesheet" />
@@ -43,7 +43,7 @@
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1367363826948615"
                 crossorigin="anonymous"></script>
         <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
+{{--        <script src="{{ mix('js/app.js') }}" defer></script>--}}
         <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
 
         <script>
