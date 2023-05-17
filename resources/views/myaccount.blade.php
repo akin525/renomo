@@ -76,7 +76,7 @@
                                     </ul>
                                 </div>
                                 @endif
-                                @if($wallet->account_number=="1")
+                                @if($wallet->account_number1=="1")
                                     <a href="{{route('vertual')}}" class="btn btn-danger text-center">Generate Account 2</a>
                                 @endif
                                 <div class="card-footer text-center">
