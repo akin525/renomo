@@ -131,7 +131,7 @@
                                         </div>
                                         <div class="col-sm-6 m-b30">
                                             <label class="form-label">Bvn</label>
-                                            <input type="number" class="form-control" name="bvn" value="{{$all['bvn']}}"/>
+                                            <input type="number" class="form-control" name="bvn"  value="{{$all['bvn']}}" maxlength="11" minlength="11"/>
                                         </div>
                                         <div class="col-sm-6 m-b30">
                                             <label class="form-label">Address</label>

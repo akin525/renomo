@@ -35,7 +35,7 @@ class UserController extends Controller
          'address'=>'required',
          'gender'=>'required',
          'dob'=>'required',
-         'bvn'=>'required',
+         'bvn'=>['required', 'numeric',  'digits:10'],
      ]);
      $user=User::where('username', Auth::user()->username)->first();
      $user->name=encription::encryptdata($requset->name);
