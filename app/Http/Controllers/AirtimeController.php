@@ -33,11 +33,11 @@ class AirtimeController
         ]);
         $user = User::find($request->user()->id);
         $wallet = wallet::where('username', $user->username)->first();
-        if (Auth::user()->bvn==NULL){
-            Alert::warning('Update', 'Please Kindly Update your profile including your bvn for account two & to continue');
-            return redirect()->intended('myaccount')
-                ->with('info', 'Please Kindly Update your profile including your bvn for account two');
-        }
+//        if (Auth::user()->bvn==NULL){
+//            Alert::warning('Update', 'Please Kindly Update your profile including your bvn for account two & to continue');
+//            return redirect()->intended('myaccount')
+//                ->with('info', 'Please Kindly Update your profile including your bvn for account two');
+//        }
 
         if ($wallet->balance < $request->amount) {
             $mg = "You Cant Make Purchase Above" . "NGN" . $request->amount . " from your wallet. Your wallet balance is NGN $wallet->balance. Please Fund Wallet And Retry or Pay Online Using Our Alternative Payment Methods.";
@@ -69,11 +69,11 @@ class AirtimeController
         $user = User::find($request->user()->id);
         $wallet = wallet::where('username', $user->username)->first();
 
-        if (Auth::user()->bvn==NULL){
-            Alert::warning('Update', 'Please Kindly Update your profile including your bvn for account two & to continue');
-            return redirect()->intended('myaccount')
-                ->with('info', 'Please Kindly Update your profile including your bvn for account two');
-        }
+//        if (Auth::user()->bvn==NULL){
+//            Alert::warning('Update', 'Please Kindly Update your profile including your bvn for account two & to continue');
+//            return redirect()->intended('myaccount')
+//                ->with('info', 'Please Kindly Update your profile including your bvn for account two');
+//        }
         if ($wallet->balance < $request->amount) {
             $mg = "You Cant Make Purchase Above" . "NGN" . $request->amount . " from your wallet. Your wallet balance is NGN $wallet->balance. Please Fund Wallet And Retry or Pay Online Using Our Alternative Payment Methods.";
 
@@ -234,11 +234,11 @@ class AirtimeController
             $user = User::find($request->user()->id);
             $wallet = wallet::where('username', $user->username)->first();
 
-        if (Auth::user()->bvn==NULL){
-            Alert::warning('Update', 'Please Kindly Update your profile including your bvn for account two & to continue');
-            return redirect()->intended('myaccount')
-                ->with('info', 'Please Kindly Update your profile including your bvn for account two');
-        }
+//        if (Auth::user()->bvn==NULL){
+//            Alert::warning('Update', 'Please Kindly Update your profile including your bvn for account two & to continue');
+//            return redirect()->intended('myaccount')
+//                ->with('info', 'Please Kindly Update your profile including your bvn for account two');
+//        }
             if ($wallet->balance < $request->amount) {
                 $mg = "You Cant Make Purchase Above" . "NGN" . $request->amount . " from your wallet. Your wallet balance is NGN $wallet->balance. Please Fund Wallet And Retry or Pay Online Using Our Alternative Payment Methods.";
 

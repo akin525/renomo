@@ -238,11 +238,11 @@ Alert::success('Success', 'New Password has been sent to your email');
     public function select(Request  $request)
     {
         $serve = server::where('status', '1')->first();
-        if (Auth::user()->bvn==NULL){
-            Alert::warning('Update', 'Please Kindly Update your profile including your bvn for account two & to continue');
-            return redirect()->intended('myaccount')
-                ->with('info', 'Please Kindly Update your profile including your bvn for account two');
-        }
+//        if (Auth::user()->bvn==NULL){
+//            Alert::warning('Update', 'Please Kindly Update your profile including your bvn for account two & to continue');
+//            return redirect()->intended('myaccount')
+//                ->with('info', 'Please Kindly Update your profile including your bvn for account two');
+//        }
         if (isset($serve)) {
             $user = User::find($request->user()->id);
 
@@ -256,11 +256,11 @@ Alert::success('Success', 'New Password has been sent to your email');
     public function select1(Request  $request)
     {
         $serve = server::where('status', '1')->first();
-        if (Auth::user()->bvn==NULL){
-            Alert::warning('Update', 'Please Kindly Update your profile including your bvn for account two & to continue');
-            return redirect()->intended('myaccount')
-                ->with('info', 'Please Kindly Update your profile including your bvn for account two');
-        }
+//        if (Auth::user()->bvn==NULL){
+//            Alert::warning('Update', 'Please Kindly Update your profile including your bvn for account two & to continue');
+//            return redirect()->intended('myaccount')
+//                ->with('info', 'Please Kindly Update your profile including your bvn for account two');
+//        }
         if (isset($serve)) {
             $user = User::find($request->user()->id);
 
