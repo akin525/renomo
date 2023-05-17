@@ -73,7 +73,7 @@ class GoogleController extends Controller
                     CURLOPT_CUSTOMREQUEST => 'POST',
                     CURLOPT_POSTFIELDS => array('account_name' => $user->getName(),
                         'business_short_name' => 'RENO','uniqueid' => $username,
-                        'email' => $user->getEmail(),'dob' => '06/14/1986',
+                        'email' => $user->getEmail(),'dob' => '1997-03-13',
                         'address' => 'Ikeja Lagos State','gender' => 'male',
                         'phone' =>'08146328645','webhook_url' => 'https://renomobilemoney.com/api/run1'),
                     CURLOPT_HTTPHEADER => array(
