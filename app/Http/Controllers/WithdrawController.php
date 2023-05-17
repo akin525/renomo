@@ -16,6 +16,11 @@ class WithdrawController
 {
 public function bank()
 {
+    if (Auth::user()->bvn==NULL){
+        Alert::warning('Update', 'Please Kindly Update your profile including your bvn to enable withdraw');
+        return redirect()->intended('myaccount')
+            ->with('info', 'Please Kindly Update your profile including your bvn for account two');
+    }
     $curl = curl_init();
 
     curl_setopt_array($curl, array(

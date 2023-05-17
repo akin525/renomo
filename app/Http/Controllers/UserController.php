@@ -16,11 +16,15 @@ class UserController extends Controller
     function viewuserencry()
     {
         $all=User::where('username', Auth::user()->username)->first();
+        $wallet=wallet::where('username', Auth::user()->username)->first();
         $user['username']=encription::decryptdata($all->username);
         $user['email']=encription::decryptdata($all->email);
         $user['number']=encription::decryptdata($all->phone);
+        $user['address']=$all->address;
+        $user['gender']=$all->gender;
+        $user['dob']=$all->dob;
         $user['name']=encription::decryptdata($all->name);
-        return view('myaccount', compact('user', 'all'));
+        return view('myaccount', compact('user', 'all', 'wallet'));
     }
     function updateuserdecry(Request $requset)
     {
@@ -28,11 +32,19 @@ class UserController extends Controller
          'email'=>'required',
          'name'=>'required',
          'number'=>'required',
+         'address'=>'required',
+         'gender'=>'required',
+         'dob'=>'required',
+         'bvn'=>'required',
      ]);
      $user=User::where('username', Auth::user()->username)->first();
      $user->name=encription::encryptdata($requset->name);
      $user->phone=encription::encryptdata($requset->number);
      $user->email=encription::encryptdata($requset->email);
+     $user->address=$requset->address;
+     $user->dob=$requset->dob;
+     $user->gender=$requset->gender;
+     $user->bvn=$requset->bvn;
      $user->save();
      $msg="Profile Update Successfully";
      Alert::success('Success', $msg);

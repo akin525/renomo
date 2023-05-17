@@ -28,7 +28,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password',
-        'phone', 'username', 'google_id','pin', 'dob', 'address', 'gender',
+        'phone', 'username', 'google_id','pin', 'dob', 'address', 'gender', 'bvn',
     ];
 
     function parentData()
@@ -48,6 +48,7 @@ class User extends Authenticatable
         'two_factor_secret',
         'apikey',
         'pin',
+        'bvn',
     ];
 
     /**

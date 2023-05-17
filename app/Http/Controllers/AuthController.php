@@ -122,10 +122,17 @@ Alert::success('Success', 'New Password has been sent to your email');
 //            Mail::to($admin)->send(new login($login));
             // forever
 //            cookie()->queue(cookie()->forever("username", $request->username));
+            if (Auth::user()->bvn==NULL){
+                Alert::warning('Update', 'Please Kindly Update your profile including your bvn for account two & to continue');
+                return redirect()->intended('myaccount')
+                    ->with('info', 'Please Kindly Update your profile including your bvn for account two');
+            }else{
             Alert::success('Dashboard', 'Login Successfully');
             return redirect()->intended('dashboard')
                 ->with('success', 'Welcome back '.encription::decryptdata($user->name));
         }
+        }
+
 
 
     }
@@ -231,6 +238,11 @@ Alert::success('Success', 'New Password has been sent to your email');
     public function select(Request  $request)
     {
         $serve = server::where('status', '1')->first();
+        if (Auth::user()->bvn==NULL){
+            Alert::warning('Update', 'Please Kindly Update your profile including your bvn for account two & to continue');
+            return redirect()->intended('myaccount')
+                ->with('info', 'Please Kindly Update your profile including your bvn for account two');
+        }
         if (isset($serve)) {
             $user = User::find($request->user()->id);
 
@@ -244,6 +256,11 @@ Alert::success('Success', 'New Password has been sent to your email');
     public function select1(Request  $request)
     {
         $serve = server::where('status', '1')->first();
+        if (Auth::user()->bvn==NULL){
+            Alert::warning('Update', 'Please Kindly Update your profile including your bvn for account two & to continue');
+            return redirect()->intended('myaccount')
+                ->with('info', 'Please Kindly Update your profile including your bvn for account two');
+        }
         if (isset($serve)) {
             $user = User::find($request->user()->id);
 
