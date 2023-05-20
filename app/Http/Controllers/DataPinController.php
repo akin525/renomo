@@ -74,7 +74,6 @@ class DataPinController extends Controller
             $bo['name'] = encription::decryptdata($user->name);
 
 
-
             $curl = curl_init();
 
             curl_setopt_array($curl, array(

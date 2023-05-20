@@ -41,7 +41,7 @@ class AuthController
         $eti=data::where('network', 'etisalat-data')->limit(7)->get();
         $airtel=data::where('network', 'airtel-data')->limit(7)->get();
         $me = Messages::where('status', 1)->first();
-        Alert::image('Latest News', $me->message,'https://renomobilemoney.com/images/bn.jpeg','200','200', 'Image Alt');
+//        Alert::image('Latest News', $me->message,'https://renomobilemoney.com/images/bn.jpeg','200','200', 'Image Alt');
 
 //Alert::info('Renomobilemoney', 'Data Refill | Airtime | Cable TV | Electricity Subscription');
         return view("home", compact("mtn", "glo", "eti", "airtel"));
@@ -214,7 +214,7 @@ Alert::success('Success', 'New Password has been sent to your email');
 
         $all=$cdeposite+$cbill+$cgive;
 
-            return  view('dashboard', compact('username', 'give', 'all', 'cbill', 'cgive', "user", 'greet','pam1', 'wallet', 'totaldeposite', 'me', 'cdeposite',  'bil2', 'bill', 'totalrefer',  'pam', 'pieChartModel',   'count', 'lock'))->with('success', 'Welcome back '.encription::decryptdata($user->name));
+            return  view('dashboard', compact('username', 'give', 'all', 'cbill', 'cgive', "user", 'greet','pam1', 'wallet','wallet1', 'totaldeposite', 'me', 'cdeposite',  'bil2', 'bill', 'totalrefer',  'pam', 'pieChartModel',   'count', 'lock'))->with('success', 'Welcome back '.encription::decryptdata($user->name));
 
     }
     public function refer(Request $request)

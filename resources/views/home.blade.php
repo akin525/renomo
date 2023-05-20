@@ -27,7 +27,8 @@
     <!-- Template Main CSS File -->
     <link href="{{asset('land/assets/css/style.css')}}" rel="stylesheet">
 
-
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4783566552108386"
+            crossorigin="anonymous"></script>
 </head>
 
 
