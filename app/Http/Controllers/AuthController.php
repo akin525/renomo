@@ -122,8 +122,8 @@ Alert::success('Success', 'New Password has been sent to your email');
 //            Mail::to($admin)->send(new login($login));
             // forever
 //            cookie()->queue(cookie()->forever("username", $request->username));
-            if (Auth::user()->bvn==NULL){
-                Alert::warning('Update', 'Please Kindly Update your profile including your bvn for account two & to continue');
+            if (Auth::user()->address==NULL){
+                Alert::warning('Update', 'Please Kindly Update your profile for account two & to continue');
                 return redirect()->intended('myaccount')
                     ->with('info', 'Please Kindly Update your profile including your bvn for account two');
             }else{
