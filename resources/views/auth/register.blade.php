@@ -17,6 +17,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('auth/assets/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('auth/assets/css/responsive.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('auth/assets/css/animation.css')}}">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4783566552108386"
+            crossorigin="anonymous"></script>
 </head>
 
 <style>
