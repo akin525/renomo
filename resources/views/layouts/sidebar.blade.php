@@ -329,20 +329,7 @@
                 }
 
 
-                button {
-                    padding: 20px 30px;
-                    font-size: 1.5em;
-                    /*width:200px;*/
-                    cursor: pointer;
-                    border: 0px;
-                    position: relative;
-                    /*margin: 20px;*/
-                    transition: all .25s ease;
-                    /*background: rgba(116, 23, 231, 1);*/
-                    color: #fff;
-                    overflow: hidden;
-                    border-radius: 10px
-                }
+
 
                 .load {
                     position: absolute;
