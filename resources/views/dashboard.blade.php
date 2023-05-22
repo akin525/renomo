@@ -33,160 +33,280 @@
                 </div>
             </div>
         </div>
-        <h5 class="text-success"><b>{{$greet}} {{\App\Console\encription::decryptdata(Auth::user()->name)}}</b></h5>
-        <div class="card">
-            <div class="card-body">
-                <div class="alert alert-success">
-                    <ul style="list-style-type:square">
-                        <li><h5 class="text-white"><b>{{$me->message}}.</b></h5></li>
-                    </ul>
+        <div class="alert alert-info alert-dismissible alert-alt fade show">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
+            </button>
+            <strong>Alert!</strong> {{$me->message}}.
+        </div>
+{{--        <div class="card">--}}
+{{--            <div class="card-body">--}}
+{{--                <div class="alert alert-success">--}}
+{{--                    <ul style="list-style-type:square">--}}
+{{--                        <li><h5 class="text-white"><b>{{$me->message}}.</b></h5></li>--}}
+{{--                    </ul>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="card overflow-hidden">
+                    <div class="card-body">
+                        <div class="any-card">
+                            <div class="c-con">
+                                <h4 class="heading mb-0">{{$greet}} <strong>{{\App\Console\encription::decryptdata(Auth::user()->username)}}!!</strong><img  src="#" alt=""></h4>
+                                {{--                                <span>Best seller of the week</span>--}}
+                                {{--                                <p class="mt-3">{{$me->message}}</p>--}}
+
+                                <h6>Your Referal Link</h6>
+                                <!-- The text field -->
+                                <input id="myInput" type="text" class="form-control" value="https://renomobilemoney.com/register?refer={{$user->username}}" >
+
+                                <!-- The button used to copy the text -->
+                                <button class="btn btn-info mb-1" onclick="myFunction()">Copy Link</button>
+
+                                <a href="{{route('myaccount')}}" class="btn btn-primary btn-sm">View Profile</a>
+                            </div>
+                            <img  src="{{asset('deve.png')}}" class="harry-img" alt="">
+
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <div class="alert alert-secondary">
-                <center>
-                            <!--                    <h4 class="w3-text-green"><b>&nbsp;&nbsp; &nbsp;&nbsp; <a class="w3-btn w3-green w3-border w3-round-large" href="with.php">Withdraw From MCD Wallet</a>-->
-                            <a class="badge badge-info" href="{{route('invoice')}}">Get Invoice</a>
-                            <a class="badge badge-info" href="{{route('withdraw')}}">Withdraw</a>
-
-
-                            <a class="badge badge-info" href="{{route('giveaway')}}">Create Giveaway</a>
-                            <a class="badge badge-info" href="{{url('verifybill')}}">Validate Biils</a>
-                            <a class="badge badge-info" href="{{url('verifydeposit')}}">Validate Deposit</a>
-
-                            <!--                            <a class="w3-btn w3-green w3-border w3-round-large" href="method.php">All Payment Method</a>-->
-                        </center>
-                </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-primary">
+                    <div class="card-header border-0">
+                        <h4 class="heading mb-0 text-white">Balance & Deposit 😎</h4>
                     </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div class="sales-bx">
+                                <i class="fa fa-money yellow_color" style="font-size: 30px"></i>
+                                <h4>₦{{number_format(intval($wallet1->balance *1))}}</h4>
+                                <span>Balance</span>
+                            </div>
+                            <div class="sales-bx">
+                                <i class="fa fa-money blue1_color" style="font-size: 30px"></i>
+                                <h4>₦{{number_format(intval($totaldeposite *1))}}</h4>
+                                <span>Total Deposit</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-secondary">
+                    <div class="card-header border-0">
+                        <h4 class="heading mb-0 text-white">Purchase & Safelock 😎</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div class="sales-bx">
+                                <i class="fa fa-money yellow_color" style="font-size: 30px;"></i>
+                                <h4>₦{{number_format(intval($bill *1))}}</h4>
+                                <span>Total Bills</span>
+                            </div>
+                            <div class="sales-bx">
+                                <i class="fa fa-lock yellow_color" style="font-size: 30px"></i>
+                                <h4>₦{{number_format(intval($lock *1))}}</h4>
+                                <span>Total Safelock</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-12">
+                <div class="card bg-secondary analytics-card">
+                    <div class="card-body mt-4 pb-1">
+                        <div class="row align-items-center">
+                            <div class="col-xl-2">
+                                <h3 class="mb-3 text-white">Solution</h3>
+                                <p class="mb-0  pb-4 text-white">Validate all  <br>pending transaction</p>
+                            </div>
+                            <div class="col-xl-10">
+                                <div class="row">
+                                    <div class="col-xl-2 col-sm-4 col-6">
+                                        <div class="card ov-card">
+                                            <div class="card-body">
+                                               <a href="{{route('invoice')}}"> <div class="ana-box">
+                                                    <div class="ic-n-bx">
+                                                        <div class="icon-box bg-primary ">
+                                                            <i class="fa fa-book text-white"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="anta-data">
+                                                        <h5>Invoice</h5>
+                                                        <span>Check Bills</span>
+{{--                                                        <h3>+23%</h3>--}}
+                                                    </div>
+                                                </div>
+                                               </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2 col-sm-4 col-6">
+                                        <div class="card ov-card">
+                                            <div class="card-body">
+                                                <a href="{{route('withdraw')}}"> <div class="ana-box">
+                                                    <div class="ic-n-bx">
+                                                        <div class="icon-box bg-primary">
+                                                            <i class="fa fa-brands fa-money text-white"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="anta-data">
+                                                        <h5>Withdraw</h5>
+                                                        <span>from wallet</span>
+{{--                                                        <h3>-33%</h3>--}}
+                                                    </div>
+                                                </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2 col-sm-4 col-6">
+                                        <div class="card ov-card">
+                                            <div class="card-body">
+                                                <a href="{{route('giveaway')}}"> <div class="ana-box">
+                                                    <div class="ic-n-bx">
+                                                        <div class="icon-box bg-primary">
+                                                            <i class="fa fa-brands fa-amazon text-white"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="anta-data">
+                                                        <h5>Giveaway</h5>
+                                                        <span>Bonus</span>
+{{--                                                        <h3>-23%</h3>--}}
+                                                    </div>
+                                                </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2 col-sm-4 col-6">
+                                        <div class="card ov-card">
+                                            <div class="card-body">
+                                                <a href="{{url('verifybill')}}"> <div class="ana-box">
+                                                    <div class="ic-n-bx">
+                                                        <div class="icon-box bg-primary">
+                                                            <i class=" fa fa-brands fa-bookmark text-white"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="anta-data">
+                                                        <h5>Validate</h5>
+                                                        <span>Bills</span>
+{{--                                                        <h3>+25%</h3>--}}
+                                                    </div>
+                                                </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2 col-sm-4 col-6">
+                                        <div class="card ov-card">
+                                            <div class="card-body">
+                                                <a href="{{url('verifydeposit')}}"> <div class="ana-box">
+                                                    <div class="ic-n-bx">
+                                                        <div class="icon-box bg-primary ">
+                                                            <i class="fa fa-brands fa-money text-white"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="anta-data">
+                                                        <h5>Validate</h5>
+                                                        <span>Deposit</span>
+{{--                                                        <h3>+30%</h3>--}}
+                                                    </div>
+                                                </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-2 col-sm-4 col-6">
+                                        <div class="card ov-card">
+                                            <div class="card-body">
+                                                <a href="{{route('airtime')}}"> <div class="ana-box">
+                                                    <div class="ic-n-bx">
+                                                        <div class="icon-box bg-primary ">
+                                                            <i class="fa fa-brands fa-mobile-phone text-white"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="anta-data">
+                                                        <h5>Airtime</h5>
+                                                        <span>Purchase</span>
+{{--                                                        <h3>-32%</h3>--}}
+                                                    </div>
+                                                </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
+        <div class="row">
+            @foreach($wallet as $wallet1)
+                @if ($wallet1->account_number1!=1 && $wallet1->account_name1!=1)
+                <div class="col-xl-6">
+                <div class="card overflow-hidden">
+                    <div class="card-body bg-secondary">
+                        <div class="any-card">
+                            <div class="c-con">
+                                <h4 class="heading mb-0 text-white">Virtual <strong>Account 1</strong><img  src="#" alt=""></h4>
+                                        <div class="card-body">
+                                            <ul style="list-style-type:square">
+                                                <li class='text-white'><h5 class="text-white"><b>{{$wallet1->account_name1}}</b></h5></li>
+                                                <li class='text-white'><h5 class="text-white"><b>Account No:{{$wallet1->account_number1}}</b></h5></li>
+                                                <li class='text-white'><h5 class="text-white"><b>{{$wallet1->bank}}</b></h5></li>
+                                            </ul>
+                                        </div>
+                            </div>
+                            <img  src="{{asset("images/bn.jpeg")}}" class="harry-img" alt="">
+                        </div>
+                    </div>
+                </div>
+                </div>
+                                @endif
+
+                                @if ($wallet1->account_number!=1 && $wallet1->account_name!=1)
+                                    <div class="col-xl-6">
+                                        <div class="card overflow-hidden">
+                                            <div class="card-body bg-secondary">
+                                                <div class="any-card">
+                                                    <div class="c-con">
+                                                        <h6 class="heading mb-0 text-white">Virtual <strong>Account 2</strong><img  src="#" alt=""></h6>
+                                    <div class="card-body">
+                                        <ul style="list-style-type:square">
+                                            <li class='text-white'><h5 class='text-white'><b>{{$wallet1->account_name}}</b></h5></li>
+                                            <li class='text-white'><h5 class='text-white'><b>Account No:{{$wallet1->account_number}}</b></h5></li>
+                                            <li class='text-white'><h5 class='text-white' ><b>WEMA-BANK</b></h5></li>
+                                      </ul>
+                                    </div>
+                            </div>
+                            <img  src="{{asset("images/bn.jpeg")}}" class="harry-img" alt="">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    @else
+                        <a href="{{route('vertual')}}" class="btn btn-primary btn-sm">Generate account</a>
+
+                    @endif
+            @endforeach
+
+        </div>
+
 
 
         {{--        <marquee width="100%" direction="left" height="100px" class="text-success"><h4 class="text-success">--}}
 {{--                {{$me->message}}.</h4></marquee>--}}
-        <div class="card">
-            <div class="card-body">
-                <div class="alert alert-success">
-
-                    @foreach($wallet as $wallet1)
-
-
-                        @if ($wallet1->account_number1!=1 && $wallet1->account_name1!=1)
-
-                            <div class="row column1">
-                                <div class="col-md-7 col-lg-6">
-                                    <div class="card-body">
-                                        <ul style="list-style-type:square">
-                                            <li class="text-white"><h3 class="text-white"><b>Personal Virtual Account Number 2</b></h3></li>
-                                            <br>
-                                            <li class='text-white'><h5 class="text-white"><b>{{$wallet1->account_name1}}</b></h5></li>
-                                            <li class='text-white'><h5 class="text-white"><b>Account No:{{$wallet1->account_number1}}</b></h5></li>
-                                            <li class='text-white'><h5 class="text-white"><b>{{$wallet1->bank}}</b></h5></li>
-                                            <br>
-                                            <li class='text-white'><h5 class="text-white"><b>Note: All vertual funding are being set automatically</b></h5></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-7 col-lg-6">
-                                    <div>
-                                        <center>
-                                            <a href="#">
-                                                <img width="200" src="{{asset("images/bn.jpeg")}}"  alt="">
-                                            </a>
-                                        </center>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-{{--                            <a href='{{route('vertual')}}' class='text-white'>Click this section to get your permament Virtual Bank Account (Transfer money to the account no to get your PrimeData Wallet funded instantly!)</a>--}}
-                        @if ($wallet1->account_number!=1 && $wallet1->account_name!=1)
-                            <div class="row column1">
-                                <div class="col-md-7 col-lg-6">
-                                    <div class="card-body">
-                                        <ul style="list-style-type:square">
-                                            <li class="text-white"><h3 class="text-white"><b>Personal Virtual Account Number 1</b></h3></li>
-                                            <br>
-                                            <li class='text-white'><h5 class="text-white"><b>{{$wallet1->account_name}}</b></h5></li>
-                                            <li class='text-white'><h5 class="text-white"><b>Account No:{{$wallet1->account_number}}</b></h5></li>
-                                            <li class='text-white'><h5 class="text-white"><b>WEMA-BANK</b></h5></li>
-                                            <br>
-                                            <li class='text-white'><h5 class="text-white"><b>Note: All vertual funding are being set automatically</b></h5></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-7 col-lg-6">
-                                    <div>
-                                        <center>
-                                            <a href="#">
-                                                <img width="200" src="{{asset("images/bn.jpeg")}}"  alt="">
-                                            </a>
-                                        </center>
-                                    </div>
-                                </div>
-                            </div>
-                        @else
-                                                        <a href='{{route('vertual')}}' class='text-white'>Click this section to get your permament Virtual Bank Account (Transfer money to the account no to get your PrimeData Wallet funded instantly!)</a>
-
-                        @endif
-                    @endforeach
-                </div>
-            </div>
-        </div>
-
-
         <br>
-
-        <style>
-            .tooltip {
-                position: relative;
-                display: inline-block;
-            }
-
-            .tooltip .tooltiptext {
-                visibility: hidden;
-                width: 140px;
-                background-color: #555;
-                color: #fff;
-                text-align: center;
-                border-radius: 6px;
-                padding: 5px;
-                position: absolute;
-                z-index: 1;
-                bottom: 150%;
-                left: 50%;
-                margin-left: -75px;
-                opacity: 0;
-                transition: opacity 0.3s;
-            }
-
-            .tooltip .tooltiptext::after {
-                content: "";
-                position: absolute;
-                top: 100%;
-                left: 50%;
-                margin-left: -5px;
-                border-width: 5px;
-                border-style: solid;
-                border-color: #555 transparent transparent transparent;
-            }
-
-            .tooltip:hover .tooltiptext {
-                visibility: visible;
-                opacity: 1;
-            }
-
-        </style>
-        <div class="card">
-            <div class="card-body">
-                <h6>Your Referal Link</h6>
-                <!-- The text field -->
-                <input id="myInput" type="text" class="form-control" value="https://renomobilemoney.com/register?refer={{$user->username}}" >
-
-                <!-- The button used to copy the text -->
-                <button class="btn-info" onclick="myFunction()">Copy Referal Link</button>
-            </div>
-        </div>
 
 
         <script>
@@ -207,92 +327,11 @@
         </script>
         <br>
     <br>
-    <div class="row column1">
-        <div class="col-md-6 col-lg-4">
-            <div class="full counter_section margin_bottom_30">
-                <div class="couter_icon">
-                    <div>
-                        <i class="fa fa-google-wallet yellow_color"></i>
-                    </div>
-                </div>
-                <div class="counter_no">
-                    <div>
-                        <h5 class="total_no text-center">₦{{number_format(intval($wallet1->balance *1),2)}}</h5>
-                        <h6 class="head_couter">Wallet Balance</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <div class="full counter_section margin_bottom_30">
-                <div class="couter_icon">
-                    <div>
-                        <i class="fa fa-money blue1_color"></i>
-                    </div>
-                </div>
-                <div class="counter_no">
-                    <div>
-                        <h5 class="total_no text-center">₦{{number_format(intval($totaldeposite *1), 2)}}</h5>
-                        <h6 class="head_couter">Total Deposit</h6>
-                    </div>
 
-
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-            <div class="full counter_section margin_bottom_30">
-                <div class="couter_icon">
-                    <div>
-                        <i class="fa fa-money green_color"></i>
-                    </div>
-                </div>
-                <div class="counter_no">
-                    <div>
-                        <h5 class="total_no text-center">₦{{number_format(intval($bill *1),2)}}</h5>
-                        <h6 class="head_couter">Total Bills</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
 
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
-    <div class="row column1">
-        <div class="col-md-7 col-lg-6">
-            <div class="full counter_section margin_bottom_30">
-                <div class="couter_icon">
-                    <div>
-                        <i class="fa fa-money yellow_color"></i>
-                    </div>
-                </div>
-                <div class="counter_no">
-                    <div>
-                        <h5 class="total_no text-center">₦{{number_format(intval($lock *1),2)}}</h5>
-                        <h6 class="head_couter">Safelock Balance</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-7 col-lg-6">
-            <div class="full counter_section margin_bottom_30">
-                <div class="couter_icon">
-                    <div>
-                        <i class="fa fa-money blue1_color"></i>
-                    </div>
-                </div>
-                <div class="counter_no">
-                    <div>
-                        <h5 class="total_no text-center">₦{{number_format(intval($totalrefer *1),2)}}</h5>
-                        <h6 class="head_couter">Referal Bonus</h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
         <div class="row column3">
             <div class="col-md-6">
