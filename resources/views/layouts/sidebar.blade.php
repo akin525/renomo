@@ -32,7 +32,7 @@
     <!-- responsive css -->
     <link rel="stylesheet" href="{{asset('css/responsive.css')}}" />
     <!-- color css -->
-    <link rel="stylesheet" href="{{asset('css/colors.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/color_2.css')}}" />
     <!-- select bootstrap -->
     <link rel="stylesheet" href="{{asset('css/bootstrap-select.css')}}" />
     <!-- scrollbar css -->
@@ -50,7 +50,7 @@
     {{-- toastr --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet" />
 {{--    <script type="text/javascript" src="https://cdn.engagespot.co/engagespot-client.min.js"></script>--}}
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1367363826948615"
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4783566552108386"
             crossorigin="anonymous"></script>
 </head>
 
@@ -85,15 +85,15 @@
                             <p><span class="online_animation"></span> Online</p>
                         </div>
                     </div>
-                    <form method="post" action="{{route('pic')}}" enctype="multipart/form-data">
-                        @csrf
-                        <input type="file" name="pic" required><button type="submit" class="badge badge-success">Upload</button>
-                    </form>
-                    <form method="POST" action="{{ route('logout') }}" x-data>
-                        @csrf
-                        <br>
-                        <a href="{{ route('logout') }}"><button type="submit" class="btn btn-success">logout</button></a>
-                    </form>
+{{--                    <form method="post" action="{{route('pic')}}" enctype="multipart/form-data">--}}
+{{--                        @csrf--}}
+{{--                        <input type="file" name="pic" required><button type="submit" class="badge badge-success">Upload</button>--}}
+{{--                    </form>--}}
+{{--                    <form method="POST" action="{{ route('logout') }}" x-data>--}}
+{{--                        @csrf--}}
+{{--                        <br>--}}
+{{--                        <a href="{{ route('logout') }}"><button type="submit" class="btn btn-success">logout</button></a>--}}
+{{--                    </form>--}}
                 </div>
 
             </div>
