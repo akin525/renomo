@@ -1,6 +1,5 @@
 @include('layouts.sidebar')
 
-
 <link href="https://fonts.googleapis.com/css?family=Raleway|Rock+Salt|Source+Code+Pro:300,400,600" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('style2.css')}}">
 
