@@ -100,11 +100,11 @@
 
                 <h6>
                     <ul class="list-group">
-                        <li class="list-group-item list-group-item-primary bold"> MTN *556#</li>
-                        <li class="list-group-item list-group-item-success">MTN [CG] *131*4# or *460*260#</li>
-                        <li class="list-group-item list-group-item-action">9mobile  *223#</li>
-                        <li class="list-group-item list-group-item-info">Airtel *123#</li>
-                        <li class="list-group-item list-group-item-secondary">Glo *124*0#</li>
+                        <b><li class="list-group-item list-group-item-primary bold"> MTN *556#</li></b>
+                        <b><li class="list-group-item list-group-item-success">MTN [CG] *131*4# or *460*260#</li></b>
+                        <b><li class="list-group-item list-group-item-action">9mobile  *223#</li></b>
+                        <b><li class="list-group-item list-group-item-info">Airtel *123#</li></b>
+                        <b><li class="list-group-item list-group-item-secondary">Glo *124*0#</li></b>
                     </ul>
                 </h6>
                 <br>

@@ -55,12 +55,12 @@
         <p>You can use the codes below to check your Data Balance!  </p>
 
         <h6>
-            <ul>
-                <li> MTN [SME] *461*4# or *556#</li>
-                <li>MTN [CG] *131*4# or *460*260#</li>
-                <li>9mobile [Gifting] *228#</li>
-                <li>Airtel *140#</li>
-                <li>Glo *127*0#</li>
+            <ul class="list-group">
+                <b><li class="list-group-item list-group-item-primary bold"> MTN [SME] *461*4# or *556#</li></b>
+                <b><li class="list-group-item list-group-item-success">MTN [CG] *131*4# or *460*260#</li></b>
+                <b><li class="list-group-item list-group-item-action">9mobile [Gifting] *228#</li></b>
+                <b><li class="list-group-item list-group-item-info">Airtel *140#</li></b>
+                <b><li class="list-group-item list-group-item-secondary">Glo *127*0#</li></b>
             </ul>
         </h6>
 
