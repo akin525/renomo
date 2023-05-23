@@ -42,7 +42,7 @@
                     </label>
                     <input type="number" name="number" class="form-control" required>
                     <br>
-                    <button type="submit" class=" btn" style="color: white;background-color: #28a745">Buy Now<span class="load loading"></span></button>
+                    <button type="submit" class=" btn btn-success" style="color: white;background-color: #28a745">Buy Now<span class="load loading"></span></button>
                 </form>
                 <script>
                     const btns = document.querySelectorAll('button');

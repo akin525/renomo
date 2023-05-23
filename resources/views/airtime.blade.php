@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <input type="hidden" name="refid" value="<?php echo rand(10000000, 999999999); ?>">
-                    <button type="submit" class=" btn" style="color: white;background-color: #28a745" id="warning"> Purchase Now<span class="load loading"></span></button>
+                    <button type="submit" class=" btn btn-success" style="color: white;background-color: #28a745" id="warning"> Purchase Now<span class="load loading"></span></button>
                     <script>
                         const btns = document.querySelectorAll('button');
                         btns.forEach((items)=>{
@@ -95,15 +95,16 @@
             <div class="col-sm-4 ">
                 <br>
 
-                <p>You can use the codes below to check your Airtime Balance!  </p>
+                <p><b>You can use the codes below to check your Airtime Balance!  </b> </p>
+
 
                 <h6>
-                    <ul>
-                        <li> MTN *556#</li>
-                        <li>MTN [CG] *131*4# or *460*260#</li>
-                        <li>9mobile  *223#</li>
-                        <li>Airtel *123#</li>
-                        <li>Glo *124*0#</li>
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-primary bold"> MTN *556#</li>
+                        <li class="list-group-item list-group-item-success">MTN [CG] *131*4# or *460*260#</li>
+                        <li class="list-group-item list-group-item-action">9mobile  *223#</li>
+                        <li class="list-group-item list-group-item-info">Airtel *123#</li>
+                        <li class="list-group-item list-group-item-secondary">Glo *124*0#</li>
                     </ul>
                 </h6>
                 <br>

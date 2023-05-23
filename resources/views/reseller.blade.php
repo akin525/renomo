@@ -93,7 +93,7 @@
                             </div>
                     </div>
                 </div>
-                <button class="btn btn-outline-info btn-block withdraw-btn" type="submit">Upgrade Now<span class="load loading"></span></button>
+                <button class="btn btn-outline-info " type="submit">Upgrade Now<span class="load loading"></span></button>
                 <br>
                 <script>
                     const btns = document.querySelectorAll('button');
