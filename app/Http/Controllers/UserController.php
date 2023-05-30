@@ -35,7 +35,7 @@ class UserController extends Controller
          'address'=>'required',
          'gender'=>'required',
          'dob'=>'required',
-//         'bvn'=>['required', 'numeric',  'digits:11'],
+         'bvn'=>['required', 'numeric',  'digits:11'],
      ]);
      $user=User::where('username', Auth::user()->username)->first();
      $user->name=encription::encryptdata($requset->name);
@@ -44,7 +44,7 @@ class UserController extends Controller
      $user->address=$requset->address;
      $user->dob=$requset->dob;
      $user->gender=$requset->gender;
-//     $user->bvn=$requset->bvn;
+     $user->bvn=$requset->bvn;
      $user->save();
      $msg="Profile Update Successfully";
      Alert::success('Success', $msg);

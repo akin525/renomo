@@ -364,7 +364,7 @@
                                             @endforeach
                                     </div>
                                     <!-- Carousel controls -->
-                                    <a class="carousel-control left carousel-control-prev" href="#testimonial_slider" data-slide="prev">
+                         t           <a class="carousel-control left carousel-control-prev" href="#testimonial_slider" data-slide="prev">
                                         <i class="fa fa-angle-left"></i>
                                     </a>
                                     <a class="carousel-control right carousel-control-next" href="#testimonial_slider" data-slide="next">

@@ -132,7 +132,7 @@
 
 
 
-        <p><b>ou can use the codes below to check your Data Balance!  </b></p>
+        <p><b>You can use the codes below to check your Data Balance!  </b></p>
 
         <h6>
             <ul class="list-group">
