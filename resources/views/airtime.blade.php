@@ -1,5 +1,13 @@
 
 @include('layouts.sidebar')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.min.css">
+<!-- SweetAlert CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+
+<!-- SweetAlert JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.js"></script>
+
+
 <style>
     .subscribe {
         position: relative;
@@ -60,17 +68,13 @@
 <div style="padding:90px 15px 20px 15px">
     <!--    <h4 class="align-content-center text-center">Data Subscription</h4>-->
 
+    <div class="loading-overlay" id="loadingSpinner" style="display: none;">
+        <div class="loading-spinner"></div>
+    </div>
 
 
 
-
-    <!--            <div class="box w3-card-4">-->
-
-    @if(Auth::user()->pin !="0")
-    <form action="{{ route('pin') }}" method="post">
-        @else
-    <form action="{{ route('buyairtime') }}" method="post">
-        @endif
+    <form id="dataForm" >
         @csrf
         <div class="row">
             <div class="col-sm-8">
@@ -117,44 +121,7 @@
                        <input type="hidden" name="refid" value="<?php echo rand(10000000, 999999999); ?>">
                        <button type="submit" class="submit-btn">PURCHASE<span class="load loading"></span></button>
                    </div>
-
-
-{{--                    <button type="submit" class=" btn btn-success" style="color: white;background-color: #28a745" id="warning"> Purchase Now<span class="load loading"></span></button>--}}
-                    <script>
-                        const btns = document.querySelectorAll('button');
-                        btns.forEach((items)=>{
-                            items.addEventListener('click',(evt)=>{
-                                evt.target.classList.add('activeLoading');
-                            })
-                        })
-                    </script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js"></script>
-                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                    <script src="sweetalert2.all.min.js"></script>
-                    <script>
-                            //Warning Message
-                            $('#warning').click(function () {
-                            swal({
-                                title: 'Are you sure?',
-                                text: "You won't be able to revert this!",
-                                type: 'warning',
-                                showCancelButton: true,
-                                cancelButtonClass: 'btn btn-danger',
-                                // cancelButtonUrl: window.location = "#";
-                                confirmButtonText: 'Yes, delete it!'
-                            }).then(function (result) {
-                                if (result.value) {
-                                    console.log(window.url);
-                                    window.location.href = "#";
-                                }
-                            });
-                        });
-
-                    </script>
-
-
                 </div>
-
 
             </div>
             <div class="col-sm-4 ">
@@ -192,22 +159,64 @@
 
             </div>
         </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
 
     </form>
 
 
 </div>
+<script>
+    $(document).ready(function() {
+        $('#dataForm').submit(function(e) {
+            e.preventDefault(); // Prevent the form from submitting traditionally
 
+            // Get the form data
+            var formData = $(this).serialize();
+            $('#loadingSpinner').show();
 
-</div>
+            // Send the AJAX request
+            $.ajax({
+                url: "{{ route('buyairtime') }}",
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    // Handle the success response here
+                    $('#loadingSpinner').hide();
+
+                    console.log(response);
+                    // Update the page or perform any other actions based on the response
+
+                    if (response.status == 'success') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: response.message
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'fail',
+                            text: response.message
+                        });
+                        // Handle any other response status
+                    }
+
+                },
+                error: function(xhr) {
+                    $('#loadingSpinner').hide();
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'fail',
+                        text: xhr.responseText
+                    });
+                    // Handle any errors
+                    console.log(xhr.responseText);
+
+                }
+            });
+        });
+    });
+
+</script>
+
 
 

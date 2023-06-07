@@ -15,6 +15,7 @@ use App\Models\server;
 use App\Models\setting;
 use App\Models\wallet;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 use Session;
@@ -75,6 +76,8 @@ class BillController extends Controller
     {
         $request->validate([
             'productid' => 'required',
+            'number'=>['required', 'numeric',  'digits:11'],
+            'refid' => 'required',
         ]);
 
             $user = User::find($request->user()->id);
@@ -97,27 +100,19 @@ class BillController extends Controller
             if ($wallet->balance < $amount) {
                 $mg = "You Cant Make Purchase Above" . "NGN" . $amount . " from your wallet. Your wallet balance is NGN $wallet->balance. Please Fund Wallet And Retry or Pay Online Using Our Alternative Payment Methods.";
 
-                Alert::error('error', $mg);
-//                Alert::image('Ooops..',$mg,'https://renomobilemoney.com/nov.jpeg','200','200', 'Image Alt');
-                return redirect(route('invoice'))
-                    ->with('error', $mg);
+                return response()->json( $mg, Response::HTTP_BAD_REQUEST);
 
             }
             if ($request->amount < 0) {
 
                 $mg = "error transaction";
-                Alert::error('error', $mg);
-//                Alert::image('Ooops..',$mg,'https://renomobilemoney.com/nov.jpeg','200','200', 'Image Alt');
-                return redirect(route('invoice'))
-                    ->with('error', $mg);
+                return response()->json( $mg, Response::HTTP_BAD_REQUEST);
 
             }
             $bo = bill_payment::where('transactionid', $request->refid)->first();
             if (isset($bo)) {
                 $mg = "duplicate transaction";
-                Alert::success('Success', $mg);
-                return redirect(route('invoice'))
-                    ->with('error', $mg);
+                return response()->json( $mg, Response::HTTP_CONFLICT);
 
             } else {
                 $user = User::find($request->user()->id);
@@ -169,7 +164,7 @@ class BillController extends Controller
 
                         if ($mcd->name == "honorworld") {
                             $response = $daterserver->honourwordbill($object);
-//return $response;
+return $response;
                             $data = json_decode($response, true);
                             $success = "";
                             if ($data['code'] == '200') {
@@ -233,7 +228,7 @@ class BillController extends Controller
                             $response = $daterserver->mcdbill($object);
 
                             $data = json_decode($response, true);
-//return $data;
+
                             if (isset($data['success'])) {
 //                                $dis = $data['discountAmount'];
 //                    echo $success;
@@ -363,7 +358,10 @@ class BillController extends Controller
     {
         $request->validate([
             'productid' => 'required',
+            'number'=>['required', 'numeric',  'digits:11'],
+            'refid' => 'required',
         ]);
+
         if (Auth::check()) {
             $user = User::find($request->user()->id);
             $wallet = wallet::where('username', $user->username)->first();
@@ -384,28 +382,19 @@ class BillController extends Controller
 
             if ($wallet->balance < $amount) {
                 $mg = "You Cant Make Purchase Above" . "NGN" . $amount . " from your wallet. Your wallet balance is NGN $wallet->balance. Please Fund Wallet And Retry or Pay Online Using Our Alternative Payment Methods.";
-
-                Alert::error('error', $mg);
-//                Alert::image('Ooops..',$mg,'https://renomobilemoney.com/nov.jpeg','200','200', 'Image Alt');
-                return redirect(route('invoice'))
-                    ->with('error', $mg);
+                return response()->json( $mg, Response::HTTP_BAD_REQUEST);
 
             }
             if ($request->amount < 0) {
 
                 $mg = "error transaction";
-                Alert::error('error', $mg);
-//                Alert::image('Ooops..',$mg,'https://renomobilemoney.com/nov.jpeg','200','200', 'Image Alt');
-                return redirect(route('invoice'))
-                    ->with('error', $mg);
+                return response()->json( $mg, Response::HTTP_BAD_REQUEST);
 
             }
-            $bo = bill_payment::where('transactionid', $request->id)->first();
+            $bo = bill_payment::where('transactionid', $request->refid)->first();
             if (isset($bo)) {
                 $mg = "duplicate transaction";
-                Alert::success('Success', $mg);
-                return redirect(route('invoice'))
-                    ->with('error', $mg);
+                return response()->json( $mg, Response::HTTP_CONFLICT);
 
             } else {
                 $user = User::find($request->user()->id);
@@ -422,11 +411,11 @@ class BillController extends Controller
                 $bo = bill_payment::create([
                     'username' => $user->username,
                     'product' => $product->network . '|' . $product->plan,
-                    'amount' => $request->amount,
+                    'amount' => $amount,
                     'server_response' => 'ur fault',
                     'status' => 0,
                     'number' => $request->number,
-                    'transactionid' => $request->id,
+                    'transactionid' => $request->refid,
                     'discountamount'=>0,
                     'paymentmethod'=> 'wallet',
                     'fbalance'=>$fbalance,
@@ -482,8 +471,11 @@ class BillController extends Controller
                         Mail::to($admin)->send(new Emailtrans($bo));
 //                        Mail::to($admin2)->send(new Emailtrans($bo));
 
-                        Alert::success('success', $am.' ' .$ph);
-                        return redirect()->route('viewpdf', $bo->id);
+                        return response()->json([
+                            'status' => 'success',
+                            'message' => $am.' ' .$ph,
+//                            'data' => $responseData // If you want to include additional data
+                        ]);
 
                     } elseif ($data['code'] == '300') {
                         $success = 0;
@@ -495,8 +487,11 @@ class BillController extends Controller
                         $am = "NGN $request->amount Was Refunded To Your Wallet";
                         $ph = ", Transaction fail";
 
-                        Alert::error('error', $am.' ' .$ph);
-                        return redirect()->route('viewpdf', $bo->id);
+                        return response()->json([
+                            'status' => 'fail',
+                            'message' => $am.' ' .$ph,
+//                            'data' => $responseData // If you want to include additional data
+                        ]);
 
                     }
                 }
@@ -541,10 +536,11 @@ class BillController extends Controller
                         $this->reproduct1($username, "User DataPurchase", $body);
                         $this->reproduct2($username, "User DataPurchase", $body);
 
-                        Alert::success('success', $am.' ' .$ph);
-//                        $msg=$am.' ' .$ph;
-//                        Alert::image('Success..',$msg,'https://renomobilemoney.com/nov.jpeg','200','200', 'Image Alt');
-                        return redirect()->route('viewpdf', $bo->id);
+                        return response()->json([
+                            'status' => 'success',
+                            'message' => $am.' ' .$ph,
+//                            'data' => $responseData // If you want to include additional data
+                        ]);
 
                     }elseif (!isset($data['success'])) {
                         $success = 0;
@@ -557,8 +553,11 @@ class BillController extends Controller
                         $name = $product->plan;
                         $am = "NGN $request->amount Was Refunded To Your Wallet";
                         $ph = ", Transaction fail";
-                        Alert::error('error', $am.' ' .$ph);
-                        return redirect()->route('viewpdf', $bo->id);
+                        return response()->json([
+                            'status' => 'fail',
+                            'message' =>$response,
+//                            'data' => $responseData // If you want to include additional data
+                        ]);
 
                     }
 
@@ -598,7 +597,6 @@ class BillController extends Controller
 
                         Mail::to($receiver)->send(new Emailtrans($bo));
                         Mail::to($admin)->send(new Emailtrans($bo));
-                        Mail::to($admin2)->send(new Emailtrans($bo));
 
                         $username=encription::decryptdata($user->username);
                         $body=$username.' purchase '.$name;

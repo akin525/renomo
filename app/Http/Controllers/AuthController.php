@@ -246,7 +246,9 @@ Alert::success('Success', 'New Password has been sent to your email');
         if (isset($serve)) {
             $user = User::find($request->user()->id);
 
-
+            $title = 'Delete User!';
+            $text = "Are you sure you want to delete?";
+            confirmDelete($title, $text);
             return view('select', compact('user', 'serve'));
         } else {
             Alert::info('Server', 'Out of service, come back later');
@@ -263,7 +265,9 @@ Alert::success('Success', 'New Password has been sent to your email');
 //        }
         if (isset($serve)) {
             $user = User::find($request->user()->id);
-
+            $title = 'Delete User!';
+            $text = "Are you sure you want to delete?";
+            confirmDelete($title, $text);
 
             return view('select1', compact('user', 'serve'));
         }else {
@@ -298,32 +302,29 @@ Alert::success('Success', 'New Password has been sent to your email');
 
         }
        }
-    public function redata(Request  $request)
+    public function redata(Request  $request, $selectedValue)
     {
 
-        $request->validate([
-            'id' => 'required',
-        ]);
         $daterserver = new DataserverController();
         $serve = server::where('status', '1')->first();
 //return $request->id;
         if ($serve->name == 'mcd') {
             $user = User::find($request->user()->id);
-            $data = data::where(['status' => 1])->where('network', $request->id)->get();
+            $data = data::where(['status' => 1])->where('network', $selectedValue)->get();
 
-                return view('redata', compact('user', 'data'));
+            return response()->json($data);
 
         } elseif ($serve->name == 'honorworld') {
             $user = User::find($request->user()->id);
-            $data= big::where('status', '1')->where('network', $request->id)->get();
+            $data= big::where('status', '1')->where('network',$selectedValue)->get();
 //return $data;
-            return view('redata', compact('user', 'data'));
+            return response()->json($data);
 
         }elseif ($serve->name == 'easyaccess') {
             $user = User::find($request->user()->id);
-            $data= easy::where('status', '1')->where('network', $request->id)->get();
+            $data= easy::where('status', '1')->where('network', $selectedValue)->get();
 //return $data;
-            return view('redata', compact('user', 'data'));
+            return response()->json($data);
 
         }
        }

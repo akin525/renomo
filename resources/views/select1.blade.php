@@ -55,9 +55,18 @@
         box-shadow: -5px 6px 20px 0px rgba(88, 88, 88, 0.569);
     }
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.min.css">
+<!-- SweetAlert CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+
+<!-- SweetAlert JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.js"></script>
 
 <div class="row">
     <!--    <div class="card">-->
+    <div class="loading-overlay" id="loadingSpinner" style="display: none;">
+        <div class="loading-spinner"></div>
+    </div>
     <div class="card-body">
         <div class="module-head">
             <center><h3>
@@ -65,12 +74,13 @@
         </div>
         <center>
             <div class="subscribe btn-controls">
-                <form action="{{ route('redata') }}" method="POST">
+                <form id="dataForm">
                     @csrf
                     <label for="network" class=" requiredField">
-                        Network<span class="asteriskField">*</span>
+                       Select Your Network<span class="asteriskField">*</span>
                     </label>
-                    <select  name="id" class="text-success form-control" required="">
+                    <select  name="id" id="firstSelect" class="text-success form-control" required="">
+                        <option>Select Your Network</option>
                         @if ($serve->name == 'mcd')
                         <option value="mtn-data">MTN</option>
                         <option value="glo-data">GLO</option>
@@ -94,9 +104,37 @@
                     </select>
 
                     <br>
-                    <button class="submit-btn cta" type="submit" >
+                    <div id="div_id_network" class="form-group">
+                        <label for="network" class=" requiredField">
+                            Select Your Plan<span class="asteriskField">*</span>
+                        </label>
+                        <div class="">
+                            <select name="productid" id="secondSelect" class="text-success form-control" required>
+
+                                <option>Select Your Plan</option>
+                            </select>
+                        </div>
+                    </div>
+                    {{--                                <div id="div_id_network" >--}}
+                    {{--                                    <label for="network" class=" requiredField">--}}
+                    {{--                                        Enter Amount<span class="asteriskField">*</span>--}}
+                    {{--                                    </label>--}}
+                    {{--                                    <div class="">--}}
+                    {{--                                        <input type="number" name="amount" id="po" value="" min="100" max="4000" class="text-success form-control" readonly>--}}
+                    {{--                                    </div>--}}
+                    {{--                                </div>--}}
+                    <br/>
+                    <div id="div_id_network" class="form-group">
+                        <label for="network" class=" requiredField">
+                            Enter Phone Number<span class="asteriskField">*</span>
+                        </label>
+                        <div class="">
+                            <input type="number" name="number" minlength="11" class="text-success form-control" required>
+                        </div>
+                    </div>
+                    <input type="hidden" name="refid" value="<?php echo rand(10000000, 999999999); ?>">
+                    <button class="submit-btn cta" data-confirm-delete="true" type="submit" >
                         <span class="span">NEXT</span>
-                        <span class="load loading"></span>
                         <span class="second">
       <svg width="50px" height="20px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <g id="arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -154,5 +192,93 @@
         <br>
     </div>
 </div>
-</div>
-</center>
+
+<script>
+    $(document).ready(function() {
+        $('#firstSelect').change(function() {
+            var selectedValue = $(this).val();
+            // Show the loading spinner
+            $('#loadingSpinner').show();
+            // Send the selected value to the '/getOptions' route
+            $.ajax({
+                url: '{{ url('redata') }}/' + selectedValue,
+                type: 'GET',
+                success: function(response) {
+                    // Handle the successful response
+                    var secondSelect = $('#secondSelect');
+                    $('#loadingSpinner').hide();
+                    // Clear the existing options
+                    secondSelect.empty();
+
+                    // Append the received options to the second select box
+                    $.each(response, function(index, option) {
+                        secondSelect.append('<option  value="' + option.id + '">' + option.plan +  ' --NGN' + option.ramount + '</option>');
+                    });
+
+                    // Select the desired value dynamically
+                    var desiredValue = 'value2'; // Set the desired value here
+                    secondSelect.val(desiredValue);
+                },
+                error: function(xhr) {
+                    // Handle any errors
+                    console.log(xhr.responseText);
+                }
+            });
+        });
+    });
+
+</script>
+<script>
+    $(document).ready(function() {
+        $('#dataForm').submit(function(e) {
+            e.preventDefault(); // Prevent the form from submitting traditionally
+
+            // Get the form data
+            var formData = $(this).serialize();
+            $('#loadingSpinner').show();
+
+            // Send the AJAX request
+            $.ajax({
+                url: "{{ route('bill') }}",
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    // Handle the success response here
+                    $('#loadingSpinner').hide();
+
+                    console.log(response);
+                    // Update the page or perform any other actions based on the response
+
+                    if (response.status == 'success') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: response.message
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'fail',
+                            text: response.message
+                        });
+                        // Handle any other response status
+                    }
+
+                },
+                error: function(xhr) {
+                    $('#loadingSpinner').hide();
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'fail',
+                        text: xhr.responseText
+                    });
+                    // Handle any errors
+                    console.log(xhr.responseText);
+
+                }
+            });
+        });
+    });
+
+</script>
+
