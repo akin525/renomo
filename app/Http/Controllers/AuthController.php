@@ -246,9 +246,7 @@ Alert::success('Success', 'New Password has been sent to your email');
         if (isset($serve)) {
             $user = User::find($request->user()->id);
 
-            $title = 'Delete User!';
-            $text = "Are you sure you want to delete?";
-            confirmDelete($title, $text);
+
             return view('select', compact('user', 'serve'));
         } else {
             Alert::info('Server', 'Out of service, come back later');
