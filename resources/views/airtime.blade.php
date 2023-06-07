@@ -193,8 +193,8 @@
                         });
                     } else {
                         Swal.fire({
-                            icon: 'error',
-                            title: 'fail',
+                            icon: 'info',
+                            title: 'Pending',
                             text: response.message
                         });
                         // Handle any other response status
