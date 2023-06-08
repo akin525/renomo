@@ -265,6 +265,8 @@
                                     icon: 'success',
                                     title: 'Success',
                                     text: response.message
+                                }).then(() => {
+                                    location.reload(); // Reload the page
                                 });
                             } else {
                                 Swal.fire({
