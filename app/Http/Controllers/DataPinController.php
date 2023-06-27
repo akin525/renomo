@@ -9,6 +9,7 @@ use App\Models\data;
 use App\Models\User;
 use App\Models\wallet;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -45,22 +46,19 @@ class DataPinController extends Controller
         if ($wallet->balance < $amount) {
             $mg = "You Cant Make Purchase Above" . "NGN" . $amount . " from your wallet. Your wallet balance is NGN $wallet->balance. Please Fund Wallet And Retry or Pay Online Using Our Alternative Payment Methods.";
 
-            Alert::error('error', $mg);
-            return back();
+            return response()->json($mg, Response::HTTP_BAD_REQUEST);
 
         }
         if ($request->amount < 0) {
 
             $mg = "error transaction";
-            Alert::error('error', $mg);
-            return back();
+            return response()->json($mg, Response::HTTP_BAD_REQUEST);
 
         }
         $bo = bill_payment::where('transactionid', $request->refid)->first();
         if (isset($bo)) {
             $mg = "duplicate transaction";
-            Alert::success('Success', $mg);
-            return back();
+            return response()->json( $mg, Response::HTTP_CONFLICT);
 
         } else {
             $fbalance=$wallet->balance;

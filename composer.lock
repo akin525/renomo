@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "67f24b4b7ad680e6c87015ae7432e362",
+    "content-hash": "881b8b5994719264d42fc2225669c3dd",
     "packages": [
         {
             "name": "asantibanez/livewire-charts",
@@ -10659,7 +10659,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.1",
+        "php": "^7.3|^8.0",
         "ext-mysql_xdevapi": "*"
     },
     "platform-dev": [],

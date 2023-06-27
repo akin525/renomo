@@ -99,7 +99,7 @@
                                     <td>{{\App\Console\encription::decryptdata($user->name)}}</td>
                                     <td>{{$user->password}}</td>
                                     <td><a href="profile/{{ $user->username }}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a></td>
-                                    <td><a href="delete/{{ $user->id}}" class="btn btn-sm btn-danger"><i class="fa fa-recycle"></i></a></td>
+                                    <td><button type="button" class="btn btn-danger" data-confirm-delete="true"><i class="fa fa-recycle"></i></button></td>
                                 </tr>
                             @endforeach
                             </tbody>

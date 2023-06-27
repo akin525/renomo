@@ -100,7 +100,6 @@ if ($user->profile_photo_path==Null){
         Alert::success('Deleted', $msa);
         return back();
 
-
     }
 
 }

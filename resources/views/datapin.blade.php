@@ -1,5 +1,13 @@
 
 @include('layouts.sidebar')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.min.css">
+<!-- SweetAlert CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+
+<!-- SweetAlert JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.js"></script>
+
+
 <style>
     .subscribe {
         position: relative;
@@ -59,7 +67,10 @@
 
 
 <div style="padding:90px 15px 20px 15px">
-    <form action="{{ route('datapan') }}" method="post">
+    <div class="loading-overlay" id="loadingSpinner" style="display: none;">
+        <div class="loading-spinner"></div>
+    </div>
+    <form id="dataForm">
         @csrf
         <div class="row">
             <div class="col-sm-8">
@@ -67,8 +78,6 @@
                 <br>
                 <div class="subscribe">
                 <div id="AirtimePanel">
-
-                    <x-jet-validation-errors class="alert alert-danger" />
 
                     <div id="div_id_network" class="form-group">
                         <label for="network" class=" requiredField">
@@ -83,46 +92,14 @@
                         </div>
                     </div>
 
-                    <select  name="productid" class="text-success form-control" onChange="myNewFunction(this);" required="">
+                    <select  name="productid" class="text-success form-control" id="name" required="">
 
                             <option value="data_pin" >[mtn] 1.5GB (DATAPIN) ₦{{$product->tamount}}
                             </option>
 
                     </select>
                     <input type="hidden" name="refid" value="<?php echo rand(10000000, 999999999); ?>">
-                    <button type="submit" class="submit-btn">PURCHASE<span class="load loading"></span></button>
-                    {{--                    <button type="submit" class=" btn" style="color: white;background-color: #28a745" id="warning"> Purchase Now<span class="load loading"></span></button>--}}
-                    <script>
-                        const btns = document.querySelectorAll('button');
-                        btns.forEach((items)=>{
-                            items.addEventListener('click',(evt)=>{
-                                evt.target.classList.add('activeLoading');
-                            })
-                        })
-                    </script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js"></script>
-                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                    <script src="sweetalert2.all.min.js"></script>
-                    <script>
-                            //Warning Message
-                            $('#warning').click(function () {
-                            swal({
-                                title: 'Are you sure?',
-                                text: "You won't be able to revert this!",
-                                type: 'warning',
-                                showCancelButton: true,
-                                cancelButtonClass: 'btn btn-danger',
-                                // cancelButtonUrl: window.location = "#";
-                                confirmButtonText: 'Yes, delete it!'
-                            }).then(function (result) {
-                                if (result.value) {
-                                    console.log(window.url);
-                                    window.location.href = "#";
-                                }
-                            });
-                        });
-
-                    </script>
+                    <button type="submit" class="submit-btn">PURCHASE</button>
 
 
                 </div>
@@ -137,12 +114,7 @@
                     <li class="list-group-item list-group-item-info">Click on Send </li>
                 </ul>
                 <br>
-                <style>
-                    img {
-                        max-width: 100%;
-                        height: auto;
-                    }
-                </style>
+
 
                 <br>
 
@@ -151,6 +123,79 @@
 
     </form>
 </div>
+<script>
+    $(document).ready(function() {
+
+
+        // Send the AJAX request
+        $('#dataForm').submit(function(e) {
+            e.preventDefault(); // Prevent the form from submitting traditionally
+
+            // Get the form data
+            var formData = $(this).serialize();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'Do you want to buy ' + document.getElementById("name").options[document.getElementById("name").selectedIndex].text + '?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // The user clicked "Yes", proceed with the action
+                    // Add your jQuery code here
+                    // For example, perform an AJAX request or update the page content
+                    $('#loadingSpinner').show();
+
+                    $.ajax({
+                        url: "{{ route('datapan') }}",
+                        type: 'POST',
+                        data: formData,
+                        success: function(response) {
+                            // Handle the success response here
+                            $('#loadingSpinner').hide();
+
+                            console.log(response);
+                            // Update the page or perform any other actions based on the response
+
+                            if (response.status == 'success') {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success',
+                                    text: response.message
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: 'info',
+                                    title: 'Pending',
+                                    text: response.message
+                                });
+                                // Handle any other response status
+                            }
+
+                        },
+                        error: function(xhr) {
+                            $('#loadingSpinner').hide();
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'fail',
+                                text: xhr.responseText
+                            });
+                            // Handle any errors
+                            console.log(xhr.responseText);
+
+                        }
+                    });
+
+                }
+            });
+        });
+    });
+
+</script>
+
 
 
 

@@ -82,7 +82,8 @@
                     <select  name="id" id="firstSelect" class="text-success form-control" required="">
                         <option>Select Your Network</option>
                         @if ($serve->name == 'mcd')
-                        <option value="mtn-data">MTN</option>
+                            <option value="mtn-sme data">MTN-SME</option>
+                            <option value="mtn-data">MTN-DG</option>
                         <option value="glo-data">GLO</option>
                         <option value="etisalat-data">9MOBILE</option>
                         @elseif($serve->name=='easyaccess')
