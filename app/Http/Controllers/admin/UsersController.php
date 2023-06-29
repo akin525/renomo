@@ -36,9 +36,7 @@ $reseller=DB::table('users')->where("apikey", "!=", "")->count();
         $a_users = DB::table('users')->where("role","=","users")->count();
 
 //return $users;
-        $title = 'Delete User!';
-        $text = "Are you sure you want to delete?";
-        confirmDelete($title, $text);
+
         return view('admin/users', ['users' => $users, 'res'=>$reseller, 't_users'=>$t_users, 'wallet'=>$wallet, 'f_users'=>$f_users, 'r_users'=>$r_users,'a_users'=>$a_users]);
 
     }
