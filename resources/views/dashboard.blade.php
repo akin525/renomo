@@ -119,12 +119,12 @@
 
             <div class="col-md-7 col-lg-6">
                 <div class="card">
-                    <canvas id="transactionChart" width="800" height="400"></canvas>
+                    <canvas id="transactionChart" width="800" height="500"></canvas>
                 </div>
             </div>
             <div class="col-md-7 col-lg-6">
                 <div class="card">
-                    <canvas id="transactionChart1" width="800" height="400"></canvas>
+                    <canvas id="transactionChart1" width="800" height="500"></canvas>
                 </div>
             </div>
         </div>
