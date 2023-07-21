@@ -45,6 +45,10 @@
     <link rel="stylesheet" href="{{asset('hp/main.css')}}" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1367363826948615"
             crossorigin="anonymous"></script>
+    @livewireStyles
+
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 
 <body class="dashboard dashboard_1">
