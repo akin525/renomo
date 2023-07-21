@@ -360,8 +360,8 @@
                     datasets: [{
                         label: 'Transaction Amount',
                         backgroundColor: 'rgb(53,169,21)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1,
+                        borderColor: 'rgb(7,76,14)',
+                        borderWidth: 10,
                         data: data.amounts,
                     }]
                 },
