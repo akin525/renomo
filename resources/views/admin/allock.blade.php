@@ -60,10 +60,11 @@
                                                                 Completed
                                                             </button>
                                                         @endif
+                                                        @if($re->status=="1")
+                                                            <a href="{{route('admin/cron', $re->id)}}" class="btn btn-danger">Terminate</a>
+                                                        @endif
                                                     </div>
-                                                    @if($re->status=="1")
-                                                        <a href="{{route('admin/cron', $re->id)}}" class="btn btn-danger">Terminate</a>
-                                                    @endif
+
                                                 </div>
                                             </div>
                                         </div>
