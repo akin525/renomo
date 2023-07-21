@@ -31,12 +31,12 @@ class CronjobController extends Controller
         $job->balance=$kin;
         $job->status=0;
         $job->save();
-        $wallet=wallet::where('username', $username)->get();
+        $wallet=wallet::where('username', $username)->first();
         $wa=$wallet->balance + $balance;
         $wallet->balance=$wa;
         $wallet->save();
 
-        $userp=User::where('username', $username)->get();
+        $userp=User::where('username', $username)->first();
             $receiver = encription::decryptdata($userp->email);
             $admin = 'info@renomobilemoney.com';
 
