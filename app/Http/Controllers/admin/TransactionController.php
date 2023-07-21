@@ -86,7 +86,7 @@ public function index()
     public function getTransactions()
     {
         $transactions = deposit::selectRaw('DATE(created_at) as date, SUM(amount) as total_amount')
-            ->groupBy('date')
+            ->groupBy('date',`created_at`)
             ->orderBy('date', 'ASC')
             ->get();
 
