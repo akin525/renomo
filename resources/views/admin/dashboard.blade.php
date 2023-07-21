@@ -50,12 +50,12 @@
 
         <div class="row">
             <div class="row column1">
-                <div class="col-md-4 col-lg-3">
+                <div class="col-md-7 col-lg-6">
                     <div style="width: 80%; margin: 0 auto;">
                 <canvas id="transactionChart" width="800" height="400"></canvas>
                 </div>
                 </div>
-                <div class="col-md-4 col-lg-3">
+                <div class="col-md-7 col-lg-6">
                     <div style="width: 80%; margin: 0 auto;">
                         <canvas id="transactionChart1" width="800" height="400"></canvas>
                     </div>
@@ -367,7 +367,7 @@
                 data: {
                     labels: data.dates,
                     datasets: [{
-                        label: 'Transaction Amount',
+                        label: 'Deposit Amount',
                         data: data.amounts,
                         backgroundColor: 'rgba(53, 169, 21, 0.5)',
                         borderColor: 'rgba(53, 169, 21, 1)',
@@ -397,7 +397,7 @@
                 data: {
                     labels: data.dates,
                     datasets: [{
-                        label: 'Transaction Amount',
+                        label: 'Purchase Charts',
                         data: data.amounts,
                         backgroundColor: 'rgb(169,137,21)',
                         borderColor: 'rgb(169,137,21)',
