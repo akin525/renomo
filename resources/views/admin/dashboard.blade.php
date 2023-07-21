@@ -46,10 +46,12 @@
             </div>
         </div>
         <br>
-        <canvas id="transactionChart" width="400" height="200"></canvas>
+{{--        <canvas id="transactionChart" width="400" height="200"></canvas>--}}
 
         <div class="row">
-
+            <div style="width: 80%; margin: 0 auto;">
+                <canvas id="transactionChart" width="800" height="400"></canvas>
+            </div>
             <div class="row column1">
                 <div class="col-md-6 col-lg-3">
                     <div class="full counter_section margin_bottom_30">
