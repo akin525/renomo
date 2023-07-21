@@ -351,7 +351,7 @@
     fetch('/transactions')
         .then(response => response.json())
         .then(data => {
-            var ctx = document.getElementById('transactionChart').getContext('2d');
+            var ctx = document.getElementById('transactionChart').getContext('3d');
 
             var chart = new Chart(ctx, {
                 type: 'bar',
@@ -360,8 +360,8 @@
                     datasets: [{
                         label: 'Transaction Amount',
                         backgroundColor: 'rgb(53,169,21)',
-                        borderColor: 'rgb(7,76,14)',
-                        borderWidth: 10,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1,
                         data: data.amounts,
                     }]
                 },
