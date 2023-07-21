@@ -359,7 +359,7 @@
                     labels: data.dates,
                     datasets: [{
                         label: 'Transaction Amount',
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        backgroundColor: 'rgb(53,169,21)',
                         borderColor: 'rgba(75, 192, 192, 1)',
                         borderWidth: 1,
                         data: data.amounts,
