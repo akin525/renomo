@@ -24,6 +24,8 @@ class deposit extends Authenticatable
         'amount',
         'iwallet',
         'fwallet',
+        'date',
+        'created_at',
     ];
 //    function parentData()
 //    {
