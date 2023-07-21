@@ -51,13 +51,13 @@
         <div class="row">
             <div class="row column1">
                 <div class="col-md-7 col-lg-6">
-                    <div style="width: 80%; margin: 0 auto;">
-                <canvas id="transactionChart" width="800" height="400"></canvas>
+                    <div class="card" style="width: 80%; margin: 0 auto;">
+                <canvas id="transactionChart" width="800" height="600"></canvas>
                 </div>
                 </div>
                 <div class="col-md-7 col-lg-6">
-                    <div style="width: 80%; margin: 0 auto;">
-                        <canvas id="transactionChart1" width="800" height="400"></canvas>
+                    <div class="card" style="width: 80%; margin: 0 auto;">
+                        <canvas id="transactionChart1" width="800" height="600"></canvas>
                     </div>
                 </div>
                 </div>
