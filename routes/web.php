@@ -273,6 +273,8 @@ Route::get('admin/ratelock',[RateController::class, 'highestsafelock' ]);
     Route::get('admin/viewpdf/{id}', [AdminpdfController::class, 'viewpdf'])->name('admin/viewpdf');
     Route::get('admin/dopdf/{id}', [AdminpdfController::class, 'dopdf'])->name('admin/dopdf');
 
+    Route::get('admin/cron/{id}', [\App\Http\Controllers\admin\CronjobController::class, 'stopcronjob'])->name('admin/cron');
+
 });
 Route::get('admin/api', [HonorApi::class, 'api'])->name('admin/api');
 
