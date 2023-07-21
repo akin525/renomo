@@ -116,6 +116,18 @@
                 </div>
             </div>
 
+            <div class="col-md-7 col-lg-6">
+                <div class="card">
+                    <canvas id="transactionChart" width="800" height="600"></canvas>
+                </div>
+            </div>
+            <div class="col-md-7 col-lg-6">
+                <div class="card">
+                    <canvas id="transactionChart1" width="800" height="600"></canvas>
+                </div>
+            </div>
+        </div>
+
             <div class="col-xl-12">
                 <div class="card bg-secondary analytics-card">
                     <div class="card-body mt-4 pb-1">
@@ -422,6 +434,66 @@
 
 
 </div>
+<script>
+    fetch('/transaction')
+        .then(response => response.json())
+        .then(data => {
+            var ctx = document.getElementById('transactionChart').getContext('2d');
+
+            var chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.dates,
+                    datasets: [{
+                        label: 'Deposit Amount',
+                        data: data.amounts,
+                        backgroundColor: 'rgba(53, 169, 21, 0.5)',
+                        borderColor: 'rgba(53, 169, 21, 1)',
+                        borderWidth: 1,
+                        fill: 'origin' // Fill the area below the line
+
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+</script>
+<script>
+    fetch('/transaction1')
+        .then(response => response.json())
+        .then(data => {
+            var ctx = document.getElementById('transactionChart1').getContext('2d');
+
+            var chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.dates,
+                    datasets: [{
+                        label: 'Purchase Charts',
+                        data: data.amounts,
+                        backgroundColor: 'rgb(169,137,21)',
+                        borderColor: 'rgb(169,137,21)',
+                        borderWidth: 1,
+                        fill: 'origin' // Fill the area below the line
+
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+</script>
 
 <script src="{{asset('asset/datatables.net/js/jquery.dataTables.min.js')}}" type="847c8da2504a1915642ffbeb-text/javascript"></script>
 <script src="{{asset('asset/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}" type="847c8da2504a1915642ffbeb-text/javascript"></script>

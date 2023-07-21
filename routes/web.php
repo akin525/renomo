@@ -32,6 +32,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ResellerController;
 use App\Http\Controllers\ResponseController;
 use App\Http\Controllers\SafelockController;
+use App\Http\Controllers\Transaction1Controller;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\verify;
 use App\Http\Controllers\VertualController;
@@ -163,8 +164,10 @@ Route::post('check1', [verify::class, 'verifydeposit'])->name('check1');
 
 Route::get('datapin', [\App\Http\Controllers\DataPinController::class, 'dataindex'])->name('datapin');
 Route::post('datapan', [\App\Http\Controllers\DataPinController::class, 'processdatapin'])->name('datapan');
+    Route::get('/transaction', [Transaction1Controller::class, 'getTransactions']);
     Route::get('/transactions', [TransactionController::class, 'getTransactions']);
     Route::get('/transactions1', [TransactionController::class, 'getTransactions1']);
+    Route::get('/transaction1', [Transaction1Controller::class, 'getTransactions1']);
 
 
 });
