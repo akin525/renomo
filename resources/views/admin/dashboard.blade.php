@@ -49,9 +49,18 @@
 {{--        <canvas id="transactionChart" width="400" height="200"></canvas>--}}
 
         <div class="row">
-            <div style="width: 80%; margin: 0 auto;">
+            <div class="row column1">
+                <div class="col-md-4 col-lg-3">
+                    <div style="width: 80%; margin: 0 auto;">
                 <canvas id="transactionChart" width="800" height="400"></canvas>
-            </div>
+                </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <div style="width: 80%; margin: 0 auto;">
+                        <canvas id="transactionChart1" width="800" height="400"></canvas>
+                    </div>
+                </div>
+                </div>
             <div class="row column1">
                 <div class="col-md-6 col-lg-3">
                     <div class="full counter_section margin_bottom_30">
@@ -362,6 +371,36 @@
                         data: data.amounts,
                         backgroundColor: 'rgba(53, 169, 21, 0.5)',
                         borderColor: 'rgba(53, 169, 21, 1)',
+                        borderWidth: 1,
+                        fill: 'origin' // Fill the area below the line
+
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+</script>
+<script>
+    fetch('/transactions1')
+        .then(response => response.json())
+        .then(data => {
+            var ctx = document.getElementById('transactionChart1').getContext('2d');
+
+            var chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.dates,
+                    datasets: [{
+                        label: 'Transaction Amount',
+                        data: data.amounts,
+                        backgroundColor: 'rgb(169,137,21)',
+                        borderColor: 'rgb(169,137,21)',
                         borderWidth: 1,
                         fill: 'origin' // Fill the area below the line
 

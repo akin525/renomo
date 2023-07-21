@@ -98,5 +98,20 @@ public function index()
             'amounts' => $amounts,
         ]);
     }
+    public function getTransactions1()
+    {
+        $transactions = bill_payment::selectRaw('DATE(timestamp) as date, SUM(amount) as total_amount')
+            ->groupBy('date')
+            ->orderBy('date', 'ASC')
+            ->get();
+
+        $dates = $transactions->pluck('date')->toArray();
+        $amounts = $transactions->pluck('total_amount')->toArray();
+
+        return response()->json([
+            'dates' => $dates,
+            'amounts' => $amounts,
+        ]);
+    }
 
 }

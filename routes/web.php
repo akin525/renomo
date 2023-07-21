@@ -164,6 +164,7 @@ Route::post('check1', [verify::class, 'verifydeposit'])->name('check1');
 Route::get('datapin', [\App\Http\Controllers\DataPinController::class, 'dataindex'])->name('datapin');
 Route::post('datapan', [\App\Http\Controllers\DataPinController::class, 'processdatapin'])->name('datapan');
     Route::get('/transactions', [TransactionController::class, 'getTransactions']);
+    Route::get('/transactions1', [TransactionController::class, 'getTransactions1']);
 
 
 });
