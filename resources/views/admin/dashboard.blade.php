@@ -351,10 +351,10 @@
     fetch('/transactions')
         .then(response => response.json())
         .then(data => {
-            var ctx = document.getElementById('transactionChart').getContext('3d');
+            var ctx = document.getElementById('transactionChart').getContext('2d');
 
             var chart = new Chart(ctx, {
-                type: 'bar',
+                type: 'area',
                 data: {
                     labels: data.dates,
                     datasets: [{
