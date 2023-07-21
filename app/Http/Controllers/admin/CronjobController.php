@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Models\wallet;
 use App\Models\wi;
 use Illuminate\Support\Facades\Mail;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CronjobController extends Controller
 {
@@ -43,9 +44,7 @@ class CronjobController extends Controller
             Mail::to($receiver)->send(new Emailclon($in));
             Mail::to($admin)->send(new Emailclon($in));
             $msg="Safelock has been terminate successfully";
-        return response()->json([
-            'status' => 'success',
-            'message' => $msg,
-            ]);
+            Alert::success('Done', $msg);
+        return back();
     }
 }
