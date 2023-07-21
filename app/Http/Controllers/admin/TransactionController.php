@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Http\Controllers\admin;
+namespace App\Http\Controllers\admin;
 
 use App\Console\encription;
 use App\Models\bill_payment;
