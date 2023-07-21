@@ -11,6 +11,7 @@
     });
 
 </script>
+<script src="{{ asset('js/Chart.min.js') }}"></script>
 
 <div class="midde_cont">
     <div class="container-fluid">
@@ -45,6 +46,8 @@
             </div>
         </div>
         <br>
+        <canvas id="transactionChart" width="400" height="200"></canvas>
+
         <div class="row">
 
             <div class="row column1">
@@ -342,6 +345,34 @@
         </div>
     </div>
 </div>
+<script>
+    fetch('/transactions')
+        .then(response => response.json())
+        .then(data => {
+            var ctx = document.getElementById('transactionChart').getContext('2d');
+
+            var chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.dates,
+                    datasets: [{
+                        label: 'Transaction Amount',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1,
+                        data: data.amounts,
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+</script>
 
         <script>
             $(function () {

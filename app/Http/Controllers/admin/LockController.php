@@ -16,7 +16,7 @@ class LockController
 {
 public function index()
 {
-    $lock=safe_lock::latest()->paginate(9);
+    $lock=safe_lock::latest()->paginate(18);
     return view("admin/allock", compact("lock"));
 }
 public function interest()

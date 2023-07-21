@@ -83,7 +83,20 @@ public function index()
 
     }
 
+    public function getTransactions()
+    {
+        $transactions = deposit::selectRaw('DATE(created_at) as date, SUM(amount) as total_amount')
+            ->groupBy('date')
+            ->orderBy('date', 'ASC')
+            ->get();
 
+        $dates = $transactions->pluck('date')->toArray();
+        $amounts = $transactions->pluck('total_amount')->toArray();
 
+        return response()->json([
+            'dates' => $dates,
+            'amounts' => $amounts,
+        ]);
+    }
 
 }
