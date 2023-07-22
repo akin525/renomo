@@ -343,34 +343,6 @@
 
         </div>
         <!-- /.row -->
-        <br>
-        <div class="card">
-            <div class="card-header">
-                <h4 class="mb-0">Deposit History</h4>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="data-table-buttons" class="table table-striped table-bordered align-middle">
-                        <thead>
-                        <th class="table-active"> Username </th>
-                        <th> Transaction Id </th>
-                        <th> Date</th>
-                        <th>Amount</th>
-                        </thead>
-                        <tbody>
-                        @foreach($deposite as $de)
-                            <tr>
-                                <td>{{\App\Console\encription::decryptdata($de->username)}}</td>
-                                <td>{{$de->payment_ref}}</td>
-                                <td>{{$de->date}}</td>
-                                <td>{{$de->amount}}</td>
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <script>
