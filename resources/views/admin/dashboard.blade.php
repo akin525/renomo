@@ -127,6 +127,20 @@
                 </div>
         </div>
         </div>
+        <div class="row">
+            <div class="row column1">
+                <div class="col-md-7 col-lg-6">
+                    <div class="card">
+                        <canvas id="myPieChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-7 col-lg-6">
+                    <div class="card">
+                        <canvas id="myPieChart1"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
             <div class="row column1">
                 <div class="col-md-7 col-lg-6">
                     <div class="full counter_section margin_bottom_30">
@@ -415,6 +429,46 @@
                             beginAtZero: true
                         }
                     }
+                }
+            });
+        });
+</script>
+<script>
+    fetch('/checkusers')
+        .then(response => response.json())
+        .then(data => {
+            var ctx = document.getElementById('myPieChart').getContext('2d');
+            var myPieChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Total Users', 'New Users'],
+                    datasets: [{
+                        data: [data.tusers, data.nusers],
+                        backgroundColor: ['#20b016', '#d7b612'],
+                    }]
+                },
+                options: {
+                    responsive: true,
+                }
+            });
+        });
+</script>
+<script>
+    fetch('/checklock')
+        .then(response => response.json())
+        .then(data => {
+            var ctx = document.getElementById('myPieChart1').getContext('2d');
+            var myPieChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Total Lock', 'Active Lock'],
+                    datasets: [{
+                        data: [data.tlock, data.alock],
+                        backgroundColor: ['#1630b0', '#d7b612'],
+                    }]
+                },
+                options: {
+                    responsive: true,
                 }
             });
         });

@@ -169,6 +169,8 @@ Route::post('datapan', [\App\Http\Controllers\DataPinController::class, 'process
     Route::get('/transactions1', [TransactionController::class, 'getTransactions1']);
     Route::get('/transaction1', [Transaction1Controller::class, 'getTransactions1']);
 
+    Route::get('checkusers', [TransactionController::class, 'showPieChart']);
+    Route::get('checklock', [TransactionController::class, 'lockPieChart']);
 
 });
 

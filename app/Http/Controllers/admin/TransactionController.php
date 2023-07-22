@@ -6,6 +6,8 @@ use App\Console\encription;
 use App\Models\bill_payment;
 use App\Models\bo;
 use App\Models\deposit;
+use App\Models\safe_lock;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -113,5 +115,28 @@ public function index()
             'amounts' => $amounts,
         ]);
     }
+    public function showPieChart()
+    {
+        $today = Carbon::now()->format('Y-m-d');
 
+        $totalUsers = User::count();
+        $activeUsers =  User::where([['created_at', 'LIKE', $today . '%']])->count();
+
+        return response()->json([
+            'tusers' => $totalUsers,
+            'nusers' => $activeUsers,
+        ]);
+    }
+    public function lockPieChart()
+    {
+        $today = Carbon::now()->format('Y-m-d');
+
+        $totalUsers = safe_lock::count();
+        $activeUsers =  safe_lock::where([['status', '=', "1"]])->count();
+
+        return response()->json([
+            'tlock' => $totalUsers,
+            'alock' => $activeUsers,
+        ]);
+    }
 }
