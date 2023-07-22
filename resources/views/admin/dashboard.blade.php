@@ -441,7 +441,7 @@
             var myPieChart = new Chart(ctx, {
                 type: 'pie',
                 data: {
-                    labels: ['Total Users', 'New Users'],
+                    labels: ['Total Users '+ data.tusers, 'New Users '+ data.nusers],
                     datasets: [{
                         data: [data.tusers, data.nusers],
                         backgroundColor: ['#20b016', '#d7b612'],
@@ -461,7 +461,7 @@
             var myPieChart = new Chart(ctx, {
                 type: 'pie',
                 data: {
-                    labels: ['Total Lock', 'Active Lock'],
+                    labels: ['Total Lock '+ data.tlock, 'Active Lock '+ data.alock],
                     datasets: [{
                         data: [data.tlock, data.alock],
                         backgroundColor: ['#1630b0', '#d7b612'],
