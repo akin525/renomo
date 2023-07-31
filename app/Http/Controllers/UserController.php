@@ -98,7 +98,10 @@ if ($user->profile_photo_path==Null){
         $user=User::where('id', $request)->delete();
         $msa="Account Delete Successfully ";
         Alert::success('Deleted', $msa);
-        return back();
+        return response()->json([
+            'status' => 'success',
+            'message' => $msa,
+        ]);
 
     }
 
