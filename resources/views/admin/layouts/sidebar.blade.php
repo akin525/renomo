@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <!-- basic -->
@@ -42,9 +41,6 @@
 
     <link rel="stylesheet" href="{{asset('hp/bootstrap.min.css')}}" />
     <link rel="stylesheet" href="{{asset('hp/main.css')}}" />
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1367363826948615"
-            crossorigin="anonymous"></script>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.15.6/dist/sweetalert2.min.css">
     <!-- SweetAlert CSS -->
