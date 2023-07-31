@@ -106,7 +106,7 @@
                                Enter Amount<span class="asteriskField">*</span>
                            </label>
                            <div class="">
-                               <input type="number" id="amount" name="amount" min="100" max="4000" class="text-success form-control" required>
+                               <input type="number" id="amount" name="amount" min="100" max="4000" oninput="calc()" class="text-success form-control" required>
                            </div>
                        </div>
                        <br/>
@@ -120,6 +120,22 @@
                        </div>
                        <input type="hidden" name="refid" value="<?php echo rand(10000000, 999999999); ?>">
                        <button type="submit" class="submit-btn">PURCHASE<span class="load loading"></span></button>
+                       <div class="col-lg-12">
+                           <div class="form-group">
+                               <label class="small mb-1" for="amount" style="color: #000000"><b>Amount to Pay (<span>₦</span>)</b></label>
+                               <br>
+                               <span class="text-danger">2% Discount:</span> <b class="text-success">₦<span id="shownow1"></span></b>
+                           </div>
+                       </div>
+                       <script>
+                           function calc(){
+                                   var value = document.getElementById("amount").value;
+                                   var percent = 2/100 * value;
+                                   var reducedvalue = value - percent;
+                                   document.getElementById("shownow1").innerHTML = reducedvalue;
+
+                           }
+                       </script>
                    </div>
                 </div>
 
