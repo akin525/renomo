@@ -97,7 +97,6 @@ if ($user->profile_photo_path==Null){
         $wallet=wallet::where('username', $find->username)->delete();
         $user=User::where('id', $request)->delete();
         $msa="Account Delete Successfully ";
-        Alert::success('Deleted', $msa);
         return response()->json([
             'status' => 'success',
             'message' => $msa,
