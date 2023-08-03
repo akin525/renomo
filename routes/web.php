@@ -249,7 +249,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/approved/{id}', [WithadController::class, 'approve'])->name('admin/approved');
     Route::get('admin/disapproved/{id}', [WithadController::class, 'disapprove'])->name('admin/disapproved');
     Route::get('admin/done/{id}', [\App\Http\Controllers\Marktransaction::class, 'accepttransaction'])->name('admin/done');
+    Route::get('admin/rdone/{id}', [\App\Http\Controllers\Marktransaction::class, 'reversetransaction'])->name('admin/rdone');
     Route::get('admin/bills', [TransactionController::class, 'bill'])->name('admin/bills');
+    Route::get('admin/pbills', [TransactionController::class, 'pendingbill'])->name('admin/pbills');
     Route::get('admin/giveaway', [BonusController::class, 'giveawayall'])->name('admin/giveaway');
     Route::get('admin/claim', [BonusController::class, 'claimby'])->name('admin/claim');
     Route::get('admin/finddeposite', [TransactionController::class, 'index'])->name('admin/finddeposite');

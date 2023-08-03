@@ -84,6 +84,15 @@ public function index()
         return view('admin/bills', ['data' => $data,'amount'=>$amount, 'am'=>$am, 'am1'=>$am1, 'am2'=>$am2,  'tt' => $tt, 'ft' => $ft, 'st' => $st, 'rt' => $rt]);
 
     }
+    public function pendingbill()
+    {
+        $today = Carbon::now()->format('Y-m-d');
+
+
+        $data =bill_payment::where('status', 0)->get();
+          return view('admin/pbills', ['data' => $data]);
+
+    }
 
     public function getTransactions()
     {
