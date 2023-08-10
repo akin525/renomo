@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Http\Controllers\admin;
+namespace App\Http\Controllers\admin;
 
 use App\Console\encription;
 use App\Mail\Emailcharges;
@@ -11,6 +11,7 @@ use App\Models\deposit;
 use App\Models\setting;
 use App\Models\User;
 use App\Models\wallet;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -45,16 +46,15 @@ public function credit(Request $request)
 
         $user = User::where('username', encription::encryptdata($request->username))->first();
         if (!isset($user)){
-            Alert::warning('Admin', 'Username not found');
-            return back();
+
+            return response()->json('User Not Found', Response::HTTP_BAD_REQUEST);
 
         }
         $wallet = wallet::where('username', encription::encryptdata($request->username))->first();
 
         $depo = deposit::where('payment_ref', encription::encryptdata($request->refid))->first();
         if (isset($depo)) {
-            Alert::warning('Admin', 'Duplicate Transaction');
-            return back();
+            return response()->json('Duplicate Transaction', Response::HTTP_CONFLICT);
 
         } else {
             $gt = $wallet->balance + $request->amount;
@@ -74,10 +74,52 @@ public function credit(Request $request)
             Mail::to($receiver)->send(new Emailfund($deposit));
             Mail::to($admin)->send(new Emailfund($deposit));
             $mo=$request->username." was successful fund with NGN".$request->amount;
-            Alert::success('Admin', $mo);
-            return back();
+           return response()->json([
+               'status'=>'success',
+               'message'=>$mo,
+           ]);
 
         }
+    }
+    return redirect("admin/login")->with('status', 'You are not allowed to access');
+
+
+}
+
+public function creditFund(Request $request)
+{
+    $request->validate([
+        'username' => 'required',
+        'amount' => 'required',
+    ]);
+    if (Auth()->user()->role == "admin") {
+
+
+        $user = User::where('username', encription::encryptdata($request->username))->first();
+        if (!isset($user)){
+
+            return response()->json('User Not Found', Response::HTTP_BAD_REQUEST);
+
+        }
+        $wallet = wallet::where('username', encription::encryptdata($request->username))->first();
+
+        $depo = deposit::where('payment_ref', encription::encryptdata($request->refid))->first();
+
+            $gt = $wallet->balance + $request->amount;
+
+            $wallet->balance = $gt;
+            $wallet->save();
+            $admin = 'info@renomobilemoney.com';
+
+            $receiver = encription::decryptdata($user->email);
+//            Mail::to($receiver)->send(new Emailfund($deposit));
+//            Mail::to($admin)->send(new Emailfund($deposit));
+            $mo=$request->username." was successful refund with NGN".$request->amount;
+           return response()->json([
+               'status'=>'success',
+               'message'=>$mo,
+           ]);
+
     }
     return redirect("admin/login")->with('status', 'You are not allowed to access');
 
@@ -99,8 +141,8 @@ public function charge(Request $request)
     if (Auth()->user()->role == "admin") {
         $user = User::where('username', encription::encryptdata($request->username))->first();
         if (!isset($user)){
-            Alert::warning('Admin', 'Username not found');
-            return redirect("admin/charge");
+            return response()->json('User Not Found', Response::HTTP_BAD_REQUEST);
+
 
         }
         $wallet = wallet::where('username', $user->username)->first();
@@ -125,8 +167,11 @@ public function charge(Request $request)
         Mail::to($receiver)->send(new Emailcharges($charp));
         Mail::to($admin)->send(new Emailcharges($charp));
         $mg=$request->amount . " was charge from " . $request->username . ' wallet successfully';
-        Alert::success('Admin', $mg);
-        return redirect(route('admin/charge'));
+
+        return response()->json([
+            'status'=>'success',
+            'message'=>$mg,
+        ]);
 
     }
     return redirect("admin/login")->with('status', 'You are not allowed to access');

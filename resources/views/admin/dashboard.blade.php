@@ -32,11 +32,11 @@
                     <div class="card-body">
                         <center>
                             <!--                    <h4 class="w3-text-green"><b>&nbsp;&nbsp; &nbsp;&nbsp; <a class="w3-btn w3-green w3-border w3-round-large" href="with.php">Withdraw From MCD Wallet</a>-->
-                            <a class="btn btn-success m-2" href="{{route('admin/credit')}}">Credit User</a>
+                            <button class="btn btn-success m-2"  data-bs-toggle="modal" data-bs-target="#creditModalCenter">Credit User</button>
                             <a class="btn btn-success m-2" href="{{route('admin/mcd')}}">Withdraw MCD Wallet</a>
 
-                            <a class="btn btn-success m-2" href="{{route('admin/credit')}}">Refund User</a>
-                            <a class="btn btn-success m-2" href="{{route('admin/charge')}}">Charge User</a>
+                            <button class="btn btn-success m-2" data-bs-toggle="modal" data-bs-target="#fundModalCenter" >Refund User</button>
+                            <button class="btn btn-success m-2" data-bs-toggle="modal" data-bs-target="#chargeModalCenter">Charge User</button>
 {{--                            <a class="btn btn-success" href="#">Withdraw MCD Commission</a>--}}
 
                             <!--                            <a class="w3-btn w3-green w3-border w3-round-large" href="method.php">All Payment Method</a>-->
@@ -45,6 +45,143 @@
                     </b></h4>  	</div>
             </div>
         </div>
+        <div class="modal fade" id="creditModalCenter">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="loading-overlay" id="loadingSpinner" style="display: none;">
+                    <div class="loading-spinner"></div>
+                </div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Credit User</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                        </button>
+                    </div>
+                    <form id="dataForm">
+                        @csrf
+                        <div class="card card-body">
+
+                            {{--                       <input placeholder="Your e-mail" class="subscribe-input" name="email" type="email">--}}
+                            <div id="div_id_network" class="form-group">
+                                <label for="network" class=" requiredField">
+                                    Username<span class="asteriskField">*</span>
+                                </label>
+                                <div class="">
+                                    <input type="text" id="username" name="username"  class="text-success form-control" required >
+                                </div>
+                            </div>
+                            <br/>
+                            <div id="div_id_network" >
+                                <label for="network" class=" requiredField">
+                                    Enter Amount<span class="asteriskField">*</span>
+                                </label>
+                                <div class="">
+                                    <input type="number" id="amount" name="amount"  class="text-success form-control" required>
+                                </div>
+                            </div>
+                            <br/>
+
+                            <input type="hidden" name="refid" value="<?php echo rand(10000000, 999999999); ?>">
+                            <button type="submit" class="btn btn-primary">Fund</button>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        {{--                        <button type="button" class="btn btn-primary">Save changes</button>--}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="fundModalCenter">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="loading-overlay" id="loadingSpinner" style="display: none;">
+                    <div class="loading-spinner"></div>
+                </div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Refund User</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                        </button>
+                    </div>
+
+                    <form id="dataForm2">
+                        @csrf
+                        <div class="card card-body">
+
+                            {{--                       <input placeholder="Your e-mail" class="subscribe-input" name="email" type="email">--}}
+                            <div id="div_id_network" class="form-group">
+                                <label for="network" class=" requiredField">
+                                    Username<span class="asteriskField">*</span>
+                                </label>
+                                <div class="">
+                                    <input type="text" id="username2" name="username"  class="text-success form-control" required >
+                                </div>
+                            </div>
+                            <br/>
+                            <div id="div_id_network" >
+                                <label for="network" class=" requiredField">
+                                    Enter Amount<span class="asteriskField">*</span>
+                                </label>
+                                <div class="">
+                                    <input type="number" id="amount2" name="amount"  class="text-success form-control" required>
+                                </div>
+                            </div>
+                            <br/>
+
+                            <button type="submit" class="btn btn-primary">Refund</button>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        {{--                        <button type="button" class="btn btn-primary">Save changes</button>--}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="chargeModalCenter">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Charge User</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal">
+                        </button>
+                    </div>
+                    <form id="chargeForm">
+                        @csrf
+                        <div class="card card-body">
+
+                            {{--                       <input placeholder="Your e-mail" class="subscribe-input" name="email" type="email">--}}
+                            <div id="div_id_network" class="form-group">
+                                <label for="network" class=" requiredField">
+                                    Username<span class="asteriskField">*</span>
+                                </label>
+                                <div class="">
+                                    <input type="text" id="username1" name="username"  class="text-success form-control" required >
+                                </div>
+                            </div>
+                            <br/>
+                            <div id="div_id_network" >
+                                <label for="network" class=" requiredField">
+                                    Enter Amount<span class="asteriskField">*</span>
+                                </label>
+                                <div class="">
+                                    <input type="number" id="amount1" name="amount"  class="text-success form-control" required>
+                                </div>
+                            </div>
+                            <br/>
+
+                            <input type="hidden" name="refid" value="<?php echo rand(10000000, 999999999); ?>">
+                            <button type="submit" class="btn btn-primary">Re-Fund</button>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        {{--                        <button type="button" class="btn btn-primary">Save changes</button>--}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <br>
 {{--        <canvas id="transactionChart" width="400" height="200"></canvas>--}}
 
@@ -345,6 +482,241 @@
         <!-- /.row -->
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#dataForm').submit(function(e) {
+            e.preventDefault(); // Prevent the form from submitting traditionally
+            // Get the form data
+            var formData = $(this).serialize();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'Do you want to fund ' + document.getElementById("username").value + ' ₦' + document.getElementById("amount").value + '?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // The user clicked "Yes", proceed with the action
+                    // Add your jQuery code here
+                    // For example, perform an AJAX request or update the page content
+                    $('#loadingSpinner').show();
+                    $.ajax({
+                        url: "{{ route('admin/cr') }}",
+                        type: 'POST',
+                        data: formData,
+                        success: function(response) {
+                            // Handle the success response here
+                            $('#loadingSpinner').hide();
+
+                            console.log(response);
+                            // Update the page or perform any other actions based on the response
+
+                            if (response.status == 'success') {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success',
+                                    text: response.message
+                                }).then(() => {
+                                    location.reload(); // Reload the page
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: 'info',
+                                    title: 'Pending',
+                                    text: response.message
+                                });
+                                // Handle any other response status
+                            }
+
+                        },
+                        error: function(xhr) {
+                            $('#loadingSpinner').hide();
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'fail',
+                                text: xhr.responseText
+                            });
+                            // Handle any errors
+                            console.log(xhr.responseText);
+
+                        }
+                    });
+
+
+                }
+            });
+
+
+            // Send the AJAX request
+        });
+    });
+
+</script>
+<script>
+    $(document).ready(function() {
+        $('#dataForm2').submit(function(e) {
+            e.preventDefault(); // Prevent the form from submitting traditionally
+            // Get the form data
+            var formData = $(this).serialize();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'Do you want to refund ' + document.getElementById("username2").value + ' ₦' + document.getElementById("amount2").value + '?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Processing',
+                        text: 'Please wait...',
+                        icon: 'info',
+                        allowOutsideClick: false,
+                        showConfirmButton: false
+                    });
+                    // The user clicked "Yes", proceed with the action
+                    // Add your jQuery code here
+                    // For example, perform an AJAX request or update the page content
+                    $('#loadingSpinner').show();
+                    $.ajax({
+                        url: "{{ route('admin/refund') }}",
+                        type: 'POST',
+                        data: formData,
+                        success: function(response) {
+                            // Handle the success response here
+                            $('#loadingSpinner').hide();
+
+                            console.log(response);
+                            // Update the page or perform any other actions based on the response
+
+                            if (response.status == 'success') {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success',
+                                    text: response.message
+                                }).then(() => {
+                                    location.reload(); // Reload the page
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: 'info',
+                                    title: 'Pending',
+                                    text: response.message
+                                });
+                                // Handle any other response status
+                            }
+
+                        },
+                        error: function(xhr) {
+                            $('#loadingSpinner').hide();
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'fail',
+                                text: xhr.responseText
+                            });
+                            // Handle any errors
+                            console.log(xhr.responseText);
+
+                        }
+                    });
+
+
+                }
+            });
+
+
+            // Send the AJAX request
+        });
+    });
+
+</script>
+<script>
+    $(document).ready(function() {
+        $('#chargeForm').submit(function(e) {
+            e.preventDefault(); // Prevent the form from submitting traditionally
+            // Get the form data
+            var formData = $(this).serialize();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'Do you want to Charge ' + document.getElementById("username1").value + ' ₦' + document.getElementById("amount1").value + '?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Processing',
+                        text: 'Please wait...',
+                        icon: 'info',
+                        allowOutsideClick: false,
+                        showConfirmButton: false
+                    });
+                    // The user clicked "Yes", proceed with the action
+                    // Add your jQuery code here
+                    // For example, perform an AJAX request or update the page content
+                    $('#loadingSpinner').show();
+                    $.ajax({
+                        url: "{{ route('admin/ch') }}",
+                        type: 'POST',
+                        data: formData,
+                        success: function(response) {
+                            // Handle the success response here
+                            $('#loadingSpinner').hide();
+
+                            console.log(response);
+                            // Update the page or perform any other actions based on the response
+
+                            if (response.status == 'success') {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success',
+                                    text: response.message
+                                }).then(() => {
+                                    location.reload(); // Reload the page
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: 'info',
+                                    title: 'Pending',
+                                    text: response.message
+                                });
+                                // Handle any other response status
+                            }
+
+                        },
+                        error: function(xhr) {
+                            $('#loadingSpinner').hide();
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'fail',
+                                text: xhr.responseText
+                            });
+                            // Handle any errors
+                            console.log(xhr.responseText);
+
+                        }
+                    });
+
+
+                }
+            });
+
+
+            // Send the AJAX request
+        });
+    });
+
+</script>
+
+
 <script>
     fetch('/transactions')
         .then(response => response.json())
