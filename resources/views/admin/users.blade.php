@@ -109,9 +109,8 @@
                                 </tr>
                             @endforeach
                             </tbody>
-                            {{$users->links()}}
                         </table>
-
+                        {{$users->links()}}
                         <script>
                             $(document).ready(function () {
                                 $('.delete-user-btn').click(function () {
