@@ -109,6 +109,7 @@
                                 </tr>
                             @endforeach
                             </tbody>
+                            {{$users->links()}}
                         </table>
 
                         <script>
