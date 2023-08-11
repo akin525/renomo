@@ -1,6 +1,9 @@
 @include('admin.layouts.sidebar')
 
     <div class="row">
+        <div class="loading-overlay" id="loadingSpinner" style="display: none;">
+            <div class="loading-spinner"></div>
+        </div>
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
@@ -65,18 +68,169 @@
                                     </label>
                                 </td>
                                 <td>
-                                    <a href="{{route('admin/editproduct1', $seller->id)}}" class="btn btn-outline-primary"><i class="fa fa-edit"></i></a>
+                                    <button  type="button" class="btn btn-primary" onclick="openModal(this)" data-user-id="{{$seller->id}}" data-user-name="{{$seller->plan}}" >
+                                        <i class="fa fa-edit"></i>
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
                     {{$product->links()}}
-
+                            <style>
+                                /* Add your CSS styles here */
+                                .modal {
+                                    display: none;
+                                    position: fixed;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    background-color: rgba(0, 0, 0, 0.5);
+                                }
+                                .modal-content {
+                                    background-color: white;
+                                    width: 60%;
+                                    max-width: 400px;
+                                    margin: 100px auto;
+                                    padding: 20px;
+                                    border-radius: 5px;
+                                }
+                            </style>
+                            <div class="modal" id="editModal">
+                                <div class="modal-content">
+                                    <form id="dataForm" >
+                                        @csrf
+                                        <div class="card card-body">
+                                            <p>EDIT PRODUCT</p>
+                                            {{--                       <input placeholder="Your e-mail" class="subscribe-input" name="email" type="email">--}}
+                                            <br/>
+                                            <div class="form-group">
+                                                <label>Product-Plan</label>
+                                                <input type="text" class="form-control" id="plan"  name="name" value="" readonly />
+                                                <input type="hidden" class="form-control" id="id" name="id" value="" required />
+                                            </div>
+                                            <br/>
+                                            <div id="div_id_network" >
+                                                <label for="network" class=" requiredField">
+                                                    Enter selling Amount<span class="asteriskField">*</span>
+                                                </label>
+                                                <div class="">
+                                                    <input type="number" id="amount" name="tamount"  class="text-success form-control" required>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <div id="div_id_network" >
+                                                <label for="network" class=" requiredField">
+                                                    Enter Reseller Amount<span class="asteriskField">*</span>
+                                                </label>
+                                                <div class="">
+                                                    <input type="number" id="amount" name="ramount"  class="text-success form-control" required>
+                                                </div>
+                                            </div>
+                                            <br/>
+                                            <button type="submit" class="btn btn-outline-success">Update</button>
+                                        </div>
+                                    </form>
+                                    <button class="btn btn-outline-danger" onclick="closeModal()">Cancel</button>
+                                </div>
+                            </div>
                 </div>
             </div>
         </div>
         <!-- end col -->
     </div>
-    <!-- end row -->
+        <script>
+            function openModal(element) {
+                const modal = document.getElementById('editModal');
+                const newNameInput = document.getElementById('id');
+                const net = document.getElementById('plan');
+                const userId =element.getAttribute('data-user-id');
+                const userName = element.getAttribute('data-user-name');
+
+
+
+                newNameInput.value = userId;
+                net.value = userName;
+
+                console.log(newNameInput);
+                console.log(net);
+                modal.style.display = 'block';
+                // You can fetch user data using the userId and populate the input fields in the modal if needed
+            }
+
+            function closeModal() {
+                const modal = document.getElementById('editModal');
+                modal.style.display = 'none';
+            }
+
+            function saveChanges() {
+                // Add code here to save the changes and update the table
+                closeModal();
+            }
+        </script>
+
+        <script>
+            $(document).ready(function() {
+
+
+                // Send the AJAX request
+                $('#dataForm').submit(function(e) {
+                    e.preventDefault(); // Prevent the form from submitting traditionally
+
+                    // Get the form data
+                    var formData = $(this).serialize();
+                    // The user clicked "Yes", proceed with the action
+                    // Add your jQuery code here
+                    // For example, perform an AJAX request or update the page content
+                    $('#loadingSpinner').show();
+
+                    $.ajax({
+                        url: "{{route('admin/do1')}}",
+                        type: 'POST',
+                        data: formData,
+                        success: function(response) {
+                            // Handle the success response here
+                            $('#loadingSpinner').hide();
+
+                            console.log(response);
+                            // Update the page or perform any other actions based on the response
+
+                            if (response.status == 'success') {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success',
+                                    text: response.message
+                                }).then(() => {
+                                    location.reload(); // Reload the page
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: 'info',
+                                    title: 'Pending',
+                                    text: response.message
+                                });
+                                // Handle any other response status
+                            }
+
+                        },
+                        error: function(xhr) {
+                            $('#loadingSpinner').hide();
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'fail',
+                                text: xhr.responseText
+                            });
+                            // Handle any errors
+                            console.log(xhr.responseText);
+
+                        }
+                    });
+                });
+            });
+
+        </script>
+
+
+        <!-- end row -->
 @include('layouts.footer')

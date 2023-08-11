@@ -103,57 +103,60 @@ public function edit(Request $request)
 {
     $request->validate([
         'id' => 'required',
-        'amount' => 'required',
         'tamount' => 'required',
         'ramount' => 'required',
         'name' => 'required',
     ]);
     $pro=data::where('id', $request->id)->first();
     $pro->plan=$request->name;
-    $pro->amount=$request->amount;
     $pro->tamount=$request->tamount;
     $pro->ramount=$request->ramount;
     $pro->save();
-    Alert::success('Amin', 'Product update Successfully');
-    return redirect('admin/product');
+    return response()->json([
+        'status'=>'success',
+        'message'=>'Product update successfully',
+    ]);
+
 
 }
     public function edit1(Request $request)
     {
         $request->validate([
             'id' => 'required',
-            'amount' => 'required',
             'tamount' => 'required',
             'ramount' => 'required',
             'name' => 'required',
         ]);
         $pro=big::where('id', $request->id)->first();
         $pro->plan=$request->name;
-        $pro->amount=$request->amount;
         $pro->tamount=$request->tamount;
         $pro->ramount=$request->ramount;
         $pro->save();
-        Alert::success('Admin', 'Product update successfully');
-        return redirect('admin/product1');
+        return response()->json([
+            'status'=>'success',
+            'message'=>'Product update successfully',
+        ]);
+
 
     }
     public function edit2(Request $request)
     {
         $request->validate([
             'id' => 'required',
-            'amount' => 'required',
             'tamount' => 'required',
             'ramount' => 'required',
             'name' => 'required',
         ]);
         $pro=easy::where('id', $request->id)->first();
         $pro->plan=$request->name;
-        $pro->amount=$request->amount;
         $pro->tamount=$request->tamount;
         $pro->ramount=$request->ramount;
         $pro->save();
-        Alert::success('Admin', 'Product update successfully');
-        return redirect('admin/product2');
+        return response()->json([
+            'status'=>'success',
+            'message'=>'Product update successfully',
+        ]);
+
 
     }
 
