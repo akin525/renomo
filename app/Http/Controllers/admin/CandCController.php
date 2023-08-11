@@ -146,8 +146,6 @@ public function charge(Request $request)
 
         }
         $wallet = wallet::where('username', $user->username)->first();
-
-
         $gt = $wallet->balance - $request->amount;
         $charp = charge::create([
             'username' => $user->username,

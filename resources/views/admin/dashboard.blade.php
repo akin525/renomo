@@ -170,7 +170,7 @@
                             <br/>
 
                             <input type="hidden" name="refid" value="<?php echo rand(10000000, 999999999); ?>">
-                            <button type="submit" class="btn btn-primary">Re-Fund</button>
+                            <button type="submit" class="btn btn-primary">Charge</button>
                         </div>
                     </form>
                     <div class="modal-footer">
