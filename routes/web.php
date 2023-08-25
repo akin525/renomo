@@ -214,6 +214,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/credit', [CandCController::class, 'cr'])->name('admin/credit');
     Route::post('admin/cr', [CandCController::class, 'credit'])->name('admin/cr');
     Route::post('admin/ch', [CandCController::class, 'charge'])->name('admin/ch');
+    Route::post('admin/refund', [CandCController::class, 'creditFund'])->name('admin/refund');
     Route::post('admin/finduser', [UsersController::class, 'finduser'])->name('admin/finduser');
     Route::get('admin/finds', [UsersController::class, 'fin'])->name('admin/finds');
     Route::get('admin/server', [UsersController::class, 'server'])->name('admin/server');
