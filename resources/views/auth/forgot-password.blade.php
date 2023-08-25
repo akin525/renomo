@@ -21,7 +21,6 @@
                         </center>
                         <br>
                         <br>
-
         <form method="POST" action="{{ route('passw') }}">
             @csrf
             <fieldset>
