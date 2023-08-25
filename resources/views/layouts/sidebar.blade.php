@@ -287,9 +287,9 @@
                             <a href="{{ route('dashboard') }}"><img class="img-responsive" src="{{asset("images/bn.jpeg")}}" alt="#" /></a>
                         </div>
                         <br>
-                        @if(Auth::user()->pin =="0")
-                            <button type="button" onclick="window.location.href='{{route('createpin')}}'" class="btn btn-success mb-3">Enable Transaction Pin for secure purpose</button>
-                        @endif
+{{--                        @if(Auth::user()->pin =="0")--}}
+{{--                            <button type="button" onclick="window.location.href='{{route('createpin')}}'" class="btn btn-success mb-3">Enable Transaction Pin for secure purpose</button>--}}
+{{--                        @endif--}}
                     </div>
 
                 </nav>
