@@ -60,4 +60,10 @@ function customerstatementpurchase(Request $request)
 
     return view('admin/statement1',['user' => $user, 'deposit'=>$purchase, 'sum'=>$sum, 'result'=>true]);
 }
+function loadmailcsv()
+{
+    $user=User::all();
+
+    return view('admin/mailbox', compact('user'));
+}
 }
