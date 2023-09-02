@@ -33,7 +33,7 @@
                                     </td>
                                     <td>{{ \App\Console\encription::decryptdata($user->email) }}</td>
                                     <td>{{ \App\Console\encription::decryptdata($user->phone) }}</td>
-                                    <td>@extractLastName({{ \App\Console\encription::decryptdata($user->name) }})</td>
+                                    <td>@extractFirstName({{ \App\Console\encription::decryptdata($user->name) }})</td>
                                     <td><a href="profile/{{ $user->username }}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a></td>
                                 </tr>
                             @endforeach

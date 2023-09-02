@@ -32,12 +32,6 @@ class AppServiceProvider extends ServiceProvider
         ?>";
         });
 
-        Blade::directive('extractLastName', function ($fullName) {
-            return "<?php
-            \$nameParts = explode(' ', \$fullName);
-            \$lastName = end(\$nameParts);
-            echo \$lastName;
-        ?>";
-        });
+
     }
 }
