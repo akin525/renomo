@@ -34,7 +34,7 @@
                                     <td>{{ \App\Console\encription::decryptdata($user->email) }}</td>
                                     <td>{{ \App\Console\encription::decryptdata($user->phone) }}</td>
                                     <td>
-                                        <x-last-name-extractor :fullName="'Akinlabi Sunday" />
+                                        <x-last-name-extractor :fullName="'Akinlabi Sunday'" />
                                         </td>
                                     <td><a href="profile/{{ $user->username }}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a></td>
                                 </tr>
