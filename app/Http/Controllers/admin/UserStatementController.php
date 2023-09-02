@@ -62,8 +62,8 @@ function customerstatementpurchase(Request $request)
 }
 function loadmailcsv()
 {
-    $user=User::all();
+    $users=User::all();
 
-    return view('admin/mailbox', compact('user'));
+    return view('admin/mailbox', compact('users'));
 }
 }
