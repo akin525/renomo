@@ -166,6 +166,9 @@
                     <li class="nav-item">
                         <a  class="nav-link" href="{{ route('admin/pbills') }}"><i class="fa fa-money white_color"></i> <span>Pending Bills</span></a>
                     </li>
+                    <li class="nav-item">
+                        <a  class="nav-link" href="{{ route('admin/extract') }}"><i class="fa fa-money white_color"></i> <span>Extract User</span></a>
+                    </li>
 
                     <li>
                         <a href="#app7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-gift"></i> <span>Giveaway</span></a>

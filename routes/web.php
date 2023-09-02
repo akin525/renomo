@@ -194,6 +194,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin/statement', [UserStatementController::class, 'loadindex'])->name('admin/statement');
     Route::post('admin/state1', [UserStatementController::class, 'customerstatementpurchase'])->name('admin/state1');
     Route::post('admin/state', [UserStatementController::class, 'customerstatementfunding'])->name('admin/state');
+    Route::get('admin/extract', [UserStatementController::class, 'loadmailcsv'])->name('admin/extract');
     Route::post('admin/sub', [McdController::class, 'mcd'])->name('admin/sub');
     Route::post('admin/verify', [McdController::class, 'verify'])->name('admin/verify');
     Route::get('admin/mcd', [McdController::class, 'index'])->name('admin/mcd');
