@@ -18,4 +18,5 @@ class encription
         $ciphertext = hex2bin($encriptedData);
         return openssl_decrypt($ciphertext, "aes-128-cbc",$aeskey, OPENSSL_RAW_DATA, $ivkey);
     }
+
 }

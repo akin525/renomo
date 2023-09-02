@@ -29,7 +29,7 @@
                                 <tr>
                                     <td>{{ $user->id }}</td>
                                     <td>
-                                        @extractFirstName({{ \App\Console\encription::decryptdata($user->username) }})
+{{--                                        @extractFirstName({{\App\Console\encription::decryptdata($user->username)}})--}}
                                     </td>
                                     <td>{{ \App\Console\encription::decryptdata($user->email) }}</td>
                                     <td>{{ \App\Console\encription::decryptdata($user->phone) }}</td>
