@@ -58,7 +58,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#dataForm2').submit(function(e) {
+        $('#check').submit(function(e) {
             e.preventDefault(); // Prevent the form from submitting traditionally
             // Get the form data
             var formData = $(this).serialize();
