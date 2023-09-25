@@ -27,6 +27,7 @@ class Interest extends Command
      * @var string
      */
     protected $description = 'Command description';
+///usr/local/bin/ea-php80 /home/renomobi/public_html/renomo/artisan schedule:run > /dev/null 2>&1
 
     /**
      * Execute the console command.

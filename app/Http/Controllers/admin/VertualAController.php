@@ -84,7 +84,7 @@ public function apikey(Request $request)
         'username' => 'required',
     ]);
     $users=User::where('username', $request->username)->first();
-    $api= uniqid("PRIME", true);
+    $api= uniqid("RENO", true);
     $users->apikey=$api;
     $users->save();
     return redirect(url('admin/profile/'.$request->username))

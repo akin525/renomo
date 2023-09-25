@@ -59,6 +59,12 @@
                                 {{--                                <span>Best seller of the week</span>--}}
                                 {{--                                <p class="mt-3">{{$me->message}}</p>--}}
 
+                                <label class="switch">
+                                    <input type="checkbox" id="toggleDarkMode">
+                                    <span class="slider round"></span>
+                                </label>
+{{--                                <button id="toggleDarkMode">Toggle Dark Mode</button>--}}
+
                                 <h6>Your Referal Link</h6>
                                 <!-- The text field -->
                                 <input id="myInput" type="text" class="form-control" value="https://renomobilemoney.com/register?refer={{$user->username}}" >
@@ -495,7 +501,47 @@
             });
         });
 </script>
+<script>
+    // Get the toggle button and body element
+    const toggleButton = document.getElementById('toggleDarkMode');
+    const body = document.body;
 
+    // Check if dark mode is enabled in local storage
+    let isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+
+    // Set the initial dark mode state
+    if (isDarkMode) {
+        enableDarkMode();
+    }
+
+    // Toggle dark mode when the button is clicked
+    toggleButton.addEventListener('click', () => {
+        if (isDarkMode) {
+            disableDarkMode();
+        } else {
+            enableDarkMode();
+        }
+    });
+
+    function enableDarkMode() {
+        // Enable dark mode
+        body.classList.add('dark-mode');
+        // Store the dark mode state in local storage
+        localStorage.setItem('darkMode', 'enabled');
+        // Update the state
+        isDarkMode = true;
+    }
+
+    function disableDarkMode() {
+        // Disable dark mode
+        body.classList.remove('dark-mode');
+        // Remove the dark mode state from local storage
+        localStorage.setItem('darkMode', 'disabled');
+        // Update the state
+        isDarkMode = false;
+    }
+
+</script>
 <script src="{{asset('asset/datatables.net/js/jquery.dataTables.min.js')}}" type="847c8da2504a1915642ffbeb-text/javascript"></script>
 <script src="{{asset('asset/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}" type="847c8da2504a1915642ffbeb-text/javascript"></script>
 <script src="{{asset('asset/datatables.net-responsive/js/dataTables.responsive.min.js')}}" type="847c8da2504a1915642ffbeb-text/javascript"></script>

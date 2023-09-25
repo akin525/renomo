@@ -86,6 +86,22 @@ body {
     font-weight: 300;
     overflow-x: hidden !important;
 }
+header {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-mode header {
+    background-color: #222;
+    color: #fff;
+}
 
 body.demos .section {
     background: url(images/bg.png) repeat top center #f2f3f5;
@@ -3850,3 +3866,108 @@ input.invalid {
         transition: none; } }
 .fade:not(.show) {
     opacity: 0; }
+
+
+/* Toggle button styles */
+#toggleDarkMode {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    margin: 10px;
+    font-size: 16px;
+    position: relative;
+}
+
+#toggleDarkMode::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 20px;
+    background-color: #ccc; /* Background color for the toggle track in light mode */
+    border-radius: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: background-color 0.3s ease;
+}
+
+#toggleDarkMode::after {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: #fff; /* Background color for the toggle handle in light mode */
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease;
+}
+
+/* Dark mode styles for the toggle button */
+body.dark-mode #toggleDarkMode::before {
+    background-color: #222; /* Background color for the toggle track in dark mode */
+}
+
+body.dark-mode #toggleDarkMode::after {
+    background-color: #333; /* Background color for the toggle handle in dark mode */
+    transform: translateX(20px); /* Move the handle to the right for dark mode */
+}
+
+/* Styles for the toggle switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider (round part) */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc; /* Background color for the switch in light mode */
+    border-radius: 34px;
+    transition: background-color 0.3s ease;
+}
+
+/* Rounded slider */
+.slider.round {
+    border-radius: 34px;
+}
+
+/* Styles for the switch when dark mode is enabled */
+body.dark-mode .slider {
+    background-color: #222; /* Background color for the switch in dark mode */
+}
+
+/* Styles for the slider's handle (round part) */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #fff; /* Handle color in light mode */
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+/* Handle's appearance in dark mode */
+body.dark-mode .slider:before {
+    background-color: #333; /* Handle color in dark mode */
+    transform: translateX(26px); /* Move the handle to the right for dark mode */
+}
